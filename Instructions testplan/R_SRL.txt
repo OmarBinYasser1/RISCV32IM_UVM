@@ -1,0 +1,263 @@
+SLL rd, rs1, rs2		 SRL instruction (shift  right logical)
+rd = rs1 >> rs2[4:0]
+1.Basic Functionality
+| Test    |          rs1 | shift |  Expected rd |
+| ------- | -----------: | ----: | -----------: |
+| SRL-001 | `0x00000002` |     1 | `0x00000001` |
+| SRL-002 | `0x00000004` |     2 | `0x00000001` |
+| SRL-003 | `0x00000010` |     4 | `0x00000001` |
+| SRL-004 | `0x00000008` |     3 | `0x00000001` |
+| SRL-005 | `0x80000000` |    31 | `0x00000001` |
+
+rd = (rs1 >> shift_amount) & 0xFFFFFFFF
+
+2.Shift amount corner cases — P0
+
+test:
+0
+1
+2
+15
+16
+30
+31
+espically shift =0 , shift =31
+because they are the boundaries for a 5-bit shift amount.
+
+3. Verify only rs2[4:0] is used — P0
+for example 
+rs2 = 0x000000001
+rs22 =0x000000021
+both have rs2[4:0] =5'b00001 therefore they should performe the same shift amount <<1
+Test:
+SRL x3, x1, x2
+x1 = 0x00000001
+x2 = 0x00000021
+expected:
+x3 = 0x00000002
+
+also test
+rs2 = 0x00000041
+rs2 = 0x80000001
+rs2 = 0xFFFFFFFF
+all have rs2[4:0] = 1
+
+4.Shift by 0 — P0
+SRL rd, rs1, x0
+and verfy when rs2[4:0]=0
+
+5. Shift by 31 — P0
+For rs1 = 0x80000000
+shift = 31
+expected  rd = 0x00000001
+
+6.SRL vs SRA — P0
+use:
+rs1 = 0xFFFFFFFF
+shift = 4
+SRL: 0xFFFFFFFF >> 4
+= 0x0FFFFFFF
+SRA:0xFFFFFFFF >>> 4
+= 0xFFFFFFFF
+
+also test 
+0x80000000 >> 1
+SRL : 0x40000000
+SRA : 0xC0000000
+
+
+7. MSB testing
+
+
+8. Shifted-out bits — P0
+SRL is a logical right, so bits shifted beyond bit 0 are discarded.
+
+0x00000001 >> 1 = 0
+0x00000003 >> 1 = 1
+0x00000003 >> 1 = 1
+
+9. MSB behavior — P0
+
+use values where bit 31 is set
+0x80000000
+0xFFFFFFFF
+0xAAAAAAAA
+0xF0000000
+for example
+0x80000000 >> 1
+= 0x40000000
+
+10. Important operand patterns — P0
+0x00000001
+0x00000002
+0x0000000F
+0x000000FF
+0xAAAAAAAA
+0x55555555
+0x80000000
+0xFFFFFFFF
+
+11.Register corner cases — P0
+test: rs1,rs2,rd: x0
+x1
+x15
+x30
+x31
+Most important SRL x0, x1, x2  expected x0=0
+
+
+12. Same-register cases p1
+
+SRL x1, x1, x2
+
+SRL x1, x2, x1
+SRL x1, x1, x1
+
+These are excellent for detecting register read/write problems.
+
+13. Encoding verification
+For SLL, verify the decoder recognizes the correct:
+opcode
+funct3
+funct7
+and extracts 
+rd
+rs1
+rs2
+
+make sure the decoder distinguishes SRL , SLL , SRA
+But you should have coverage for those fields.
+
+14. PC behavior
+PC_next = PC + 4
+
+14. Back-to-back dependency (Pipelined)
+
+This is especially important if your core is pipelined.
+
+Example:
+ADD x5, x1, x2
+SRL x6, x5, x3
+Expected
+x5 = x1 + x2
+x6 = x5 >> x3[4:0]
+
+
+Also test 
+SRL x5,x1,x2
+SRL x6,x5,x3
+
+ also test:
+SRL x5,x1,x2
+SRA x6,x5,x3
+These can expose forwarding/stalling/register-file timing bugs.
+
+15.SRL -> Branch dependenecy --p1
+SRL x5,x1,x2
+BEQ x5,x2,label
+This tests interaction between arithmetic and branch logic
+
+16. Random testing
+random rs1
+random rs2
+random rd 
+
+Reference model;:
+shift = rs2 &5'h1F
+expected =(rs1 >> shift) & 32'hFFFFFFFF
+
+17. Functional coverage for SLL
+
+I'd create coverage for:
+
+
+Instruction:
+SUB executed
+
+Shift amount:
+0
+1
+2
+15
+16
+30
+31
+
+Registers:
+rd:x0 ->x31
+rs1,rs2-.x0 → x31
+
+Operand Patterns:
+zero
+one
+MAX
+MIN
+all ones
+AA pattern
+55 pattern
+random
+
+Operand realtionship
+
+rs1 >rs2 
+rs1 <r2 
+rs1==rs2
+
+Result:
+zero
+non-zero
+MSB = 0
+LSB = 1
+
+cover specifically rs2[4:0]
+with bins 0
+1
+2
+15
+16
+30
+31
+
+cross : 
+MSB(rs1) × shift_amount
+SRL/SRA × MSB(rs1) × shift_amount
+rs2[4:0] × rs2[31:5]
+
+18.Assertions
+for SRL most important that x0==0
+
+
+SRL verification plan
+| ID      | Verification Item      | Stimulus / Corner Case | Expected Result  | Priority |
+| ------- | ---------------------- | ---------------------- | ---------------- | -------- |
+| SRL-001 | Basic shift            | `2 >> 1`               | 1                | P0       |
+| SRL-002 | Shift by 0             | X >> 0                 | X                | P0       |
+| SRL-003 | Shift by 1             | X >> 1                 | Correct          | P0       |
+| SRL-004 | Shift by 15            | X >> 15                | Correct          | P0       |
+| SRL-005 | Shift by 16            | X >> 16                | Correct          | P0       |
+| SRL-006 | Shift by 30            | X >> 30                | Correct          | P0       |
+| SRL-007 | Shift by 31            | X >> 31                | Correct          | P0       |
+| SRL-008 | Zero-fill              | `0x80000000 >> 1`      | `0x40000000`     | P0       |
+| SRL-009 | Zero-fill              | `0xFFFFFFFF >> 1`      | `0x7FFFFFFF`     | P0       |
+| SRL-010 | SRL vs SRA             | `0xFFFFFFFF >> 4`      | SRL=`0x0FFFFFFF` | P0       |
+| SRL-011 | SRL vs SRA             | `0x80000000 >> 1`      | SRL=`0x40000000` | P0       |
+| SRL-012 | rs2 upper bits ignored | `rs2=0x21`             | Same as shift 1  | P0       |
+| SRL-013 | rs2 upper patterns     | `0x01,0x21,0x41,0x81`  | Same shift       | P0       |
+| SRL-014 | Zero input             | `0 >> X`               | 0                | P0       |
+| SRL-015 | All ones               | `0xFFFFFFFF >> X`      | Correct          | P0       |
+| SRL-016 | MIN pattern            | `0x80000000 >> X`      | Correct          | P0       |
+| SRL-017 | Alternating pattern    | `0xAAAAAAAA >> X`      | Correct          | P0       |
+| SRL-018 | Alternating pattern    | `0x55555555 >> X`      | Correct          | P0       |
+| SRL-019 | Shifted-out bits       | `1 >> 1`               | 0                | P0       |
+| SRL-020 | rd=x0                  | SRL x0,...             | x0 remains 0     | P0       |
+| SRL-021 | rs1=x0                 | SRL rd,x0,rs2          | 0                | P0       |
+| SRL-022 | rs2=x0                 | SRL rd,rs1,x0          | rd=rs1           | P0       |
+| SRL-023 | Same registers         | SRL x1,x1,x1           | Correct          | P1       |
+| SRL-024 | R-type encoding        | Valid SRL encoding     | Correct decode   | P0       |
+| SRL-025 | PC increment           | SRL at known PC        | PC+4             | P0       |
+| SRL-026 | Dependency             | ADD→SRL                | Correct result   | P1       |
+| SRL-027 | Dependency             | SRL→SRL                | Correct result   | P1       |
+| SRL-028 | Dependency             | SRL→SRA                | Correct result   | P1       |
+| SRL-029 | Random operands        | Random 32-bit values   | Matches model    | P1       |
+| SRL-030 | Shift coverage         | All shift bins         | 100%             | P1       |
+| SRL-031 | MSB coverage           | MSB 0/1                | 100%             | P1       |

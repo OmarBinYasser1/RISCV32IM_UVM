@@ -1,0 +1,289 @@
+AND rd, rs1, rs2		 OR instruction 
+rd = rs1 |rs2
+
+
+1.Basic Functionality
+| Test   | rs1          | rs2          | Expected rd  |
+| ------ | ------------ | ------------ | ------------ |
+| OR-001 | `0x00000000` | `0x00000000` | `0x00000000` |
+| OR-002 | `0xFFFFFFFF` | `0x00000000` | `0xFFFFFFFF` |
+| OR-003 | `0x00000000` | `0xFFFFFFFF` | `0xFFFFFFFF` |
+| OR-004 | `0xFFFFFFFF` | `0xFFFFFFFF` | `0xFFFFFFFF` |
+| OR-005 | `0xAAAAAAAA` | `0x55555555` | `0xFFFFFFFF` |
+| OR-006 | `0xAAAAAAAA` | `0xAAAAAAAA` | `0xAAAAAAAA` |
+
+
+
+2.Zero porperrties — P0
+X|0 = 0
+test:
+0x00000000
+0x00000001
+0x12345678
+0x7FFFFFFF
+0x80000000
+0xAAAAAAAA
+0x55555555
+0xFFFFFFFF
+
+example: 
+OR x3, x1, x2
+with x2 =0
+
+3. OR with ones --P0
+X & 0xFFFFFFFF = X
+test :
+OR rd, rs1, x2
+
+wherer rs2 = 0xFFFFFFF
+
+test with 
+0
+1
+0x12345678
+0x80000000
+0x7FFFFFFF
+0xAAAAAAAA
+0x55555555
+0xFFFFFFFF
+
+
+4.Same operands — P0
+X & X = X
+OR x3, x1, x1
+x1 = 0x12345678
+x3 = 0x12345678
+
+
+5.Complementart patterns — P0
+ 
+0xAAAAAAAA
+0x55555555
+
+6.Alternating patterns behavior — P0
+0xAAAAAAAA
+0x55555555
+0xF0F0F0F0
+0x0F0F0F0F
+0xFF00FF00
+0x00FF00FF
+
+
+7. Single bit testing — P0
+0x00000001
+0x00000002
+0x00000004
+0x00000008
+...
+0x80000000
+
+ex : 0x00000008 | 0x00000008 = 
+     0x00000008 | 0x00000004 = 
+
+
+MSB testing — P0
+both MSBs clear
+0x00000000
+|
+0x00000000
+=
+0x00000000
+
+only rs1 MSB set
+0x80000000
+|
+0x00000000
+=
+0x80000000
+
+Different MSB values
+0x80000000
+&
+0x7FFFFFFF
+=
+
+both set : (same as previous
+
+rs2 MSB set: (same as prevouis)
+
+
+9.Random bit patterns — P1
+rs1 = random 32-bit
+rs2 = random 32-bit
+This should be one of your primary constrained-random tests.
+
+8.Register corner cases — P0
+test: rs1,rs2,rd: 
+x1
+x15
+x30
+x31
+Most important OR x0, x1, x2  expected x0=0
+
+All register combinations — P1
+rd  = x0 → x31
+rs1 = x0 → x31
+rs2 = x0 → x31
+
+9. Same-register cases p1
+
+OR x1, x1, x2  
+
+OR x1, x2, x1
+OR x1, x1, x1
+
+These are excellent for detecting register read/write problems.
+
+10. Encoding verification
+For SLL, verify the decoder recognizes the correct:
+opcode
+funct3
+funct7
+and extracts 
+rd
+rs1
+rs2
+
+MOst importantly to distinguish between AND ,OR ,XOR ,ADD,SUB
+
+11. PC behavior
+PC_next = PC + 4
+
+Verify that the comparison doesn't affect the PC
+
+
+12. Back-to-back dependency (Pipelined)
+
+This is especially important if your core is pipelined.
+
+Example:
+XOR x5, x1, x2
+OR x6, x5, x3
+
+
+
+Also test 
+OR x5,x1,x2
+AND x6,x5,x3
+
+
+ also test:
+OR x5,x1,x2
+OR x6,x5,x3
+These can expose forwarding/stalling/register-file timing bugs.
+
+13.OR -> Branch dependenecy --p1
+OR x5,x1,x2
+BEQ x5,x2,label
+This tests interaction between arithmetic and branch logic
+
+14. Random testing
+random rs1
+random rs2
+random rd 
+
+Reference model;:
+
+expected = rs1 | rs2
+
+17. Functional coverage for SLT
+operand patterns:
+
+zero
+all ones
+alternating 1010
+alternating 0101
+single bit
+multiple bits
+random
+
+operand relationship
+rs1 = 0
+rs2 = 0
+rs1 = rs2
+rs1 = ~rs2
+rs1 = all ones
+rs2 = all ones
+
+Result:
+0
+non-zero
+all ones
+single bit
+multiple bits
+MSB = 1
+MSB = 0
+
+Registers
+rd x0 ->x31
+rs1  x0 ->x31
+rs2  x0 ->x31
+
+cross:
+Operand pattern × operand pattern
+rs1_pattern × rs2_pattern
+| rs1          | rs2          | Expected     |
+| ------------ | ------------ | ------------ |
+| `0`          | `0`          | `0`          |
+| `0`          | `X`          | `X`          |
+| `X`          | `0`          | `X`          |
+| `0xFFFFFFFF` | `X`          | `0xFFFFFFFF` |
+| `X`          | `0xFFFFFFFF` | `0xFFFFFFFF` |
+| `X`          | `X`          | `X`          |
+| `X`          | `~X`         | `0xFFFFFFFF` |
+
+
+Register relationship
+rd = rs1
+rd = rs2
+rs1 = rs2
+rd = rs1 = rs2
+
+MSB:
+| rs1[31] | rs2[31] | rd[31] |
+| ------: | ------: | -----: |
+|       0 |       0 |      0 |
+|       0 |       1 |      1 |
+|       1 |       0 |      1 |
+|       1 |       1 |      1 |
+
+18.Assertions
+for OR most important that x0==0
+
+
+OR verification plan
+| ID     | Verification Item      | Stimulus / Corner Case            | Expected Result   | Priority |
+| ------ | ---------------------- | --------------------------------- | ----------------- | -------- |
+| OR-001 | Basic OR               | `0 \| 0`                          | `0`               | P0       |
+| OR-002 | Zero operand           | `X \| 0`                          | `X`               | P0       |
+| OR-003 | Zero operand           | `0 \| X`                          | `X`               | P0       |
+| OR-004 | All ones               | `X \| 0xFFFFFFFF`                 | `0xFFFFFFFF`      | P0       |
+| OR-005 | Same operands          | `X \| X`                          | `X`               | P0       |
+| OR-006 | Complementary operands | `0xAAAAAAAA \| 0x55555555`        | `0xFFFFFFFF`      | P0       |
+| OR-007 | Complementary pattern  | `0xF0F0F0F0 \| 0x0F0F0F0F`        | `0xFFFFFFFF`      | P0       |
+| OR-008 | Alternating patterns   | `0xFF00FF00 \| 0x00FF00FF`        | `0xFFFFFFFF`      | P0       |
+| OR-009 | Single-bit same        | Same bit in both                  | Bit remains set   | P0       |
+| OR-010 | Single-bit different   | Different bits                    | Both bits set     | P0       |
+| OR-011 | MSB both clear         | `0x0 \| 0x0`                      | MSB=0             | P0       |
+| OR-012 | MSB rs1 only           | `0x80000000 \| 0`                 | `0x80000000`      | P0       |
+| OR-013 | MSB rs2 only           | `0 \| 0x80000000`                 | `0x80000000`      | P0       |
+| OR-014 | Random operands        | Random 32-bit values              | `rs1 \| rs2`      | P1       |
+| OR-015 | rs1=x0                 | `OR rd,x0,rs2`                    | `rs2`             | P0       |
+| OR-016 | rs2=x0                 | `OR rd,rs1,x0`                    | `rs1`             | P0       |
+| OR-017 | rd=x0                  | `OR x0,rs1,rs2`                   | x0 remains 0      | P0       |
+| OR-018 | rd=rs1                 | Same destination/source           | Correct           | P1       |
+| OR-019 | rd=rs2                 | Same destination/source           | Correct           | P1       |
+| OR-020 | rs1=rs2                | Same source registers             | Correct           | P1       |
+| OR-021 | All same               | `OR x1,x1,x1`                     | x1 unchanged      | P1       |
+| OR-022 | R-type encoding        | Valid OR instruction              | Correct decode    | P0       |
+| OR-023 | Field decode           | opcode/funct3/funct7/rd/rs1/rs2   | Correct           | P0       |
+| OR-024 | OR vs AND              | Same operands                     | Correct OR result | P0       |
+| OR-025 | OR vs XOR              | Same operands                     | Correct OR result | P0       |
+| OR-026 | OR vs ADD/SUB          | Same operands                     | Correct OR result | P0       |
+| OR-027 | PC behavior            | Execute OR                        | PC+4              | P0       |
+| OR-028 | Dependency             | OR→OR                             | Correct result    | P1       |
+| OR-029 | Dependency             | OR→AND                            | Correct result    | P1       |
+| OR-030 | Dependency             | OR→XOR                            | Correct result    | P1       |
+| OR-031 | Operand coverage       | Zero/ones/AA/55/single-bit/random | 100%              | P1       |
+| OR-032 | Register coverage      | x0-x31 for rd/rs1/rs2             | 100%              | P1       |
+| OR-033 | MSB cross coverage     | All MSB combinations              | 100%              | P1       |

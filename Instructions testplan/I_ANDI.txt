@@ -1,0 +1,29 @@
+| ID       | Verification Item        | Stimulus / Corner Case   | Expected Result | Priority |
+| -------- | ------------------------ | ------------------------ | --------------- | -------- |
+| ANDI-001 | Basic AND                | `rs1 & imm`              | Correct         | P0       |
+| ANDI-002 | Zero immediate           | X & 0                    | 0               | P0       |
+| ANDI-003 | Immediate -1             | X & -1                   | X               | P0       |
+| ANDI-004 | Immediate +1             | X & 1                    | Bit 0           | P0       |
+| ANDI-005 | Max immediate            | `imm=2047`               | Correct         | P0       |
+| ANDI-006 | Min immediate            | `imm=-2048`              | Correct         | P0       |
+| ANDI-007 | Immediate -1 encoding    | `imm=12'hFFF`            | `0xFFFFFFFF`    | P0       |
+| ANDI-008 | Immediate -2048 encoding | `imm=12'h800`            | `0xFFFFF800`    | P0       |
+| ANDI-009 | Positive sign extension  | `imm[11]=0`              | Upper bits 0    | P0       |
+| ANDI-010 | Negative sign extension  | `imm[11]=1`              | Upper bits 1    | P0       |
+| ANDI-011 | All-zero operand         | `rs1=0`                  | 0               | P0       |
+| ANDI-012 | All-ones operand         | `rs1=0xFFFFFFFF`         | Correct         | P0       |
+| ANDI-013 | Alternating pattern      | `0xAAAAAAAA`             | Correct         | P0       |
+| ANDI-014 | Alternating pattern      | `0x55555555`             | Correct         | P0       |
+| ANDI-015 | Single-bit testing       | Each bit position        | Correct         | P0       |
+| ANDI-016 | MSB testing              | MSB 0/1                  | Correct         | P0       |
+| ANDI-017 | rd=x0                    | ANDI x0,...              | x0 remains 0    | P0       |
+| ANDI-018 | rs1=x0                   | ANDI rd,x0,imm           | 0               | P0       |
+| ANDI-019 | rd=rs1                   | ANDI x1,x1,imm           | Correct         | P1       |
+| ANDI-020 | I-type encoding          | Valid encoding           | Correct decode  | P0       |
+| ANDI-021 | Field decode             | opcode/rd/rs1/funct3/imm | Correct         | P0       |
+| ANDI-022 | AND vs ANDI              | Equivalent operands      | Same result     | P0       |
+| ANDI-023 | PC increment             | ANDI                     | PC+4            | P0       |
+| ANDI-024 | Dependency               | ADDI→ANDI                | Correct result  | P1       |
+| ANDI-025 | Dependency               | ANDI→ANDI                | Correct result  | P1       |
+| ANDI-026 | Random operands          | Random rs1/imm           | Matches model   | P1       |
+| ANDI-027 | Immediate coverage       | All boundary bins        | 100%            | P1       |
