@@ -33,7 +33,7 @@ class alu_monitor extends uvm_monitor;
         item.operand_b = vif.operand_b_i;
         item.result    = vif.result_o;
 
-        `uvm_info("ALU_MON", item.convert2string(), UVM_MEDIUM)
+        `uvm_info("ALU_MON", item.convertTostring(), UVM_MEDIUM)
         analysis_port.write(item);
       end
     end
