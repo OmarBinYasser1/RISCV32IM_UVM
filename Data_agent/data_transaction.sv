@@ -1,0 +1,46 @@
+class data_transaction extends uvm_sequence_item;
+
+  `uvm_object_utils(data_transaction)
+
+  // response signals
+  bit             data_rvalid_i;
+  bit             data_gnt_i;
+  bit      [31:0] data_rdata_i;
+
+
+  //request signals
+  rand bit        data_req_o;
+  rand bit        data_we_o;
+  rand bit [ 3:0] data_be_o;
+  rand bit [31:0] data_addr_o;
+  rand bit [31:0] data_wdata_o;
+
+  // Delay Control Attributes for Slow Memory Simulation
+  rand int        gnt_delay;  // Cycles to wait before driving gnt_i = 1
+
+
+  constraint c_delays {
+    gnt_delay inside {[0 : 5]};  // 0 = Fast grant, >0 = Slow memory grant
+
+  }
+
+  // Constructor
+  function new(string name = "data_transaction");
+    super.new(name);
+  endfunction
+
+  // Convert transaction to string for printing
+  function string convert2string();
+    return $sformatf(
+        "data_rvalid_i: %0b, data_gnt_i: %0b, data_rdata_i: %0h, data_req_o: %0b, data_we_o: %0b, data_be_o: %0h, data_addr_o: %0h, data_wdata_o: %0h",
+        data_rvalid_i,
+        data_gnt_i,
+        data_rdata_i,
+        data_req_o,
+        data_we_o,
+        data_be_o,
+        data_addr_o,
+        data_wdata_o
+    );
+  endfunction
+endclass
