@@ -29,6 +29,7 @@ class mul_monitor extends uvm_monitor;
         item.operator  = vif.operator_i;
         item.operand_a = vif.op_a_i;
         item.operand_b = vif.op_b_i;
+        item.operand_c = vif.op_c_i;
         item.result    = vif.result_o;
 
         `uvm_info("MUL_MON", item.convertTostring(), UVM_MEDIUM)
