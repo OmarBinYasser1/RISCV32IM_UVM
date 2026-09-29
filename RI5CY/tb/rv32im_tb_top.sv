@@ -82,7 +82,7 @@ module rv32im_top ();
         run_test(""); // Initially runs the base test     
     end
 
-    // Store the Instruction COnfiguration Elements in the config_db 
+    // Store the Instruction Configuration Elements in the config_db 
     initial begin
         uvm_config_db#(int)::set(null, * , "TESTS", TESTS);
         uvm_config_db#(virtual instr_if)::set(null, * , "INSTR_IF", instr_if);   
