@@ -5,7 +5,7 @@ class regfile_item extends uvm_sequence_item;
   typedef enum {WRITE, READ} rf_kind_e;
 
   rand rf_kind_e kind;      
-  rand string    port;      
+       string    port;      
   rand bit [5:0] addr;      
        bit [31:0] data;    
 

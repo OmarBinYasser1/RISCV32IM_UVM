@@ -86,10 +86,10 @@ class riscv_scoreboard extends uvm_scoreboard;
       7'b0010010: res = (sa > sb) ? a : b;
       7'b0010011: res = (a > b) ? a : b;
       7'b0010100: res = (sa < 0) ? -sa : a;
-      7'b0110001: res = (b == 0) ? '1 : 32'(sa / sb);
+      7'b0110001: res = (b == 0) ? '1 : ((sa == -32'sd2147483648) && (sb == -1)) ? 32'h8000_0000 : 32'(sa / sb);
       7'b0110000: res = (b == 0) ? '1 : a / b;
-      7'b0110011: res = (b == 0) ? a : 32'(sa % sb);
-      7'b0110010: res = (b == 0) ? a : a % b;
+      7'b0110011: res = (b == 0) ? a  : ((sa == -32'sd2147483648) && (sb == -1)) ? 32'h0000_0000 : 32'(sa % sb);
+      7'b0110010: res = (b == 0) ? a  : a % b;
       default:    res = 'x;
     endcase
     return res;
@@ -135,7 +135,7 @@ class riscv_scoreboard extends uvm_scoreboard;
       // NOTE: mul_if lacks short_signed_i, so we cannot distinguish MULH/MULHSU/MULHU.
       // We assume signed x signed here. It will fail for unsigned variants.
       3'b110: begin
-                wide_s = sa * sb;
+                wide_s = 64'(sa) * 64'(sb);
                 res = wide_s[63:32];
               end
       // MUL_MAC32: c + a*b
