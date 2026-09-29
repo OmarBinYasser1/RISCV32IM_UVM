@@ -3,7 +3,7 @@ class rv32im_instr_agent extends uvm_agent;
 
     rv32im_instr_driver instr_driver;
     rv32im_instr_monitor instr_monitor;
-    uvm_sequencer#(rv32im_instr_seq_item) instr_seqr;
+    rv32im_instr_seqr instr_seqr;
     // Define analysis port at the agent boundary to facilitate the integration
     uvm_analysis_port#(rv32im_instr_seq_item) instr_mon_ap; 
 
@@ -28,7 +28,7 @@ class rv32im_instr_agent extends uvm_agent;
 
 
     function void connect_phase (uvm_phase phase);
-        super.build_phase(phase);
+        super.connect_phase(phase);
 
         // Driver Connections
         instr_seqr.seq_item_port.connnect(instr_driver.seq_item_export);
