@@ -5,4 +5,5 @@ if {[catch {vsim -voptargs=+acc work.rv32im_top -uvmcontrol=all +UVM_NO_RELNOTES
 add wave sim:/rv32im_top/u_core/*
 run 0
 run -all
-# quit
+stop
+quit

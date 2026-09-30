@@ -1,5 +1,5 @@
-QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
-Start time: 19:49:28 on Sep 30,2026
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+Start time: 00:09:46 on Oct 01,2026
 vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 13314 
 -- Compiling package cv32e40p_apu_core_pkg
 -- Compiling package cv32e40p_fpu_pkg
@@ -39,13 +39,14 @@ vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 1331
 -- Compiling interface regfile_if
 -- Compiling interface rv32im_instr_if
 -- Compiling interface debug_interupt_if
+-- Compiling interface reset_if
 -- Compiling package riscv_pkg
 -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
-** Note: (vlog-2286) ./tb/riscv_pkg.sv(6): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+** Note: (vlog-2286) ./tb/riscv_pkg.sv(6): Using implicit +incdir+C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
 -- Compiling module rv32im_top
 -- Importing package riscv_pkg
 
 Top level modules:
 	rv32im_top
-End time: 19:49:30 on Sep 30,2026, Elapsed time: 0:00:02
+End time: 00:09:47 on Oct 01,2026, Elapsed time: 0:00:01
 Errors: 0, Warnings: 0, Suppressed Warnings: 480

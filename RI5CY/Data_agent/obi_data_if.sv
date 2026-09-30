@@ -1,7 +1,7 @@
-interface obi_data_if(
-   //clk and reset
-  input logic        clk,
-  input logic        rst_n
+interface obi_data_if (
+    //clk and reset
+    input logic clk,
+    input logic rst_n
 );
 
   // inputs
@@ -20,7 +20,7 @@ interface obi_data_if(
   clocking cb_driver @(posedge clk);
     default input #1step output #1step;
 
-    input rst_n,data_req_o, data_we_o, data_be_o, data_addr_o, data_wdata_o;
+    input rst_n, data_req_o, data_we_o, data_be_o, data_addr_o, data_wdata_o;
     output data_gnt_i, data_rvalid_i, data_rdata_i;
   endclocking
 
