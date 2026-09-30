@@ -8,7 +8,7 @@ class debug_interupt_agent extends uvm_agent;
   debug_interupt_monitor   monitor;
 
   // Transaction analysis port for scoreboard and coverage
-  uvm_analysis_port #(debug_interupt_transaction) transaction_ap;
+  // uvm_analysis_port #(debug_interupt_transaction) transaction_ap;
 
   function new(string name = "debug_interupt_agent", uvm_component parent = null);
     super.new(name, parent);
@@ -26,12 +26,13 @@ class debug_interupt_agent extends uvm_agent;
       `uvm_fatal("DRV_NO_VIF", "Virtual interface debug_interupt_if not found in uvm_config_db")
     end
     
-    // Connect the monitor transaction_ap to the agent transaction_ap for scoreboard and coverage
-    monitor.transaction_ap.connect(transaction_ap);
+  
   endfunction
 
   function void connect_phase(uvm_phase phase);
     super.connect_phase(phase);
+    // Connect the monitor transaction_ap to the agent transaction_ap for scoreboard and coverage
+    // monitor.transaction_ap.connect(transaction_ap);
     driver.vif = vif;
     monitor.vif = vif;
     // Connect the sequencer to the driver

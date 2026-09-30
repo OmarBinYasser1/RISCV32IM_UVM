@@ -1,7 +1,7 @@
 class reactive_data_seq extends uvm_sequence #(data_transaction);
 
-  `uvm_object_utils(reactive_data_seq)
-  `uvm_declare_p_sequencer(reactive_data_sequencer)
+  `uvm_object_utils(reactive_data_seq);
+  `uvm_declare_p_sequencer(reactive_data_sequencer);
 
   // Word-aligned sparse memory (Key = Word Address addr[31:2], Value = 32-bit Data)
   bit [31:0] mem[bit [31:2]];
@@ -16,7 +16,7 @@ class reactive_data_seq extends uvm_sequence #(data_transaction);
 
     forever begin
       // 1. Fetch incoming request from sequencer's FIFO
-      p_sequencer.req_fifo.get(req_item);
+      p_sequencer.req_fifo_x.get(req_item);
 
       // 2. Create response transaction
       rsp_item = data_transaction::type_id::create("rsp_item");

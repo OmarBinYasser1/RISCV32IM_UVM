@@ -1,9 +1,10 @@
-interface obi_data_if;
-  //clk and reset
-  input logic        clk;
-  input logic        rst_n;
-  // inputs
+interface obi_data_if(
+   //clk and reset
+  input logic        clk,
+  input logic        rst_n
+);
 
+  // inputs
   logic        data_rvalid_i;
   logic        data_gnt_i;
   logic [31:0] data_rdata_i;
@@ -19,13 +20,13 @@ interface obi_data_if;
   clocking cb_driver @(posedge clk);
     default input #1step output #1step;
 
-    output data_req_o, data_we_o, data_be_o, data_addr_o, data_wdata_o;
-    input data_gnt_i, data_rvalid_i, data_rdata_i;
+    input rst_n,data_req_o, data_we_o, data_be_o, data_addr_o, data_wdata_o;
+    output data_gnt_i, data_rvalid_i, data_rdata_i;
   endclocking
 
   clocking cb_monitor @(posedge clk);
     default input #1step;
-    input data_req_o,data_gnt_i,data_rvalid_i,data_we_o,data_be_o,data_addr_o,data_wdata_o,data_rdata_i;
+    input rst_n,data_req_o,data_gnt_i,data_rvalid_i,data_we_o,data_be_o,data_addr_o,data_wdata_o,data_rdata_i;
   endclocking
 
   //modport for the driver

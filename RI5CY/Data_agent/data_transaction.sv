@@ -30,7 +30,7 @@ class data_transaction extends uvm_sequence_item;
   endfunction
 
   // Convert transaction to string for printing
-  function string convert2string();
+  virtual function string my_convert2string();
     return $sformatf(
         "data_rvalid_i: %0b, data_gnt_i: %0b, data_rdata_i: %0h, data_req_o: %0b, data_we_o: %0b, data_be_o: %0h, data_addr_o: %0h, data_wdata_o: %0h",
         data_rvalid_i,

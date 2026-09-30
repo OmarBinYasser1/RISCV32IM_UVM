@@ -21,7 +21,8 @@ class debug_interupt_transaction extends uvm_sequence_item;
   function new(string name = "debug_interupt_transaction");
     super.new(name);
   endfunction
-  task convert2string();
+
+  virtual task my_convert2string();
     $display(
         "irq_i: %0h, irq_ack_o: %0b, irq_id_o: %0h, debug_req_i: %0b, debug_havereset_o: %0b, debug_running_o: %0b, debug_halted_o: %0b, fetch_enable_i: %0b, core_sleep_o: %0b",
         irq_i, irq_ack_o, irq_id_o, debug_req_i, debug_havereset_o, debug_running_o,

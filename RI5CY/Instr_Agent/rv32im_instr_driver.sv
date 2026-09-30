@@ -26,9 +26,9 @@ class rv32im_instr_driver extends uvm_driver#(rv32im_instr_seq_item);
         instr_vif.cb_drv.instr_gnt_i <= instr_vif.cb_drv.instr_req_o;
         instr_vif.cb_drv.instr_rvalid_i <= instr_vif.cb_drv.instr_req_o;
         @(instr_vif.cb_drv iff (instr_vif.cb_drv.instr_req_o == 1));
-        instr_vif.instr_gnt_i <= 1'b1; // Our Instruction Memory Model always available for any request
-        instr_vif.instr_rvalid_i <= 1'b1; // Our Instruction Memory Model always send valid address
-        instr_vif.instr_rdata_i <= instr_item.instruction;
+        instr_vif.cb_drv.instr_gnt_i <= 1'b1; // Our Instruction Memory Model always available for any request
+        instr_vif.cb_drv.instr_rvalid_i <= 1'b1; // Our Instruction Memory Model always send valid address
+        instr_vif.cb_drv.instr_rdata_i <= instr_item.instruction;
     endtask
 
 endclass // rv32im_instr_driver

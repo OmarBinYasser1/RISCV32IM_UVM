@@ -37,8 +37,8 @@ class rv32im_env extends uvm_env;
 
                
         instr_agent.instr_mon_ap.connect(sb.instr_ae);
-         // TODO (Optional) : Add analysis exports at the edge of those agents to abstract them
-        data_agent.monitor.transaction_ap.connect(sb.data_ae);
+        data_agent.transaction_ap.connect(sb.data_ae);
+        // TODO (Optional) : Add analysis exports at the edge of those agents to abstract them
         alu_agt.mon.analysis_port.connect(sb.alu_ae);
         mul_agt.mon.analysis_port.connect(sb.mul_ae);
         rf_agt.mon.analysis_port.connect(sb.rf_ae);

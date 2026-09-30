@@ -4,6 +4,8 @@ class mul_agent extends uvm_agent;
 
   mul_monitor mon;
 
+  virtual mul_if vif;
+
   function new(string name, uvm_component parent);
     super.new(name, parent);
   endfunction

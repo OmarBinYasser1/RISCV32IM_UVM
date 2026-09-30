@@ -14,6 +14,9 @@ class riscv_scoreboard extends uvm_scoreboard;
   uvm_tlm_analysis_fifo #(alu_item)     alu_fifo;
   uvm_tlm_analysis_fifo #(mul_item)     mul_fifo;
   uvm_tlm_analysis_fifo #(regfile_item) rf_fifo;
+  // TODO : Use these fifos in scoreboard
+  uvm_tlm_analysis_fifo #(rv32im_instr_seq_item) instr_fifo;
+  uvm_tlm_analysis_fifo #(data_transaction) data_fifo;
 
   logic [31:0] shadow_rf [32];
 
@@ -35,7 +38,11 @@ class riscv_scoreboard extends uvm_scoreboard;
     rf_ae    = new("rf_ae",    this);
     alu_fifo = new("alu_fifo", this);
     mul_fifo = new("mul_fifo", this);
-    rf_fifo  = new("rf_fifo",  this);
+    rf_fifo  = new("rf_fifo"  ,  this);
+    instr_ae = new("instr_ae"  ,this);
+    instr_fifo = new("instr_fifo",this);
+    data_fifo = new("data_fifo",this);
+    data_ae  = new("data_ae",this);
     foreach (shadow_rf[i]) shadow_rf[i] = '0;
   endfunction
 
@@ -43,6 +50,8 @@ class riscv_scoreboard extends uvm_scoreboard;
     alu_ae.connect(alu_fifo.analysis_export);
     mul_ae.connect(mul_fifo.analysis_export);
     rf_ae .connect(rf_fifo.analysis_export);
+    instr_ae.connect(instr_fifo.analysis_export);
+    data_ae.connect(data_fifo.analysis_export);
   endfunction
 
   task run_phase(uvm_phase phase);

@@ -1,4 +1,4 @@
-class rv32im_instr_seq_item extends uvm_object;
+class rv32im_instr_seq_item extends uvm_sequence_item;
     `uvm_object_utils(rv32im_instr_seq_item);
 
     typedef enum bit[6:0] { 
@@ -25,7 +25,7 @@ class rv32im_instr_seq_item extends uvm_object;
     // instruction to be passed to the core
     bit [31:0] instruction;
 
-    rand enum bit[2:0] { 
+    rand enum bit[3:0] { 
         ADD  , SUB , SLL , SLT , 
         SLTU , XOR , SRL , 
         SRA  , OR  , AND 
@@ -36,7 +36,7 @@ class rv32im_instr_seq_item extends uvm_object;
        DIV , DIVU , REM    , REMU
     } R_rv32m_ops;
 
-    rand enum bit[2:0] { 
+    rand enum bit [3:0]{ 
         ADDI , SLTI , SLTIU ,
         XORI , ORI , ANDI , 
         SLLI , SRLI , SRAI
@@ -86,10 +86,10 @@ class rv32im_instr_seq_item extends uvm_object;
             
             if(ALU_MUL_sel == ALU) {
                 // todo : Only If we need weighted dist
-                R_rv32i_ops inside {[ADD , SUB , SLL , SLT , SLTU , XOR , SRL , SRA , OR , AND]}; 
+                R_rv32i_ops inside {ADD , SUB , SLL , SLT , SLTU , XOR , SRL , SRA , OR , AND}; 
             } else {
                 // todo : Only If we need weighted dist
-                R_rv32m_ops inside {[MUL, MULH , MULHSU , MULHU , DIV , DIVU , REM , REMU]};
+                R_rv32m_ops inside {MUL, MULH , MULHSU , MULHU , DIV , DIVU , REM , REMU};
             } 
         
             // No constraint on the source operands
@@ -103,7 +103,7 @@ class rv32im_instr_seq_item extends uvm_object;
 
         if(opcode == OP_IMM) {
             // todo : Only If we need weighted dist
-            I_ops inside {[ADDI , SLTI , SLTIU , XORI , ORI , ANDI , SLLI , SRLI , SRAI]};
+            I_ops inside {ADDI , SLTI , SLTIU , XORI , ORI , ANDI , SLLI , SRLI , SRAI};
 
             // No constraint on the shift amount `shamt`
 
@@ -121,7 +121,7 @@ class rv32im_instr_seq_item extends uvm_object;
 
         if(opcode == OP_LOAD) {
             // todo : Only If we need weighted dist
-            Load_ops inside {[LB , LH , LW , LBU , LHU]};
+            Load_ops inside {LB , LH , LW , LBU , LHU};
 
             // No constraint on the imm12
 
@@ -137,7 +137,7 @@ class rv32im_instr_seq_item extends uvm_object;
 
         if(opcode == OP_STORE) {
             // todo : Only If we need weighted dist
-            S_ops inside {[SB , SH , SW]};
+            S_ops inside {SB , SH , SW};
         
             // No constraint on the imm12
         
@@ -151,7 +151,7 @@ class rv32im_instr_seq_item extends uvm_object;
 
         if(opcode == OP_BRANCH) {
             // todo : Only If we need weighted dist
-            B_ops inside {[BEQ,BNE,BLT,BGE,BLTU,BGEU]};
+            B_ops inside {BEQ,BNE,BLT,BGE,BLTU,BGEU};
         
             // No constraint on the imm12
         
@@ -181,17 +181,17 @@ class rv32im_instr_seq_item extends uvm_object;
     function void post_randomize ();
         bit [6:0] opcode_x; // A version of the opcode represented in bits not enum
         
-        opcode_x = bit[6:0]'(opcode); 
+        opcode_x = opcode; 
         
         case (opcode)
             OP_R : begin
 
                 if(ALU_MUL_sel == ALU) begin
-                    funct3 = bit[2:0]'(R_rv32i_ops);
+                    funct3 = R_rv32i_ops;
                     funct7 = (R_rv32i_ops == SUB || R_rv32i_ops == SRA) ? 7'd32 : 7'd0;
                 end
                 else begin
-                    funct3 = bit[2:0]'(R_rv32m_ops);
+                    funct3 = R_rv32m_ops;
                     funct7 = 7'd1;    
                 end
 
@@ -201,7 +201,7 @@ class rv32im_instr_seq_item extends uvm_object;
 
             OP_IMM : begin
 
-                funct3 = bit[2:0]'(I_ops);
+                funct3 = I_ops;
             
                 if (I_ops == SRAI || I_ops == SLLI || I_ops == SRLI) begin
                     funct7 = (I_ops == SRAI)? 7'd32 : 7'd0;
@@ -212,17 +212,17 @@ class rv32im_instr_seq_item extends uvm_object;
             end
 
             OP_LOAD : begin
-                funct3 = bit[2:0]'(Load_ops);
+                funct3 = Load_ops;
                 instruction = {i_imm12,rs1,funct3,rd,opcode_x};
             end
 
             OP_STORE : begin
-                funct3 = bit[2:0]'(S_ops);
-                instruction = {i_imm12[11:5],rs2,rs1,funct3,imm12[4:0],opcode_x};
+                funct3 = S_ops;
+                instruction = {i_imm12[11:5],rs2,rs1,funct3,i_imm12[4:0],opcode_x};
             end
 
             OP_BRANCH : begin
-                funct3 = bit[2:0]'(B_ops);
+                funct3 = B_ops;
                 instruction = {b_imm13[12],b_imm13[10:5],rs2,rs1,funct3,b_imm13[4:1],b_imm13[11],opcode_x};
             end
 

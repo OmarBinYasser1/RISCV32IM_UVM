@@ -27,6 +27,10 @@ class rv32im_virtual_seq extends uvm_sequence#(uvm_sequence_item);
 
     function new (string name = "rv32im_virtual_seq");
         super.new(name);
+        // Build the sub-sequences 
+        instr_seq = rv32im_instr_seq::type_id::create("instr_seq");
+        data_seq = reactive_data_seq::type_id::create("data_seq");
+        debug_int_seq = debug_interupt_seq::type_id::create("debug_int_seq");
     endfunction
 
     virtual task body();
@@ -35,25 +39,21 @@ class rv32im_virtual_seq extends uvm_sequence#(uvm_sequence_item);
         data_seqr = sys_vseqr.data_seqr;
         debug_int_seqr = sys_vseqr.debug_int_seqr;
 
-    // Build the sub-sequences 
-
-        instr_seq = rv32im_instr_seq::type_id::create("instr_seq");
-        data_seq = reactive_data_seq::type_id::create("data_seq");
-        debug_int_seq = debug_interupt_seq::type_id::create("debug_int_seq");
+    
 
     // Run the sequences on the local sequencers
         fork
             begin
-                `uvm_info(get_name(), "INSTR SEQ - Started", UVM_HIGH);
+                `uvm_info(get_name(), "INSTR SEQ - Started", UVM_HIGH);                
                 instr_seq.start(instr_seqr);
                 `uvm_info(get_name(), "INSTR SEQ - Finished", UVM_HIGH);  
             end 
             begin
-                uvm_info(get_name(), "DATA REACTIVE SEQ - Started", UVM_HIGH);
+                `uvm_info(get_name(), "DATA REACTIVE SEQ - Started", UVM_HIGH);
                 data_seq.start(data_seqr);
             end 
             begin
-                uvm_info(get_name(), "DEBUG DEFAULT SEQ - Started", UVM_HIGH);
+                `uvm_info(get_name(), "DEBUG DEFAULT SEQ - Started", UVM_HIGH);
                 debug_int_seq.start(debug_int_seqr);
             end
         join_any

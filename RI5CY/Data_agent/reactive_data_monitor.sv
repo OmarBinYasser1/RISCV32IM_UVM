@@ -36,19 +36,21 @@ class reactive_data_monitor extends uvm_monitor;
   // ------------------------------------------------------------------
   task sample_address_phase(ref data_transaction pending_q[$]);
     forever begin
-      @(posedge vif.clk);
+      // @(posedge vif.clk);
+      @(vif.cb_monitor)
 
-      if (vif.rst_n) begin
+      // if (vif.rst_n) begin
+      if (vif.cb_monitor.rst_n) begin
         // OBI Protocol: Address phase completes when BOTH req and gnt are high
-        if (vif.data_req_o) begin
+        if (vif.cb_monitor.data_req_o) begin
           data_transaction req_tr;
           req_tr = data_transaction::type_id::create("req_tr");
 
           // Capture Address Phase Signals
-          req_tr.data_addr_o  = vif.data_addr_o;
-          req_tr.data_we_o    = vif.data_we_o;
-          req_tr.data_be_o    = vif.data_be_o;
-          req_tr.data_wdata_o = vif.data_wdata_o;
+          req_tr.data_addr_o  = vif.cb_monitor.data_addr_o;
+          req_tr.data_we_o    = vif.cb_monitor.data_we_o;
+          req_tr.data_be_o    = vif.cb_monitor.data_be_o;
+          req_tr.data_wdata_o = vif.cb_monitor.data_wdata_o;
 
           // Push to sequencer's FIFO so reactive sequence can calculate response
           request_ap.write(req_tr);
@@ -69,18 +71,19 @@ class reactive_data_monitor extends uvm_monitor;
     data_transaction completed_tr;
 
     forever begin
-      @(posedge vif.clk);
+      // @(posedge vif.clk);
+      @(posedge vif.cb_monitor);
 
-      if (vif.rst_n) begin
+      if (vif.cb_monitor.rst_n) begin
         // OBI Protocol: Response phase completes when rvalid_i is high
-        if (vif.data_rvalid_i) begin
+        if (vif.cb_monitor.data_rvalid_i) begin
           if (pending_q.size() > 0) begin
             // Match response to oldest in-flight request (FIFO order)
             completed_tr = pending_q.pop_front();
 
             // Capture read data if it was a READ operation
-            if (!completed_tr.we) begin
-              completed_tr.rdata = vif.data_rdata_i;
+            if (!completed_tr.data_we_o) begin
+              completed_tr.data_rdata_i = vif.cb_monitor.data_rdata_i;
             end
 
             // Broadcast fully completed transaction to Scoreboard and Coverage

@@ -18,7 +18,8 @@ class rv32im_instr_agent extends uvm_agent;
         super.build_phase(phase);
         instr_driver = rv32im_instr_driver::type_id::create("instr_driver",this);
         instr_monitor = rv32im_instr_monitor::type_id::create("instr_monitor",this);
-        instr_seqr = uvm_sequencer#(rv32im_instr_seq_item)::type_id::create("instr_seqr",this);
+        // instr_seqr = uvm_sequencer#(rv32im_instr_seq_item)::type_id::create("instr_seqr",this);
+        instr_seqr = rv32im_instr_seqr::type_id::create("instr_seqr",this);
         instr_mon_ap = new("instr_mon_ap",this);
         
         // Retreive the instruction Agent Configuration
@@ -31,7 +32,7 @@ class rv32im_instr_agent extends uvm_agent;
         super.connect_phase(phase);
 
         // Driver Connections
-        instr_seqr.seq_item_port.connnect(instr_driver.seq_item_export);
+        instr_driver.seq_item_port.connect(instr_seqr.seq_item_export);
         instr_driver.instr_vif = instr_config.instr_vif;
 
 

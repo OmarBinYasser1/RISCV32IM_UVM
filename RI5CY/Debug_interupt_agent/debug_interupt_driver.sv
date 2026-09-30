@@ -14,17 +14,18 @@ class debug_interupt_driver extends uvm_driver #(debug_interupt_transaction);
   task run_phase(uvm_phase phase);
     debug_interupt_transaction tr;
     //initializing the signals to the DUT
-    vif.irq_i <= 1'b0;
-    vif.debug_req_i <= 1'b0;
-    vif.fetch_enable_i <= 1'b0;
+    vif.cb_driver.irq_i <= 1'b0;
+    vif.cb_driver.scan_cg_en_i <= 1'b0;
+    vif.cb_driver.debug_req_i <= 1'b0;
+    vif.cb_driver.fetch_enable_i <= 1'b0;
     forever begin
       seq_item_port.get_next_item(tr);
 
-      @(posedge vif.clk);
+      @(posedge vif.cb_driver);
       // Drive the signals to the DUT using the transaction fields
-      vif.irq_i <= tr.irq_i;
-      vif.debug_req_i <= tr.debug_req_i;
-      vif.fetch_enable_i <= tr.fetch_enable_i;
+      vif.cb_driver.irq_i <= tr.irq_i;
+      vif.cb_driver.debug_req_i <= tr.debug_req_i;
+      vif.cb_driver.fetch_enable_i <= tr.fetch_enable_i;
 
 
       // Indicate that the transaction is done

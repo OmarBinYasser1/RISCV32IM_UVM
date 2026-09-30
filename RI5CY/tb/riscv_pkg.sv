@@ -11,20 +11,17 @@ package riscv_pkg;
   `include "../Data_agent/data_transaction.sv"
   `include "../Debug_interupt_agent/debug_interupt_transaction.sv"
 
+  // Sequencer(s)
+  `include "../Instr_Agent/rv32im_instr_seqr.sv"
+  `include "../Data_agent/reactive_data_sequencer.sv"
+  `include "../Debug_interupt_agent/debug_interupt_sequencer.sv"
+  `include "./rv32im_virtual_seqr.sv"
 
   // Sequences
   `include "../Instr_Agent/rv32im_instr_seq.sv"
   `include "../Debug_interupt_agent/debug_interupt_seq.sv"
   `include "../Data_agent/reactive_data_seq.sv"
-  `include "./Instr_Agent/rv32im_virtual_seq.sv"
-
-  
-  // Sequencer(s)
-  `include "./rv32im_virtual_seqr.sv"
-  `include "../Data_agent/reactive_data_sequencer.sv"
-  `include "../Debug_interupt_agent/debug_interupt_sequencer.sv"
-
-    
+  `include "./rv32im_virtual_seq.sv"
 
   // Sequence Items
   `include "../alu_agent/alu_item.sv"
@@ -60,7 +57,7 @@ package riscv_pkg;
 
 
    // Scoreboard(s)
-  `include "riscv_scoreboard.sv"
+  `include "../system_scoreboard/riscv_scoreboard.sv"
 
 
   // Env / Test

@@ -4,6 +4,9 @@ class alu_agent extends uvm_agent;
 
   alu_monitor mon;
 
+  virtual alu_if vif;
+
+
   function new(string name, uvm_component parent);
     super.new(name, parent);
   endfunction

@@ -1,5 +1,9 @@
 module rv32im_top ();
-    
+    import uvm_pkg::*;
+    `include "uvm_macros.svh"
+    import riscv_pkg::*;
+
+
     int CLK_PERIOD = 10 ; // Used by the system scoreboard
     int TESTS = 1 ;
 
@@ -9,7 +13,7 @@ module rv32im_top ();
     always #(CLK_PERIOD/2) clk_i = ~ clk_i;
 
     // Instruction Interface (OBI Interface) Instantiation
-    rv32im_instr_if     instr_if        (.clk_i(clk_i));
+    rv32im_instr_if     instr_if        (.clk(clk_i));
     // Instruction Interface (OBI Interface) Instantiation
     obi_data_if         data_if         (.clk(clk_i),.rst_n(rst_ni));
     // Debug_Interrupt Interface Instantiation
@@ -34,19 +38,19 @@ module rv32im_top ();
         // Clock and reset
         .rst_ni                   (rst_ni),
         .clk_i                    (clk_i),
-        .scan_cg_en_i             (), // TODO : Not connected
+        .scan_cg_en_i             (debug_int_if.scan_cg_en_i),
 
         // Special control signals
         .fetch_enable_i           (debug_int_if.fetch_enable_i),
-        .pulp_clock_en_i          (), // TODO : Not connected
-        .core_sleep_o             (),
+        .pulp_clock_en_i          ('0),
+        .core_sleep_o             (debug_int_if.core_sleep_o),
 
-        // Configuration (TODO : Not connected)
-        .boot_addr_i              (),
-        .mtvec_addr_i             (),
-        .dm_halt_addr_i           (),
-        .dm_exception_addr_i      (),
-        .hart_id_i                (),
+        // Configuration
+        .boot_addr_i              ('0),
+        .mtvec_addr_i             ('0),
+        .dm_halt_addr_i           ('0),
+        .dm_exception_addr_i      ('0),
+        .hart_id_i                ('0),
 
         // Instruction memory interface
         .instr_addr_o             (instr_if.instr_addr_o),
@@ -80,20 +84,28 @@ module rv32im_top ();
 
     // TODO : Initially the reset is owned by the top until the debug+interrupt , data interfaces are integrated
     initial begin
+        // uvm_config_db#(int)::set(null, "*" , "TESTS", TESTS);
+        // uvm_config_db#(virtual rv32im_instr_if)::set(null, "*" , "INSTR_IF", instr_if);
+        // uvm_config_db#(virtual obi_data_if)::set(null, "*" , "DATA_IF", data_if);
+        // uvm_config_db#(virtual debug_interupt_if)::set(null, "*" , "DEBUG_INT_IF", debug_int_if);
+        // uvm_config_db#(virtual alu_if)::set(null, "*" , "ALU_IF", alu_if);
+        // uvm_config_db#(virtual mul_if)::set(null, "*" , "MUL_IF", mul_if);
+        // uvm_config_db#(virtual regfile_if)::set(null, "*" , "REG_IF",regfile_if);
         rst_ni = 0;
-        repeat (5) @(negedge clk);
+        repeat (5) @(negedge clk_i);
         rst_ni = 1;
-        run_test(""); // Initially runs the base test     
+        run_test("rv32im_base_test"); // Initially runs the base test 
+        $stop;    
     end
 
     initial begin
-        uvm_config_db#(int)::set(null, * , "TESTS", TESTS);
-        uvm_config_db#(virtual instr_if)::set(null, * , "INSTR_IF", instr_if);
-        uvm_config_db#(virtual obi_data_if)::set(null, * , "DATA_IF", data_if);
-        uvm_config_db#(virtual debug_interupt_if)::set(null, * , "DEBUG_INT_IF", debug_int_if);
-        uvm_config_db#(virtual alu_if)::set(null, * , "ALU_IF", alu_if);
-        uvm_config_db#(virtual mul_if)::set(null, * , "MUL_IF", mul_if);
-        uvm_config_db#(virtual regfile_if)::set(null, * , "REG_IF",regfile_if);
+        uvm_config_db#(int)::set(null, "*" , "TESTS", TESTS);
+        uvm_config_db#(virtual rv32im_instr_if)::set(null, "*" , "INSTR_IF", instr_if);
+        uvm_config_db#(virtual obi_data_if)::set(null, "*" , "DATA_IF", data_if);
+        uvm_config_db#(virtual debug_interupt_if)::set(null, "*" , "DEBUG_INT_IF", debug_int_if);
+        uvm_config_db#(virtual alu_if)::set(null, "*" , "ALU_IF", alu_if);
+        uvm_config_db#(virtual mul_if)::set(null, "*" , "MUL_IF", mul_if);
+        uvm_config_db#(virtual regfile_if)::set(null, "*" , "REG_IF",regfile_if);
     end
 
 endmodule // rv32im_top

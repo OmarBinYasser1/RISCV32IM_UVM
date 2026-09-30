@@ -7,7 +7,7 @@ class alu_item extends uvm_sequence_item;
   rand bit [31:0] operand_b;  
   rand bit [31:0] operand_c;  
        bit [31:0] result;     
-       bit comparison_resul;     
+       bit comparison_result;     
 
 
   function new(string name = "alu_item");

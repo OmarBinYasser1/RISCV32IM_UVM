@@ -4,6 +4,8 @@ class regfile_agent extends uvm_agent;
 
   regfile_monitor mon;
 
+  virtual regfile_if vif;
+
   function new(string name, uvm_component parent);
     super.new(name, parent);
   endfunction

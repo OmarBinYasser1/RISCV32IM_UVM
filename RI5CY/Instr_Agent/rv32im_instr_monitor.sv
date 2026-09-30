@@ -22,7 +22,7 @@ class rv32im_instr_monitor extends uvm_monitor;
         forever begin
             instr_item = rv32im_instr_seq_item::type_id::create("instr_item");
             i_monitor(instr_item);
-            i_decoder(instr_item);
+            // i_decoder(instr_item);
             instr_mon_ap.write(instr_item);
         end
     endtask
