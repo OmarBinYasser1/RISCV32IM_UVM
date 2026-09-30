@@ -1,4 +1,0 @@
-1. `scan_cg_en_i` was not driven by any interface
-2. `pulp_clock_en_i` was not driven by any interface
-3. [Warning] `core_sleep_o` not connected (observed)
-4.  
