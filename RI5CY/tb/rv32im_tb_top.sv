@@ -9,15 +9,19 @@ module rv32im_top ();
     always #(CLK_PERIOD/2) clk_i = ~ clk_i;
 
     // Instruction Interface (OBI Interface) Instantiation
-    rv32im_instr_if instr_if (.clk_i(clk_i));
+    rv32im_instr_if     instr_if        (.clk_i(clk_i));
+    // Instruction Interface (OBI Interface) Instantiation
+    obi_data_if         data_if         (.clk(clk_i),.rst_n(rst_ni));
+    // Debug_Interrupt Interface Instantiation
+    debug_interupt_if   debug_int_if    (.clk(clk_i),.rst_n(rst_ni));
+    // ALU Interface Instantiation
+    alu_if              alu_if          (.clk(clk_i),.rst_n(rst_ni));
+    // MUL Interface Instantiation
+    mul_if              mul_if          (.clk(clk_i),.rst_n(rst_ni));
+    // RegFile Interface Instantiation
+    regfile_if          regfile_if      (.clk(clk_i),.rst_n(rst_ni));
 
-    // TODO : Data Interface (OBI Interface) Instantiation
-
-
-    // TODO : Debug_Interrupt Interface Instantiation
-
-
-    // TODO : DUT Instantiation 
+    //  DUT Instantiation 
     cv32e40p_top #(
         .FPU                      ( 0 ),
         .FPU_ADDMUL_LAT           ( 0 ),
@@ -30,14 +34,14 @@ module rv32im_top ();
         // Clock and reset
         .rst_ni                   (rst_ni),
         .clk_i                    (clk_i),
-        .scan_cg_en_i             (),
+        .scan_cg_en_i             (), // TODO : Not connected
 
         // Special control signals
-        .fetch_enable_i           (),
-        .pulp_clock_en_i          (),
+        .fetch_enable_i           (debug_int_if.fetch_enable_i),
+        .pulp_clock_en_i          (), // TODO : Not connected
         .core_sleep_o             (),
 
-        // Configuration
+        // Configuration (TODO : Not connected)
         .boot_addr_i              (),
         .mtvec_addr_i             (),
         .dm_halt_addr_i           (),
@@ -52,25 +56,25 @@ module rv32im_top ();
         .instr_rdata_i            (instr_if.instr_rdata_i),
 
         // Data memory interface
-        .data_addr_o              (),
-        .data_req_o               (),
-        .data_gnt_i               (),
-        .data_we_o                (),
-        .data_be_o                (),
-        .data_wdata_o             (),
-        .data_rvalid_i            (),
-        .data_rdata_i             (),
+        .data_addr_o              (data_if.data_addr_o),
+        .data_req_o               (data_if.data_req_o),
+        .data_gnt_i               (data_if.data_gnt_i),
+        .data_we_o                (data_if.data_we_o),
+        .data_be_o                (data_if.data_be_o),
+        .data_wdata_o             (data_if.data_wdata_o),
+        .data_rvalid_i            (data_if.data_rvalid_i),
+        .data_rdata_i             (data_if.data_rdata_i),
 
         // Interrupt interface
-        .irq_i                    (),
-        .irq_ack_o                (),
-        .irq_id_o                 (),
+        .irq_i                    (debug_int_if.irq_i),
+        .irq_ack_o                (debug_int_if.irq_ack_o),
+        .irq_id_o                 (debug_int_if.irq_id_o),
 
         // Debug interface
-        .debug_req_i              (),
-        .debug_havereset_o        (),
-        .debug_running_o          (),
-        .debug_halted_o           ()
+        .debug_req_i              (debug_int_if.debug_req_i),
+        .debug_havereset_o        (debug_int_if.debug_havereset_o),
+        .debug_running_o          (debug_int_if.debug_running_o),
+        .debug_halted_o           (debug_int_if.debug_halted_o)
     );
 
 
@@ -82,10 +86,14 @@ module rv32im_top ();
         run_test(""); // Initially runs the base test     
     end
 
-    // Store the Instruction Configuration Elements in the config_db 
     initial begin
         uvm_config_db#(int)::set(null, * , "TESTS", TESTS);
-        uvm_config_db#(virtual instr_if)::set(null, * , "INSTR_IF", instr_if);   
+        uvm_config_db#(virtual instr_if)::set(null, * , "INSTR_IF", instr_if);
+        uvm_config_db#(virtual obi_data_if)::set(null, * , "DATA_IF", data_if);
+        uvm_config_db#(virtual debug_interupt_if)::set(null, * , "DEBUG_INT_IF", debug_int_if);
+        uvm_config_db#(virtual alu_if)::set(null, * , "ALU_IF", alu_if);
+        uvm_config_db#(virtual mul_if)::set(null, * , "MUL_IF", mul_if);
+        uvm_config_db#(virtual regfile_if)::set(null, * , "REG_IF",regfile_if);
     end
 
 endmodule // rv32im_top

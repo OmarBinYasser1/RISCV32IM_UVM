@@ -1,3 +1,4 @@
+
 class rv32im_base_test extends uvm_test;
     `uvm_component_utils(rv32im_test);
 
@@ -35,15 +36,18 @@ class rv32im_base_test extends uvm_test;
     function void connect_phase (uvm_phase phase);
         super.connect_phase(phase);
         // TODO : This is an intial set , need to configure the ratios of the instructions in our program 
-        instr_seq.TESTS = instr_config.TESTS; 
+        sys_vseq.instr_seq.TESTS = instr_config.TESTS; 
     endfunction
 
     task run_phase (uvm_phase phase);
         super.run_phase(phase);
         phase.raise_objection(this);
-        `uvm_info(get_name(), "Started the Instruction Sequence", UVM_HIGH);
-        instr_seq.start(env.instr_agent.instr_seqr);
-        `uvm_info(get_name(), "Finished the Instruction Sequence", UVM_HIGH);
+        `uvm_info(get_name(), "Started the System Virtual Sequence", UVM_HIGH);
+        
+        // Start the virtual sequence on the virtual sequencer
+        sys_vseq.start(env.sys_vseqr);
+
+        `uvm_info(get_name(), "Finished the System Virtual Sequence", UVM_HIGH);
         phase.drop_objection(this);
     endtask
 

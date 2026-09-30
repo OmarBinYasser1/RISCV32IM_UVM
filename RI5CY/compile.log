@@ -1,0 +1,577 @@
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+Start time: 11:52:30 on Sep 30,2026
+vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 13314 
+-- Compiling package cv32e40p_apu_core_pkg
+-- Compiling package cv32e40p_fpu_pkg
+-- Compiling package cv32e40p_pkg
+-- Compiling module cv32e40p_obi_interface
+-- Compiling module cv32e40p_popcnt
+-- Compiling module cv32e40p_ff_one
+-- Compiling module cv32e40p_alu_div
+-- Compiling module cv32e40p_prefetch_controller
+-- Importing package cv32e40p_pkg
+-- Compiling module cv32e40p_fifo
+-- Compiling module cv32e40p_apu_disp
+-- Compiling module cv32e40p_alu
+-- Compiling module cv32e40p_mult
+-- Compiling module cv32e40p_controller
+-- Compiling module cv32e40p_int_controller
+-- Compiling module cv32e40p_hwloop_regs
+-- Compiling module cv32e40p_register_file
+-- Compiling module cv32e40p_decoder
+-- Importing package cv32e40p_apu_core_pkg
+-- Importing package cv32e40p_fpu_pkg
+-- Compiling module cv32e40p_prefetch_buffer
+-- Compiling module cv32e40p_compressed_decoder
+-- Compiling module cv32e40p_aligner
+-- Compiling module cv32e40p_sleep_unit
+-- Compiling module cv32e40p_ex_stage
+-- Compiling module cv32e40p_id_stage
+-- Compiling module cv32e40p_load_store_unit
+-- Compiling module cv32e40p_cs_registers
+-- Compiling module cv32e40p_if_stage
+-- Compiling module cv32e40p_clock_gate
+-- Compiling module cv32e40p_core
+-- Compiling module cv32e40p_top
+-- Compiling interface alu_if
+-- Compiling interface mul_if
+-- Compiling interface obi_data_if
+** Error: ./Data_agent/obi_data_if.sv(3): In, out, or inout does not appear in port list: clk.
+** Error: ./Data_agent/obi_data_if.sv(4): In, out, or inout does not appear in port list: rst_n.
+-- Compiling interface regfile_if
+-- Compiling interface rv32im_instr_if
+-- Compiling interface debug_interupt_if
+** Error: ./Debug_interupt_agent/debug_interupt_if.sv(2): In, out, or inout does not appear in port list: clk.
+** Error: ./Debug_interupt_agent/debug_interupt_if.sv(3): In, out, or inout does not appear in port list: rst_n.
+-- Compiling package riscv_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+** Note: (vlog-2286) ./tb/riscv_pkg.sv(6): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(9)
+** at ./tb/../Instr_Agent/rv32im_instr_seq_item.sv(89): near ",": syntax error, unexpected ','.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(9)
+** at ./tb/../Instr_Agent/rv32im_instr_seq_item.sv(92): near ",": syntax error, unexpected ','.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(9)
+** at ./tb/../Instr_Agent/rv32im_instr_seq_item.sv(106): near ",": syntax error, unexpected ','.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(9)
+** at ./tb/../Instr_Agent/rv32im_instr_seq_item.sv(124): near ",": syntax error, unexpected ','.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(9)
+** at ./tb/../Instr_Agent/rv32im_instr_seq_item.sv(140): near ",": syntax error, unexpected ','.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(9)
+** at ./tb/../Instr_Agent/rv32im_instr_seq_item.sv(154): near ",": syntax error, unexpected ','.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(9)
+** at ./tb/../Instr_Agent/rv32im_instr_seq_item.sv(184): near "[": syntax error, unexpected '[', expecting '\''.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(9)
+** at ./tb/../Instr_Agent/rv32im_instr_seq_item.sv(190): near "[": syntax error, unexpected '[', expecting '\''.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(9)
+** at ./tb/../Instr_Agent/rv32im_instr_seq_item.sv(194): near "[": syntax error, unexpected '[', expecting '\''.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(9)
+** at ./tb/../Instr_Agent/rv32im_instr_seq_item.sv(204): near "[": syntax error, unexpected '[', expecting '\''.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(9)
+** at ./tb/../Instr_Agent/rv32im_instr_seq_item.sv(215): near "[": syntax error, unexpected '[', expecting '\''.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(9)
+** at ./tb/../Instr_Agent/rv32im_instr_seq_item.sv(220): near "[": syntax error, unexpected '[', expecting '\''.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(9)
+** at ./tb/../Instr_Agent/rv32im_instr_seq_item.sv(221): (vlog-2730) Undefined variable: 'imm12'.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(9)
+** at ./tb/../Instr_Agent/rv32im_instr_seq_item.sv(225): near "[": syntax error, unexpected '[', expecting '\''.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(10)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../Instr_Agent/rv32im_instr_config.sv(2)
+** at ./tb/../Instr_Agent/rv32im_instr_config.sv(2): (vlog-2730) Undefined variable: 'rv32im_config'.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(10)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../Instr_Agent/rv32im_instr_config.sv(2)
+** at ./tb/../Instr_Agent/rv32im_instr_config.sv(2): near ";": syntax error, unexpected ';', expecting '('.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(10)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../Instr_Agent/rv32im_instr_config.sv(2)
+** at ./tb/../Instr_Agent/rv32im_instr_config.sv(2): (vlog-2730) Undefined variable: 'tmp'.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(10)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../Instr_Agent/rv32im_instr_config.sv(2)
+** at ./tb/../Instr_Agent/rv32im_instr_config.sv(2): near ";": syntax error, unexpected ';', expecting '('.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(10)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../Instr_Agent/rv32im_instr_config.sv(2)
+** at ./tb/../Instr_Agent/rv32im_instr_config.sv(2): Illegal declaration after the statement near line '2'.  Declarations must precede statements.  Look for stray semicolons.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(10)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../Instr_Agent/rv32im_instr_config.sv(2)
+** at ./tb/../Instr_Agent/rv32im_instr_config.sv(2): near "end": syntax error, unexpected end.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(10)
+** at ./tb/../Instr_Agent/rv32im_instr_config.sv(5): Illegal declaration after the statement near line '2'.  Declarations must precede statements.  Look for stray semicolons.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(10)
+** at ./tb/../Instr_Agent/rv32im_instr_config.sv(8): 'super.new()' call can be made only from within a class constructor.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(16)
+** at ./tb/../Instr_Agent/rv32im_instr_seq.sv(20): near "}": syntax error, unexpected '}'.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(16)
+** at ./tb/../Instr_Agent/rv32im_instr_seq.sv(23): near "end": syntax error, unexpected end.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(17)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../Debug_interupt_agent/debug_interupt_seq.sv(2)
+** at ./tb/../Debug_interupt_agent/debug_interupt_seq.sv(2): near "return": syntax error, unexpected "SystemVerilog keyword 'return'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(17)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../Debug_interupt_agent/debug_interupt_seq.sv(2)
+** at ./tb/../Debug_interupt_agent/debug_interupt_seq.sv(2): near "begin": syntax error, unexpected begin.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(17)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../Debug_interupt_agent/debug_interupt_seq.sv(2)
+** at ./tb/../Debug_interupt_agent/debug_interupt_seq.sv(2): near "return": syntax error, unexpected "SystemVerilog keyword 'return'".
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(17)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../Debug_interupt_agent/debug_interupt_seq.sv(2)
+** at ./tb/../Debug_interupt_agent/debug_interupt_seq.sv(2): (vlog-2951) Invalid use of assignment expression in conditional constraint.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(17)
+** at ./tb/../Debug_interupt_agent/debug_interupt_seq.sv(5): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(17)
+** at ./tb/../Debug_interupt_agent/debug_interupt_seq.sv(14): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(17)
+** at ./tb/../Debug_interupt_agent/debug_interupt_seq.sv(15): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(17)
+** at ./tb/../Debug_interupt_agent/debug_interupt_seq.sv(16): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(17)
+** at ./tb/../Debug_interupt_agent/debug_interupt_seq.sv(21): near "end": syntax error, unexpected end.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(18)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../Data_agent/reactive_data_seq.sv(3)
+** at ./tb/../Data_agent/reactive_data_seq.sv(3): near "return": syntax error, unexpected "SystemVerilog keyword 'return'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(18)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../Data_agent/reactive_data_seq.sv(3)
+** at ./tb/../Data_agent/reactive_data_seq.sv(3): near "begin": syntax error, unexpected begin.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(18)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../Data_agent/reactive_data_seq.sv(3)
+** at ./tb/../Data_agent/reactive_data_seq.sv(3): near "return": syntax error, unexpected "SystemVerilog keyword 'return'".
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(18)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../Data_agent/reactive_data_seq.sv(3)
+** at ./tb/../Data_agent/reactive_data_seq.sv(3): (vlog-2951) Invalid use of assignment expression in conditional constraint.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(18)
+** while parsing macro expansion: 'uvm_declare_p_sequencer' starting at ./tb/../Data_agent/reactive_data_seq.sv(4)
+** at ./tb/../Data_agent/reactive_data_seq.sv(4): near "begin": syntax error, unexpected begin.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(18)
+** while parsing macro expansion: 'uvm_declare_p_sequencer' starting at ./tb/../Data_agent/reactive_data_seq.sv(4)
+** at ./tb/../Data_agent/reactive_data_seq.sv(4): (vlog-2951) Invalid use of assignment expression in conditional constraint.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(18)
+** at ./tb/../Data_agent/reactive_data_seq.sv(10): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(18)
+** at ./tb/../Data_agent/reactive_data_seq.sv(29): (vlog-2944) Illegal randomize() function call in random constraint
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(18)
+** at ./tb/../Data_agent/reactive_data_seq.sv(32): near "begin": syntax error, unexpected begin.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(18)
+** at ./tb/../Data_agent/reactive_data_seq.sv(38): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(18)
+** at ./tb/../Data_agent/reactive_data_seq.sv(39): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(18)
+** at ./tb/../Data_agent/reactive_data_seq.sv(42): near "begin": syntax error, unexpected begin.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(18)
+** at ./tb/../Data_agent/reactive_data_seq.sv(66): near ")": syntax error, unexpected ')'.
+** Error: ./tb/riscv_pkg.sv(19): Cannot find `include file "./Instr_Agent/rv32im_virtual_seq.sv" in directories:
+    C:/questasim64_2021.1/ovm-2.1.2/../verilog_src/ovm-2.1.2/src, C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(23)
+** at ./tb/./rv32im_virtual_seqr.sv(14): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(24)
+** at ./tb/../Data_agent/reactive_data_sequencer.sv(6): near "req_fifo": syntax error, unexpected IDENTIFIER, expecting '\''.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(24)
+** at ./tb/../Data_agent/reactive_data_sequencer.sv(11): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(24)
+** at ./tb/../Data_agent/reactive_data_sequencer.sv(20): near "endfunction": syntax error, unexpected endfunction.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(25)
+** at ./tb/../Debug_interupt_agent/debug_interupt_sequencer.sv(5): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(30)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../alu_agent/alu_item.sv(2)
+** at ./tb/../alu_agent/alu_item.sv(2): near "return": syntax error, unexpected "SystemVerilog keyword 'return'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(30)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../alu_agent/alu_item.sv(2)
+** at ./tb/../alu_agent/alu_item.sv(2): near "begin": syntax error, unexpected begin.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(30)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../alu_agent/alu_item.sv(2)
+** at ./tb/../alu_agent/alu_item.sv(2): near "return": syntax error, unexpected "SystemVerilog keyword 'return'".
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(30)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../alu_agent/alu_item.sv(2)
+** at ./tb/../alu_agent/alu_item.sv(2): (vlog-2951) Invalid use of assignment expression in conditional constraint.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(30)
+** at ./tb/../alu_agent/alu_item.sv(14): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(31)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../mul_agent/mul_item.sv(3)
+** at ./tb/../mul_agent/mul_item.sv(3): near "return": syntax error, unexpected "SystemVerilog keyword 'return'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(31)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../mul_agent/mul_item.sv(3)
+** at ./tb/../mul_agent/mul_item.sv(3): near "begin": syntax error, unexpected begin.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(31)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../mul_agent/mul_item.sv(3)
+** at ./tb/../mul_agent/mul_item.sv(3): near "return": syntax error, unexpected "SystemVerilog keyword 'return'".
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(31)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../mul_agent/mul_item.sv(3)
+** at ./tb/../mul_agent/mul_item.sv(3): (vlog-2951) Invalid use of assignment expression in conditional constraint.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(31)
+** at ./tb/../mul_agent/mul_item.sv(12): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(32)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../regfile_agent/regfile_item.sv(3)
+** at ./tb/../regfile_agent/regfile_item.sv(3): near "return": syntax error, unexpected "SystemVerilog keyword 'return'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(32)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../regfile_agent/regfile_item.sv(3)
+** at ./tb/../regfile_agent/regfile_item.sv(3): near "begin": syntax error, unexpected begin.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(32)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../regfile_agent/regfile_item.sv(3)
+** at ./tb/../regfile_agent/regfile_item.sv(3): near "return": syntax error, unexpected "SystemVerilog keyword 'return'".
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(32)
+** while parsing macro expansion: 'uvm_object_utils' starting at ./tb/../regfile_agent/regfile_item.sv(3)
+** at ./tb/../regfile_agent/regfile_item.sv(3): (vlog-2951) Invalid use of assignment expression in conditional constraint.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(32)
+** at ./tb/../regfile_agent/regfile_item.sv(13): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(35)
+** at ./tb/../Instr_Agent/rv32im_instr_driver.sv(9): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(35)
+** at ./tb/../Instr_Agent/rv32im_instr_driver.sv(14): near "forever": syntax error, unexpected forever.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(35)
+** while parsing macro expansion: 'uvm_info' starting at ./tb/../Instr_Agent/rv32im_instr_driver.sv(18)
+** at ./tb/../Instr_Agent/rv32im_instr_driver.sv(18): near "begin": syntax error, unexpected begin.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(35)
+** at ./tb/../Instr_Agent/rv32im_instr_driver.sv(20): near "end": syntax error, unexpected end.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(35)
+** at ./tb/../Instr_Agent/rv32im_instr_driver.sv(28): near "@": syntax error, unexpected '@'.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(35)
+** at ./tb/../Instr_Agent/rv32im_instr_driver.sv(32): near "endtask": syntax error, unexpected endtask.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(36)
+** at ./tb/../Data_agent/reactive_data_driver.sv(8): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(36)
+** at ./tb/../Data_agent/reactive_data_driver.sv(13): near "endfunction": syntax error, unexpected endfunction.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(36)
+** at ./tb/../Data_agent/reactive_data_driver.sv(19): near "forever": syntax error, unexpected forever.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(36)
+** at ./tb/../Data_agent/reactive_data_driver.sv(33): near "repeat": syntax error, unexpected repeat.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(36)
+** at ./tb/../Data_agent/reactive_data_driver.sv(37): near "@": syntax error, unexpected '@'.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(36)
+** at ./tb/../Data_agent/reactive_data_driver.sv(45): near "@": syntax error, unexpected '@'.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(36)
+** at ./tb/../Data_agent/reactive_data_driver.sv(51): near "end": syntax error, unexpected end.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(36)
+** at ./tb/../Data_agent/reactive_data_driver.sv(58): near "endtask": syntax error, unexpected endtask.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(37)
+** at ./tb/../Debug_interupt_agent/debug_interupt_driver.sv(7): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(37)
+** at ./tb/../Debug_interupt_agent/debug_interupt_driver.sv(12): near "endfunction": syntax error, unexpected endfunction.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(37)
+** at ./tb/../Debug_interupt_agent/debug_interupt_driver.sv(20): near "forever": syntax error, unexpected forever.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(37)
+** at ./tb/../Debug_interupt_agent/debug_interupt_driver.sv(32): near "end": syntax error, unexpected end.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(41)
+** at ./tb/../Instr_Agent/rv32im_instr_monitor.sv(7): near "instr_mon_ap": syntax error, unexpected IDENTIFIER, expecting '\''.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(41)
+** at ./tb/../Instr_Agent/rv32im_instr_monitor.sv(12): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(41)
+** at ./tb/../Instr_Agent/rv32im_instr_monitor.sv(17): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(41)
+** at ./tb/../Instr_Agent/rv32im_instr_monitor.sv(22): near "forever": syntax error, unexpected forever.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(41)
+** at ./tb/../Instr_Agent/rv32im_instr_monitor.sv(27): near "end": syntax error, unexpected end.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(41)
+** at ./tb/../Instr_Agent/rv32im_instr_monitor.sv(32): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(42)
+** at ./tb/../alu_agent/alu_monitor.sv(5): near "analysis_port": syntax error, unexpected IDENTIFIER, expecting '\''.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(42)
+** at ./tb/../alu_agent/alu_monitor.sv(8): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(42)
+** at ./tb/../alu_agent/alu_monitor.sv(14): near "endfunction": syntax error, unexpected endfunction.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(42)
+** at ./tb/../alu_agent/alu_monitor.sv(24): near "begin": syntax error, unexpected begin.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(42)
+** at ./tb/../alu_agent/alu_monitor.sv(26): (vlog-2164) Class or package 'alu_item' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(42)
+** at ./tb/../alu_agent/alu_monitor.sv(28): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(42)
+** at ./tb/../alu_agent/alu_monitor.sv(29): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(42)
+** at ./tb/../alu_agent/alu_monitor.sv(30): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(42)
+** at ./tb/../alu_agent/alu_monitor.sv(31): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(42)
+** at ./tb/../alu_agent/alu_monitor.sv(32): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(42)
+** at ./tb/../alu_agent/alu_monitor.sv(33): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(43)
+** at ./tb/../mul_agent/mul_monitor.sv(6): near "analysis_port": syntax error, unexpected IDENTIFIER, expecting '\''.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(43)
+** at ./tb/../mul_agent/mul_monitor.sv(9): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(43)
+** at ./tb/../mul_agent/mul_monitor.sv(15): near "endfunction": syntax error, unexpected endfunction.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(43)
+** at ./tb/../mul_agent/mul_monitor.sv(23): near "begin": syntax error, unexpected begin.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(43)
+** at ./tb/../mul_agent/mul_monitor.sv(25): (vlog-2164) Class or package 'mul_item' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(43)
+** at ./tb/../mul_agent/mul_monitor.sv(27): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(43)
+** at ./tb/../mul_agent/mul_monitor.sv(28): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(43)
+** at ./tb/../mul_agent/mul_monitor.sv(29): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(43)
+** at ./tb/../mul_agent/mul_monitor.sv(30): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(43)
+** at ./tb/../mul_agent/mul_monitor.sv(31): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(5): near "analysis_port": syntax error, unexpected IDENTIFIER, expecting '\''.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(8): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(14): near "endfunction": syntax error, unexpected endfunction.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(21): near "continue": syntax error, unexpected "SystemVerilog keyword 'continue'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(23): near "begin": syntax error, unexpected begin.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(24): (vlog-2164) Class or package 'regfile_item' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(25): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(25): (vlog-2164) Class or package 'regfile_item' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(26): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(27): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(28): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(34): (vlog-2164) Class or package 'regfile_item' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(35): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(35): (vlog-2164) Class or package 'regfile_item' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(36): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(37): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(38): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(44): (vlog-2164) Class or package 'regfile_item' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(45): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(45): (vlog-2164) Class or package 'regfile_item' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(46): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(47): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(48): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(50): near "end": syntax error, unexpected end.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(53): (vlog-2164) Class or package 'regfile_item' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(54): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(54): (vlog-2164) Class or package 'regfile_item' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(55): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(56): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(57): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(59): near "end": syntax error, unexpected end.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(62): (vlog-2164) Class or package 'regfile_item' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(63): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(63): (vlog-2164) Class or package 'regfile_item' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(64): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(65): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(66): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(44)
+** at ./tb/../regfile_agent/regfile_monitor.sv(68): near "end": syntax error, unexpected end.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(45)
+** at ./tb/../Data_agent/reactive_data_monitor.sv(8): near "transaction_ap": syntax error, unexpected IDENTIFIER, expecting '\''.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(45)
+** at ./tb/../Data_agent/reactive_data_monitor.sv(9): near "request_ap": syntax error, unexpected IDENTIFIER, expecting '\''.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(45)
+** at ./tb/../Data_agent/reactive_data_monitor.sv(13): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(45)
+** at ./tb/../Data_agent/reactive_data_monitor.sv(21): near "endfunction": syntax error, unexpected endfunction.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(45)
+** at ./tb/../Data_agent/reactive_data_monitor.sv(31): near "join": syntax error, unexpected join.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(45)
+** at ./tb/../Data_agent/reactive_data_monitor.sv(41): near "begin": syntax error, unexpected begin.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(45)
+** at ./tb/../Data_agent/reactive_data_monitor.sv(48): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(45)
+** at ./tb/../Data_agent/reactive_data_monitor.sv(49): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(45)
+** at ./tb/../Data_agent/reactive_data_monitor.sv(50): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(45)
+** at ./tb/../Data_agent/reactive_data_monitor.sv(51): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(45)
+** at ./tb/../Data_agent/reactive_data_monitor.sv(58): near "end": syntax error, unexpected end.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(45)
+** at ./tb/../Data_agent/reactive_data_monitor.sv(74): near "begin": syntax error, unexpected begin.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(45)
+** at ./tb/../Data_agent/reactive_data_monitor.sv(82): near "begin": syntax error, unexpected begin.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(46)
+** at ./tb/../Debug_interupt_agent/debug_interupt_monitor.sv(7): near "transaction_ap": syntax error, unexpected IDENTIFIER, expecting '\''.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(46)
+** at ./tb/../Debug_interupt_agent/debug_interupt_monitor.sv(10): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(46)
+** at ./tb/../Debug_interupt_agent/debug_interupt_monitor.sv(15): near "endfunction": syntax error, unexpected endfunction.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(46)
+** at ./tb/../Debug_interupt_agent/debug_interupt_monitor.sv(21): near "begin": syntax error, unexpected begin.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(46)
+** at ./tb/../Debug_interupt_agent/debug_interupt_monitor.sv(24): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(46)
+** at ./tb/../Debug_interupt_agent/debug_interupt_monitor.sv(25): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(46)
+** at ./tb/../Debug_interupt_agent/debug_interupt_monitor.sv(26): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(46)
+** at ./tb/../Debug_interupt_agent/debug_interupt_monitor.sv(27): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(46)
+** at ./tb/../Debug_interupt_agent/debug_interupt_monitor.sv(28): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(46)
+** at ./tb/../Debug_interupt_agent/debug_interupt_monitor.sv(29): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(46)
+** at ./tb/../Debug_interupt_agent/debug_interupt_monitor.sv(30): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(46)
+** at ./tb/../Debug_interupt_agent/debug_interupt_monitor.sv(31): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(46)
+** at ./tb/../Debug_interupt_agent/debug_interupt_monitor.sv(32): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(46)
+** at ./tb/../Debug_interupt_agent/debug_interupt_monitor.sv(35): near "end": syntax error, unexpected end.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(51)
+** at ./tb/../Instr_Agent/rv32im_instr_agent.sv(8): near "instr_mon_ap": syntax error, unexpected IDENTIFIER, expecting '\''.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(51)
+** at ./tb/../Instr_Agent/rv32im_instr_agent.sv(14): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(51)
+** at ./tb/../Instr_Agent/rv32im_instr_agent.sv(19): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(51)
+** at ./tb/../Instr_Agent/rv32im_instr_agent.sv(19): (vlog-2164) Class or package 'rv32im_instr_driver' not found.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(51)
+** at ./tb/../Instr_Agent/rv32im_instr_agent.sv(20): (vlog-2164) Class or package 'rv32im_instr_monitor' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(51)
+** at ./tb/../Instr_Agent/rv32im_instr_agent.sv(35): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(51)
+** at ./tb/../Instr_Agent/rv32im_instr_agent.sv(39): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(51)
+** at ./tb/../Instr_Agent/rv32im_instr_agent.sv(43): near "endfunction": syntax error, unexpected endfunction.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(52)
+** at ./tb/../Data_agent/reactive_data_agent.sv(13): near "transaction_ap": syntax error, unexpected IDENTIFIER, expecting '\''.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(52)
+** at ./tb/../Data_agent/reactive_data_agent.sv(16): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(52)
+** at ./tb/../Data_agent/reactive_data_agent.sv(23): near "begin": syntax error, unexpected begin.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(52)
+** at ./tb/../Data_agent/reactive_data_agent.sv(26): (vlog-2164) Class or package 'reactive_data_driver' not found.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(52)
+** at ./tb/../Data_agent/reactive_data_agent.sv(27): (vlog-2164) Class or package 'reactive_data_monitor' not found.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(52)
+** at ./tb/../Data_agent/reactive_data_agent.sv(28): (vlog-2164) Class or package 'reactive_data_sequencer' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(52)
+** at ./tb/../Data_agent/reactive_data_agent.sv(41): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(52)
+** at ./tb/../Data_agent/reactive_data_agent.sv(42): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(52)
+** at ./tb/../Data_agent/reactive_data_agent.sv(46): near "endfunction": syntax error, unexpected endfunction.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(53)
+** at ./tb/../Debug_interupt_agent/debug_interupt_agent.sv(11): near "transaction_ap": syntax error, unexpected IDENTIFIER, expecting '\''.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(53)
+** at ./tb/../Debug_interupt_agent/debug_interupt_agent.sv(14): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(53)
+** at ./tb/../Debug_interupt_agent/debug_interupt_agent.sv(21): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(53)
+** at ./tb/../Debug_interupt_agent/debug_interupt_agent.sv(21): (vlog-2164) Class or package 'debug_interupt_sequencer' not found.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(53)
+** at ./tb/../Debug_interupt_agent/debug_interupt_agent.sv(22): (vlog-2164) Class or package 'debug_interupt_driver' not found.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(53)
+** at ./tb/../Debug_interupt_agent/debug_interupt_agent.sv(23): (vlog-2164) Class or package 'debug_interupt_monitor' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(53)
+** at ./tb/../Debug_interupt_agent/debug_interupt_agent.sv(25): near "begin": syntax error, unexpected begin.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(53)
+** at ./tb/../Debug_interupt_agent/debug_interupt_agent.sv(35): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(53)
+** at ./tb/../Debug_interupt_agent/debug_interupt_agent.sv(36): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(53)
+** at ./tb/../Debug_interupt_agent/debug_interupt_agent.sv(39): near "endfunction": syntax error, unexpected endfunction.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(55)
+** at ./tb/../alu_agent/alu_agent.sv(8): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(55)
+** at ./tb/../alu_agent/alu_agent.sv(13): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(55)
+** at ./tb/../alu_agent/alu_agent.sv(13): (vlog-2164) Class or package 'alu_monitor' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(55)
+** while parsing macro expansion: 'uvm_fatal' starting at ./tb/../alu_agent/alu_agent.sv(16)
+** at ./tb/../alu_agent/alu_agent.sv(16): near "begin": syntax error, unexpected begin.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(55)
+** at ./tb/../alu_agent/alu_agent.sv(21): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(56)
+** at ./tb/../mul_agent/mul_agent.sv(8): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(56)
+** at ./tb/../mul_agent/mul_agent.sv(13): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(56)
+** at ./tb/../mul_agent/mul_agent.sv(13): (vlog-2164) Class or package 'mul_monitor' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(56)
+** while parsing macro expansion: 'uvm_fatal' starting at ./tb/../mul_agent/mul_agent.sv(16)
+** at ./tb/../mul_agent/mul_agent.sv(16): near "begin": syntax error, unexpected begin.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(56)
+** at ./tb/../mul_agent/mul_agent.sv(22): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(57)
+** at ./tb/../regfile_agent/regfile_agent.sv(8): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(57)
+** at ./tb/../regfile_agent/regfile_agent.sv(13): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(57)
+** at ./tb/../regfile_agent/regfile_agent.sv(13): (vlog-2164) Class or package 'regfile_monitor' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(57)
+** while parsing macro expansion: 'uvm_fatal' starting at ./tb/../regfile_agent/regfile_agent.sv(16)
+** at ./tb/../regfile_agent/regfile_agent.sv(16): near "begin": syntax error, unexpected begin.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(57)
+** at ./tb/../regfile_agent/regfile_agent.sv(22): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: ./tb/riscv_pkg.sv(63): Cannot find `include file "riscv_scoreboard.sv" in directories:
+    C:/questasim64_2021.1/ovm-2.1.2/../verilog_src/ovm-2.1.2/src, C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(67)
+** at ./tb/./rv32im_env.sv(16): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(67)
+** at ./tb/./rv32im_env.sv(21): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(67)
+** at ./tb/./rv32im_env.sv(21): (vlog-2164) Class or package 'rv32im_instr_agent' not found.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(67)
+** at ./tb/./rv32im_env.sv(22): (vlog-2164) Class or package 'reactive_data_agent' not found.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(67)
+** at ./tb/./rv32im_env.sv(23): (vlog-2164) Class or package 'debug_interupt_agent' not found.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(67)
+** at ./tb/./rv32im_env.sv(24): (vlog-2164) Class or package 'alu_agent' not found.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(67)
+** at ./tb/./rv32im_env.sv(25): (vlog-2164) Class or package 'mul_agent' not found.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(67)
+** at ./tb/./rv32im_env.sv(26): (vlog-2164) Class or package 'regfile_agent' not found.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(67)
+** at ./tb/./rv32im_env.sv(27): (vlog-2164) Class or package 'riscv_scoreboard' not found.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(67)
+** at ./tb/./rv32im_env.sv(28): (vlog-2164) Class or package 'rv32im_virtual_seqr' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(67)
+** at ./tb/./rv32im_env.sv(34): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(67)
+** at ./tb/./rv32im_env.sv(35): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(67)
+** at ./tb/./rv32im_env.sv(36): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(67)
+** at ./tb/./rv32im_env.sv(46): near "endfunction": syntax error, unexpected endfunction.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(68)
+** at ./tb/./rv32im_test.sv(12): near "new": syntax error, unexpected "SystemVerilog keyword 'new'".
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(68)
+** at ./tb/./rv32im_test.sv(19): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(68)
+** at ./tb/./rv32im_test.sv(19): (vlog-2164) Class or package 'rv32im_env' not found.
+** Error: ** while parsing file included at ./tb/riscv_pkg.sv(68)
+** at ./tb/./rv32im_test.sv(21): (vlog-2164) Class or package 'rv32im_virtual_seq' not found.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(68)
+** at ./tb/./rv32im_test.sv(32): near "*": syntax error, unexpected '*'.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(68)
+** at ./tb/./rv32im_test.sv(39): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(68)
+** while parsing macro expansion: 'uvm_info' starting at ./tb/./rv32im_test.sv(45)
+** at ./tb/./rv32im_test.sv(45): near "begin": syntax error, unexpected begin.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(68)
+** while parsing macro expansion: 'uvm_info' starting at ./tb/./rv32im_test.sv(50)
+** at ./tb/./rv32im_test.sv(50): near "begin": syntax error, unexpected begin.
+** Error: (vlog-13069) ** while parsing file included at ./tb/riscv_pkg.sv(68)
+** at ./tb/./rv32im_test.sv(52): near "endtask": syntax error, unexpected endtask.
+** Error: (vlog-13069) ./tb/rv32im_tb_top.sv(87): near "end": syntax error, unexpected end.
+** Error: (vlog-13069) ./tb/rv32im_tb_top.sv(91): near "*": syntax error, unexpected '*'.
+** Error: (vlog-13069) ./tb/rv32im_tb_top.sv(92): near "*": syntax error, unexpected '*'.
+** Error: (vlog-13069) ./tb/rv32im_tb_top.sv(93): near "*": syntax error, unexpected '*'.
+** Error: (vlog-13069) ./tb/rv32im_tb_top.sv(94): near "*": syntax error, unexpected '*'.
+** Error: (vlog-13069) ./tb/rv32im_tb_top.sv(95): near "*": syntax error, unexpected '*'.
+** Error: (vlog-13069) ./tb/rv32im_tb_top.sv(96): near "*": syntax error, unexpected '*'.
+End time: 11:52:35 on Sep 30,2026, Elapsed time: 0:00:05
+Errors: 254, Warnings: 0, Suppressed Warnings: 480

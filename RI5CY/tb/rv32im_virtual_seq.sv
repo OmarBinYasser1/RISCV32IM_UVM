@@ -1,26 +1,29 @@
 class rv32im_virtual_seq extends uvm_sequence#(uvm_sequence_item);
     `uvm_object_utils(rv32im_virtual_seq);
 
-// Define the sequences that live in the virtual sequence
+//  Declare the virtual sequencer as p_sequencer not m_sequencer
+    `uvm_declare_p_sequencer(rv32im_virtual_seqr);
 
-    // 1- Instruction (TODO Virtual) Sequence 
+//  Define the sequences that live in the virtual sequence
+    // 1- Instruction Sequence 
     rv32im_instr_seq instr_seq;
+    // 2- Data Sequence
+    reactive_data_seq data_seq;
+    // 3- Debug_Interrupt Sequence
+    debug_interupt_seq  debug_int_seq;
 
-    // TODO : Define the Data & Debug_Interrupt sequences in virtual sequence 
-
-// Define the local sequencer handles to be connected from the top
-
+//  Define the local sequencer handles to be connected from the env
     // 1- Instruction Sequencer
     rv32im_instr_seqr instr_seqr;
+    // 2- Data Sequencer
+    reactive_data_sequencer data_seqr;
+    // 3- Debug_Interrupt Sequencer 
+    debug_interupt_sequencer debug_int_seqr;
 
-    // TODO : Define Data & Debug_Interrupt Sequencer in virtual Sequencer
-
-// Define the virual sequencer to connect its sub-sequencers to the local sequencers
-
+//  Define the virual sequencer to connect its sub-sequencers to the local sequencers
     rv32im_virtual_seqr sys_vseqr;
 
-    // Declare the virtual sequencer as p_sequencer not m_sequencer
-    `uvm_declare_p_sequencer(rv32im_virtual_seqr);
+//      ====================================================================
 
     function new (string name = "rv32im_virtual_seq");
         super.new(name);
@@ -28,22 +31,32 @@ class rv32im_virtual_seq extends uvm_sequence#(uvm_sequence_item);
 
     virtual task body();
     // Connect the local sequencers to the virtual sequencer's sub-sequencers
-        instr_seqr = sys_vseq.instr_seqr;
-        
-        // TODO : Connect the data & debug_interrupt sequencers to the virtual sequencer's sub-sequencer
+        instr_seqr = sys_vseqr.instr_seqr;
+        data_seqr = sys_vseqr.data_seqr;
+        debug_int_seqr = sys_vseqr.debug_int_seqr;
 
     // Build the sub-sequences 
 
         instr_seq = rv32im_instr_seq::type_id::create("instr_seq");
-
-        // TODO : Build the data & debug_interrupt sub-sequences
+        data_seq = reactive_data_seq::type_id::create("data_seq");
+        debug_int_seq = debug_interupt_seq::type_id::create("debug_int_seq");
 
     // Run the sequences on the local sequencers
         fork
-            instr_seq.start(instr_seq);    
-            // TODO : Run the data and debug_interupt sequences on the local sequencers
-        join
-        
+            begin
+                `uvm_info(get_name(), "INSTR SEQ - Started", UVM_HIGH);
+                instr_seq.start(instr_seqr);
+                `uvm_info(get_name(), "INSTR SEQ - Finished", UVM_HIGH);  
+            end 
+            begin
+                uvm_info(get_name(), "DATA REACTIVE SEQ - Started", UVM_HIGH);
+                data_seq.start(data_seqr);
+            end 
+            begin
+                uvm_info(get_name(), "DEBUG DEFAULT SEQ - Started", UVM_HIGH);
+                debug_int_seq.start(debug_int_seqr);
+            end
+        join_any
     endtask
     
 endclass // rv32im_virtual_seq
