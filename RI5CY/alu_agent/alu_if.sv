@@ -1,14 +1,30 @@
 
-interface alu_if (input logic clk, input logic rst_n);
+interface alu_if (
+    input   logic        clk, 
+    input   logic        rst_n,
+    input   logic        enable_i,
+    input   logic [6:0]  operator_i,     
+    input   logic [31:0] operand_a_i,
+    input   logic [31:0] operand_b_i,
+    input   logic [31:0] operand_c_i,
+    input   logic [31:0] result_o,
+    input   logic        comparison_result_o,
+    input   logic        ready_o,
+    input   logic        ex_ready_i
+  );
 
-  logic        enable_i;
-  logic [6:0]  operator_i;      
-  logic [31:0] operand_a_i;     
-  logic [31:0] operand_b_i;     
-  logic [31:0] operand_c_i;
-  logic [31:0] result_o;  
-  logic        comparison_result_o;      
-  logic        ready_o;         
-  logic        ex_ready_i;      
-  
+  clocking cb_mon @(posedge clk);
+      default input #1;
+      input rst_n;
+      input enable_i;
+      input operator_i;
+      input operand_a_i;
+      input operand_b_i;
+      input operand_c_i;
+      input result_o;
+      input comparison_result_o;
+      input ready_o;
+      input ex_ready_i;
+  endclocking
+
 endinterface

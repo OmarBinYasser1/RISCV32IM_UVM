@@ -19,8 +19,8 @@ class regfile_monitor extends uvm_monitor;
     forever begin
       @(posedge vif.clk);
       if (!vif.rst_n) continue;
-
-      if (vif.we_a_i && (vif.waddr_a_i != 0)) begin
+      // TODO : The reading enable is actually through the id_valid_o signal
+      if (vif.we_a_i && (vif.waddr_a_i != 0)) begin 
         item = regfile_item::type_id::create("item");
         item.kind = regfile_item::WRITE;
         item.port = "a";

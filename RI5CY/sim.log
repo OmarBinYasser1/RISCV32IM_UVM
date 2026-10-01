@@ -1,0 +1,2471 @@
+# vsim -voptargs="+acc" work.rv32im_top -uvmcontrol=all "+UVM_NO_RELNOTES" "+UVM_VERBOSITY=UVM_MEDIUM" -sv_seed random -l sim.log 
+# Start time: 02:09:19 on Oct 01,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 2 FSMs in module "cv32e40p_controller(fast)".
+# ** Note: (vopt-143) Recognized 1 FSM in module "cv32e40p_alu_div(fast)".
+# ** Note: (vopt-143) Recognized 1 FSM in module "cv32e40p_mult(fast)".
+# ** Note: (vopt-143) Recognized 1 FSM in module "cv32e40p_aligner(fast)".
+# Loading sv_std.std
+# Loading work.rv32im_instr_if(fast)
+# Loading work.reset_if(fast)
+# Loading work.alu_if(fast)
+# Loading work.mul_if(fast)
+# Loading work.regfile_if(fast)
+# Loading work.obi_data_if(fast)
+# Loading work.debug_interupt_if(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.riscv_pkg(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.rv32im_top(fast)
+# Loading work.reset_if(fast__2)
+# Loading work.rv32im_instr_if(fast__2)
+# Loading work.obi_data_if(fast__2)
+# Loading work.debug_interupt_if(fast__2)
+# Loading work.alu_if(fast__2)
+# Loading work.mul_if(fast__2)
+# Loading work.regfile_if(fast__2)
+# Loading work.cv32e40p_apu_core_pkg(fast)
+# Loading work.cv32e40p_top(fast)
+# Loading work.cv32e40p_pkg(fast)
+# Loading work.cv32e40p_core(fast)
+# Loading work.cv32e40p_sleep_unit(fast)
+# Loading work.cv32e40p_clock_gate(fast)
+# Loading work.cv32e40p_if_stage(fast)
+# Loading work.cv32e40p_prefetch_buffer(fast)
+# Loading work.cv32e40p_prefetch_controller(fast)
+# Loading work.cv32e40p_fifo(fast)
+# Loading work.cv32e40p_obi_interface(fast)
+# Loading work.cv32e40p_aligner(fast)
+# Loading work.cv32e40p_compressed_decoder(fast)
+# Loading work.cv32e40p_fpu_pkg(fast)
+# Loading work.cv32e40p_id_stage(fast)
+# Loading work.cv32e40p_register_file(fast)
+# Loading work.cv32e40p_decoder(fast)
+# Loading work.cv32e40p_controller(fast)
+# Loading work.cv32e40p_int_controller(fast)
+# Loading work.cv32e40p_ex_stage(fast)
+# Loading work.cv32e40p_alu(fast)
+# Loading work.cv32e40p_popcnt(fast)
+# Loading work.cv32e40p_ff_one(fast)
+# Loading work.cv32e40p_alu_div(fast)
+# Loading work.cv32e40p_mult(fast)
+# Loading work.cv32e40p_load_store_unit(fast)
+# Loading work.cv32e40p_obi_interface(fast__1)
+# Loading work.cv32e40p_cs_registers(fast)
+# Loading C:/questasim64_2021.1/uvm-1.1d\win64\uvm_dpi.dll
+# Sv_Seed = 2033356049
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(all)
+# UVM_INFO @ 0: reporter [RNTST] Running test rv32im_base_test...
+# **************************************************************************
+# * Questa UVM Transaction Recording Turned ON.                            *
+# * recording_detail has been set.                                         *
+# *  To turn off, set 'recording_detail' to off:                           *
+# * uvm_config_db#(int)            ::set(null, "", "recording_detail", 0); *
+# * uvm_config_db#(uvm_bitstream_t)::set(null, "", "recording_detail", 0); *
+# **************************************************************************
+# UVM_INFO ./tb/./rv32im_virtual_seq.sv(55) @ 0: uvm_test_top.env.sys_vseqr@@sys_vseq [sys_vseq] Asserting System Reset (rst_n = 0)...
+# ** Warning: (vsim-8315) No condition is true in the unique/priority if/case statement.
+#    Time: 0 ns  Iteration: 161  Process: /rv32im_top/u_core/core_i/load_store_unit_i/#implicit#unique__419 File: ./rtl/cv32e40p_load_store_unit.sv Line: 419
+# UVM_INFO ./tb/./rv32im_virtual_seq.sv(60) @ 195: uvm_test_top.env.sys_vseqr@@sys_vseq [sys_vseq] Releasing System Reset (rst_n = 1)...
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 235: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(219) @ 235: uvm_test_top.env.sb [riscv_scoreboard] 
+# 
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(220) @ 235: uvm_test_top.env.sb [riscv_scoreboard] ╔══════════════════════════════════════════════╗
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(221) @ 235: uvm_test_top.env.sb [riscv_scoreboard] ║      RISCV32IM SYSTEM SCOREBOARD RESULTS     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(222) @ 235: uvm_test_top.env.sb [riscv_scoreboard] ╠══════════════════════════════════════════════╣
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(223) @ 235: uvm_test_top.env.sb [riscv_scoreboard] ║  ALU : PASS=   0  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(224) @ 235: uvm_test_top.env.sb [riscv_scoreboard] ║  MUL : PASS=   0  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(225) @ 235: uvm_test_top.env.sb [riscv_scoreboard] ║  RF  : PASS=   0  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(226) @ 235: uvm_test_top.env.sb [riscv_scoreboard] ╠════════════════════════════════════════════╣
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(227) @ 235: uvm_test_top.env.sb [riscv_scoreboard] ║  TOTAL CHECKS :      0                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(228) @ 235: uvm_test_top.env.sb [riscv_scoreboard] ║  PASSED       :      0                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(229) @ 235: uvm_test_top.env.sb [riscv_scoreboard] ║  FAILED       :      0                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(230) @ 235: uvm_test_top.env.sb [riscv_scoreboard] ║  Pass Rate    :   0.00%                    ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(231) @ 235: uvm_test_top.env.sb [riscv_scoreboard] ╚══════════════════════════════════════════════╝
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :   19
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+# ** Report counts by id
+# [Questa UVM]     2
+# [RNTST]     1
+# [TEST_DONE]     1
+# [riscv_scoreboard]    13
+# [sys_vseq]     2
+# ** Note: $finish    : C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 235 ns  Iteration: 73  Instance: /rv32im_top
+# Break in Task uvm_pkg/uvm_root::run_test at C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh line 430
+do cv32e40p_top_do.do
+# End time: 03:11:31 on Oct 01,2026, Elapsed time: 1:02:12
+# Errors: 0, Warnings: 1, Suppressed Warnings: 9
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+# Start time: 03:11:31 on Oct 01,2026
+# vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 13314 
+# -- Compiling package cv32e40p_apu_core_pkg
+# -- Compiling package cv32e40p_fpu_pkg
+# -- Compiling package cv32e40p_pkg
+# -- Compiling module cv32e40p_obi_interface
+# -- Compiling module cv32e40p_popcnt
+# -- Compiling module cv32e40p_ff_one
+# -- Compiling module cv32e40p_alu_div
+# -- Compiling module cv32e40p_prefetch_controller
+# -- Importing package cv32e40p_pkg
+# -- Compiling module cv32e40p_fifo
+# -- Compiling module cv32e40p_apu_disp
+# -- Compiling module cv32e40p_alu
+# -- Compiling module cv32e40p_mult
+# -- Compiling module cv32e40p_controller
+# -- Compiling module cv32e40p_int_controller
+# -- Compiling module cv32e40p_hwloop_regs
+# -- Compiling module cv32e40p_register_file
+# -- Compiling module cv32e40p_decoder
+# -- Importing package cv32e40p_apu_core_pkg
+# -- Importing package cv32e40p_fpu_pkg
+# -- Compiling module cv32e40p_prefetch_buffer
+# -- Compiling module cv32e40p_compressed_decoder
+# -- Compiling module cv32e40p_aligner
+# -- Compiling module cv32e40p_sleep_unit
+# -- Compiling module cv32e40p_ex_stage
+# -- Compiling module cv32e40p_id_stage
+# -- Compiling module cv32e40p_load_store_unit
+# -- Compiling module cv32e40p_cs_registers
+# -- Compiling module cv32e40p_if_stage
+# -- Compiling module cv32e40p_clock_gate
+# -- Compiling module cv32e40p_core
+# -- Compiling module cv32e40p_top
+# -- Compiling interface alu_if
+# -- Compiling interface mul_if
+# -- Compiling interface obi_data_if
+# -- Compiling interface regfile_if
+# -- Compiling interface rv32im_instr_if
+# -- Compiling interface debug_interupt_if
+# -- Compiling package riscv_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) ./tb/riscv_pkg.sv(6): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling module rv32im_top
+# -- Importing package riscv_pkg
+# 
+# Top level modules:
+# 	rv32im_top
+# End time: 03:11:33 on Oct 01,2026, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0, Suppressed Warnings: 480
+# vsim -voptargs="+acc" work.rv32im_top -uvmcontrol=all "+UVM_NO_RELNOTES" "+UVM_VERBOSITY=UVM_MEDIUM" -sv_seed random -l sim.log 
+# Start time: 03:11:33 on Oct 01,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.rv32im_instr_if(fast)
+# Loading work.alu_if(fast)
+# Loading work.mul_if(fast)
+# Loading work.regfile_if(fast)
+# Loading work.obi_data_if(fast)
+# Loading work.debug_interupt_if(fast)
+# Loading work.reset_if(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.riscv_pkg(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.rv32im_top(fast)
+# Loading work.rv32im_instr_if(fast__2)
+# Loading work.obi_data_if(fast__2)
+# Loading work.debug_interupt_if(fast__2)
+# Loading work.alu_if(fast__2)
+# Loading work.mul_if(fast__2)
+# Loading work.regfile_if(fast__2)
+# Loading work.cv32e40p_apu_core_pkg(fast)
+# Loading work.cv32e40p_top(fast)
+# Loading work.cv32e40p_pkg(fast)
+# Loading work.cv32e40p_core(fast)
+# Loading work.cv32e40p_sleep_unit(fast)
+# Loading work.cv32e40p_clock_gate(fast)
+# Loading work.cv32e40p_if_stage(fast)
+# Loading work.cv32e40p_prefetch_buffer(fast)
+# Loading work.cv32e40p_prefetch_controller(fast)
+# Loading work.cv32e40p_fifo(fast)
+# Loading work.cv32e40p_obi_interface(fast)
+# Loading work.cv32e40p_aligner(fast)
+# Loading work.cv32e40p_compressed_decoder(fast)
+# Loading work.cv32e40p_fpu_pkg(fast)
+# Loading work.cv32e40p_id_stage(fast)
+# Loading work.cv32e40p_register_file(fast)
+# Loading work.cv32e40p_decoder(fast)
+# Loading work.cv32e40p_controller(fast)
+# Loading work.cv32e40p_int_controller(fast)
+# Loading work.cv32e40p_ex_stage(fast)
+# Loading work.cv32e40p_alu(fast)
+# Loading work.cv32e40p_popcnt(fast)
+# Loading work.cv32e40p_ff_one(fast)
+# Loading work.cv32e40p_alu_div(fast)
+# Loading work.cv32e40p_mult(fast)
+# Loading work.cv32e40p_load_store_unit(fast)
+# Loading work.cv32e40p_obi_interface(fast__1)
+# Loading work.cv32e40p_cs_registers(fast)
+# Loading C:/questasim64_2021.1/uvm-1.1d\win64\uvm_dpi.dll
+# Sv_Seed = 2077556309
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(all)
+# UVM_INFO @ 0: reporter [RNTST] Running test rv32im_base_test...
+# UVM_FATAL ./tb/./rv32im_test.sv(38) @ 0: uvm_test_top [uvm_test_top]  reset - Can't get the Reset Interface
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :    3
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    1
+# ** Report counts by id
+# [Questa UVM]     2
+# [RNTST]     1
+# [uvm_test_top]     1
+# ** Note: $finish    : C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh(292)
+#    Time: 0 ns  Iteration: 8  Region: /uvm_pkg::uvm_phase::m_run_phases
+# 1
+# Break in Function uvm_pkg/uvm_report_object::die at C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh line 292
+# **************************************************************************
+# * Questa UVM Transaction Recording Turned ON.                            *
+# * recording_detail has been set.                                         *
+# *  To turn off, set 'recording_detail' to off:                           *
+# * uvm_config_db#(int)            ::set(null, "", "recording_detail", 0); *
+# * uvm_config_db#(uvm_bitstream_t)::set(null, "", "recording_detail", 0); *
+# **************************************************************************
+# ** Fatal: (SIGSEGV) Bad handle or reference.
+#    Time: 0 ns  Iteration: 53  Process: /uvm_pkg::uvm_sequence_base::start/#FORK#294_4f82a3ec File: C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/seq/uvm_sequence_base.svh
+# Fatal error in Task riscv_pkg/rv32im_virtual_seq::body at ./tb/./rv32im_virtual_seq.sv line 42
+# 
+# HDL call sequence:
+# Stopped at C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_globals.svh 373 Task uvm_wait_for_nba_region
+# called from  C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_phase.svh 1178 Task uvm_pkg/uvm_phase::execute_phase
+# called from  C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_phase.svh 1847 Task uvm_pkg/uvm_phase::m_run_phases
+# 
+# Fatal error reported during simulation. Cannot run 'fcover' command. Please look above output for the fatal error message(s).
+# 
+# Fatal error reported during simulation. Cannot run 'fcover' command. Please look above output for the fatal error message(s).
+# 
+do cv32e40p_top_do.do
+# End time: 03:14:39 on Oct 01,2026, Elapsed time: 0:03:06
+# Errors: 1, Warnings: 0
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+# Start time: 03:14:39 on Oct 01,2026
+# vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 13314 
+# -- Compiling package cv32e40p_apu_core_pkg
+# -- Compiling package cv32e40p_fpu_pkg
+# -- Compiling package cv32e40p_pkg
+# -- Compiling module cv32e40p_obi_interface
+# -- Compiling module cv32e40p_popcnt
+# -- Compiling module cv32e40p_ff_one
+# -- Compiling module cv32e40p_alu_div
+# -- Compiling module cv32e40p_prefetch_controller
+# -- Importing package cv32e40p_pkg
+# -- Compiling module cv32e40p_fifo
+# -- Compiling module cv32e40p_apu_disp
+# -- Compiling module cv32e40p_alu
+# -- Compiling module cv32e40p_mult
+# -- Compiling module cv32e40p_controller
+# -- Compiling module cv32e40p_int_controller
+# -- Compiling module cv32e40p_hwloop_regs
+# -- Compiling module cv32e40p_register_file
+# -- Compiling module cv32e40p_decoder
+# -- Importing package cv32e40p_apu_core_pkg
+# -- Importing package cv32e40p_fpu_pkg
+# -- Compiling module cv32e40p_prefetch_buffer
+# -- Compiling module cv32e40p_compressed_decoder
+# -- Compiling module cv32e40p_aligner
+# -- Compiling module cv32e40p_sleep_unit
+# -- Compiling module cv32e40p_ex_stage
+# -- Compiling module cv32e40p_id_stage
+# -- Compiling module cv32e40p_load_store_unit
+# -- Compiling module cv32e40p_cs_registers
+# -- Compiling module cv32e40p_if_stage
+# -- Compiling module cv32e40p_clock_gate
+# -- Compiling module cv32e40p_core
+# -- Compiling module cv32e40p_top
+# -- Compiling interface alu_if
+# -- Compiling interface mul_if
+# -- Compiling interface obi_data_if
+# -- Compiling interface regfile_if
+# -- Compiling interface rv32im_instr_if
+# -- Compiling interface debug_interupt_if
+# -- Compiling package riscv_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) ./tb/riscv_pkg.sv(6): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling module rv32im_top
+# -- Importing package riscv_pkg
+# 
+# Top level modules:
+# 	rv32im_top
+# End time: 03:14:40 on Oct 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0, Suppressed Warnings: 480
+# vsim -voptargs="+acc" work.rv32im_top -uvmcontrol=all "+UVM_NO_RELNOTES" "+UVM_VERBOSITY=UVM_MEDIUM" -sv_seed random -l sim.log 
+# Start time: 03:14:40 on Oct 01,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.rv32im_instr_if(fast)
+# Loading work.alu_if(fast)
+# Loading work.mul_if(fast)
+# Loading work.regfile_if(fast)
+# Loading work.obi_data_if(fast)
+# Loading work.debug_interupt_if(fast)
+# Loading work.reset_if(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.riscv_pkg(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.rv32im_top(fast)
+# Loading work.rv32im_instr_if(fast__2)
+# Loading work.obi_data_if(fast__2)
+# Loading work.debug_interupt_if(fast__2)
+# Loading work.alu_if(fast__2)
+# Loading work.mul_if(fast__2)
+# Loading work.regfile_if(fast__2)
+# Loading work.cv32e40p_apu_core_pkg(fast)
+# Loading work.cv32e40p_top(fast)
+# Loading work.cv32e40p_pkg(fast)
+# Loading work.cv32e40p_core(fast)
+# Loading work.cv32e40p_sleep_unit(fast)
+# Loading work.cv32e40p_clock_gate(fast)
+# Loading work.cv32e40p_if_stage(fast)
+# Loading work.cv32e40p_prefetch_buffer(fast)
+# Loading work.cv32e40p_prefetch_controller(fast)
+# Loading work.cv32e40p_fifo(fast)
+# Loading work.cv32e40p_obi_interface(fast)
+# Loading work.cv32e40p_aligner(fast)
+# Loading work.cv32e40p_compressed_decoder(fast)
+# Loading work.cv32e40p_fpu_pkg(fast)
+# Loading work.cv32e40p_id_stage(fast)
+# Loading work.cv32e40p_register_file(fast)
+# Loading work.cv32e40p_decoder(fast)
+# Loading work.cv32e40p_controller(fast)
+# Loading work.cv32e40p_int_controller(fast)
+# Loading work.cv32e40p_ex_stage(fast)
+# Loading work.cv32e40p_alu(fast)
+# Loading work.cv32e40p_popcnt(fast)
+# Loading work.cv32e40p_ff_one(fast)
+# Loading work.cv32e40p_alu_div(fast)
+# Loading work.cv32e40p_mult(fast)
+# Loading work.cv32e40p_load_store_unit(fast)
+# Loading work.cv32e40p_obi_interface(fast__1)
+# Loading work.cv32e40p_cs_registers(fast)
+# Loading C:/questasim64_2021.1/uvm-1.1d\win64\uvm_dpi.dll
+# Sv_Seed = 1349822601
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(all)
+# UVM_INFO @ 0: reporter [RNTST] Running test rv32im_base_test...
+# UVM_FATAL ./tb/./rv32im_test.sv(38) @ 0: uvm_test_top [uvm_test_top]  reset - Can't get the Reset Interface
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :    3
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    1
+# ** Report counts by id
+# [Questa UVM]     2
+# [RNTST]     1
+# [uvm_test_top]     1
+# ** Note: $finish    : C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh(292)
+#    Time: 0 ns  Iteration: 8  Region: /uvm_pkg::uvm_phase::m_run_phases
+# 1
+# Break in Function uvm_pkg/uvm_report_object::die at C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh line 292
+# **************************************************************************
+# * Questa UVM Transaction Recording Turned ON.                            *
+# * recording_detail has been set.                                         *
+# *  To turn off, set 'recording_detail' to off:                           *
+# * uvm_config_db#(int)            ::set(null, "", "recording_detail", 0); *
+# * uvm_config_db#(uvm_bitstream_t)::set(null, "", "recording_detail", 0); *
+# **************************************************************************
+# UVM_FATAL @ 0: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [NULLITM] attempting to start a null item from sequence 'uvm_test_top.env.instr_agent.instr_seqr.instr_seq'
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :    3
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    2
+# ** Report counts by id
+# [NULLITM]     1
+# [Questa UVM]     2
+# [RNTST]     1
+# [uvm_test_top]     1
+# ** Note: $finish    : C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh(292)
+#    Time: 0 ns  Iteration: 56  Region: /uvm_pkg::uvm_sequence_base::start
+# Break in Function uvm_pkg/uvm_report_object::die at C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh line 292
+do cv32e40p_top_do.do
+# End time: 03:17:47 on Oct 01,2026, Elapsed time: 0:03:07
+# Errors: 0, Warnings: 0
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+# Start time: 03:17:47 on Oct 01,2026
+# vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 13314 
+# -- Compiling package cv32e40p_apu_core_pkg
+# -- Compiling package cv32e40p_fpu_pkg
+# -- Compiling package cv32e40p_pkg
+# -- Compiling module cv32e40p_obi_interface
+# -- Compiling module cv32e40p_popcnt
+# -- Compiling module cv32e40p_ff_one
+# -- Compiling module cv32e40p_alu_div
+# -- Compiling module cv32e40p_prefetch_controller
+# -- Importing package cv32e40p_pkg
+# -- Compiling module cv32e40p_fifo
+# -- Compiling module cv32e40p_apu_disp
+# -- Compiling module cv32e40p_alu
+# -- Compiling module cv32e40p_mult
+# -- Compiling module cv32e40p_controller
+# -- Compiling module cv32e40p_int_controller
+# -- Compiling module cv32e40p_hwloop_regs
+# -- Compiling module cv32e40p_register_file
+# -- Compiling module cv32e40p_decoder
+# -- Importing package cv32e40p_apu_core_pkg
+# -- Importing package cv32e40p_fpu_pkg
+# -- Compiling module cv32e40p_prefetch_buffer
+# -- Compiling module cv32e40p_compressed_decoder
+# -- Compiling module cv32e40p_aligner
+# -- Compiling module cv32e40p_sleep_unit
+# -- Compiling module cv32e40p_ex_stage
+# -- Compiling module cv32e40p_id_stage
+# -- Compiling module cv32e40p_load_store_unit
+# -- Compiling module cv32e40p_cs_registers
+# -- Compiling module cv32e40p_if_stage
+# -- Compiling module cv32e40p_clock_gate
+# -- Compiling module cv32e40p_core
+# -- Compiling module cv32e40p_top
+# -- Compiling interface alu_if
+# -- Compiling interface mul_if
+# -- Compiling interface obi_data_if
+# -- Compiling interface regfile_if
+# -- Compiling interface rv32im_instr_if
+# -- Compiling interface debug_interupt_if
+# -- Compiling package riscv_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) ./tb/riscv_pkg.sv(6): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling module rv32im_top
+# -- Importing package riscv_pkg
+# 
+# Top level modules:
+# 	rv32im_top
+# End time: 03:17:49 on Oct 01,2026, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0, Suppressed Warnings: 480
+# vsim -voptargs="+acc" work.rv32im_top -uvmcontrol=all "+UVM_NO_RELNOTES" "+UVM_VERBOSITY=UVM_MEDIUM" -sv_seed random -l sim.log 
+# Start time: 03:17:49 on Oct 01,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.rv32im_instr_if(fast)
+# Loading work.alu_if(fast)
+# Loading work.mul_if(fast)
+# Loading work.regfile_if(fast)
+# Loading work.obi_data_if(fast)
+# Loading work.debug_interupt_if(fast)
+# Loading work.reset_if(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.riscv_pkg(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.rv32im_top(fast)
+# Loading work.rv32im_instr_if(fast__2)
+# Loading work.obi_data_if(fast__2)
+# Loading work.debug_interupt_if(fast__2)
+# Loading work.alu_if(fast__2)
+# Loading work.mul_if(fast__2)
+# Loading work.regfile_if(fast__2)
+# Loading work.cv32e40p_apu_core_pkg(fast)
+# Loading work.cv32e40p_top(fast)
+# Loading work.cv32e40p_pkg(fast)
+# Loading work.cv32e40p_core(fast)
+# Loading work.cv32e40p_sleep_unit(fast)
+# Loading work.cv32e40p_clock_gate(fast)
+# Loading work.cv32e40p_if_stage(fast)
+# Loading work.cv32e40p_prefetch_buffer(fast)
+# Loading work.cv32e40p_prefetch_controller(fast)
+# Loading work.cv32e40p_fifo(fast)
+# Loading work.cv32e40p_obi_interface(fast)
+# Loading work.cv32e40p_aligner(fast)
+# Loading work.cv32e40p_compressed_decoder(fast)
+# Loading work.cv32e40p_fpu_pkg(fast)
+# Loading work.cv32e40p_id_stage(fast)
+# Loading work.cv32e40p_register_file(fast)
+# Loading work.cv32e40p_decoder(fast)
+# Loading work.cv32e40p_controller(fast)
+# Loading work.cv32e40p_int_controller(fast)
+# Loading work.cv32e40p_ex_stage(fast)
+# Loading work.cv32e40p_alu(fast)
+# Loading work.cv32e40p_popcnt(fast)
+# Loading work.cv32e40p_ff_one(fast)
+# Loading work.cv32e40p_alu_div(fast)
+# Loading work.cv32e40p_mult(fast)
+# Loading work.cv32e40p_load_store_unit(fast)
+# Loading work.cv32e40p_obi_interface(fast__1)
+# Loading work.cv32e40p_cs_registers(fast)
+# Loading C:/questasim64_2021.1/uvm-1.1d\win64\uvm_dpi.dll
+# Sv_Seed = 840207609
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(all)
+# UVM_INFO @ 0: reporter [RNTST] Running test rv32im_base_test...
+# UVM_FATAL ./tb/./rv32im_test.sv(38) @ 0: uvm_test_top [uvm_test_top]  reset - Can't get the Reset Interface
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :    3
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    1
+# ** Report counts by id
+# [Questa UVM]     2
+# [RNTST]     1
+# [uvm_test_top]     1
+# ** Note: $finish    : C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh(292)
+#    Time: 0 ns  Iteration: 8  Region: /uvm_pkg::uvm_phase::m_run_phases
+# 1
+# Break in Function uvm_pkg/uvm_report_object::die at C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh line 292
+# **************************************************************************
+# * Questa UVM Transaction Recording Turned ON.                            *
+# * recording_detail has been set.                                         *
+# *  To turn off, set 'recording_detail' to off:                           *
+# * uvm_config_db#(int)            ::set(null, "", "recording_detail", 0); *
+# * uvm_config_db#(uvm_bitstream_t)::set(null, "", "recording_detail", 0); *
+# **************************************************************************
+# UVM_FATAL @ 0: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [NULLITM] attempting to start a null item from sequence 'uvm_test_top.env.instr_agent.instr_seqr.instr_seq'
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :    3
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    2
+# ** Report counts by id
+# [NULLITM]     1
+# [Questa UVM]     2
+# [RNTST]     1
+# [uvm_test_top]     1
+# ** Note: $finish    : C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh(292)
+#    Time: 0 ns  Iteration: 56  Region: /uvm_pkg::uvm_sequence_base::start
+# Break in Function uvm_pkg/uvm_report_object::die at C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh line 292
+do cv32e40p_top_do.do
+# End time: 03:19:43 on Oct 01,2026, Elapsed time: 0:01:54
+# Errors: 0, Warnings: 0
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+# Start time: 03:19:43 on Oct 01,2026
+# vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 13314 
+# -- Compiling package cv32e40p_apu_core_pkg
+# -- Compiling package cv32e40p_fpu_pkg
+# -- Compiling package cv32e40p_pkg
+# -- Compiling module cv32e40p_obi_interface
+# -- Compiling module cv32e40p_popcnt
+# -- Compiling module cv32e40p_ff_one
+# -- Compiling module cv32e40p_alu_div
+# -- Compiling module cv32e40p_prefetch_controller
+# -- Importing package cv32e40p_pkg
+# -- Compiling module cv32e40p_fifo
+# -- Compiling module cv32e40p_apu_disp
+# -- Compiling module cv32e40p_alu
+# -- Compiling module cv32e40p_mult
+# -- Compiling module cv32e40p_controller
+# -- Compiling module cv32e40p_int_controller
+# -- Compiling module cv32e40p_hwloop_regs
+# -- Compiling module cv32e40p_register_file
+# -- Compiling module cv32e40p_decoder
+# -- Importing package cv32e40p_apu_core_pkg
+# -- Importing package cv32e40p_fpu_pkg
+# -- Compiling module cv32e40p_prefetch_buffer
+# -- Compiling module cv32e40p_compressed_decoder
+# -- Compiling module cv32e40p_aligner
+# -- Compiling module cv32e40p_sleep_unit
+# -- Compiling module cv32e40p_ex_stage
+# -- Compiling module cv32e40p_id_stage
+# -- Compiling module cv32e40p_load_store_unit
+# -- Compiling module cv32e40p_cs_registers
+# -- Compiling module cv32e40p_if_stage
+# -- Compiling module cv32e40p_clock_gate
+# -- Compiling module cv32e40p_core
+# -- Compiling module cv32e40p_top
+# -- Compiling interface alu_if
+# -- Compiling interface mul_if
+# -- Compiling interface obi_data_if
+# -- Compiling interface regfile_if
+# -- Compiling interface rv32im_instr_if
+# -- Compiling interface debug_interupt_if
+# -- Compiling package riscv_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) ./tb/riscv_pkg.sv(6): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling module rv32im_top
+# -- Importing package riscv_pkg
+# 
+# Top level modules:
+# 	rv32im_top
+# End time: 03:19:44 on Oct 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0, Suppressed Warnings: 480
+# vsim -voptargs="+acc" work.rv32im_top -uvmcontrol=all "+UVM_NO_RELNOTES" "+UVM_VERBOSITY=UVM_MEDIUM" -sv_seed random -l sim.log 
+# Start time: 03:19:44 on Oct 01,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.rv32im_instr_if(fast)
+# Loading work.alu_if(fast)
+# Loading work.mul_if(fast)
+# Loading work.regfile_if(fast)
+# Loading work.obi_data_if(fast)
+# Loading work.debug_interupt_if(fast)
+# Loading work.reset_if(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.riscv_pkg(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.rv32im_top(fast)
+# Loading work.rv32im_instr_if(fast__2)
+# Loading work.obi_data_if(fast__2)
+# Loading work.debug_interupt_if(fast__2)
+# Loading work.alu_if(fast__2)
+# Loading work.mul_if(fast__2)
+# Loading work.regfile_if(fast__2)
+# Loading work.cv32e40p_apu_core_pkg(fast)
+# Loading work.cv32e40p_top(fast)
+# Loading work.cv32e40p_pkg(fast)
+# Loading work.cv32e40p_core(fast)
+# Loading work.cv32e40p_sleep_unit(fast)
+# Loading work.cv32e40p_clock_gate(fast)
+# Loading work.cv32e40p_if_stage(fast)
+# Loading work.cv32e40p_prefetch_buffer(fast)
+# Loading work.cv32e40p_prefetch_controller(fast)
+# Loading work.cv32e40p_fifo(fast)
+# Loading work.cv32e40p_obi_interface(fast)
+# Loading work.cv32e40p_aligner(fast)
+# Loading work.cv32e40p_compressed_decoder(fast)
+# Loading work.cv32e40p_fpu_pkg(fast)
+# Loading work.cv32e40p_id_stage(fast)
+# Loading work.cv32e40p_register_file(fast)
+# Loading work.cv32e40p_decoder(fast)
+# Loading work.cv32e40p_controller(fast)
+# Loading work.cv32e40p_int_controller(fast)
+# Loading work.cv32e40p_ex_stage(fast)
+# Loading work.cv32e40p_alu(fast)
+# Loading work.cv32e40p_popcnt(fast)
+# Loading work.cv32e40p_ff_one(fast)
+# Loading work.cv32e40p_alu_div(fast)
+# Loading work.cv32e40p_mult(fast)
+# Loading work.cv32e40p_load_store_unit(fast)
+# Loading work.cv32e40p_obi_interface(fast__1)
+# Loading work.cv32e40p_cs_registers(fast)
+# Loading C:/questasim64_2021.1/uvm-1.1d\win64\uvm_dpi.dll
+# Sv_Seed = 1171581185
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(all)
+# UVM_INFO @ 0: reporter [RNTST] Running test rv32im_base_test...
+# UVM_FATAL ./tb/./rv32im_test.sv(38) @ 0: uvm_test_top [uvm_test_top]  reset - Can't get the Reset Interface
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :    3
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    1
+# ** Report counts by id
+# [Questa UVM]     2
+# [RNTST]     1
+# [uvm_test_top]     1
+# ** Note: $finish    : C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh(292)
+#    Time: 0 ns  Iteration: 8  Region: /uvm_pkg::uvm_phase::m_run_phases
+# 1
+# Break in Function uvm_pkg/uvm_report_object::die at C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh line 292
+# **************************************************************************
+# * Questa UVM Transaction Recording Turned ON.                            *
+# * recording_detail has been set.                                         *
+# *  To turn off, set 'recording_detail' to off:                           *
+# * uvm_config_db#(int)            ::set(null, "", "recording_detail", 0); *
+# * uvm_config_db#(uvm_bitstream_t)::set(null, "", "recording_detail", 0); *
+# **************************************************************************
+# UVM_FATAL @ 0: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [NULLITM] attempting to start a null item from sequence 'uvm_test_top.env.instr_agent.instr_seqr.instr_seq'
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :    3
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    2
+# ** Report counts by id
+# [NULLITM]     1
+# [Questa UVM]     2
+# [RNTST]     1
+# [uvm_test_top]     1
+# ** Note: $finish    : C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh(292)
+#    Time: 0 ns  Iteration: 56  Region: /uvm_pkg::uvm_sequence_base::start
+# Break in Function uvm_pkg/uvm_report_object::die at C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh line 292
+# A time value could not be extracted from the current line
+# A time value could not be extracted from the current line
+do cv32e40p_top_do.do
+# End time: 03:23:07 on Oct 01,2026, Elapsed time: 0:03:23
+# Errors: 0, Warnings: 0
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+# Start time: 03:23:07 on Oct 01,2026
+# vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 13314 
+# -- Compiling package cv32e40p_apu_core_pkg
+# -- Compiling package cv32e40p_fpu_pkg
+# -- Compiling package cv32e40p_pkg
+# -- Compiling module cv32e40p_obi_interface
+# -- Compiling module cv32e40p_popcnt
+# -- Compiling module cv32e40p_ff_one
+# -- Compiling module cv32e40p_alu_div
+# -- Compiling module cv32e40p_prefetch_controller
+# -- Importing package cv32e40p_pkg
+# -- Compiling module cv32e40p_fifo
+# -- Compiling module cv32e40p_apu_disp
+# -- Compiling module cv32e40p_alu
+# -- Compiling module cv32e40p_mult
+# -- Compiling module cv32e40p_controller
+# -- Compiling module cv32e40p_int_controller
+# -- Compiling module cv32e40p_hwloop_regs
+# -- Compiling module cv32e40p_register_file
+# -- Compiling module cv32e40p_decoder
+# -- Importing package cv32e40p_apu_core_pkg
+# -- Importing package cv32e40p_fpu_pkg
+# -- Compiling module cv32e40p_prefetch_buffer
+# -- Compiling module cv32e40p_compressed_decoder
+# -- Compiling module cv32e40p_aligner
+# -- Compiling module cv32e40p_sleep_unit
+# -- Compiling module cv32e40p_ex_stage
+# -- Compiling module cv32e40p_id_stage
+# -- Compiling module cv32e40p_load_store_unit
+# -- Compiling module cv32e40p_cs_registers
+# -- Compiling module cv32e40p_if_stage
+# -- Compiling module cv32e40p_clock_gate
+# -- Compiling module cv32e40p_core
+# -- Compiling module cv32e40p_top
+# -- Compiling interface alu_if
+# -- Compiling interface mul_if
+# -- Compiling interface obi_data_if
+# -- Compiling interface regfile_if
+# -- Compiling interface rv32im_instr_if
+# -- Compiling interface debug_interupt_if
+# -- Compiling package riscv_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) ./tb/riscv_pkg.sv(6): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling module rv32im_top
+# -- Importing package riscv_pkg
+# 
+# Top level modules:
+# 	rv32im_top
+# End time: 03:23:08 on Oct 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0, Suppressed Warnings: 480
+# vsim -voptargs="+acc" work.rv32im_top -uvmcontrol=all "+UVM_NO_RELNOTES" "+UVM_VERBOSITY=UVM_MEDIUM" -sv_seed random -l sim.log 
+# Start time: 03:23:08 on Oct 01,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.rv32im_instr_if(fast)
+# Loading work.alu_if(fast)
+# Loading work.mul_if(fast)
+# Loading work.regfile_if(fast)
+# Loading work.obi_data_if(fast)
+# Loading work.debug_interupt_if(fast)
+# Loading work.reset_if(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.riscv_pkg(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.rv32im_top(fast)
+# Loading work.rv32im_instr_if(fast__2)
+# Loading work.obi_data_if(fast__2)
+# Loading work.debug_interupt_if(fast__2)
+# Loading work.alu_if(fast__2)
+# Loading work.mul_if(fast__2)
+# Loading work.regfile_if(fast__2)
+# Loading work.cv32e40p_apu_core_pkg(fast)
+# Loading work.cv32e40p_top(fast)
+# Loading work.cv32e40p_pkg(fast)
+# Loading work.cv32e40p_core(fast)
+# Loading work.cv32e40p_sleep_unit(fast)
+# Loading work.cv32e40p_clock_gate(fast)
+# Loading work.cv32e40p_if_stage(fast)
+# Loading work.cv32e40p_prefetch_buffer(fast)
+# Loading work.cv32e40p_prefetch_controller(fast)
+# Loading work.cv32e40p_fifo(fast)
+# Loading work.cv32e40p_obi_interface(fast)
+# Loading work.cv32e40p_aligner(fast)
+# Loading work.cv32e40p_compressed_decoder(fast)
+# Loading work.cv32e40p_fpu_pkg(fast)
+# Loading work.cv32e40p_id_stage(fast)
+# Loading work.cv32e40p_register_file(fast)
+# Loading work.cv32e40p_decoder(fast)
+# Loading work.cv32e40p_controller(fast)
+# Loading work.cv32e40p_int_controller(fast)
+# Loading work.cv32e40p_ex_stage(fast)
+# Loading work.cv32e40p_alu(fast)
+# Loading work.cv32e40p_popcnt(fast)
+# Loading work.cv32e40p_ff_one(fast)
+# Loading work.cv32e40p_alu_div(fast)
+# Loading work.cv32e40p_mult(fast)
+# Loading work.cv32e40p_load_store_unit(fast)
+# Loading work.cv32e40p_obi_interface(fast__1)
+# Loading work.cv32e40p_cs_registers(fast)
+# Loading C:/questasim64_2021.1/uvm-1.1d\win64\uvm_dpi.dll
+# Sv_Seed = 1171572473
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(all)
+# UVM_INFO @ 0: reporter [RNTST] Running test rv32im_base_test...
+# UVM_FATAL ./tb/./rv32im_test.sv(38) @ 0: uvm_test_top [uvm_test_top]  reset - Can't get the Reset Interface
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :    3
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    1
+# ** Report counts by id
+# [Questa UVM]     2
+# [RNTST]     1
+# [uvm_test_top]     1
+# ** Note: $finish    : C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh(292)
+#    Time: 0 ns  Iteration: 8  Region: /uvm_pkg::uvm_phase::m_run_phases
+# 1
+# Break in Function uvm_pkg/uvm_report_object::die at C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh line 292
+# **************************************************************************
+# * Questa UVM Transaction Recording Turned ON.                            *
+# * recording_detail has been set.                                         *
+# *  To turn off, set 'recording_detail' to off:                           *
+# * uvm_config_db#(int)            ::set(null, "", "recording_detail", 0); *
+# * uvm_config_db#(uvm_bitstream_t)::set(null, "", "recording_detail", 0); *
+# **************************************************************************
+# ** Warning: (vsim-8315) No condition is true in the unique/priority if/case statement.
+#    Time: 0 ns  Iteration: 161  Process: /rv32im_top/u_core/core_i/load_store_unit_i/#implicit#unique__419 File: ./rtl/cv32e40p_load_store_unit.sv Line: 419
+# Break key hit
+# Break in Function questa_uvm_pkg/questa_uvm_recorder::is_scopename_legal_c_ident at C:/questasim64_2021.1/win64/../verilog_src/questa_uvm_pkg-1.2/src/questa-recorder.svh line 378
+do cv32e40p_top_do.do
+# End time: 03:26:07 on Oct 01,2026, Elapsed time: 0:02:59
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+# Start time: 03:26:07 on Oct 01,2026
+# vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 13314 
+# -- Compiling package cv32e40p_apu_core_pkg
+# -- Compiling package cv32e40p_fpu_pkg
+# -- Compiling package cv32e40p_pkg
+# -- Compiling module cv32e40p_obi_interface
+# -- Compiling module cv32e40p_popcnt
+# -- Compiling module cv32e40p_ff_one
+# -- Compiling module cv32e40p_alu_div
+# -- Compiling module cv32e40p_prefetch_controller
+# -- Importing package cv32e40p_pkg
+# -- Compiling module cv32e40p_fifo
+# -- Compiling module cv32e40p_apu_disp
+# -- Compiling module cv32e40p_alu
+# -- Compiling module cv32e40p_mult
+# -- Compiling module cv32e40p_controller
+# -- Compiling module cv32e40p_int_controller
+# -- Compiling module cv32e40p_hwloop_regs
+# -- Compiling module cv32e40p_register_file
+# -- Compiling module cv32e40p_decoder
+# -- Importing package cv32e40p_apu_core_pkg
+# -- Importing package cv32e40p_fpu_pkg
+# -- Compiling module cv32e40p_prefetch_buffer
+# -- Compiling module cv32e40p_compressed_decoder
+# -- Compiling module cv32e40p_aligner
+# -- Compiling module cv32e40p_sleep_unit
+# -- Compiling module cv32e40p_ex_stage
+# -- Compiling module cv32e40p_id_stage
+# -- Compiling module cv32e40p_load_store_unit
+# -- Compiling module cv32e40p_cs_registers
+# -- Compiling module cv32e40p_if_stage
+# -- Compiling module cv32e40p_clock_gate
+# -- Compiling module cv32e40p_core
+# -- Compiling module cv32e40p_top
+# -- Compiling interface alu_if
+# -- Compiling interface mul_if
+# -- Compiling interface obi_data_if
+# -- Compiling interface regfile_if
+# -- Compiling interface rv32im_instr_if
+# -- Compiling interface debug_interupt_if
+# -- Compiling package riscv_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) ./tb/riscv_pkg.sv(6): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling module rv32im_top
+# -- Importing package riscv_pkg
+# 
+# Top level modules:
+# 	rv32im_top
+# End time: 03:26:08 on Oct 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0, Suppressed Warnings: 480
+# vsim -voptargs="+acc" work.rv32im_top -uvmcontrol=all "+UVM_NO_RELNOTES" "+UVM_VERBOSITY=UVM_MEDIUM" -sv_seed random -l sim.log 
+# Start time: 03:26:08 on Oct 01,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.rv32im_instr_if(fast)
+# Loading work.alu_if(fast)
+# Loading work.mul_if(fast)
+# Loading work.regfile_if(fast)
+# Loading work.obi_data_if(fast)
+# Loading work.debug_interupt_if(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.riscv_pkg(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.rv32im_top(fast)
+# Loading work.rv32im_instr_if(fast__2)
+# Loading work.obi_data_if(fast__2)
+# Loading work.debug_interupt_if(fast__2)
+# Loading work.alu_if(fast__2)
+# Loading work.mul_if(fast__2)
+# Loading work.regfile_if(fast__2)
+# Loading work.cv32e40p_apu_core_pkg(fast)
+# Loading work.cv32e40p_top(fast)
+# Loading work.cv32e40p_pkg(fast)
+# Loading work.cv32e40p_core(fast)
+# Loading work.cv32e40p_sleep_unit(fast)
+# Loading work.cv32e40p_clock_gate(fast)
+# Loading work.cv32e40p_if_stage(fast)
+# Loading work.cv32e40p_prefetch_buffer(fast)
+# Loading work.cv32e40p_prefetch_controller(fast)
+# Loading work.cv32e40p_fifo(fast)
+# Loading work.cv32e40p_obi_interface(fast)
+# Loading work.cv32e40p_aligner(fast)
+# Loading work.cv32e40p_compressed_decoder(fast)
+# Loading work.cv32e40p_fpu_pkg(fast)
+# Loading work.cv32e40p_id_stage(fast)
+# Loading work.cv32e40p_register_file(fast)
+# Loading work.cv32e40p_decoder(fast)
+# Loading work.cv32e40p_controller(fast)
+# Loading work.cv32e40p_int_controller(fast)
+# Loading work.cv32e40p_ex_stage(fast)
+# Loading work.cv32e40p_alu(fast)
+# Loading work.cv32e40p_popcnt(fast)
+# Loading work.cv32e40p_ff_one(fast)
+# Loading work.cv32e40p_alu_div(fast)
+# Loading work.cv32e40p_mult(fast)
+# Loading work.cv32e40p_load_store_unit(fast)
+# Loading work.cv32e40p_obi_interface(fast__1)
+# Loading work.cv32e40p_cs_registers(fast)
+# Loading C:/questasim64_2021.1/uvm-1.1d\win64\uvm_dpi.dll
+# Sv_Seed = 1144331217
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(all)
+# UVM_INFO @ 0: reporter [RNTST] Running test rv32im_base_test...
+# **************************************************************************
+# * Questa UVM Transaction Recording Turned ON.                            *
+# * recording_detail has been set.                                         *
+# *  To turn off, set 'recording_detail' to off:                           *
+# * uvm_config_db#(int)            ::set(null, "", "recording_detail", 0); *
+# * uvm_config_db#(uvm_bitstream_t)::set(null, "", "recording_detail", 0); *
+# **************************************************************************
+# ** Warning: (vsim-8315) No condition is true in the unique/priority if/case statement.
+#    Time: 0 ns  Iteration: 161  Process: /rv32im_top/u_core/core_i/load_store_unit_i/#implicit#unique__419 File: ./rtl/cv32e40p_load_store_unit.sv Line: 419
+# Break key hit
+# Break in Function questa_uvm_pkg/questa_uvm_recorder::is_scopename_legal_c_ident at C:/questasim64_2021.1/win64/../verilog_src/questa_uvm_pkg-1.2/src/questa-recorder.svh line 378
+do cv32e40p_top_do.do
+# End time: 03:40:04 on Oct 01,2026, Elapsed time: 0:13:56
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+# Start time: 03:40:04 on Oct 01,2026
+# vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 13314 
+# -- Compiling package cv32e40p_apu_core_pkg
+# -- Compiling package cv32e40p_fpu_pkg
+# -- Compiling package cv32e40p_pkg
+# -- Compiling module cv32e40p_obi_interface
+# -- Compiling module cv32e40p_popcnt
+# -- Compiling module cv32e40p_ff_one
+# -- Compiling module cv32e40p_alu_div
+# -- Compiling module cv32e40p_prefetch_controller
+# -- Importing package cv32e40p_pkg
+# -- Compiling module cv32e40p_fifo
+# -- Compiling module cv32e40p_apu_disp
+# -- Compiling module cv32e40p_alu
+# -- Compiling module cv32e40p_mult
+# -- Compiling module cv32e40p_controller
+# -- Compiling module cv32e40p_int_controller
+# -- Compiling module cv32e40p_hwloop_regs
+# -- Compiling module cv32e40p_register_file
+# -- Compiling module cv32e40p_decoder
+# -- Importing package cv32e40p_apu_core_pkg
+# -- Importing package cv32e40p_fpu_pkg
+# -- Compiling module cv32e40p_prefetch_buffer
+# -- Compiling module cv32e40p_compressed_decoder
+# -- Compiling module cv32e40p_aligner
+# -- Compiling module cv32e40p_sleep_unit
+# -- Compiling module cv32e40p_ex_stage
+# -- Compiling module cv32e40p_id_stage
+# -- Compiling module cv32e40p_load_store_unit
+# -- Compiling module cv32e40p_cs_registers
+# -- Compiling module cv32e40p_if_stage
+# -- Compiling module cv32e40p_clock_gate
+# -- Compiling module cv32e40p_core
+# -- Compiling module cv32e40p_top
+# -- Compiling interface alu_if
+# -- Compiling interface mul_if
+# -- Compiling interface obi_data_if
+# -- Compiling interface regfile_if
+# -- Compiling interface rv32im_instr_if
+# -- Compiling interface debug_interupt_if
+# -- Compiling package riscv_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) ./tb/riscv_pkg.sv(6): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling module rv32im_top
+# -- Importing package riscv_pkg
+# 
+# Top level modules:
+# 	rv32im_top
+# End time: 03:40:06 on Oct 01,2026, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0, Suppressed Warnings: 480
+# vsim -voptargs="+acc" work.rv32im_top -uvmcontrol=all "+UVM_NO_RELNOTES" "+UVM_VERBOSITY=UVM_MEDIUM" -sv_seed random -l sim.log 
+# Start time: 03:40:06 on Oct 01,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.rv32im_instr_if(fast)
+# Loading work.alu_if(fast)
+# Loading work.mul_if(fast)
+# Loading work.regfile_if(fast)
+# Loading work.obi_data_if(fast)
+# Loading work.debug_interupt_if(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.riscv_pkg(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.rv32im_top(fast)
+# Loading work.rv32im_instr_if(fast__2)
+# Loading work.obi_data_if(fast__2)
+# Loading work.debug_interupt_if(fast__2)
+# Loading work.alu_if(fast__2)
+# Loading work.mul_if(fast__2)
+# Loading work.regfile_if(fast__2)
+# Loading work.cv32e40p_apu_core_pkg(fast)
+# Loading work.cv32e40p_top(fast)
+# Loading work.cv32e40p_pkg(fast)
+# Loading work.cv32e40p_core(fast)
+# Loading work.cv32e40p_sleep_unit(fast)
+# Loading work.cv32e40p_clock_gate(fast)
+# Loading work.cv32e40p_if_stage(fast)
+# Loading work.cv32e40p_prefetch_buffer(fast)
+# Loading work.cv32e40p_prefetch_controller(fast)
+# Loading work.cv32e40p_fifo(fast)
+# Loading work.cv32e40p_obi_interface(fast)
+# Loading work.cv32e40p_aligner(fast)
+# Loading work.cv32e40p_compressed_decoder(fast)
+# Loading work.cv32e40p_fpu_pkg(fast)
+# Loading work.cv32e40p_id_stage(fast)
+# Loading work.cv32e40p_register_file(fast)
+# Loading work.cv32e40p_decoder(fast)
+# Loading work.cv32e40p_controller(fast)
+# Loading work.cv32e40p_int_controller(fast)
+# Loading work.cv32e40p_ex_stage(fast)
+# Loading work.cv32e40p_alu(fast)
+# Loading work.cv32e40p_popcnt(fast)
+# Loading work.cv32e40p_ff_one(fast)
+# Loading work.cv32e40p_alu_div(fast)
+# Loading work.cv32e40p_mult(fast)
+# Loading work.cv32e40p_load_store_unit(fast)
+# Loading work.cv32e40p_obi_interface(fast__1)
+# Loading work.cv32e40p_cs_registers(fast)
+# Loading C:/questasim64_2021.1/uvm-1.1d\win64\uvm_dpi.dll
+# Sv_Seed = 1123361633
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(all)
+# UVM_INFO @ 0: reporter [RNTST] Running test rv32im_base_test...
+# **************************************************************************
+# * Questa UVM Transaction Recording Turned ON.                            *
+# * recording_detail has been set.                                         *
+# *  To turn off, set 'recording_detail' to off:                           *
+# * uvm_config_db#(int)            ::set(null, "", "recording_detail", 0); *
+# * uvm_config_db#(uvm_bitstream_t)::set(null, "", "recording_detail", 0); *
+# **************************************************************************
+# ** Warning: (vsim-8315) No condition is true in the unique/priority if/case statement.
+#    Time: 0 ns  Iteration: 161  Process: /rv32im_top/u_core/core_i/load_store_unit_i/#implicit#unique__419 File: ./rtl/cv32e40p_load_store_unit.sv Line: 419
+# Break key hit
+# Break in Function questa_uvm_pkg/questa_uvm_recorder::is_scopename_legal_c_ident at C:/questasim64_2021.1/win64/../verilog_src/questa_uvm_pkg-1.2/src/questa-recorder.svh line 378
+do cv32e40p_top_do.do
+# End time: 03:46:02 on Oct 01,2026, Elapsed time: 0:05:56
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+# Start time: 03:46:02 on Oct 01,2026
+# vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 13314 
+# -- Compiling package cv32e40p_apu_core_pkg
+# -- Compiling package cv32e40p_fpu_pkg
+# -- Compiling package cv32e40p_pkg
+# -- Compiling module cv32e40p_obi_interface
+# -- Compiling module cv32e40p_popcnt
+# -- Compiling module cv32e40p_ff_one
+# -- Compiling module cv32e40p_alu_div
+# -- Compiling module cv32e40p_prefetch_controller
+# -- Importing package cv32e40p_pkg
+# -- Compiling module cv32e40p_fifo
+# -- Compiling module cv32e40p_apu_disp
+# -- Compiling module cv32e40p_alu
+# -- Compiling module cv32e40p_mult
+# -- Compiling module cv32e40p_controller
+# -- Compiling module cv32e40p_int_controller
+# -- Compiling module cv32e40p_hwloop_regs
+# -- Compiling module cv32e40p_register_file
+# -- Compiling module cv32e40p_decoder
+# -- Importing package cv32e40p_apu_core_pkg
+# -- Importing package cv32e40p_fpu_pkg
+# -- Compiling module cv32e40p_prefetch_buffer
+# -- Compiling module cv32e40p_compressed_decoder
+# -- Compiling module cv32e40p_aligner
+# -- Compiling module cv32e40p_sleep_unit
+# -- Compiling module cv32e40p_ex_stage
+# -- Compiling module cv32e40p_id_stage
+# -- Compiling module cv32e40p_load_store_unit
+# -- Compiling module cv32e40p_cs_registers
+# -- Compiling module cv32e40p_if_stage
+# -- Compiling module cv32e40p_clock_gate
+# -- Compiling module cv32e40p_core
+# -- Compiling module cv32e40p_top
+# -- Compiling interface alu_if
+# -- Compiling interface mul_if
+# -- Compiling interface obi_data_if
+# -- Compiling interface regfile_if
+# -- Compiling interface rv32im_instr_if
+# -- Compiling interface debug_interupt_if
+# -- Compiling package riscv_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) ./tb/riscv_pkg.sv(6): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling module rv32im_top
+# -- Importing package riscv_pkg
+# 
+# Top level modules:
+# 	rv32im_top
+# End time: 03:46:05 on Oct 01,2026, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 0, Suppressed Warnings: 480
+# vsim -voptargs="+acc" work.rv32im_top -uvmcontrol=all "+UVM_NO_RELNOTES" "+UVM_VERBOSITY=UVM_MEDIUM" -sv_seed random -l sim.log 
+# Start time: 03:46:05 on Oct 01,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.rv32im_instr_if(fast)
+# Loading work.alu_if(fast)
+# Loading work.mul_if(fast)
+# Loading work.regfile_if(fast)
+# Loading work.obi_data_if(fast)
+# Loading work.debug_interupt_if(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.riscv_pkg(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.rv32im_top(fast)
+# Loading work.rv32im_instr_if(fast__2)
+# Loading work.obi_data_if(fast__2)
+# Loading work.debug_interupt_if(fast__2)
+# Loading work.alu_if(fast__2)
+# Loading work.mul_if(fast__2)
+# Loading work.regfile_if(fast__2)
+# Loading work.cv32e40p_apu_core_pkg(fast)
+# Loading work.cv32e40p_top(fast)
+# Loading work.cv32e40p_pkg(fast)
+# Loading work.cv32e40p_core(fast)
+# Loading work.cv32e40p_sleep_unit(fast)
+# Loading work.cv32e40p_clock_gate(fast)
+# Loading work.cv32e40p_if_stage(fast)
+# Loading work.cv32e40p_prefetch_buffer(fast)
+# Loading work.cv32e40p_prefetch_controller(fast)
+# Loading work.cv32e40p_fifo(fast)
+# Loading work.cv32e40p_obi_interface(fast)
+# Loading work.cv32e40p_aligner(fast)
+# Loading work.cv32e40p_compressed_decoder(fast)
+# Loading work.cv32e40p_fpu_pkg(fast)
+# Loading work.cv32e40p_id_stage(fast)
+# Loading work.cv32e40p_register_file(fast)
+# Loading work.cv32e40p_decoder(fast)
+# Loading work.cv32e40p_controller(fast)
+# Loading work.cv32e40p_int_controller(fast)
+# Loading work.cv32e40p_ex_stage(fast)
+# Loading work.cv32e40p_alu(fast)
+# Loading work.cv32e40p_popcnt(fast)
+# Loading work.cv32e40p_ff_one(fast)
+# Loading work.cv32e40p_alu_div(fast)
+# Loading work.cv32e40p_mult(fast)
+# Loading work.cv32e40p_load_store_unit(fast)
+# Loading work.cv32e40p_obi_interface(fast__1)
+# Loading work.cv32e40p_cs_registers(fast)
+# Loading C:/questasim64_2021.1/uvm-1.1d\win64\uvm_dpi.dll
+# Sv_Seed = 1758831761
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(all)
+# UVM_INFO @ 0: reporter [RNTST] Running test rv32im_base_test...
+# **************************************************************************
+# * Questa UVM Transaction Recording Turned ON.                            *
+# * recording_detail has been set.                                         *
+# *  To turn off, set 'recording_detail' to off:                           *
+# * uvm_config_db#(int)            ::set(null, "", "recording_detail", 0); *
+# * uvm_config_db#(uvm_bitstream_t)::set(null, "", "recording_detail", 0); *
+# **************************************************************************
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(16) @ 0: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Asserting System Reset (rst_n = 0)...
+# ** Warning: (vsim-8315) No condition is true in the unique/priority if/case statement.
+#    Time: 0 ns  Iteration: 161  Process: /rv32im_top/u_core/core_i/load_store_unit_i/#implicit#unique__419 File: ./rtl/cv32e40p_load_store_unit.sv Line: 419
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(25) @ 45: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] eleasing System Reset (rst_n = 1)...
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 85: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(219) @ 85: uvm_test_top.env.sb [riscv_scoreboard] 
+# 
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(220) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ╔══════════════════════════════════════════════╗
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(221) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║      RISCV32IM SYSTEM SCOREBOARD RESULTS     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(222) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ╠══════════════════════════════════════════════╣
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(223) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  ALU : PASS=   0  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(224) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  MUL : PASS=   0  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(225) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  RF  : PASS=   0  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(226) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ╠════════════════════════════════════════════╣
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(227) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  TOTAL CHECKS :      0                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(228) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  PASSED       :      0                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(229) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  FAILED       :      0                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(230) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  Pass Rate    :   0.00%                    ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(231) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ╚══════════════════════════════════════════════╝
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :   19
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+# ** Report counts by id
+# [Questa UVM]     2
+# [RNTST]     1
+# [TEST_DONE]     1
+# [instr_seq]     2
+# [riscv_scoreboard]    13
+# ** Note: $finish    : C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 85 ns  Iteration: 73  Instance: /rv32im_top
+# Break in Task uvm_pkg/uvm_root::run_test at C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh line 430
+add wave -position insertpoint sim:/rv32im_top/instr_if/*
+do cv32e40p_top_do.do
+# End time: 04:00:05 on Oct 01,2026, Elapsed time: 0:14:00
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+# Start time: 04:00:05 on Oct 01,2026
+# vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 13314 
+# -- Compiling package cv32e40p_apu_core_pkg
+# -- Compiling package cv32e40p_fpu_pkg
+# -- Compiling package cv32e40p_pkg
+# -- Compiling module cv32e40p_obi_interface
+# -- Compiling module cv32e40p_popcnt
+# -- Compiling module cv32e40p_ff_one
+# -- Compiling module cv32e40p_alu_div
+# -- Compiling module cv32e40p_prefetch_controller
+# -- Importing package cv32e40p_pkg
+# -- Compiling module cv32e40p_fifo
+# -- Compiling module cv32e40p_apu_disp
+# -- Compiling module cv32e40p_alu
+# -- Compiling module cv32e40p_mult
+# -- Compiling module cv32e40p_controller
+# -- Compiling module cv32e40p_int_controller
+# -- Compiling module cv32e40p_hwloop_regs
+# -- Compiling module cv32e40p_register_file
+# -- Compiling module cv32e40p_decoder
+# -- Importing package cv32e40p_apu_core_pkg
+# -- Importing package cv32e40p_fpu_pkg
+# -- Compiling module cv32e40p_prefetch_buffer
+# -- Compiling module cv32e40p_compressed_decoder
+# -- Compiling module cv32e40p_aligner
+# -- Compiling module cv32e40p_sleep_unit
+# -- Compiling module cv32e40p_ex_stage
+# -- Compiling module cv32e40p_id_stage
+# -- Compiling module cv32e40p_load_store_unit
+# -- Compiling module cv32e40p_cs_registers
+# -- Compiling module cv32e40p_if_stage
+# -- Compiling module cv32e40p_clock_gate
+# -- Compiling module cv32e40p_core
+# -- Compiling module cv32e40p_top
+# -- Compiling interface alu_if
+# -- Compiling interface mul_if
+# -- Compiling interface obi_data_if
+# -- Compiling interface regfile_if
+# -- Compiling interface rv32im_instr_if
+# -- Compiling interface debug_interupt_if
+# -- Compiling package riscv_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) ./tb/riscv_pkg.sv(6): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling module rv32im_top
+# -- Importing package riscv_pkg
+# 
+# Top level modules:
+# 	rv32im_top
+# End time: 04:00:07 on Oct 01,2026, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0, Suppressed Warnings: 480
+# vsim -voptargs="+acc" work.rv32im_top -uvmcontrol=all "+UVM_NO_RELNOTES" "+UVM_VERBOSITY=UVM_MEDIUM" -sv_seed random -l sim.log 
+# Start time: 04:00:07 on Oct 01,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.rv32im_instr_if(fast)
+# Loading work.alu_if(fast)
+# Loading work.mul_if(fast)
+# Loading work.regfile_if(fast)
+# Loading work.obi_data_if(fast)
+# Loading work.debug_interupt_if(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.riscv_pkg(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.rv32im_top(fast)
+# Loading work.rv32im_instr_if(fast__2)
+# Loading work.obi_data_if(fast__2)
+# Loading work.debug_interupt_if(fast__2)
+# Loading work.alu_if(fast__2)
+# Loading work.mul_if(fast__2)
+# Loading work.regfile_if(fast__2)
+# Loading work.cv32e40p_apu_core_pkg(fast)
+# Loading work.cv32e40p_top(fast)
+# Loading work.cv32e40p_pkg(fast)
+# Loading work.cv32e40p_core(fast)
+# Loading work.cv32e40p_sleep_unit(fast)
+# Loading work.cv32e40p_clock_gate(fast)
+# Loading work.cv32e40p_if_stage(fast)
+# Loading work.cv32e40p_prefetch_buffer(fast)
+# Loading work.cv32e40p_prefetch_controller(fast)
+# Loading work.cv32e40p_fifo(fast)
+# Loading work.cv32e40p_obi_interface(fast)
+# Loading work.cv32e40p_aligner(fast)
+# Loading work.cv32e40p_compressed_decoder(fast)
+# Loading work.cv32e40p_fpu_pkg(fast)
+# Loading work.cv32e40p_id_stage(fast)
+# Loading work.cv32e40p_register_file(fast)
+# Loading work.cv32e40p_decoder(fast)
+# Loading work.cv32e40p_controller(fast)
+# Loading work.cv32e40p_int_controller(fast)
+# Loading work.cv32e40p_ex_stage(fast)
+# Loading work.cv32e40p_alu(fast)
+# Loading work.cv32e40p_popcnt(fast)
+# Loading work.cv32e40p_ff_one(fast)
+# Loading work.cv32e40p_alu_div(fast)
+# Loading work.cv32e40p_mult(fast)
+# Loading work.cv32e40p_load_store_unit(fast)
+# Loading work.cv32e40p_obi_interface(fast__1)
+# Loading work.cv32e40p_cs_registers(fast)
+# Loading C:/questasim64_2021.1/uvm-1.1d\win64\uvm_dpi.dll
+# Sv_Seed = 219557721
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(all)
+# UVM_INFO @ 0: reporter [RNTST] Running test rv32im_base_test...
+# **************************************************************************
+# * Questa UVM Transaction Recording Turned ON.                            *
+# * recording_detail has been set.                                         *
+# *  To turn off, set 'recording_detail' to off:                           *
+# * uvm_config_db#(int)            ::set(null, "", "recording_detail", 0); *
+# * uvm_config_db#(uvm_bitstream_t)::set(null, "", "recording_detail", 0); *
+# **************************************************************************
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(16) @ 0: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Asserting System Reset (rst_n = 0)...
+# ** Warning: (vsim-8315) No condition is true in the unique/priority if/case statement.
+#    Time: 0 ns  Iteration: 161  Process: /rv32im_top/u_core/core_i/load_store_unit_i/#implicit#unique__419 File: ./rtl/cv32e40p_load_store_unit.sv Line: 419
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(25) @ 45: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Releasing System Reset (rst_n = 1)...
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 85: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(219) @ 85: uvm_test_top.env.sb [riscv_scoreboard] 
+# 
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(220) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ╔══════════════════════════════════════════════╗
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(221) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║      RISCV32IM SYSTEM SCOREBOARD RESULTS     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(222) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ╠══════════════════════════════════════════════╣
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(223) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  ALU : PASS=   0  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(224) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  MUL : PASS=   0  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(225) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  RF  : PASS=   0  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(226) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ╠════════════════════════════════════════════╣
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(227) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  TOTAL CHECKS :      0                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(228) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  PASSED       :      0                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(229) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  FAILED       :      0                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(230) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  Pass Rate    :   0.00%                    ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(231) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ╚══════════════════════════════════════════════╝
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :   19
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+# ** Report counts by id
+# [Questa UVM]     2
+# [RNTST]     1
+# [TEST_DONE]     1
+# [instr_seq]     2
+# [riscv_scoreboard]    13
+# ** Note: $finish    : C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 85 ns  Iteration: 73  Instance: /rv32im_top
+# Break in Task uvm_pkg/uvm_root::run_test at C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh line 430
+configure wave -valuecolwidth
+# -valuecolwidth valueColWidth ValueColWidth 100 324
+do cv32e40p_top_do.do
+# End time: 04:06:01 on Oct 01,2026, Elapsed time: 0:05:54
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+# Start time: 04:06:01 on Oct 01,2026
+# vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 13314 
+# -- Compiling package cv32e40p_apu_core_pkg
+# -- Compiling package cv32e40p_fpu_pkg
+# -- Compiling package cv32e40p_pkg
+# -- Compiling module cv32e40p_obi_interface
+# -- Compiling module cv32e40p_popcnt
+# -- Compiling module cv32e40p_ff_one
+# -- Compiling module cv32e40p_alu_div
+# -- Compiling module cv32e40p_prefetch_controller
+# -- Importing package cv32e40p_pkg
+# -- Compiling module cv32e40p_fifo
+# -- Compiling module cv32e40p_apu_disp
+# -- Compiling module cv32e40p_alu
+# -- Compiling module cv32e40p_mult
+# -- Compiling module cv32e40p_controller
+# -- Compiling module cv32e40p_int_controller
+# -- Compiling module cv32e40p_hwloop_regs
+# -- Compiling module cv32e40p_register_file
+# -- Compiling module cv32e40p_decoder
+# -- Importing package cv32e40p_apu_core_pkg
+# -- Importing package cv32e40p_fpu_pkg
+# -- Compiling module cv32e40p_prefetch_buffer
+# -- Compiling module cv32e40p_compressed_decoder
+# -- Compiling module cv32e40p_aligner
+# -- Compiling module cv32e40p_sleep_unit
+# -- Compiling module cv32e40p_ex_stage
+# -- Compiling module cv32e40p_id_stage
+# -- Compiling module cv32e40p_load_store_unit
+# -- Compiling module cv32e40p_cs_registers
+# -- Compiling module cv32e40p_if_stage
+# -- Compiling module cv32e40p_clock_gate
+# -- Compiling module cv32e40p_core
+# -- Compiling module cv32e40p_top
+# -- Compiling interface alu_if
+# -- Compiling interface mul_if
+# -- Compiling interface obi_data_if
+# -- Compiling interface regfile_if
+# -- Compiling interface rv32im_instr_if
+# -- Compiling interface debug_interupt_if
+# -- Compiling package riscv_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) ./tb/riscv_pkg.sv(6): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling module rv32im_top
+# -- Importing package riscv_pkg
+# 
+# Top level modules:
+# 	rv32im_top
+# End time: 04:06:02 on Oct 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0, Suppressed Warnings: 480
+# vsim -voptargs="+acc" work.rv32im_top -uvmcontrol=all "+UVM_NO_RELNOTES" "+UVM_VERBOSITY=UVM_MEDIUM" -sv_seed random -l sim.log 
+# Start time: 04:06:02 on Oct 01,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.rv32im_instr_if(fast)
+# Loading work.alu_if(fast)
+# Loading work.mul_if(fast)
+# Loading work.regfile_if(fast)
+# Loading work.obi_data_if(fast)
+# Loading work.debug_interupt_if(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.riscv_pkg(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.rv32im_top(fast)
+# Loading work.rv32im_instr_if(fast__2)
+# Loading work.obi_data_if(fast__2)
+# Loading work.debug_interupt_if(fast__2)
+# Loading work.alu_if(fast__2)
+# Loading work.mul_if(fast__2)
+# Loading work.regfile_if(fast__2)
+# Loading work.cv32e40p_apu_core_pkg(fast)
+# Loading work.cv32e40p_top(fast)
+# Loading work.cv32e40p_pkg(fast)
+# Loading work.cv32e40p_core(fast)
+# Loading work.cv32e40p_sleep_unit(fast)
+# Loading work.cv32e40p_clock_gate(fast)
+# Loading work.cv32e40p_if_stage(fast)
+# Loading work.cv32e40p_prefetch_buffer(fast)
+# Loading work.cv32e40p_prefetch_controller(fast)
+# Loading work.cv32e40p_fifo(fast)
+# Loading work.cv32e40p_obi_interface(fast)
+# Loading work.cv32e40p_aligner(fast)
+# Loading work.cv32e40p_compressed_decoder(fast)
+# Loading work.cv32e40p_fpu_pkg(fast)
+# Loading work.cv32e40p_id_stage(fast)
+# Loading work.cv32e40p_register_file(fast)
+# Loading work.cv32e40p_decoder(fast)
+# Loading work.cv32e40p_controller(fast)
+# Loading work.cv32e40p_int_controller(fast)
+# Loading work.cv32e40p_ex_stage(fast)
+# Loading work.cv32e40p_alu(fast)
+# Loading work.cv32e40p_popcnt(fast)
+# Loading work.cv32e40p_ff_one(fast)
+# Loading work.cv32e40p_alu_div(fast)
+# Loading work.cv32e40p_mult(fast)
+# Loading work.cv32e40p_load_store_unit(fast)
+# Loading work.cv32e40p_obi_interface(fast__1)
+# Loading work.cv32e40p_cs_registers(fast)
+# Loading C:/questasim64_2021.1/uvm-1.1d\win64\uvm_dpi.dll
+# Sv_Seed = 1022778825
+# 0 ns
+# 214 ns
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(all)
+# UVM_INFO @ 0: reporter [RNTST] Running test rv32im_base_test...
+# **************************************************************************
+# * Questa UVM Transaction Recording Turned ON.                            *
+# * recording_detail has been set.                                         *
+# *  To turn off, set 'recording_detail' to off:                           *
+# * uvm_config_db#(int)            ::set(null, "", "recording_detail", 0); *
+# * uvm_config_db#(uvm_bitstream_t)::set(null, "", "recording_detail", 0); *
+# **************************************************************************
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(16) @ 0: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Asserting System Reset (rst_n = 0)...
+# ** Warning: (vsim-8315) No condition is true in the unique/priority if/case statement.
+#    Time: 0 ns  Iteration: 161  Process: /rv32im_top/u_core/core_i/load_store_unit_i/#implicit#unique__419 File: ./rtl/cv32e40p_load_store_unit.sv Line: 419
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(25) @ 45: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Releasing System Reset (rst_n = 1)...
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 85: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(219) @ 85: uvm_test_top.env.sb [riscv_scoreboard] 
+# 
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(220) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ╔══════════════════════════════════════════════╗
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(221) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║      RISCV32IM SYSTEM SCOREBOARD RESULTS     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(222) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ╠══════════════════════════════════════════════╣
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(223) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  ALU : PASS=   0  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(224) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  MUL : PASS=   0  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(225) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  RF  : PASS=   0  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(226) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ╠════════════════════════════════════════════╣
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(227) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  TOTAL CHECKS :      0                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(228) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  PASSED       :      0                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(229) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  FAILED       :      0                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(230) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  Pass Rate    :   0.00%                    ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(231) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ╚══════════════════════════════════════════════╝
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :   19
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+# ** Report counts by id
+# [Questa UVM]     2
+# [RNTST]     1
+# [TEST_DONE]     1
+# [instr_seq]     2
+# [riscv_scoreboard]    13
+# ** Note: $finish    : C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 85 ns  Iteration: 73  Instance: /rv32im_top
+# Break in Task uvm_pkg/uvm_root::run_test at C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh line 430
+configure wave -valuecolwidth
+# -valuecolwidth valueColWidth ValueColWidth 100 100
+configure -valuecolwidth 150
+# unknown or ambiguous subcommand "-valuecolwidth": must be list, source, or wave
+configure wave -valuecolwidth 150
+configure wave -valuecolwidth 100
+configure wave -valuecolwidth 30
+configure wave -valuecolwidth 100
+configure wave -valuecolwidth 90
+configure wave -valuecolwidth 80
+configure wave -namecolwidth 200
+configure wave -namecolwidth 250
+configure wave -namecolwidth 230
+do cv32e40p_top_do.do
+# End time: 04:11:48 on Oct 01,2026, Elapsed time: 0:05:46
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+# Start time: 04:11:48 on Oct 01,2026
+# vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 13314 
+# -- Compiling package cv32e40p_apu_core_pkg
+# -- Compiling package cv32e40p_fpu_pkg
+# -- Compiling package cv32e40p_pkg
+# -- Compiling module cv32e40p_obi_interface
+# -- Compiling module cv32e40p_popcnt
+# -- Compiling module cv32e40p_ff_one
+# -- Compiling module cv32e40p_alu_div
+# -- Compiling module cv32e40p_prefetch_controller
+# -- Importing package cv32e40p_pkg
+# -- Compiling module cv32e40p_fifo
+# -- Compiling module cv32e40p_apu_disp
+# -- Compiling module cv32e40p_alu
+# -- Compiling module cv32e40p_mult
+# -- Compiling module cv32e40p_controller
+# -- Compiling module cv32e40p_int_controller
+# -- Compiling module cv32e40p_hwloop_regs
+# -- Compiling module cv32e40p_register_file
+# -- Compiling module cv32e40p_decoder
+# -- Importing package cv32e40p_apu_core_pkg
+# -- Importing package cv32e40p_fpu_pkg
+# -- Compiling module cv32e40p_prefetch_buffer
+# -- Compiling module cv32e40p_compressed_decoder
+# -- Compiling module cv32e40p_aligner
+# -- Compiling module cv32e40p_sleep_unit
+# -- Compiling module cv32e40p_ex_stage
+# -- Compiling module cv32e40p_id_stage
+# -- Compiling module cv32e40p_load_store_unit
+# -- Compiling module cv32e40p_cs_registers
+# -- Compiling module cv32e40p_if_stage
+# -- Compiling module cv32e40p_clock_gate
+# -- Compiling module cv32e40p_core
+# -- Compiling module cv32e40p_top
+# -- Compiling interface alu_if
+# -- Compiling interface mul_if
+# -- Compiling interface obi_data_if
+# -- Compiling interface regfile_if
+# -- Compiling interface rv32im_instr_if
+# -- Compiling interface debug_interupt_if
+# -- Compiling package riscv_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) ./tb/riscv_pkg.sv(6): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling module rv32im_top
+# -- Importing package riscv_pkg
+# 
+# Top level modules:
+# 	rv32im_top
+# End time: 04:11:49 on Oct 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0, Suppressed Warnings: 480
+# vsim -voptargs="+acc" work.rv32im_top -uvmcontrol=all "+UVM_NO_RELNOTES" "+UVM_VERBOSITY=UVM_MEDIUM" -sv_seed random -l sim.log 
+# Start time: 04:11:49 on Oct 01,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading sv_std.std
+# Loading work.rv32im_instr_if(fast)
+# Loading work.alu_if(fast)
+# Loading work.mul_if(fast)
+# Loading work.regfile_if(fast)
+# Loading work.obi_data_if(fast)
+# Loading work.debug_interupt_if(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.riscv_pkg(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.rv32im_top(fast)
+# Loading work.rv32im_instr_if(fast__2)
+# Loading work.obi_data_if(fast__2)
+# Loading work.debug_interupt_if(fast__2)
+# Loading work.alu_if(fast__2)
+# Loading work.mul_if(fast__2)
+# Loading work.regfile_if(fast__2)
+# Loading work.cv32e40p_apu_core_pkg(fast)
+# Loading work.cv32e40p_top(fast)
+# Loading work.cv32e40p_pkg(fast)
+# Loading work.cv32e40p_core(fast)
+# Loading work.cv32e40p_sleep_unit(fast)
+# Loading work.cv32e40p_clock_gate(fast)
+# Loading work.cv32e40p_if_stage(fast)
+# Loading work.cv32e40p_prefetch_buffer(fast)
+# Loading work.cv32e40p_prefetch_controller(fast)
+# Loading work.cv32e40p_fifo(fast)
+# Loading work.cv32e40p_obi_interface(fast)
+# Loading work.cv32e40p_aligner(fast)
+# Loading work.cv32e40p_compressed_decoder(fast)
+# Loading work.cv32e40p_fpu_pkg(fast)
+# Loading work.cv32e40p_id_stage(fast)
+# Loading work.cv32e40p_register_file(fast)
+# Loading work.cv32e40p_decoder(fast)
+# Loading work.cv32e40p_controller(fast)
+# Loading work.cv32e40p_int_controller(fast)
+# Loading work.cv32e40p_ex_stage(fast)
+# Loading work.cv32e40p_alu(fast)
+# Loading work.cv32e40p_popcnt(fast)
+# Loading work.cv32e40p_ff_one(fast)
+# Loading work.cv32e40p_alu_div(fast)
+# Loading work.cv32e40p_mult(fast)
+# Loading work.cv32e40p_load_store_unit(fast)
+# Loading work.cv32e40p_obi_interface(fast__1)
+# Loading work.cv32e40p_cs_registers(fast)
+# Loading C:/questasim64_2021.1/uvm-1.1d\win64\uvm_dpi.dll
+# Sv_Seed = 1475754005
+# 0 ns
+# 212 ns
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(all)
+# UVM_INFO @ 0: reporter [RNTST] Running test rv32im_base_test...
+# **************************************************************************
+# * Questa UVM Transaction Recording Turned ON.                            *
+# * recording_detail has been set.                                         *
+# *  To turn off, set 'recording_detail' to off:                           *
+# * uvm_config_db#(int)            ::set(null, "", "recording_detail", 0); *
+# * uvm_config_db#(uvm_bitstream_t)::set(null, "", "recording_detail", 0); *
+# **************************************************************************
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(16) @ 0: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Asserting System Reset (rst_n = 0)...
+# ** Warning: (vsim-8315) No condition is true in the unique/priority if/case statement.
+#    Time: 0 ns  Iteration: 161  Process: /rv32im_top/u_core/core_i/load_store_unit_i/#implicit#unique__419 File: ./rtl/cv32e40p_load_store_unit.sv Line: 419
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(25) @ 45: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Releasing System Reset (rst_n = 1)...
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 85: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(219) @ 85: uvm_test_top.env.sb [riscv_scoreboard] 
+# 
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(220) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ╔══════════════════════════════════════════════╗
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(221) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║      RISCV32IM SYSTEM SCOREBOARD RESULTS     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(222) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ╠══════════════════════════════════════════════╣
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(223) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  ALU : PASS=   0  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(224) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  MUL : PASS=   0  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(225) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  RF  : PASS=   0  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(226) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ╠════════════════════════════════════════════╣
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(227) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  TOTAL CHECKS :      0                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(228) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  PASSED       :      0                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(229) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  FAILED       :      0                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(230) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ║  Pass Rate    :   0.00%                    ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(231) @ 85: uvm_test_top.env.sb [riscv_scoreboard] ╚══════════════════════════════════════════════╝
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :   19
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+# ** Report counts by id
+# [Questa UVM]     2
+# [RNTST]     1
+# [TEST_DONE]     1
+# [instr_seq]     2
+# [riscv_scoreboard]    13
+# ** Note: $finish    : C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 85 ns  Iteration: 73  Instance: /rv32im_top
+# Break in Task uvm_pkg/uvm_root::run_test at C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh line 430
+
+do cv32e40p_top_do.do
+# End time: 04:15:17 on Oct 01,2026, Elapsed time: 0:03:28
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+# Start time: 04:15:17 on Oct 01,2026
+# vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 13314 
+# -- Compiling package cv32e40p_apu_core_pkg
+# -- Compiling package cv32e40p_fpu_pkg
+# -- Compiling package cv32e40p_pkg
+# -- Compiling module cv32e40p_obi_interface
+# -- Compiling module cv32e40p_popcnt
+# -- Compiling module cv32e40p_ff_one
+# -- Compiling module cv32e40p_alu_div
+# -- Compiling module cv32e40p_prefetch_controller
+# -- Importing package cv32e40p_pkg
+# -- Compiling module cv32e40p_fifo
+# -- Compiling module cv32e40p_apu_disp
+# -- Compiling module cv32e40p_alu
+# -- Compiling module cv32e40p_mult
+# -- Compiling module cv32e40p_controller
+# -- Compiling module cv32e40p_int_controller
+# -- Compiling module cv32e40p_hwloop_regs
+# -- Compiling module cv32e40p_register_file
+# -- Compiling module cv32e40p_decoder
+# -- Importing package cv32e40p_apu_core_pkg
+# -- Importing package cv32e40p_fpu_pkg
+# -- Compiling module cv32e40p_prefetch_buffer
+# -- Compiling module cv32e40p_compressed_decoder
+# -- Compiling module cv32e40p_aligner
+# -- Compiling module cv32e40p_sleep_unit
+# -- Compiling module cv32e40p_ex_stage
+# -- Compiling module cv32e40p_id_stage
+# -- Compiling module cv32e40p_load_store_unit
+# -- Compiling module cv32e40p_cs_registers
+# -- Compiling module cv32e40p_if_stage
+# -- Compiling module cv32e40p_clock_gate
+# -- Compiling module cv32e40p_core
+# -- Compiling module cv32e40p_top
+# -- Compiling interface alu_if
+# -- Compiling interface mul_if
+# -- Compiling interface obi_data_if
+# -- Compiling interface regfile_if
+# -- Compiling interface rv32im_instr_if
+# -- Compiling interface debug_interupt_if
+# -- Compiling package riscv_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) ./tb/riscv_pkg.sv(6): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling module rv32im_top
+# -- Importing package riscv_pkg
+# 
+# Top level modules:
+# 	rv32im_top
+# End time: 04:15:20 on Oct 01,2026, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 0, Suppressed Warnings: 480
+# vsim -voptargs="+acc" work.rv32im_top -uvmcontrol=all "+UVM_NO_RELNOTES" "+UVM_VERBOSITY=UVM_MEDIUM" -sv_seed random -l sim.log 
+# Start time: 04:15:20 on Oct 01,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.rv32im_instr_if(fast)
+# Loading work.alu_if(fast)
+# Loading work.mul_if(fast)
+# Loading work.regfile_if(fast)
+# Loading work.obi_data_if(fast)
+# Loading work.debug_interupt_if(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.riscv_pkg(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.rv32im_top(fast)
+# Loading work.rv32im_instr_if(fast__2)
+# Loading work.obi_data_if(fast__2)
+# Loading work.debug_interupt_if(fast__2)
+# Loading work.alu_if(fast__2)
+# Loading work.mul_if(fast__2)
+# Loading work.regfile_if(fast__2)
+# Loading work.cv32e40p_apu_core_pkg(fast)
+# Loading work.cv32e40p_top(fast)
+# Loading work.cv32e40p_pkg(fast)
+# Loading work.cv32e40p_core(fast)
+# Loading work.cv32e40p_sleep_unit(fast)
+# Loading work.cv32e40p_clock_gate(fast)
+# Loading work.cv32e40p_if_stage(fast)
+# Loading work.cv32e40p_prefetch_buffer(fast)
+# Loading work.cv32e40p_prefetch_controller(fast)
+# Loading work.cv32e40p_fifo(fast)
+# Loading work.cv32e40p_obi_interface(fast)
+# Loading work.cv32e40p_aligner(fast)
+# Loading work.cv32e40p_compressed_decoder(fast)
+# Loading work.cv32e40p_fpu_pkg(fast)
+# Loading work.cv32e40p_id_stage(fast)
+# Loading work.cv32e40p_register_file(fast)
+# Loading work.cv32e40p_decoder(fast)
+# Loading work.cv32e40p_controller(fast)
+# Loading work.cv32e40p_int_controller(fast)
+# Loading work.cv32e40p_ex_stage(fast)
+# Loading work.cv32e40p_alu(fast)
+# Loading work.cv32e40p_popcnt(fast)
+# Loading work.cv32e40p_ff_one(fast)
+# Loading work.cv32e40p_alu_div(fast)
+# Loading work.cv32e40p_mult(fast)
+# Loading work.cv32e40p_load_store_unit(fast)
+# Loading work.cv32e40p_obi_interface(fast__1)
+# Loading work.cv32e40p_cs_registers(fast)
+# Loading C:/questasim64_2021.1/uvm-1.1d\win64\uvm_dpi.dll
+# Sv_Seed = 2025247113
+# 0 ns
+# 106 ns
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(all)
+# UVM_INFO @ 0: reporter [RNTST] Running test rv32im_base_test...
+# **************************************************************************
+# * Questa UVM Transaction Recording Turned ON.                            *
+# * recording_detail has been set.                                         *
+# *  To turn off, set 'recording_detail' to off:                           *
+# * uvm_config_db#(int)            ::set(null, "", "recording_detail", 0); *
+# * uvm_config_db#(uvm_bitstream_t)::set(null, "", "recording_detail", 0); *
+# **************************************************************************
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(16) @ 0: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Asserting System Reset (rst_n = 0)...
+# ** Warning: (vsim-8315) No condition is true in the unique/priority if/case statement.
+#    Time: 0 ns  Iteration: 161  Process: /rv32im_top/u_core/core_i/load_store_unit_i/#implicit#unique__419 File: ./rtl/cv32e40p_load_store_unit.sv Line: 419
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(25) @ 45: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Releasing System Reset (rst_n = 1)...
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 125: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(219) @ 125: uvm_test_top.env.sb [riscv_scoreboard] 
+# 
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(220) @ 125: uvm_test_top.env.sb [riscv_scoreboard] ╔══════════════════════════════════════════════╗
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(221) @ 125: uvm_test_top.env.sb [riscv_scoreboard] ║      RISCV32IM SYSTEM SCOREBOARD RESULTS     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(222) @ 125: uvm_test_top.env.sb [riscv_scoreboard] ╠══════════════════════════════════════════════╣
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(223) @ 125: uvm_test_top.env.sb [riscv_scoreboard] ║  ALU : PASS=   0  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(224) @ 125: uvm_test_top.env.sb [riscv_scoreboard] ║  MUL : PASS=   0  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(225) @ 125: uvm_test_top.env.sb [riscv_scoreboard] ║  RF  : PASS=   0  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(226) @ 125: uvm_test_top.env.sb [riscv_scoreboard] ╠════════════════════════════════════════════╣
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(227) @ 125: uvm_test_top.env.sb [riscv_scoreboard] ║  TOTAL CHECKS :      0                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(228) @ 125: uvm_test_top.env.sb [riscv_scoreboard] ║  PASSED       :      0                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(229) @ 125: uvm_test_top.env.sb [riscv_scoreboard] ║  FAILED       :      0                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(230) @ 125: uvm_test_top.env.sb [riscv_scoreboard] ║  Pass Rate    :   0.00%                    ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(231) @ 125: uvm_test_top.env.sb [riscv_scoreboard] ╚══════════════════════════════════════════════╝
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :   19
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+# ** Report counts by id
+# [Questa UVM]     2
+# [RNTST]     1
+# [TEST_DONE]     1
+# [instr_seq]     2
+# [riscv_scoreboard]    13
+# ** Note: $finish    : C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 125 ns  Iteration: 72  Instance: /rv32im_top
+# 1
+# Break in Task uvm_pkg/uvm_root::run_test at C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh line 430
+configure wave -namecolwidth 270
+configure wave -namecolwidth 280
+configure wave -namecolwidth 300
+configure wave -namecolwidth 300
+do cv32e40p_top_do.do
+# End time: 05:59:50 on Oct 01,2026, Elapsed time: 1:44:30
+# Errors: 0, Warnings: 1
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+# Start time: 05:59:50 on Oct 01,2026
+# vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 13314 
+# -- Compiling package cv32e40p_apu_core_pkg
+# -- Compiling package cv32e40p_fpu_pkg
+# -- Compiling package cv32e40p_pkg
+# -- Compiling module cv32e40p_obi_interface
+# -- Compiling module cv32e40p_popcnt
+# -- Compiling module cv32e40p_ff_one
+# -- Compiling module cv32e40p_alu_div
+# -- Compiling module cv32e40p_prefetch_controller
+# -- Importing package cv32e40p_pkg
+# -- Compiling module cv32e40p_fifo
+# -- Compiling module cv32e40p_apu_disp
+# -- Compiling module cv32e40p_alu
+# -- Compiling module cv32e40p_mult
+# -- Compiling module cv32e40p_controller
+# -- Compiling module cv32e40p_int_controller
+# -- Compiling module cv32e40p_hwloop_regs
+# -- Compiling module cv32e40p_register_file
+# -- Compiling module cv32e40p_decoder
+# -- Importing package cv32e40p_apu_core_pkg
+# -- Importing package cv32e40p_fpu_pkg
+# -- Compiling module cv32e40p_prefetch_buffer
+# -- Compiling module cv32e40p_compressed_decoder
+# -- Compiling module cv32e40p_aligner
+# -- Compiling module cv32e40p_sleep_unit
+# -- Compiling module cv32e40p_ex_stage
+# -- Compiling module cv32e40p_id_stage
+# -- Compiling module cv32e40p_load_store_unit
+# -- Compiling module cv32e40p_cs_registers
+# -- Compiling module cv32e40p_if_stage
+# -- Compiling module cv32e40p_clock_gate
+# -- Compiling module cv32e40p_core
+# -- Compiling module cv32e40p_top
+# -- Compiling interface alu_if
+# -- Compiling interface mul_if
+# -- Compiling interface obi_data_if
+# -- Compiling interface regfile_if
+# -- Compiling interface rv32im_instr_if
+# -- Compiling interface debug_interupt_if
+# -- Compiling package riscv_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) ./tb/riscv_pkg.sv(6): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling module rv32im_top
+# -- Importing package riscv_pkg
+# 
+# Top level modules:
+# 	rv32im_top
+# End time: 05:59:52 on Oct 01,2026, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0, Suppressed Warnings: 480
+# vsim -voptargs="+acc" work.rv32im_top -uvmcontrol=all "+UVM_NO_RELNOTES" "+UVM_VERBOSITY=UVM_MEDIUM" -sv_seed random -l sim.log 
+# Start time: 05:59:53 on Oct 01,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(101): (vopt-7063) Failed to find 'ex_stage_i' in hierarchical name 'u_core.ex_stage_i.alu_en_i'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(102): (vopt-7063) Failed to find 'ex_stage_i' in hierarchical name 'u_core.ex_stage_i.alu_operator_i'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(103): (vopt-7063) Failed to find 'ex_stage_i' in hierarchical name 'u_core.ex_stage_i.alu_operand_a_i'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(104): (vopt-7063) Failed to find 'ex_stage_i' in hierarchical name 'u_core.ex_stage_i.alu_operand_b_i'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(105): (vopt-7063) Failed to find 'ex_stage_i' in hierarchical name 'u_core.ex_stage_i.alu_operand_c_i'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(106): (vopt-7063) Failed to find 'ex_stage_i' in hierarchical name 'u_core.ex_stage_i.alu_result'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(107): (vopt-7063) Failed to find 'ex_stage_i' in hierarchical name 'u_core.ex_stage_i.alu_cmp_result'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(108): (vopt-7063) Failed to find 'ex_stage_i' in hierarchical name 'u_core.ex_stage_i.alu_ready'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(109): (vopt-7063) Failed to find 'ex_stage_i' in hierarchical name 'u_core.ex_stage_i.ex_ready_o'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(115): (vopt-7063) Failed to find 'ex_stage_i' in hierarchical name 'u_core.ex_stage_i.mult_en_i'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(116): (vopt-7063) Failed to find 'ex_stage_i' in hierarchical name 'u_core.ex_stage_i.mult_operator_i'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(117): (vopt-7063) Failed to find 'ex_stage_i' in hierarchical name 'u_core.ex_stage_i.mult_operand_a_i'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(118): (vopt-7063) Failed to find 'ex_stage_i' in hierarchical name 'u_core.ex_stage_i.mult_operand_b_i'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(119): (vopt-7063) Failed to find 'ex_stage_i' in hierarchical name 'u_core.ex_stage_i.mult_operand_c_i'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(120): (vopt-7063) Failed to find 'ex_stage_i' in hierarchical name 'u_core.ex_stage_i.mult_result'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(121): (vopt-7063) Failed to find 'ex_stage_i' in hierarchical name 'u_core.ex_stage_i.mult_ready'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(129): (vopt-7063) Failed to find 'id_stage_i' in hierarchical name 'u_core.id_stage_i.regfile_addr_ra_id'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(130): (vopt-7063) Failed to find 'id_stage_i' in hierarchical name 'u_core.id_stage_i.regfile_data_ra_id'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(132): (vopt-7063) Failed to find 'id_stage_i' in hierarchical name 'u_core.id_stage_i.regfile_addr_rb_id'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(133): (vopt-7063) Failed to find 'id_stage_i' in hierarchical name 'u_core.id_stage_i.regfile_data_rb_id'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(135): (vopt-7063) Failed to find 'id_stage_i' in hierarchical name 'u_core.id_stage_i.regfile_addr_rc_id'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(136): (vopt-7063) Failed to find 'id_stage_i' in hierarchical name 'u_core.id_stage_i.regfile_data_rc_id'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(138): (vopt-7063) Failed to find 'id_stage_i' in hierarchical name 'u_core.id_stage_i.regfile_waddr_wb_i'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(139): (vopt-7063) Failed to find 'id_stage_i' in hierarchical name 'u_core.id_stage_i.regfile_wdata_wb_i'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(140): (vopt-7063) Failed to find 'id_stage_i' in hierarchical name 'u_core.id_stage_i.regfile_we_wb_power_i'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(142): (vopt-7063) Failed to find 'id_stage_i' in hierarchical name 'u_core.id_stage_i.regfile_alu_waddr_fw_i'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(143): (vopt-7063) Failed to find 'id_stage_i' in hierarchical name 'u_core.id_stage_i.regfile_alu_wdata_fw_i'.
+#         Region: rv32im_top
+# ** Error (suppressible): ./tb/rv32im_tb_top.sv(144): (vopt-7063) Failed to find 'id_stage_i' in hierarchical name 'u_core.id_stage_i.regfile_alu_we_fw_power_i'.
+#         Region: rv32im_top
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=28, Warnings=0.
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./cv32e40p_top_do.do PAUSED at line 4
+configure wave -namecolwidth 230
+do cv32e40p_top_do.do
+# End time: 06:03:05 on Oct 01,2026, Elapsed time: 0:03:12
+# Errors: 28, Warnings: 0
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+# Start time: 06:03:05 on Oct 01,2026
+# vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 13314 
+# -- Compiling package cv32e40p_apu_core_pkg
+# -- Compiling package cv32e40p_fpu_pkg
+# -- Compiling package cv32e40p_pkg
+# -- Compiling module cv32e40p_obi_interface
+# -- Compiling module cv32e40p_popcnt
+# -- Compiling module cv32e40p_ff_one
+# -- Compiling module cv32e40p_alu_div
+# -- Compiling module cv32e40p_prefetch_controller
+# -- Importing package cv32e40p_pkg
+# -- Compiling module cv32e40p_fifo
+# -- Compiling module cv32e40p_apu_disp
+# -- Compiling module cv32e40p_alu
+# -- Compiling module cv32e40p_mult
+# -- Compiling module cv32e40p_controller
+# -- Compiling module cv32e40p_int_controller
+# -- Compiling module cv32e40p_hwloop_regs
+# -- Compiling module cv32e40p_register_file
+# -- Compiling module cv32e40p_decoder
+# -- Importing package cv32e40p_apu_core_pkg
+# -- Importing package cv32e40p_fpu_pkg
+# -- Compiling module cv32e40p_prefetch_buffer
+# -- Compiling module cv32e40p_compressed_decoder
+# -- Compiling module cv32e40p_aligner
+# -- Compiling module cv32e40p_sleep_unit
+# -- Compiling module cv32e40p_ex_stage
+# -- Compiling module cv32e40p_id_stage
+# -- Compiling module cv32e40p_load_store_unit
+# -- Compiling module cv32e40p_cs_registers
+# -- Compiling module cv32e40p_if_stage
+# -- Compiling module cv32e40p_clock_gate
+# -- Compiling module cv32e40p_core
+# -- Compiling module cv32e40p_top
+# -- Compiling interface alu_if
+# -- Compiling interface mul_if
+# -- Compiling interface obi_data_if
+# -- Compiling interface regfile_if
+# -- Compiling interface rv32im_instr_if
+# -- Compiling interface debug_interupt_if
+# -- Compiling package riscv_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) ./tb/riscv_pkg.sv(6): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling module rv32im_top
+# -- Importing package riscv_pkg
+# 
+# Top level modules:
+# 	rv32im_top
+# End time: 06:03:06 on Oct 01,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0, Suppressed Warnings: 480
+# vsim -voptargs="+acc" work.rv32im_top -uvmcontrol=all "+UVM_NO_RELNOTES" "+UVM_VERBOSITY=UVM_MEDIUM" -sv_seed random -l sim.log 
+# Start time: 06:03:07 on Oct 01,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 2 FSMs in module "cv32e40p_controller(fast)".
+# ** Note: (vopt-143) Recognized 1 FSM in module "cv32e40p_alu_div(fast)".
+# ** Note: (vopt-143) Recognized 1 FSM in module "cv32e40p_mult(fast)".
+# ** Note: (vopt-143) Recognized 1 FSM in module "cv32e40p_aligner(fast)".
+# Loading sv_std.std
+# Loading work.rv32im_instr_if(fast)
+# Loading work.alu_if(fast)
+# Loading work.mul_if(fast)
+# Loading work.regfile_if(fast)
+# Loading work.obi_data_if(fast)
+# Loading work.debug_interupt_if(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.riscv_pkg(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.rv32im_top(fast)
+# Loading work.rv32im_instr_if(fast__2)
+# Loading work.obi_data_if(fast__2)
+# Loading work.debug_interupt_if(fast__2)
+# Loading work.cv32e40p_apu_core_pkg(fast)
+# Loading work.cv32e40p_top(fast)
+# Loading work.cv32e40p_pkg(fast)
+# Loading work.cv32e40p_core(fast)
+# Loading work.cv32e40p_sleep_unit(fast)
+# Loading work.cv32e40p_clock_gate(fast)
+# Loading work.cv32e40p_if_stage(fast)
+# Loading work.cv32e40p_prefetch_buffer(fast)
+# Loading work.cv32e40p_prefetch_controller(fast)
+# Loading work.cv32e40p_fifo(fast)
+# Loading work.cv32e40p_obi_interface(fast)
+# Loading work.cv32e40p_aligner(fast)
+# Loading work.cv32e40p_compressed_decoder(fast)
+# Loading work.cv32e40p_fpu_pkg(fast)
+# Loading work.cv32e40p_id_stage(fast)
+# Loading work.cv32e40p_register_file(fast)
+# Loading work.cv32e40p_decoder(fast)
+# Loading work.cv32e40p_controller(fast)
+# Loading work.cv32e40p_int_controller(fast)
+# Loading work.cv32e40p_ex_stage(fast)
+# Loading work.cv32e40p_alu(fast)
+# Loading work.cv32e40p_popcnt(fast)
+# Loading work.cv32e40p_ff_one(fast)
+# Loading work.cv32e40p_alu_div(fast)
+# Loading work.cv32e40p_mult(fast)
+# Loading work.cv32e40p_load_store_unit(fast)
+# Loading work.cv32e40p_obi_interface(fast__1)
+# Loading work.cv32e40p_cs_registers(fast)
+# Loading work.alu_if(fast__2)
+# Loading work.mul_if(fast__2)
+# Loading work.regfile_if(fast__2)
+# Loading C:/questasim64_2021.1/uvm-1.1d\win64\uvm_dpi.dll
+# Sv_Seed = 1874456409
+# 0 ns
+# 99 ns
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(all)
+# UVM_INFO @ 0: reporter [RNTST] Running test rv32im_base_test...
+# **************************************************************************
+# * Questa UVM Transaction Recording Turned ON.                            *
+# * recording_detail has been set.                                         *
+# *  To turn off, set 'recording_detail' to off:                           *
+# * uvm_config_db#(int)            ::set(null, "", "recording_detail", 0); *
+# * uvm_config_db#(uvm_bitstream_t)::set(null, "", "recording_detail", 0); *
+# **************************************************************************
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(16) @ 0: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Asserting System Reset (rst_n = 0)...
+# ** Warning: (vsim-8315) No condition is true in the unique/priority if/case statement.
+#    Time: 0 ns  Iteration: 161  Process: /rv32im_top/u_core/core_i/load_store_unit_i/#implicit#unique__419 File: ./rtl/cv32e40p_load_store_unit.sv Line: 419
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(25) @ 45: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Releasing System Reset (rst_n = 1)...
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 125: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 125: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x5 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 135: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 135: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x11 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 145: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 145: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x11 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 155: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 155: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x15 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 165: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 165: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x15 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 175: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 175: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x26 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 185: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 185: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x26 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 195: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 195: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x8 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 205: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 205: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x8 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 215: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 215: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x30 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 225: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 225: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x30 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 235: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 235: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x20 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 245: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 245: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x20 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 255: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 265: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 265: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(219) @ 265: uvm_test_top.env.sb [riscv_scoreboard] 
+# 
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(220) @ 265: uvm_test_top.env.sb [riscv_scoreboard] ╔══════════════════════════════════════════════╗
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(221) @ 265: uvm_test_top.env.sb [riscv_scoreboard] ║      RISCV32IM SYSTEM SCOREBOARD RESULTS     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(222) @ 265: uvm_test_top.env.sb [riscv_scoreboard] ╠══════════════════════════════════════════════╣
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(223) @ 265: uvm_test_top.env.sb [riscv_scoreboard] ║  ALU : PASS=  15  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(224) @ 265: uvm_test_top.env.sb [riscv_scoreboard] ║  MUL : PASS=   0  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(225) @ 265: uvm_test_top.env.sb [riscv_scoreboard] ║  RF  : PASS=  42  FAIL=   0               ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(226) @ 265: uvm_test_top.env.sb [riscv_scoreboard] ╠════════════════════════════════════════════╣
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(227) @ 265: uvm_test_top.env.sb [riscv_scoreboard] ║  TOTAL CHECKS :     57                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(228) @ 265: uvm_test_top.env.sb [riscv_scoreboard] ║  PASSED       :     57                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(229) @ 265: uvm_test_top.env.sb [riscv_scoreboard] ║  FAILED       :      0                     ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(230) @ 265: uvm_test_top.env.sb [riscv_scoreboard] ║  Pass Rate    : 100.00%                    ║
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(231) @ 265: uvm_test_top.env.sb [riscv_scoreboard] ╚══════════════════════════════════════════════╝
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :   47
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+# ** Report counts by id
+# [ALU_MON]    15
+# [Questa UVM]     2
+# [REGFILE_MON]    13
+# [RNTST]     1
+# [TEST_DONE]     1
+# [instr_seq]     2
+# [riscv_scoreboard]    13
+# ** Note: $finish    : C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 265 ns  Iteration: 73  Instance: /rv32im_top
+# Break in Task uvm_pkg/uvm_root::run_test at C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh line 430
+do cv32e40p_top_do.do
+# End time: 06:07:19 on Oct 01,2026, Elapsed time: 0:04:12
+# Errors: 0, Warnings: 1, Suppressed Warnings: 9
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+# Start time: 06:07:19 on Oct 01,2026
+# vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 13314 
+# -- Compiling package cv32e40p_apu_core_pkg
+# -- Compiling package cv32e40p_fpu_pkg
+# -- Compiling package cv32e40p_pkg
+# -- Compiling module cv32e40p_obi_interface
+# -- Compiling module cv32e40p_popcnt
+# -- Compiling module cv32e40p_ff_one
+# -- Compiling module cv32e40p_alu_div
+# -- Compiling module cv32e40p_prefetch_controller
+# -- Importing package cv32e40p_pkg
+# -- Compiling module cv32e40p_fifo
+# -- Compiling module cv32e40p_apu_disp
+# -- Compiling module cv32e40p_alu
+# -- Compiling module cv32e40p_mult
+# -- Compiling module cv32e40p_controller
+# -- Compiling module cv32e40p_int_controller
+# -- Compiling module cv32e40p_hwloop_regs
+# -- Compiling module cv32e40p_register_file
+# -- Compiling module cv32e40p_decoder
+# -- Importing package cv32e40p_apu_core_pkg
+# -- Importing package cv32e40p_fpu_pkg
+# -- Compiling module cv32e40p_prefetch_buffer
+# -- Compiling module cv32e40p_compressed_decoder
+# -- Compiling module cv32e40p_aligner
+# -- Compiling module cv32e40p_sleep_unit
+# -- Compiling module cv32e40p_ex_stage
+# -- Compiling module cv32e40p_id_stage
+# -- Compiling module cv32e40p_load_store_unit
+# -- Compiling module cv32e40p_cs_registers
+# -- Compiling module cv32e40p_if_stage
+# -- Compiling module cv32e40p_clock_gate
+# -- Compiling module cv32e40p_core
+# -- Compiling module cv32e40p_top
+# -- Compiling interface alu_if
+# -- Compiling interface mul_if
+# -- Compiling interface obi_data_if
+# -- Compiling interface regfile_if
+# -- Compiling interface rv32im_instr_if
+# -- Compiling interface debug_interupt_if
+# -- Compiling package riscv_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) ./tb/riscv_pkg.sv(6): Using implicit +incdir+C:/questasim64_2021.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling module rv32im_top
+# -- Importing package riscv_pkg
+# 
+# Top level modules:
+# 	rv32im_top
+# End time: 06:07:21 on Oct 01,2026, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0, Suppressed Warnings: 480
+# vsim -voptargs="+acc" work.rv32im_top -uvmcontrol=all "+UVM_NO_RELNOTES" "+UVM_VERBOSITY=UVM_MEDIUM" -sv_seed random -l sim.log 
+# Start time: 06:07:21 on Oct 01,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.rv32im_instr_if(fast)
+# Loading work.alu_if(fast)
+# Loading work.mul_if(fast)
+# Loading work.regfile_if(fast)
+# Loading work.obi_data_if(fast)
+# Loading work.debug_interupt_if(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.riscv_pkg(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.rv32im_top(fast)
+# Loading work.rv32im_instr_if(fast__2)
+# Loading work.obi_data_if(fast__2)
+# Loading work.debug_interupt_if(fast__2)
+# Loading work.cv32e40p_apu_core_pkg(fast)
+# Loading work.cv32e40p_top(fast)
+# Loading work.cv32e40p_pkg(fast)
+# Loading work.cv32e40p_core(fast)
+# Loading work.cv32e40p_sleep_unit(fast)
+# Loading work.cv32e40p_clock_gate(fast)
+# Loading work.cv32e40p_if_stage(fast)
+# Loading work.cv32e40p_prefetch_buffer(fast)
+# Loading work.cv32e40p_prefetch_controller(fast)
+# Loading work.cv32e40p_fifo(fast)
+# Loading work.cv32e40p_obi_interface(fast)
+# Loading work.cv32e40p_aligner(fast)
+# Loading work.cv32e40p_compressed_decoder(fast)
+# Loading work.cv32e40p_fpu_pkg(fast)
+# Loading work.cv32e40p_id_stage(fast)
+# Loading work.cv32e40p_register_file(fast)
+# Loading work.cv32e40p_decoder(fast)
+# Loading work.cv32e40p_controller(fast)
+# Loading work.cv32e40p_int_controller(fast)
+# Loading work.cv32e40p_ex_stage(fast)
+# Loading work.cv32e40p_alu(fast)
+# Loading work.cv32e40p_popcnt(fast)
+# Loading work.cv32e40p_ff_one(fast)
+# Loading work.cv32e40p_alu_div(fast)
+# Loading work.cv32e40p_mult(fast)
+# Loading work.cv32e40p_load_store_unit(fast)
+# Loading work.cv32e40p_obi_interface(fast__1)
+# Loading work.cv32e40p_cs_registers(fast)
+# Loading work.alu_if(fast__2)
+# Loading work.mul_if(fast__2)
+# Loading work.regfile_if(fast__2)
+# Loading C:/questasim64_2021.1/uvm-1.1d\win64\uvm_dpi.dll
+# Sv_Seed = 1631177301
+# 0 ns
+# 99 ns
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(all)
+# UVM_INFO @ 0: reporter [RNTST] Running test rv32im_base_test...
+# **************************************************************************
+# * Questa UVM Transaction Recording Turned ON.                            *
+# * recording_detail has been set.                                         *
+# *  To turn off, set 'recording_detail' to off:                           *
+# * uvm_config_db#(int)            ::set(null, "", "recording_detail", 0); *
+# * uvm_config_db#(uvm_bitstream_t)::set(null, "", "recording_detail", 0); *
+# **************************************************************************
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(16) @ 0: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Asserting System Reset (rst_n = 0)...
+# ** Warning: (vsim-8315) No condition is true in the unique/priority if/case statement.
+#    Time: 0 ns  Iteration: 161  Process: /rv32im_top/u_core/core_i/load_store_unit_i/#implicit#unique__419 File: ./rtl/cv32e40p_load_store_unit.sv Line: 419
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(25) @ 45: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Releasing System Reset (rst_n = 1)...
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 125: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 125: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x7 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 135: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 135: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x16 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 145: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 145: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x16 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 155: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 155: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x2 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 165: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 165: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x2 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 175: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 175: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x24 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 185: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 185: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x24 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 195: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 195: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x1 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 205: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 205: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x1 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 215: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 215: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x5 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 225: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 225: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x5 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 235: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 235: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x22 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 245: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 245: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x22 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 255: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 255: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x29 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(35) @ 265: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(39) @ 265: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x29 data=0
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 265: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(233) @ 265: uvm_test_top.env.sb [riscv_scoreboard] +----------------------------------------------+
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(234) @ 265: uvm_test_top.env.sb [riscv_scoreboard] |      RISCV32IM SYSTEM SCOREBOARD RESULTS     |
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(235) @ 265: uvm_test_top.env.sb [riscv_scoreboard] +----------------------------------------------+
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(236) @ 265: uvm_test_top.env.sb [riscv_scoreboard] |  ALU : PASS=  15  FAIL=   0               |
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(237) @ 265: uvm_test_top.env.sb [riscv_scoreboard] |  MUL : PASS=   0  FAIL=   0               |
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(238) @ 265: uvm_test_top.env.sb [riscv_scoreboard] |  RF  : PASS=  46  FAIL=   0               |
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(239) @ 265: uvm_test_top.env.sb [riscv_scoreboard] +----------------------------------------------+
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(240) @ 265: uvm_test_top.env.sb [riscv_scoreboard] |  TOTAL CHECKS :     61                     |
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(241) @ 265: uvm_test_top.env.sb [riscv_scoreboard] |  PASSED       :     61                     |
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(242) @ 265: uvm_test_top.env.sb [riscv_scoreboard] |  FAILED       :      0                     |
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(243) @ 265: uvm_test_top.env.sb [riscv_scoreboard] |  Pass Rate    : 100.00%                    |
+# UVM_INFO ./tb/../system_scoreboard/riscv_scoreboard.sv(244) @ 265: uvm_test_top.env.sb [riscv_scoreboard] +----------------------------------------------+
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :   48
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+# ** Report counts by id
+# [ALU_MON]    15
+# [Questa UVM]     2
+# [REGFILE_MON]    15
+# [RNTST]     1
+# [TEST_DONE]     1
+# [instr_seq]     2
+# [riscv_scoreboard]    12
+# ** Note: $finish    : C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 265 ns  Iteration: 73  Instance: /rv32im_top
+# Break in Task uvm_pkg/uvm_root::run_test at C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh line 430
+# End time: 06:12:14 on Oct 01,2026, Elapsed time: 0:04:53
+# Errors: 0, Warnings: 1

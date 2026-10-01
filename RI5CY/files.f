@@ -33,6 +33,6 @@
 ./regfile_agent/regfile_if.sv
 ./Instr_Agent/rv32im_instr_if.sv
 ./Debug_interupt_agent/debug_interupt_if.sv
-./tb/reset_if.sv
+// ./tb/reset_if.sv
 ./tb/riscv_pkg.sv
 ./tb/rv32im_tb_top.sv

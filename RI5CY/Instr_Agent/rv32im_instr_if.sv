@@ -2,6 +2,8 @@ interface rv32im_instr_if (
     input bit clk
 );
 
+    // System Reset
+    bit rst_n;
     // OBI Istruction Interface Signals
     bit             instr_gnt_i;
     bit             instr_rvalid_i;
@@ -16,10 +18,12 @@ interface rv32im_instr_if (
         output instr_gnt_i;
         output instr_rvalid_i;
         output instr_rdata_i;
+        output rst_n;
     endclocking
 
     clocking cb_mon @(posedge clk);
         default input #1;
+        input rst_n;
         input instr_req_o;
         input instr_addr_o;
         input instr_gnt_i;

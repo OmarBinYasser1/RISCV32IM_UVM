@@ -10,7 +10,8 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
         OP_JAL = 7'h6f , OP_JALR = 7'h67 , OP_LUI = 7'h37 , OP_AUIPC = 7'h17
     } opcode_t; // This type defines the possible opcodes for the RV32IM
 
-    // Define the enum of the opcode    
+    // Define the enum of the opcode   
+    rand bit rst_n; 
     rand opcode_t opcode;
     bit [6:0]  funct7; // Valid Vlaues are : 0 , 1 , 32
     bit [2:0]  funct3;
@@ -58,6 +59,10 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
     // Constraints
 
     constraint c_general {
+
+        // Initial Constraint on reset
+        soft rst_n dist {1:=90 , 0:=10};
+
         // Initially Constraint to have only R Type Instructions
         soft opcode == OP_R;
         
