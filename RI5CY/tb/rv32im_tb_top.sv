@@ -112,6 +112,7 @@ module rv32im_top ();
     mul_if mul_if (
         .clk            (clk_i),
         .rst_n          (rst_ni),
+        .short_signed_i (u_core.core_i.ex_stage_i.mult_signed_mode_i), 
         .enable_i       (u_core.core_i.ex_stage_i.mult_en_i),
         .operator_i     (u_core.core_i.ex_stage_i.mult_operator_i),
         .op_a_i         (u_core.core_i.ex_stage_i.mult_operand_a_i),
