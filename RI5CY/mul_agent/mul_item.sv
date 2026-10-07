@@ -10,11 +10,9 @@ class mul_item extends uvm_sequence_item;
   rand bit [31:0] operand_b ;
   rand bit [31:0] operand_c ;
 
-  // NEW: sign interpretation of the operands, observed on mul_if.short_signed_i
   //   bit0 -> operand_a is signed, bit1 -> operand_b is signed
   //   MULH = 2'b11, MULHSU = 2'b01, MULHU = 2'b00   (only meaningful for MUL_H)
-  // Observed by the monitor like 'result'. Make it 'rand' only if your driver
-  // actually drives short_signed_i from this item.
+  // Observed by the monitor like 'result'. 
        bit [1:0]  signed_mode;
 
        bit [31:0] result;
@@ -28,17 +26,12 @@ class mul_item extends uvm_sequence_item;
     super.new(name);
   endfunction
 
-  // Standard UVM hook (the original 'convertTostring' name is not a UVM
-  // override, so it never took part in print()/sprint()).
-  virtual function string convert2string();
+
+   function string convert2string();
     return $sformatf("op=%0b sm=%0b a=%0h b=%0h c=%0h res=%0h lat=%0d",
                      operator, signed_mode, operand_a, operand_b, operand_c, result, latency);
   endfunction
 
-  // Kept so existing callers do not break
-  function string convertTostring();
-    return convert2string();
-  endfunction
 
 endclass
 
