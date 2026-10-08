@@ -57,7 +57,9 @@ package riscv_pkg;
 
 
    // Scoreboard(s)
-  `include "../system_scoreboard/riscv_scoreboard.sv"
+  `include "../alu_scoreboard/riscv_alu_scoreboard.sv"
+  `include "../regfile_scoreboard/riscv_rf_scoreboard.sv"
+  `include "../system_scoreboard/riscv_system_scoreboard.sv"
 
 
   // Env / Test

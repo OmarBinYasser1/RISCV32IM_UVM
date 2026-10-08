@@ -66,7 +66,12 @@ class rv32im_virtual_seq extends uvm_sequence #(uvm_sequence_item);
       begin
         `uvm_info(get_name(), "INSTR SEQ - Started", UVM_HIGH);
         instr_seq.start(instr_seqr);
-        `uvm_info(get_name(), "INSTR SEQ - Finished", UVM_HIGH);
+        `uvm_info(get_name(), "INSTR SEQ - Finished, draining pipeline...", UVM_LOW);
+        // Wait for the CPU pipeline to drain all in-flight instructions
+        // (longest instruction = DIV which takes up to 32 cycles = 320ns)
+        #500ns;
+        `uvm_info(get_name(), "Pipeline drain complete.", UVM_LOW);
+        disable fork;
       end
       begin
         `uvm_info(get_name(), "DATA REACTIVE SEQ - Started", UVM_HIGH);

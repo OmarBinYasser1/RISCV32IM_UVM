@@ -126,6 +126,7 @@ module rv32im_top ();
     regfile_if regfile_if (
         .clk  (clk_i),
         .rst_n(rst_ni),
+        .id_valid_o(u_core.core_i.id_stage_i.id_valid_o),
         // Read port a
         .raddr_a_i(u_core.core_i.id_stage_i.regfile_addr_ra_id),
         .rdata_a_o(u_core.core_i.id_stage_i.regfile_data_ra_id),

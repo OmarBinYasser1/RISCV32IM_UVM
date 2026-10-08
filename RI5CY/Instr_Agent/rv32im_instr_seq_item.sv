@@ -190,14 +190,34 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
         
         case (opcode)
             OP_R : begin
-
                 if(ALU_MUL_sel == ALU) begin
-                    funct3 = R_rv32i_ops;
-                    funct7 = (R_rv32i_ops == SUB || R_rv32i_ops == SRA) ? 7'd32 : 7'd0;
+                    case (R_rv32i_ops)
+                        ADD  : begin funct3 = 3'b000; funct7 = 7'b000_0000; end
+                        SUB  : begin funct3 = 3'b000; funct7 = 7'b010_0000; end
+                        SLL  : begin funct3 = 3'b001; funct7 = 7'b000_0000; end
+                        SLT  : begin funct3 = 3'b010; funct7 = 7'b000_0000; end
+                        SLTU : begin funct3 = 3'b011; funct7 = 7'b000_0000; end
+                        XOR  : begin funct3 = 3'b100; funct7 = 7'b000_0000; end
+                        SRL  : begin funct3 = 3'b101; funct7 = 7'b000_0000; end
+                        SRA  : begin funct3 = 3'b101; funct7 = 7'b010_0000; end
+                        OR   : begin funct3 = 3'b110; funct7 = 7'b000_0000; end
+                        AND  : begin funct3 = 3'b111; funct7 = 7'b000_0000; end
+                        default: begin funct3 = 3'b000; funct7 = 7'b000_0000; end
+                    endcase
                 end
                 else begin
-                    funct3 = R_rv32m_ops;
-                    funct7 = 7'd1;    
+                    case (R_rv32m_ops)
+                        MUL    : funct3 = 3'b000;
+                        MULH   : funct3 = 3'b001;
+                        MULHSU : funct3 = 3'b010;
+                        MULHU  : funct3 = 3'b011;
+                        DIV    : funct3 = 3'b100;
+                        DIVU   : funct3 = 3'b101;
+                        REM    : funct3 = 3'b110;
+                        REMU   : funct3 = 3'b111;
+                        default: funct3 = 3'b000;
+                    endcase
+                    funct7 = 7'b000_0001;    
                 end
 
                 instruction = {funct7,rs2,rs1,funct3,rd,opcode_x};
@@ -205,29 +225,62 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
             end
 
             OP_IMM : begin
+                // Map I_ops enum to the correct RISC-V funct3 field
+                // RV32I ISA: ADDI=000, SLTI=010, SLTIU=011, XORI=100,
+                //            ORI=110,  ANDI=111, SLLI=001, SRLI/SRAI=101
+                case (I_ops)
+                    ADDI  : funct3 = 3'b000;
+                    SLTI  : funct3 = 3'b010;
+                    SLTIU : funct3 = 3'b011;
+                    XORI  : funct3 = 3'b100;
+                    ORI   : funct3 = 3'b110;
+                    ANDI  : funct3 = 3'b111;
+                    SLLI  : funct3 = 3'b001;
+                    SRLI  : funct3 = 3'b101;
+                    SRAI  : funct3 = 3'b101;
+                    default: funct3 = 3'b000;
+                endcase
 
-                funct3 = I_ops;
-            
                 if (I_ops == SRAI || I_ops == SLLI || I_ops == SRLI) begin
-                    funct7 = (I_ops == SRAI)? 7'd32 : 7'd0;
-                    instruction = {funct7,shamt,rs1,funct3,rd,opcode_x};
+                    funct7 = (I_ops == SRAI) ? 7'b010_0000 : 7'b000_0000;
+                    instruction = {funct7, shamt, rs1, funct3, rd, opcode_x};
                 end
-                else instruction = {i_imm12,rs1,funct3,rd,opcode_x};
-            
+                else instruction = {i_imm12, rs1, funct3, rd, opcode_x};
+
             end
 
             OP_LOAD : begin
-                funct3 = Load_ops;
+                case (Load_ops)
+                    LB  : funct3 = 3'b000;
+                    LH  : funct3 = 3'b001;
+                    LW  : funct3 = 3'b010;
+                    LBU : funct3 = 3'b100;
+                    LHU : funct3 = 3'b101;
+                    default: funct3 = 3'b010;
+                endcase
                 instruction = {i_imm12,rs1,funct3,rd,opcode_x};
             end
 
             OP_STORE : begin
-                funct3 = S_ops;
+                case (S_ops)
+                    SB : funct3 = 3'b000;
+                    SH : funct3 = 3'b001;
+                    SW : funct3 = 3'b010;
+                    default: funct3 = 3'b010;
+                endcase
                 instruction = {i_imm12[11:5],rs2,rs1,funct3,i_imm12[4:0],opcode_x};
             end
 
             OP_BRANCH : begin
-                funct3 = B_ops;
+                case (B_ops)
+                    BEQ  : funct3 = 3'b000;
+                    BNE  : funct3 = 3'b001;
+                    BLT  : funct3 = 3'b100;
+                    BGE  : funct3 = 3'b101;
+                    BLTU : funct3 = 3'b110;
+                    BGEU : funct3 = 3'b111;
+                    default: funct3 = 3'b000;
+                endcase
                 instruction = {b_imm13[12],b_imm13[10:5],rs2,rs1,funct3,b_imm13[4:1],b_imm13[11],opcode_x};
             end
 

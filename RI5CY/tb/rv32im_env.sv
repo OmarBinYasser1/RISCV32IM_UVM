@@ -7,7 +7,10 @@ class rv32im_env extends uvm_env;
   alu_agent            alu_agt;
   mul_agent            mul_agt;
   regfile_agent        rf_agt;
-  riscv_scoreboard     sb;
+
+  riscv_alu_scoreboard alu_sb;
+  riscv_rf_scoreboard  rf_sb;
+  riscv_system_scoreboard sb;
 
   rv32im_virtual_seqr  sys_vseqr;
 
@@ -24,7 +27,11 @@ class rv32im_env extends uvm_env;
     alu_agt         = alu_agent::type_id::create("alu_agt", this);
     mul_agt         = mul_agent::type_id::create("mul_agt", this);
     rf_agt          = regfile_agent::type_id::create("rf_agt", this);
-    sb              = riscv_scoreboard::type_id::create("sb", this);
+
+    alu_sb          = riscv_alu_scoreboard::type_id::create("alu_sb", this);
+    rf_sb           = riscv_rf_scoreboard::type_id::create("rf_sb", this);
+    sb              = riscv_system_scoreboard::type_id::create("sb", this);
+
     sys_vseqr       = rv32im_virtual_seqr::type_id::create("sys_vseqr", this);
   endfunction
 
@@ -35,13 +42,17 @@ class rv32im_env extends uvm_env;
     sys_vseqr.data_seqr = data_agent.sequencer;
     sys_vseqr.debug_int_seqr = debug_int_agent.sequencer;
 
-
+    // Connect to system scoreboard
     instr_agent.instr_mon_ap.connect(sb.instr_ae);
     data_agent.transaction_ap.connect(sb.data_ae);
-    // TODO (Optional) : Add analysis exports at the edge of those agents to abstract them
-    alu_agt.mon.analysis_port.connect(sb.alu_ae);
-    mul_agt.mon.analysis_port.connect(sb.mul_ae);
-    rf_agt.mon.analysis_port.connect(sb.rf_ae);
+    alu_agt.analysis_port.connect(sb.alu_ae);
+    mul_agt.analysis_port.connect(sb.mul_ae);
+    rf_agt.analysis_port.connect(sb.rf_ae);
+
+    // Connect to dedicated block scoreboards
+    alu_agt.analysis_port.connect(alu_sb.alu_ae);
+    mul_agt.analysis_port.connect(alu_sb.mul_ae);
+    rf_agt.analysis_port.connect(rf_sb.rf_ae);
 
   endfunction
 

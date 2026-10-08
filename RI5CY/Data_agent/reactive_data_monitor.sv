@@ -35,31 +35,37 @@ class reactive_data_monitor extends uvm_monitor;
   // 1. Address Phase Thread (Detects Handshake: req_o == 1 && gnt_i == 1)
   // ------------------------------------------------------------------
   task sample_address_phase(ref data_transaction pending_q[$]);
+    bit req_active = 0;
     forever begin
-      // @(posedge vif.clk);
       @(vif.cb_monitor)
-
-      // if (vif.rst_n) begin
       if (vif.cb_monitor.rst_n) begin
-        // OBI Protocol: Address phase completes when BOTH req and gnt are high
         if (vif.cb_monitor.data_req_o) begin
-          data_transaction req_tr;
-          req_tr = data_transaction::type_id::create("req_tr");
+          if (!req_active) begin
+            data_transaction req_tr;
+            req_tr = data_transaction::type_id::create("req_tr");
 
-          // Capture Address Phase Signals
-          req_tr.data_addr_o  = vif.cb_monitor.data_addr_o;
-          req_tr.data_we_o    = vif.cb_monitor.data_we_o;
-          req_tr.data_be_o    = vif.cb_monitor.data_be_o;
-          req_tr.data_wdata_o = vif.cb_monitor.data_wdata_o;
+            // Capture Address Phase Signals
+            req_tr.data_addr_o  = vif.cb_monitor.data_addr_o;
+            req_tr.data_we_o    = vif.cb_monitor.data_we_o;
+            req_tr.data_be_o    = vif.cb_monitor.data_be_o;
+            req_tr.data_wdata_o = vif.cb_monitor.data_wdata_o;
 
-          // Push to sequencer's FIFO so reactive sequence can calculate response
-          request_ap.write(req_tr);
+            // Push to sequencer's FIFO so reactive sequence can calculate response
+            request_ap.write(req_tr);
 
-          // Push clone to queue to await rvalid/rdata matching
-          pending_q.push_back(req_tr);
+            // Push clone to queue to await rvalid/rdata matching
+            pending_q.push_back(req_tr);
+            req_active = 1;
+          end
+          if (vif.cb_monitor.data_gnt_i) begin
+            req_active = 0;
+          end
+        end else begin
+           req_active = 0;
         end
       end else begin
         pending_q.delete();  // Clear pipeline on reset
+        req_active = 0;
       end
     end
   endtask

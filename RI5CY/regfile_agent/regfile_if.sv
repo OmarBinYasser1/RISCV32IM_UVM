@@ -1,7 +1,7 @@
 interface regfile_if (
     input   logic        clk, 
     input   logic        rst_n,
-    // TODO : Add `id_valid_o` signal
+    input   logic        id_valid_o,
     input   logic [5:0]  raddr_a_i,
     input   logic [31:0] rdata_a_o,
     input   logic [5:0]  raddr_b_i,
@@ -19,7 +19,7 @@ interface regfile_if (
   clocking cb_mon @(posedge clk);
       default input #1;
       input     rst_n;
-      // TODO : Add `id_valid_o` signal
+      input     id_valid_o;
       input     raddr_a_i;
       input     rdata_a_o;
       input     raddr_b_i;

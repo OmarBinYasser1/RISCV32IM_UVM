@@ -1,6 +1,6 @@
 QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
-Start time: 06:07:19 on Oct 01,2026
-vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 13314 
+Start time: 03:45:12 on Oct 08,2026
+vlog -f files.f -l compile.log -suppress 2583 -suppress 13314 
 -- Compiling package cv32e40p_apu_core_pkg
 -- Compiling package cv32e40p_fpu_pkg
 -- Compiling package cv32e40p_pkg
@@ -47,5 +47,5 @@ vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 1331
 
 Top level modules:
 	rv32im_top
-End time: 06:07:21 on Oct 01,2026, Elapsed time: 0:00:02
+End time: 03:45:13 on Oct 08,2026, Elapsed time: 0:00:01
 Errors: 0, Warnings: 0, Suppressed Warnings: 480

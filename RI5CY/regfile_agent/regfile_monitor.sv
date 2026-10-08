@@ -19,8 +19,9 @@ class regfile_monitor extends uvm_monitor;
     forever begin
       @(posedge vif.clk);
       if (!vif.rst_n) continue;
-      // TODO : The reading enable is actually through the id_valid_o signal
-      if (vif.we_a_i && (vif.waddr_a_i != 0)) begin 
+      #1ps;
+
+      if (vif.we_a_i) begin 
         item = regfile_item::type_id::create("item");
         item.kind = regfile_item::WRITE;
         item.port = "a";
@@ -30,7 +31,7 @@ class regfile_monitor extends uvm_monitor;
         analysis_port.write(item);
       end
 
-      if (vif.we_b_i && (vif.waddr_b_i != 0)) begin
+      if (vif.we_b_i) begin
         item = regfile_item::type_id::create("item");
         item.kind = regfile_item::WRITE;
         item.port = "b";
@@ -40,31 +41,29 @@ class regfile_monitor extends uvm_monitor;
         analysis_port.write(item);
       end
 
-      if (vif.raddr_a_i != 0) begin
+      if (vif.id_valid_o) begin
         item = regfile_item::type_id::create("item");
         item.kind = regfile_item::READ;
         item.port = "a";
         item.addr = vif.raddr_a_i;
         item.data = vif.rdata_a_o;
         analysis_port.write(item);
-      end
 
-      if (vif.raddr_b_i != 0) begin
         item = regfile_item::type_id::create("item");
         item.kind = regfile_item::READ;
         item.port = "b";
         item.addr = vif.raddr_b_i;
         item.data = vif.rdata_b_o;
         analysis_port.write(item);
-      end
 
-      if (vif.raddr_c_i != 0) begin
-        item = regfile_item::type_id::create("item");
-        item.kind = regfile_item::READ;
-        item.port = "c";
-        item.addr = vif.raddr_c_i;
-        item.data = vif.rdata_c_o;
-        analysis_port.write(item);
+        if (vif.raddr_c_i != 0) begin
+          item = regfile_item::type_id::create("item");
+          item.kind = regfile_item::READ;
+          item.port = "c";
+          item.addr = vif.raddr_c_i;
+          item.data = vif.rdata_c_o;
+          analysis_port.write(item);
+        end
       end
     end
   endtask
