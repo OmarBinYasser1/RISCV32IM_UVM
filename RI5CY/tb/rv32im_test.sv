@@ -8,8 +8,6 @@ class rv32im_base_test extends uvm_test;
 
   rv32im_instr_config instr_config;
 
-  // virtual reset_if reset_if;
-
   function new(string name = "rv32im_base_test", uvm_component parent = null);
     super.new(name, parent);
   endfunction
@@ -34,10 +32,6 @@ class rv32im_base_test extends uvm_test;
     ))
     else `uvm_fatal(get_name(), "INSTR BASE TEST - Can't get the Instruction Interface");
 
-    // assert (uvm_config_db#(virtual reset_if)::get(this, "", "RST_IF", reset_if))
-    // else `uvm_fatal(get_name(), " reset - Can't get the Reset Interface");
-
-
     uvm_config_db#(rv32im_instr_config)::set(this, "*", "INSTR_CONFIG", instr_config);
 
   endfunction
@@ -45,7 +39,7 @@ class rv32im_base_test extends uvm_test;
 
   function void connect_phase(uvm_phase phase);
     super.connect_phase(phase);
-    // TODO : This is an intial set , need to configure the ratios of the instructions in our program 
+    // TODO : This is an intial set , need to configure the ratios of the instructions in our program (Designated Sub-programs) 
     sys_vseq.instr_seq.TESTS = instr_config.TESTS;
   endfunction
 

@@ -15,7 +15,6 @@ class rv32im_instr_driver extends uvm_driver#(rv32im_instr_seq_item);
             instr_item = rv32im_instr_seq_item::type_id::create("rv32im_instr_seq_item");
             seq_item_port.get_next_item(instr_item);
             drive(instr_item);     
-            `uvm_info(get_name(),"INSTR DRIVER - Instuction is driven",UVM_HIGH);            
             seq_item_port.item_done();
         end
        
@@ -34,6 +33,8 @@ class rv32im_instr_driver extends uvm_driver#(rv32im_instr_seq_item);
         else begin 
             @(instr_vif.cb_drv iff (instr_vif.cb_drv.instr_req_o == 1));
             instr_vif.cb_drv.instr_rdata_i <= instr_item.instruction;
+            `uvm_info("INSTR_DRV",instr_item.convert2string(),UVM_HIGH);            
+
         end
     endtask
 endclass // rv32im_instr_driver

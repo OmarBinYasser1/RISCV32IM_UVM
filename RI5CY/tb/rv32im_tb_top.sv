@@ -11,12 +11,6 @@ module rv32im_top ();
   wire  rst_ni;
 
   always #(CLK_PERIOD / 2) clk_i = ~clk_i;
-
-  //reset interface instantiation
-//   reset_if rst_if (.clk(clk_i));
-//   assign rst_ni = rst_if.rst_n;
-
-  
   
   // Instruction Interface (OBI Interface) Instantiation
   rv32im_instr_if instr_if (.clk(clk_i));
@@ -159,7 +153,6 @@ module rv32im_top ();
     uvm_config_db#(virtual alu_if)::set(null, "*", "ALU_IF", alu_if);
     uvm_config_db#(virtual mul_if)::set(null, "*", "MUL_IF", mul_if);
     uvm_config_db#(virtual regfile_if)::set(null, "*", "REG_IF", regfile_if);
-    // uvm_config_db#(virtual reset_if)::set(null, "*", "RST_IF", rst_if);
   end
 
 endmodule  // rv32im_top

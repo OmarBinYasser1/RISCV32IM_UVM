@@ -27,8 +27,15 @@ class rv32im_instr_seq extends uvm_sequence#(rv32im_instr_seq_item);
         repeat(TESTS) begin
             instr_item = rv32im_instr_seq_item::type_id::create("instr_item");
             start_item(instr_item);
-            assert(instr_item.randomize with {rst_n == 1 ; opcode == OP_R ; ALU_MUL_sel == ALU ; R_rv32i_ops == ADD;}) 
+            
+            // R-type Instructions
+            // assert(instr_item.randomize with {rst_n == 1 ; opcode == OP_R ; ALU_MUL_sel == ALU; }) 
+            //     else `uvm_fatal(get_name(), "INSTR SEQ - Can't randomize for the Instruction");
+
+            // R-type + B-type
+            assert(instr_item.randomize with {rst_n == 1 ; opcode dist {OP_BRANCH:= 50 , OP_R:= 50} ; ALU_MUL_sel == ALU; }) 
                 else `uvm_fatal(get_name(), "INSTR SEQ - Can't randomize for the Instruction");
+
             finish_item(instr_item);
         end
     endtask

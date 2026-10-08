@@ -22,10 +22,7 @@ class rv32im_virtual_seq extends uvm_sequence #(uvm_sequence_item);
 
   //  Define the virual sequencer to connect its sub-sequencers to the local sequencers
   rv32im_virtual_seqr sys_vseqr;
-  // // virtual interface handles to drive the reset in the virual sequence
-
-  // virtual reset_if rst_if;
-
+  
   //      ====================================================================
 
   function new(string name = "rv32im_virtual_seq");
@@ -42,24 +39,6 @@ class rv32im_virtual_seq extends uvm_sequence #(uvm_sequence_item);
     instr_seqr = sys_vseqr.instr_seqr;
     data_seqr = sys_vseqr.data_seqr;
     debug_int_seqr = sys_vseqr.debug_int_seqr;
-
-    // // -----------------------------------------------------------------
-    // // Get the data interface handle from uvm_config_db
-    // // -----------------------------------------------------------------
-    // if (!uvm_config_db#(virtual reset_if)::get(null, get_full_name(), "RST_IF", rst_if)) begin
-    //   `uvm_fatal(get_name(), "Failed to get rst_if!")
-    // end
-    // // -----------------------------------------------------------------
-    // // Drive System Reset (This toggles the top-level rst_ni wire)
-    // // 2. Drive Reset Cycle
-    // `uvm_info(get_name(), "Asserting System Reset (rst_n = 0)...", UVM_LOW)
-    // rst_if.rst_n <= 1'b0;
-
-    // repeat (20) @(posedge rst_if.clk);  // Hold active for 20 clock cycles
-
-    // `uvm_info(get_name(), "Releasing System Reset (rst_n = 1)...", UVM_LOW)
-    // rst_if.rst_n <= 1'b1;
-    // @(posedge rst_if.clk);  // Wait 1 cycle after releases
 
     // Run the sequences on the local sequencers
     fork
