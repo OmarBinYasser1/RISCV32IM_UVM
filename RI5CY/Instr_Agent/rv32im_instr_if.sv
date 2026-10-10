@@ -7,7 +7,9 @@ interface rv32im_instr_if (
     // OBI Istruction Interface Signals
     bit             instr_gnt_i;
     bit             instr_rvalid_i;
-    bit     [31:0]  instr_rdata_i;
+    bit     [31:0]  instr_rdata_i;      // Requested PC by the core
+    logic     [31:0]  pc_if;              // PC in the IF (Records the program before getting flushed)
+
     logic           instr_req_o;
     logic   [31:0]  instr_addr_o;
    
@@ -28,7 +30,8 @@ interface rv32im_instr_if (
         input instr_addr_o;
         input instr_gnt_i;
         input instr_rvalid_i;
-        input instr_rdata_i; 
+        input instr_rdata_i;
+        input pc_if; 
     endclocking
     
     modport mp_drv (clocking cb_drv);

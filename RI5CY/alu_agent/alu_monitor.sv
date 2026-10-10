@@ -19,18 +19,19 @@ class alu_monitor extends uvm_monitor;
 
     forever begin
 
-      @(posedge vif.clk);
+      @(posedge vif.cb_mon);
 
-      if (vif.rst_n && vif.enable_i && vif.ready_o && vif.ex_ready_i) begin
+      if (vif.cb_mon.rst_n && vif.cb_mon.enable_i && vif.cb_mon.ready_o && vif.cb_mon.ex_ready_i) begin
 
         item = alu_item::type_id::create("item");
 
-        item.operator             = vif.operator_i;
-        item.operand_a            = vif.operand_a_i;
-        item.operand_b            = vif.operand_b_i;
-        item.operand_c            = vif.operand_c_i;
-        item.result               = vif.result_o;
-        item.comparison_result    = vif.comparison_result_o;
+        item.pc_ex                = vif.cb_mon.pc_ex;
+        item.operator             = vif.cb_mon.operator_i;
+        item.operand_a            = vif.cb_mon.operand_a_i;
+        item.operand_b            = vif.cb_mon.operand_b_i;
+        item.operand_c            = vif.cb_mon.operand_c_i;
+        item.result               = vif.cb_mon.result_o;
+        item.comparison_result    = vif.cb_mon.comparison_result_o;
 
         `uvm_info("ALU_MON", item.convertTostring(), UVM_MEDIUM)
         analysis_port.write(item);

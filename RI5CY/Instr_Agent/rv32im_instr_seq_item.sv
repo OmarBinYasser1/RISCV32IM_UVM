@@ -1,61 +1,82 @@
+// Instruction Enums
+    typedef enum bit[6:0] { 
+            // Define types whose instructions share the same opcode
+            OP_R = 7'h33 , OP_IMM = 7'h13 , OP_BRANCH = 7'h63 , OP_STORE = 7'h23 ,
+            // Special I-type Instructions sharing a different opcode
+            OP_LOAD = 7'h03 ,
+            // Specific instructions 
+            OP_JAL = 7'h6f , OP_JALR = 7'h67 , OP_LUI = 7'h37 , OP_AUIPC = 7'h17
+    } opcode_t; // This type defines the possible opcodes for the RV32IM
+
+   typedef enum bit[2:0] { 
+        ADD_SUB , SLL , SLT , 
+        SLTU , XOR , 
+        SRL_SRA , OR  , AND 
+    } alu_ops_t;
+
+    typedef enum bit[2:0] { 
+       MUL , MULH , MULHSU , MULHU ,
+       DIV , DIVU , REM    , REMU
+    } mul_div_ops_t;
+
+    typedef enum bit [2:0]{ 
+        ADDI = 'd0 , SLTI ='d2 , SLTIU = 'd3 ,
+        XORI = 'd4 , ORI = 'd6 , ANDI = 'd7 , 
+        SLLI = 'd1 , SRLI_SRAI = 'd5
+     } I_ops_t;
+
+    typedef enum bit[2:0] { 
+        BEQ = 'd0 ,  BNE = 'd1 , 
+        BLT = 'd4 ,  BGE = 'd5 ,
+        BLTU = 'd6 , BGEU = 'd7
+    } B_ops_t;
+
+    typedef enum bit[2:0] { SB , SH , SW } S_ops_t;
+    
+    typedef enum bit[2:0] { LB = 'd0 , LH = 'd1 , LW = 'd2 , LBU = 'd4 , LHU = 'd5 } Load_ops_t;
+
+    typedef enum bit {ALU , MUL_DIV} ALU_MUL_sel_t;
+
 class rv32im_instr_seq_item extends uvm_sequence_item;
     `uvm_object_utils(rv32im_instr_seq_item);
 
-    typedef enum bit[6:0] { 
-        // Define types whose instructions share the same opcode
-        OP_R = 7'h33 , OP_IMM = 7'h13 , OP_BRANCH = 7'h63 , OP_STORE = 7'h23 ,
-        // Special I-type Instructions sharing a different opcode
-        OP_LOAD = 7'h03 ,
-        // Specific instructions 
-        OP_JAL = 7'h6f , OP_JALR = 7'h67 , OP_LUI = 7'h37 , OP_AUIPC = 7'h17
-    } opcode_t; // This type defines the possible opcodes for the RV32IM
 
     // Define the enum of the opcode   
     rand bit rst_n; 
     rand opcode_t opcode;
-    bit [6:0]  funct7; // Valid Vlaues are : 0 , 1 , 32
+    rand bit [6:0]  funct7; // Valid Vlaues are : 0 , 1 , 32
     bit [2:0]  funct3;
     rand bit [4:0]  rd , rs1 , rs2;
     rand bit [4:0]  shamt;
     rand bit [11:0] i_imm12; // I/S-type Immediate
     rand bit [19:0] u_imm20; // U-type Immediate
-    rand bit [20:0] jal_imm21; // jal immediate
-    rand bit [12:0] b_imm13; // B-type Immediate 
+    rand bit [20:0] jal_imm21; // jal immediate 
+    rand bit [12:0] b_imm13; // B-type Immediate
 
+    // bit [31:0] imm
 
     // instruction to be passed to the core
     bit [31:0] instruction;
 
-    rand enum bit[3:0] { 
-        ADD  , SUB , SLL , SLT , 
-        SLTU , XOR , SRL , 
-        SRA  , OR  , AND 
-    } R_rv32i_ops;
+    rand alu_ops_t R_rv32i_ops;
 
-    rand enum bit[2:0] { 
-       MUL , MULH , MULHSU , MULHU ,
-       DIV , DIVU , REM    , REMU
-    } R_rv32m_ops;
+    rand mul_div_ops_t R_rv32m_ops;
 
-    rand enum bit [3:0]{ 
-        ADDI , SLTI , SLTIU ,
-        XORI , ORI , ANDI , 
-        SLLI , SRLI , SRAI
-     } I_ops;
+    rand I_ops_t I_ops;
 
-    rand enum bit[2:0] { 
-        BEQ ,  BNE , 
-        BLT ,  BGE ,
-        BLTU , BGEU     
-    } B_ops;
-    
-    rand enum bit[2:0] { SB , SH , SW } S_ops;
+    rand B_ops_t B_ops;
+
+    rand S_ops_t S_ops;
  
-    rand enum bit[2:0] { LB , LH , LW , LBU , LHU } Load_ops;
+    rand Load_ops_t Load_ops;
 
-    rand enum bit {ALU , MUL_DIV} ALU_MUL_sel; 
+    rand ALU_MUL_sel_t  ALU_MUL_sel; 
 
-
+    bit [31:0] pc; // Program counter received as `req_o` from the core
+    bit [31:0] pc_if; // Program counter inside the IF stage
+    
+    
+    
     // Constraints
 
     constraint c_general {
@@ -69,6 +90,9 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
         // Initially Constraint to have the destination register to be x0
         rd dist {[32'd1 : 32'd31] :/98 , 0:/2}; 
     
+        // In xase of R,I types , the valid values for the funct7 filed are 0,1,32
+        funct7 inside {0,1,32};
+        
         // B-type Immediate value should be multiple of 2
         b_imm13 % 2 == 0;
 
@@ -84,19 +108,33 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
         solve opcode before ALU_MUL_sel;
         solve ALU_MUL_sel before R_rv32i_ops;
         solve ALU_MUL_sel before R_rv32m_ops;
-        
+        solve R_rv32i_ops before funct7;
+        solve R_rv32m_ops before funct7;
+
         if(opcode == OP_R) {
 
             soft ALU_MUL_sel dist {ALU := 60 , MUL_DIV:= 40};
             
             if(ALU_MUL_sel == ALU) {
                 // todo : Only If we need weighted dist
-                R_rv32i_ops inside {ADD , SUB , SLL , SLT , SLTU , XOR , SRL , SRA , OR , AND}; 
+                R_rv32i_ops inside {ADD_SUB , SLL , SLT , SLTU , XOR , SRL_SRA , OR , AND}; 
+                
+                if(R_rv32i_ops == ADD_SUB){
+                    funct7 dist {'d0 := 50, 'd32 := 50}; // ADD and SUB are of the same probability
+                } else if (R_rv32i_ops == SRL_SRA) {
+                    funct7 dist {'d0 := 50, 'd32 := 50}; // SRL and SRA are of the same probability
+                } else {
+                    funct7 == 'd0;
+                }
             } else {
                 // todo : Only If we need weighted dist
                 R_rv32m_ops inside {MUL, MULH , MULHSU , MULHU , DIV , DIVU , REM , REMU};
+            
+                funct7 == 'd1;
+            
             } 
-        
+            
+            
             // No constraint on the source operands
         
         }
@@ -105,10 +143,15 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
     constraint c_I_type {
 
         solve opcode before I_ops;
+        solve I_ops before funct7;
 
         if(opcode == OP_IMM) {
             // todo : Only If we need weighted dist
-            I_ops inside {ADDI , SLTI , SLTIU , XORI , ORI , ANDI , SLLI , SRLI , SRAI};
+            I_ops inside {ADDI , SLTI , SLTIU , XORI , ORI , ANDI , SLLI , SRLI_SRAI};
+
+            if (I_ops == SRLI_SRAI)
+                    funct7 dist {'d0 := 50, 'd32 := 50}; // SRLI and SRAI are of the same probability
+            else funct7 == 0; // Whether SLLI or any other operation that don't use funct7
 
             // No constraint on the shift amount `shamt`
 
@@ -190,34 +233,12 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
         
         case (opcode)
             OP_R : begin
+
                 if(ALU_MUL_sel == ALU) begin
-                    case (R_rv32i_ops)
-                        ADD  : begin funct3 = 3'b000; funct7 = 7'b000_0000; end
-                        SUB  : begin funct3 = 3'b000; funct7 = 7'b010_0000; end
-                        SLL  : begin funct3 = 3'b001; funct7 = 7'b000_0000; end
-                        SLT  : begin funct3 = 3'b010; funct7 = 7'b000_0000; end
-                        SLTU : begin funct3 = 3'b011; funct7 = 7'b000_0000; end
-                        XOR  : begin funct3 = 3'b100; funct7 = 7'b000_0000; end
-                        SRL  : begin funct3 = 3'b101; funct7 = 7'b000_0000; end
-                        SRA  : begin funct3 = 3'b101; funct7 = 7'b010_0000; end
-                        OR   : begin funct3 = 3'b110; funct7 = 7'b000_0000; end
-                        AND  : begin funct3 = 3'b111; funct7 = 7'b000_0000; end
-                        default: begin funct3 = 3'b000; funct7 = 7'b000_0000; end
-                    endcase
+                    funct3 = R_rv32i_ops;
                 end
                 else begin
-                    case (R_rv32m_ops)
-                        MUL    : funct3 = 3'b000;
-                        MULH   : funct3 = 3'b001;
-                        MULHSU : funct3 = 3'b010;
-                        MULHU  : funct3 = 3'b011;
-                        DIV    : funct3 = 3'b100;
-                        DIVU   : funct3 = 3'b101;
-                        REM    : funct3 = 3'b110;
-                        REMU   : funct3 = 3'b111;
-                        default: funct3 = 3'b000;
-                    endcase
-                    funct7 = 7'b000_0001;    
+                    funct3 = R_rv32m_ops;
                 end
 
                 instruction = {funct7,rs2,rs1,funct3,rd,opcode_x};
@@ -225,62 +246,29 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
             end
 
             OP_IMM : begin
-                // Map I_ops enum to the correct RISC-V funct3 field
-                // RV32I ISA: ADDI=000, SLTI=010, SLTIU=011, XORI=100,
-                //            ORI=110,  ANDI=111, SLLI=001, SRLI/SRAI=101
-                case (I_ops)
-                    ADDI  : funct3 = 3'b000;
-                    SLTI  : funct3 = 3'b010;
-                    SLTIU : funct3 = 3'b011;
-                    XORI  : funct3 = 3'b100;
-                    ORI   : funct3 = 3'b110;
-                    ANDI  : funct3 = 3'b111;
-                    SLLI  : funct3 = 3'b001;
-                    SRLI  : funct3 = 3'b101;
-                    SRAI  : funct3 = 3'b101;
-                    default: funct3 = 3'b000;
-                endcase
 
-                if (I_ops == SRAI || I_ops == SLLI || I_ops == SRLI) begin
-                    funct7 = (I_ops == SRAI) ? 7'b010_0000 : 7'b000_0000;
-                    instruction = {funct7, shamt, rs1, funct3, rd, opcode_x};
+                funct3 = I_ops;
+            
+                if (I_ops == SRLI_SRAI || I_ops == SLLI) begin
+                    // funct7 = (I_ops == SRAI)? 7'd32 : 7'd0;
+                    instruction = {funct7,shamt,rs1,funct3,rd,opcode_x};
                 end
-                else instruction = {i_imm12, rs1, funct3, rd, opcode_x};
-
+                else instruction = {i_imm12,rs1,funct3,rd,opcode_x};
+            
             end
 
             OP_LOAD : begin
-                case (Load_ops)
-                    LB  : funct3 = 3'b000;
-                    LH  : funct3 = 3'b001;
-                    LW  : funct3 = 3'b010;
-                    LBU : funct3 = 3'b100;
-                    LHU : funct3 = 3'b101;
-                    default: funct3 = 3'b010;
-                endcase
+                funct3 = Load_ops;
                 instruction = {i_imm12,rs1,funct3,rd,opcode_x};
             end
 
             OP_STORE : begin
-                case (S_ops)
-                    SB : funct3 = 3'b000;
-                    SH : funct3 = 3'b001;
-                    SW : funct3 = 3'b010;
-                    default: funct3 = 3'b010;
-                endcase
+                funct3 = S_ops;
                 instruction = {i_imm12[11:5],rs2,rs1,funct3,i_imm12[4:0],opcode_x};
             end
 
             OP_BRANCH : begin
-                case (B_ops)
-                    BEQ  : funct3 = 3'b000;
-                    BNE  : funct3 = 3'b001;
-                    BLT  : funct3 = 3'b100;
-                    BGE  : funct3 = 3'b101;
-                    BLTU : funct3 = 3'b110;
-                    BGEU : funct3 = 3'b111;
-                    default: funct3 = 3'b000;
-                endcase
+                funct3 = B_ops;
                 instruction = {b_imm13[12],b_imm13[10:5],rs2,rs1,funct3,b_imm13[4:1],b_imm13[11],opcode_x};
             end
 
@@ -296,12 +284,80 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
             default : begin // LUI / AUIPC
                 instruction = {u_imm20,rd,opcode_x};
             end
-
         endcase
-            
-        
-    endfunction
+    endfunction // post_randomize
 
+    virtual function string convert2string();
+        string s;
+
+        s = super.convert2string();
+
+        case (opcode)
+            OP_R : begin
+                if(ALU_MUL_sel == ALU) begin
+                    alu_ops_t alu_op;
+                    alu_op = alu_ops_t'(funct3);
+                    case (alu_op)
+                        ADD_SUB : s = (funct7 == 'd0)? "ADD" : "SUB";
+                        SRL_SRA : s = (funct7 == 'd0)? "SRL" : "SRA";
+                        default : s = alu_op.name();              
+                    endcase
+                    s= {s,$sformatf(" X%0d , X%0d , X%0d", rd , rs1 , rs2 )};
+                end
+                else begin
+                    mul_div_ops_t mul_op;
+                    mul_op = mul_div_ops_t'(funct3);
+                    s= $sformatf(" %s X%0d , X%0d , X%0d", mul_op.name() , rd , rs1 , rs2 );   
+                end             
+            end
+
+            OP_IMM : begin
+                I_ops_t alu_imm_op;
+                alu_imm_op = I_ops_t'(funct3);
+                case (alu_imm_op)
+                    SRLI_SRAI : s = (funct7 == 'd0)? "SRLI" : "SRAI";
+                    default : s = alu_imm_op.name();
+                endcase
+                
+                if (alu_imm_op == SRLI_SRAI || alu_imm_op == SLLI)
+                    s= {s , $sformatf(" X%0d , X%0d , %0d", rd , rs1 , shamt )};  
+                else
+                    s= {s , $sformatf(" X%0d , X%0d , %0d", rd , rs1 , i_imm12 )};                
+            end
+
+            OP_LOAD : begin
+                Load_ops_t load_op;
+                load_op = Load_ops_t'(funct3);
+                s = $sformatf(" %s X%0d , %0d (X%0d)", load_op.name(), rd , i_imm12 , rs1);
+            end
+
+            OP_STORE : begin
+                S_ops_t store_op;
+                store_op = S_ops_t'(funct3);
+                s = $sformatf(" %s X%0d , %0d (X%0d)", store_op.name(), rs2 , i_imm12 , rs1);
+            end
+
+            OP_BRANCH : begin
+                B_ops_t branch_op;
+                branch_op = B_ops_t'(funct3);
+                s = $sformatf(" %s X%0d , X%0d , %0d", branch_op.name(), rs1 , rs2 , b_imm13);
+            end
+
+           OP_JAL : begin
+                s = $sformatf(" %s X%0d , %0d", opcode.name() , rd , jal_imm21 );
+            end
+
+            OP_JALR : begin
+                s = $sformatf(" %s X%0d , %0d", opcode.name() , rd , i_imm12);
+            end
+
+            OP_AUIPC , OP_LUI : begin
+                s = $sformatf(" %s X%0d , %0d", opcode.name() , rd , u_imm20 );
+            end
+        endcase
+
+        return s;
+    endfunction // convert2string
 
 
 endclass // rv32im_instr_seq_item

@@ -29,13 +29,19 @@ class rv32im_instr_seq extends uvm_sequence#(rv32im_instr_seq_item);
             start_item(instr_item);
             assert(instr_item.randomize with {
                 rst_n == 1;
-                opcode inside {OP_R, OP_IMM};
+                // opcode inside {OP_R,OP_IMM};
+                // opcode inside {OP_R,OP_BRANCH};
+                opcode == OP_BRANCH;
+                // funct7 == 'd0;
+                // R_rv32i_ops == SLT;
+                // ALU_MUL_sel == MUL_DIV;
+                ALU_MUL_sel == ALU;
+                // R_rv32m_ops inside {MUL , MULHSU , MULHU , MULH};
             })
                 else `uvm_fatal(get_name(), "INSTR SEQ - Can't randomize for the Instruction");
             finish_item(instr_item);
         end
     endtask
-
 endclass // rv32im_instr_seq_item
 
 

@@ -5,6 +5,8 @@ class rv32im_instr_driver extends uvm_driver#(rv32im_instr_seq_item);
     
     rv32im_instr_seq_item instr_item;
 
+    int driven_insts;
+
     function new (string name = "rv32im_instr_driver" , uvm_component parent = null);
         super.new(name , parent);
     endfunction
@@ -22,8 +24,8 @@ class rv32im_instr_driver extends uvm_driver#(rv32im_instr_seq_item);
             instr_item = rv32im_instr_seq_item::type_id::create("rv32im_instr_seq_item");
             seq_item_port.get_next_item(instr_item);
             drive(instr_item);
-            `uvm_info(get_name(), $sformatf("INSTR DRIVER - Instruction driven: 0x%08h (rst_n=%0b) @ %0t",
-                instr_item.instruction, instr_item.rst_n, $time), UVM_LOW);
+            // `uvm_info(get_name(), $sformatf("INSTR DRIVER - Instruction driven: 0x%08h (rst_n=%0b) @ %0t",
+            //     instr_item.instruction, instr_item.rst_n, $time), UVM_LOW);
             seq_item_port.item_done();
         end
        
@@ -34,7 +36,7 @@ class rv32im_instr_driver extends uvm_driver#(rv32im_instr_seq_item);
     //   - After reset:  on every cycle where instr_req_o=1, immediately
     //                   grant and return rdata (zero-latency ROM model)
     virtual task drive (input rv32im_instr_seq_item instr_item);
-        @(instr_vif.cb_drv);
+        // @(instr_vif.cb_drv);
 
         // Always update rst_n
         instr_vif.cb_drv.rst_n <= instr_item.rst_n;
@@ -44,20 +46,34 @@ class rv32im_instr_driver extends uvm_driver#(rv32im_instr_seq_item);
             instr_vif.cb_drv.instr_gnt_i    <= 0;
             instr_vif.cb_drv.instr_rvalid_i <= 0;
             instr_vif.cb_drv.instr_rdata_i  <= 0;
-        end else begin
-            // Out of reset: wait for the core to request an instruction
+        end 
+        else if(instr_vif.cb_drv.instr_req_o == 1)begin
+             // Immediately grant and provide the instruction data (zero-latency ROM)
+            drive_normal();
+        end
+        else begin
+            instr_vif.cb_drv.instr_gnt_i    <= 0;
+            instr_vif.cb_drv.instr_rvalid_i <= 0;
+            // Hold the previous instruction on OBI Interface
+
+            // Wait for the core to request an instruction
             @(instr_vif.cb_drv iff (instr_vif.cb_drv.instr_req_o == 1));
 
             // Immediately grant and provide the instruction data (zero-latency ROM)
-            instr_vif.cb_drv.instr_gnt_i    <= 1;
-            instr_vif.cb_drv.instr_rvalid_i <= 1;
-            instr_vif.cb_drv.instr_rdata_i  <= instr_item.instruction;
-
-            // One cycle later, de-assert handshake signals
-            @(instr_vif.cb_drv);
-            instr_vif.cb_drv.instr_gnt_i    <= 0;
-            instr_vif.cb_drv.instr_rvalid_i <= 0;
+            drive_normal();
         end
+
+        @(instr_vif.cb_drv);
+
+    endtask
+
+    virtual task drive_normal ();
+        driven_insts++;
+        instr_vif.cb_drv.instr_gnt_i    <= 1;
+        instr_vif.cb_drv.instr_rvalid_i <= 1;
+        instr_vif.cb_drv.instr_rdata_i  <= instr_item.instruction;
+        `uvm_info("INSTR_DRV",$sformatf("Instruction #%0d driven: 0x%08h",driven_insts,instr_item.instruction),UVM_LOW);
+        `uvm_info("INSTR_DRV",instr_item.convert2string(),UVM_HIGH); 
     endtask
 
 endclass // rv32im_instr_driver

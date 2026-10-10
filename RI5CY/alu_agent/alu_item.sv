@@ -8,7 +8,7 @@ class alu_item extends uvm_sequence_item;
   rand bit [31:0] operand_c;  
        bit [31:0] result;     
        bit comparison_result;     
-
+       bit pc_ex; // Used only in Jump/Branch Instructions
 
   function new(string name = "alu_item");
     super.new(name); 

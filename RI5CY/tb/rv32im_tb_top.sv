@@ -12,17 +12,13 @@ module rv32im_top ();
 
   always #(CLK_PERIOD / 2) clk_i = ~clk_i;
 
-  //reset interface instantiation
-//   reset_if rst_if (.clk(clk_i));
-//   assign rst_ni = rst_if.rst_n;
-
-  
-  
   // Instruction Interface (OBI Interface) Instantiation
-  rv32im_instr_if instr_if (.clk(clk_i));
+  rv32im_instr_if instr_if (
+    .clk(clk_i),
+    .pc_if(u_core.core_i.pc_if)
+   );
   
   assign rst_ni = instr_if.rst_n;
-
                                         // Active Interfaces (Driving / Monitoring)
 
   // Instruction Interface (OBI Interface) Instantiation
@@ -98,6 +94,7 @@ module rv32im_top ();
     alu_if alu_if (
         .clk                  (clk_i),
         .rst_n                (rst_ni),
+        .pc_ex                (u_core.core_i.pc_ex),
         .enable_i             (u_core.core_i.ex_stage_i.alu_en_i),
         .operator_i           (u_core.core_i.ex_stage_i.alu_operator_i),
         .operand_a_i          (u_core.core_i.ex_stage_i.alu_operand_a_i),
@@ -106,7 +103,7 @@ module rv32im_top ();
         .result_o             (u_core.core_i.ex_stage_i.alu_result),
         .comparison_result_o  (u_core.core_i.ex_stage_i.alu_cmp_result),
         .ready_o              (u_core.core_i.ex_stage_i.alu_ready),
-        .ex_ready_i           (u_core.core_i.ex_stage_i.ex_ready_o)
+        .ex_ready_i           (u_core.core_i.ex_stage_i.ex_ready_o),
     );
     // MUL Interface Instantiation
     mul_if mul_if (
@@ -124,30 +121,32 @@ module rv32im_top ();
     );
     // RegFile Interface Instantiation
     regfile_if regfile_if (
-        .clk  (clk_i),
-        .rst_n(rst_ni),
-        .id_valid_o(u_core.core_i.id_stage_i.id_valid_o),
+        .clk                    (clk_i),
+        .rst_n                  (rst_ni),
+        .pc_ex                  (u_core.core_i.pc_ex),
         // Read port a
-        .raddr_a_i(u_core.core_i.id_stage_i.regfile_addr_ra_id),
-        .rdata_a_o(u_core.core_i.id_stage_i.regfile_data_ra_id),
+        .raddr_a_i              (u_core.core_i.id_stage_i.regfile_addr_ra_id),
+        .rdata_a_o              (u_core.core_i.id_stage_i.regfile_data_ra_id),
+        .rega_used_dec          (u_core.core_i.id_stage_i.rega_used_dec),
         // Read port b
-        .raddr_b_i(u_core.core_i.id_stage_i.regfile_addr_rb_id),
-        .rdata_b_o(u_core.core_i.id_stage_i.regfile_data_rb_id),
+        .raddr_b_i              (u_core.core_i.id_stage_i.regfile_addr_rb_id),
+        .rdata_b_o              (u_core.core_i.id_stage_i.regfile_data_rb_id),
+        .regb_used_dec          (u_core.core_i.id_stage_i.regb_used_dec),
         // Read port c
-        .raddr_c_i(u_core.core_i.id_stage_i.regfile_addr_rc_id),
-        .rdata_c_o(u_core.core_i.id_stage_i.regfile_data_rc_id),
+        .raddr_c_i              (u_core.core_i.id_stage_i.regfile_addr_rc_id),
+        .rdata_c_o              (u_core.core_i.id_stage_i.regfile_data_rc_id),
+        .regc_used_dec          (u_core.core_i.id_stage_i.regc_used_dec),
         // Write port a
-        .waddr_a_i(u_core.core_i.id_stage_i.regfile_waddr_wb_i),
-        .wdata_a_i(u_core.core_i.id_stage_i.regfile_wdata_wb_i),
-        .we_a_i(u_core.core_i.id_stage_i.regfile_we_wb_power_i),
+        .waddr_a_i              (u_core.core_i.id_stage_i.regfile_waddr_wb_i),
+        .wdata_a_i              (u_core.core_i.id_stage_i.regfile_wdata_wb_i),
+        .we_a_i                 (u_core.core_i.id_stage_i.regfile_we_wb_power_i),
         // Write port b
-        .waddr_b_i(u_core.core_i.id_stage_i.regfile_alu_waddr_fw_i),
-        .wdata_b_i(u_core.core_i.id_stage_i.regfile_alu_wdata_fw_i),
-        .we_b_i(u_core.core_i.id_stage_i.regfile_alu_we_fw_power_i)
+        .waddr_b_i              (u_core.core_i.id_stage_i.regfile_alu_waddr_fw_i),
+        .wdata_b_i              (u_core.core_i.id_stage_i.regfile_alu_wdata_fw_i),
+        .we_b_i                 (u_core.core_i.id_stage_i.regfile_alu_we_fw_power_i)
     );
 
 
-  // TODO : Initially the reset is owned by the top until the debug+interrupt , data interfaces are integrated
   initial begin
     run_test("rv32im_base_test");  // Initially runs the base test 
     $stop;
@@ -161,7 +160,6 @@ module rv32im_top ();
     uvm_config_db#(virtual alu_if)::set(null, "*", "ALU_IF", alu_if);
     uvm_config_db#(virtual mul_if)::set(null, "*", "MUL_IF", mul_if);
     uvm_config_db#(virtual regfile_if)::set(null, "*", "REG_IF", regfile_if);
-    // uvm_config_db#(virtual reset_if)::set(null, "*", "RST_IF", rst_if);
   end
 
 endmodule  // rv32im_top

@@ -434,6 +434,18 @@ class riscv_system_scoreboard extends uvm_scoreboard;
         7'h67:   begin instr_jump++;   end // JAL, JALR
         default: begin instr_other++;  end // LUI, AUIPC, etc.
       endcase
+      // TODO : "Retired" Definition is not correct here.
+
+      /*
+        Definition of retired instruction :
+          A retired instruction is one reached its datapath without being flushed by another branch or exception or interrupt.
+          e.g:
+          - Instruction containing `rd` is retired when the regfile write enable is asserted ex: ALU/MUL/Jump/Load
+          - Store operation is retired when the `rvalid` of the data memory
+          - Branch operation is retired when 
+
+      
+      */
 
       `uvm_info("SB_INSTR", $sformatf("RETIRED #%0d instr=0x%08h opcode=0x%02h",
         instr_count, item.instruction, opcode), UVM_HIGH)

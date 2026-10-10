@@ -17,53 +17,56 @@ class regfile_monitor extends uvm_monitor;
     regfile_item item;
 
     forever begin
-      @(posedge vif.clk);
-      if (!vif.rst_n) continue;
-      #1ps;
+      @(vif.cb_mon);
+      if (!vif.cb_mon.rst_n) continue;
 
-      if (vif.we_a_i) begin 
+      item.pc_id = vif.cb_mon.pc_id;
+
+      if (vif.cb_mon.we_a_i) begin 
         item = regfile_item::type_id::create("item");
         item.kind = regfile_item::WRITE;
         item.port = "a";
-        item.addr = vif.waddr_a_i;
-        item.data = vif.wdata_a_i;
+        item.addr = vif.cb_mon.waddr_a_i;
+        item.data = vif.cb_mon.wdata_a_i;
         `uvm_info("REGFILE_MON", $sformatf("WRITE Port A: %s", item.convertTostring()), UVM_MEDIUM)
         analysis_port.write(item);
       end
 
-      if (vif.we_b_i) begin
+      if (vif.cb_mon.we_b_i) begin
         item = regfile_item::type_id::create("item");
         item.kind = regfile_item::WRITE;
         item.port = "b";
-        item.addr = vif.waddr_b_i;
-        item.data = vif.wdata_b_i;
+        item.addr = vif.cb_mon.waddr_b_i;
+        item.data = vif.cb_mon.wdata_b_i;
         `uvm_info("REGFILE_MON", $sformatf("WRITE Port B: %s", item.convertTostring()), UVM_MEDIUM)
         analysis_port.write(item);
       end
 
-      if (vif.id_valid_o) begin
+      if(vif.cb_mon.rega_used_dec) begin
         item = regfile_item::type_id::create("item");
         item.kind = regfile_item::READ;
         item.port = "a";
-        item.addr = vif.raddr_a_i;
-        item.data = vif.rdata_a_o;
+        item.addr = vif.cb_mon.raddr_a_i;
+        item.data = vif.cb_mon.rdata_a_o;
         analysis_port.write(item);
+      end
 
+      if(vif.cb_mon.regb_used_dec) begin
         item = regfile_item::type_id::create("item");
         item.kind = regfile_item::READ;
         item.port = "b";
-        item.addr = vif.raddr_b_i;
-        item.data = vif.rdata_b_o;
-        analysis_port.write(item);
+        item.addr = vif.cb_mon.raddr_b_i;
+        item.data = vif.cb_mon.rdata_b_o;
+        analysis_port.write(item); 
+      end
 
-        if (vif.raddr_c_i != 0) begin
+      if (vif.cb_mon.regc_used_dec) begin
           item = regfile_item::type_id::create("item");
           item.kind = regfile_item::READ;
           item.port = "c";
-          item.addr = vif.raddr_c_i;
-          item.data = vif.rdata_c_o;
-          analysis_port.write(item);
-        end
+          item.addr = vif.cb_mon.raddr_c_i;
+          item.data = vif.cb_mon.rdata_c_o;
+          analysis_port.write(item);        
       end
     end
   endtask

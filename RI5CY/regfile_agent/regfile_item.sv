@@ -6,9 +6,10 @@ class regfile_item extends uvm_sequence_item;
 
   rand rf_kind_e kind;      
        string    port;      
-  rand bit [5:0] addr;      
-       bit [31:0] data;    
-
+  rand bit    [5:0]   addr;      
+       bit    [31:0]  data; 
+       logic  [31:0]  pc_id;
+       
   function new(string name = "regfile_item");
     super.new(name);
   endfunction

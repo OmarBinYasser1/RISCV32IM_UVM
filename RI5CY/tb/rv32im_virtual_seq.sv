@@ -46,20 +46,6 @@ class rv32im_virtual_seq extends uvm_sequence #(uvm_sequence_item);
     // // -----------------------------------------------------------------
     // // Get the data interface handle from uvm_config_db
     // // -----------------------------------------------------------------
-    // if (!uvm_config_db#(virtual reset_if)::get(null, get_full_name(), "RST_IF", rst_if)) begin
-    //   `uvm_fatal(get_name(), "Failed to get rst_if!")
-    // end
-    // // -----------------------------------------------------------------
-    // // Drive System Reset (This toggles the top-level rst_ni wire)
-    // // 2. Drive Reset Cycle
-    // `uvm_info(get_name(), "Asserting System Reset (rst_n = 0)...", UVM_LOW)
-    // rst_if.rst_n <= 1'b0;
-
-    // repeat (20) @(posedge rst_if.clk);  // Hold active for 20 clock cycles
-
-    // `uvm_info(get_name(), "Releasing System Reset (rst_n = 1)...", UVM_LOW)
-    // rst_if.rst_n <= 1'b1;
-    // @(posedge rst_if.clk);  // Wait 1 cycle after releases
 
     // Run the sequences on the local sequencers
     fork

@@ -114,7 +114,7 @@ class riscv_rf_scoreboard extends uvm_scoreboard;
             shadow_rf[item.addr] = item.data;
           end
 
-          `uvm_info("SB_RF", $sformatf("WRITE x%0d = 0x%08h (port %s)", item.addr, item.data, item.port), UVM_HIGH)
+          `uvm_info("SB_RF", $sformatf("WRITE x%0d = 0x%08h (port %s)", item.addr, item.data, item.port), UVM_MEDIUM)
         end
 
         regfile_item::READ: begin
@@ -133,7 +133,7 @@ class riscv_rf_scoreboard extends uvm_scoreboard;
 
           if (item.data === expected) begin
             rf_read_pass++;
-            `uvm_info("SB_RF", $sformatf("READ PASS x%0d = 0x%08h (port %s)", item.addr, item.data, item.port), UVM_HIGH)
+            `uvm_info("SB_RF", $sformatf("READ PASS x%0d = 0x%08h (port %s)", item.addr, item.data, item.port), UVM_MEDIUM)
           end else begin
             rf_read_fail++;
             `uvm_error("SB_RF", $sformatf("READ FAIL x%0d | exp=0x%08h got=0x%08h (port %s) <<< MISMATCH",
