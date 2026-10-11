@@ -103,7 +103,7 @@ module rv32im_top ();
         .result_o             (u_core.core_i.ex_stage_i.alu_result),
         .comparison_result_o  (u_core.core_i.ex_stage_i.alu_cmp_result),
         .ready_o              (u_core.core_i.ex_stage_i.alu_ready),
-        .ex_ready_i           (u_core.core_i.ex_stage_i.ex_ready_o),
+        .ex_ready_i           (u_core.core_i.ex_stage_i.ex_ready_o)
     );
     // MUL Interface Instantiation
     mul_if mul_if (
@@ -123,7 +123,7 @@ module rv32im_top ();
     regfile_if regfile_if (
         .clk                    (clk_i),
         .rst_n                  (rst_ni),
-        .pc_ex                  (u_core.core_i.pc_ex),
+        .pc_id                  (u_core.core_i.pc_id),
         // Read port a
         .raddr_a_i              (u_core.core_i.id_stage_i.regfile_addr_ra_id),
         .rdata_a_o              (u_core.core_i.id_stage_i.regfile_data_ra_id),

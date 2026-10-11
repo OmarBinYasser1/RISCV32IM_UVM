@@ -1,5 +1,7 @@
 interface rv32im_instr_if (
-    input bit clk
+    input bit clk ,
+    input logic   [31:0]  pc_if            // PC in the IF (Records the program before getting flushed)
+
 );
 
     // System Reset
@@ -8,7 +10,6 @@ interface rv32im_instr_if (
     bit             instr_gnt_i;
     bit             instr_rvalid_i;
     bit     [31:0]  instr_rdata_i;      // Requested PC by the core
-    logic     [31:0]  pc_if;              // PC in the IF (Records the program before getting flushed)
 
     logic           instr_req_o;
     logic   [31:0]  instr_addr_o;

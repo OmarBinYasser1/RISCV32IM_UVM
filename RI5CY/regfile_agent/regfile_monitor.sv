@@ -20,10 +20,9 @@ class regfile_monitor extends uvm_monitor;
       @(vif.cb_mon);
       if (!vif.cb_mon.rst_n) continue;
 
-      item.pc_id = vif.cb_mon.pc_id;
-
       if (vif.cb_mon.we_a_i) begin 
         item = regfile_item::type_id::create("item");
+        item.pc_id = vif.cb_mon.pc_id;
         item.kind = regfile_item::WRITE;
         item.port = "a";
         item.addr = vif.cb_mon.waddr_a_i;
@@ -34,6 +33,7 @@ class regfile_monitor extends uvm_monitor;
 
       if (vif.cb_mon.we_b_i) begin
         item = regfile_item::type_id::create("item");
+        item.pc_id = vif.cb_mon.pc_id;
         item.kind = regfile_item::WRITE;
         item.port = "b";
         item.addr = vif.cb_mon.waddr_b_i;
@@ -44,6 +44,7 @@ class regfile_monitor extends uvm_monitor;
 
       if(vif.cb_mon.rega_used_dec) begin
         item = regfile_item::type_id::create("item");
+        item.pc_id = vif.cb_mon.pc_id;
         item.kind = regfile_item::READ;
         item.port = "a";
         item.addr = vif.cb_mon.raddr_a_i;
@@ -53,6 +54,7 @@ class regfile_monitor extends uvm_monitor;
 
       if(vif.cb_mon.regb_used_dec) begin
         item = regfile_item::type_id::create("item");
+        item.pc_id = vif.cb_mon.pc_id;
         item.kind = regfile_item::READ;
         item.port = "b";
         item.addr = vif.cb_mon.raddr_b_i;
@@ -62,6 +64,7 @@ class regfile_monitor extends uvm_monitor;
 
       if (vif.cb_mon.regc_used_dec) begin
           item = regfile_item::type_id::create("item");
+          item.pc_id = vif.cb_mon.pc_id;
           item.kind = regfile_item::READ;
           item.port = "c";
           item.addr = vif.cb_mon.raddr_c_i;
