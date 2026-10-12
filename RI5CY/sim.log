@@ -1,0 +1,710 @@
+# vsim -voptargs="+acc" work.rv32im_top -uvmcontrol=all "+UVM_NO_RELNOTES" "+UVM_VERBOSITY=UVM_MEDIUM" -sv_seed random -l sim.log "+nowarn8315" 
+# Start time: 23:00:57 on Oct 12,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 2 FSMs in module "cv32e40p_controller(fast)".
+# ** Note: (vopt-143) Recognized 1 FSM in module "cv32e40p_alu_div(fast)".
+# ** Note: (vopt-143) Recognized 1 FSM in module "cv32e40p_mult(fast)".
+# ** Note: (vopt-143) Recognized 1 FSM in module "cv32e40p_aligner(fast)".
+# Loading sv_std.std
+# Loading work.rv32im_instr_if(fast)
+# Loading work.obi_data_if(fast)
+# Loading work.debug_interupt_if(fast)
+# Loading work.alu_if(fast)
+# Loading work.mul_if(fast)
+# Loading work.regfile_if(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.riscv_pkg(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.rv32im_top(fast)
+# Loading work.rv32im_instr_if(fast__2)
+# Loading work.obi_data_if(fast__2)
+# Loading work.debug_interupt_if(fast__2)
+# Loading work.cv32e40p_apu_core_pkg(fast)
+# Loading work.cv32e40p_top(fast)
+# Loading work.cv32e40p_pkg(fast)
+# Loading work.cv32e40p_core(fast)
+# Loading work.cv32e40p_sleep_unit(fast)
+# Loading work.cv32e40p_clock_gate(fast)
+# Loading work.cv32e40p_if_stage(fast)
+# Loading work.cv32e40p_prefetch_buffer(fast)
+# Loading work.cv32e40p_prefetch_controller(fast)
+# Loading work.cv32e40p_fifo(fast)
+# Loading work.cv32e40p_obi_interface(fast)
+# Loading work.cv32e40p_aligner(fast)
+# Loading work.cv32e40p_compressed_decoder(fast)
+# Loading work.cv32e40p_fpu_pkg(fast)
+# Loading work.cv32e40p_id_stage(fast)
+# Loading work.cv32e40p_register_file(fast)
+# Loading work.cv32e40p_decoder(fast)
+# Loading work.cv32e40p_controller(fast)
+# Loading work.cv32e40p_int_controller(fast)
+# Loading work.cv32e40p_ex_stage(fast)
+# Loading work.cv32e40p_alu(fast)
+# Loading work.cv32e40p_popcnt(fast)
+# Loading work.cv32e40p_ff_one(fast)
+# Loading work.cv32e40p_alu_div(fast)
+# Loading work.cv32e40p_mult(fast)
+# Loading work.cv32e40p_load_store_unit(fast)
+# Loading work.cv32e40p_obi_interface(fast__1)
+# Loading work.cv32e40p_cs_registers(fast)
+# Loading work.alu_if(fast__2)
+# Loading work.mul_if(fast__2)
+# Loading work.regfile_if(fast__2)
+# Loading C:/questasim64_2021.1/uvm-1.1d\win64\uvm_dpi.dll
+# Sv_Seed = 784851933
+# 0 ns
+# 807 ns
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(all)
+# UVM_INFO @ 0: reporter [RNTST] Running test rv32im_base_test...
+# UVM_INFO ./tb/./rv32im_test.sv(42) @ 0: uvm_test_top [uvm_test_top] 
+# =======================================================
+#   STARTING TEST: rv32im_base_test
+# =======================================================
+# **************************************************************************
+# * Questa UVM Transaction Recording Turned ON.                            *
+# * recording_detail has been set.                                         *
+# *  To turn off, set 'recording_detail' to off:                           *
+# * uvm_config_db#(int)            ::set(null, "", "recording_detail", 0); *
+# * uvm_config_db#(uvm_bitstream_t)::set(null, "", "recording_detail", 0); *
+# **************************************************************************
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(28) @ 0: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Asserting System Reset (rst_n = 0)...
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(30) @ 45: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Releasing System Reset (rst_n = 1)...
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(33) @ 45: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Phase 1: R-type ALU (10 instructions)...
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 75: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #1 accepted (req & gnt) rdata=0x0093a133
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 75: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000000 (fifo_sz=1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 85: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #2 accepted (req & gnt) rdata=0x00c11133
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 85: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000004 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 95: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000000 (rem=1) SLT X2 , X7 , X9
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 105: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #3 accepted (req & gnt) rdata=0x000c0b33
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 105: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000004 (rem=0) SLL X2 , X2 , X12
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 105: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000008 (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 105: uvm_test_top.env.rf_sb [SB_RF] READ PASS x7 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 105: uvm_test_top.env.rf_sb [SB_RF] READ PASS x9 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 115: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x2 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 115: uvm_test_top.env.alu_agt.mon [ALU_MON] op=2 a=0 b=0 res=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 115: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #4 accepted (req & gnt) rdata=0x40790633
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 115: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x0000000c (fifo_sz=2)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 115: uvm_test_top.env.rf_sb [SB_RF] WRITE x2 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 115: uvm_test_top.env.rf_sb [SB_RF] READ PASS x2 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 115: uvm_test_top.env.rf_sb [SB_RF] READ PASS x12 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 125: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x2 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 125: uvm_test_top.env.alu_agt.mon [ALU_MON] op=27 a=0 b=0 res=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 125: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000008 (rem=1) ADD X22 , X24 , X0
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 125: uvm_test_top.env.rf_sb [SB_RF] WRITE x2 = 0x00000000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 135: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #5 accepted (req & gnt) rdata=0x006e92b3
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 135: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000010 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 135: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x0000000c (rem=1) SUB X12 , X18 , X7
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 135: uvm_test_top.env.rf_sb [SB_RF] READ PASS x24 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 135: uvm_test_top.env.rf_sb [SB_RF] READ PASS x0 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 145: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x22 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 145: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 145: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #6 accepted (req & gnt) rdata=0x01586933
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 145: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000014 (fifo_sz=2)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 145: uvm_test_top.env.rf_sb [SB_RF] WRITE x22 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 145: uvm_test_top.env.rf_sb [SB_RF] READ PASS x18 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 145: uvm_test_top.env.rf_sb [SB_RF] READ PASS x7 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 155: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x12 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 155: uvm_test_top.env.alu_agt.mon [ALU_MON] op=19 a=0 b=0 res=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 155: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000010 (rem=1) SLL X5 , X29 , X6
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 155: uvm_test_top.env.rf_sb [SB_RF] WRITE x12 = 0x00000000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 165: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #7 accepted (req & gnt) rdata=0x01321333
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 165: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000014 (rem=0) OR X18 , X16 , X21
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 165: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000018 (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 165: uvm_test_top.env.rf_sb [SB_RF] READ PASS x29 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 165: uvm_test_top.env.rf_sb [SB_RF] READ PASS x6 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 175: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x5 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 175: uvm_test_top.env.alu_agt.mon [ALU_MON] op=27 a=0 b=0 res=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 175: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #8 accepted (req & gnt) rdata=0x00d44133
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 175: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x0000001c (fifo_sz=2)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 175: uvm_test_top.env.rf_sb [SB_RF] WRITE x5 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 175: uvm_test_top.env.rf_sb [SB_RF] READ PASS x16 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 175: uvm_test_top.env.rf_sb [SB_RF] READ PASS x21 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 185: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x18 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 185: uvm_test_top.env.alu_agt.mon [ALU_MON] op=2e a=0 b=0 res=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 185: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000018 (rem=1) SLL X6 , X4 , X19
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 185: uvm_test_top.env.rf_sb [SB_RF] WRITE x18 = 0x00000000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 195: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #9 accepted (req & gnt) rdata=0x40a80cb3
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 195: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000020 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 195: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x0000001c (rem=1) XOR X2 , X8 , X13
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 195: uvm_test_top.env.rf_sb [SB_RF] READ PASS x4 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 195: uvm_test_top.env.rf_sb [SB_RF] READ PASS x19 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 205: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x6 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 205: uvm_test_top.env.alu_agt.mon [ALU_MON] op=27 a=0 b=0 res=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 205: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #10 accepted (req & gnt) rdata=0x01932433
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 205: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000024 (fifo_sz=2)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 205: uvm_test_top.env.rf_sb [SB_RF] WRITE x6 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 205: uvm_test_top.env.rf_sb [SB_RF] READ PASS x8 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 205: uvm_test_top.env.rf_sb [SB_RF] READ PASS x13 = 0x00000000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(47) @ 205: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Phase 2: R-type MUL/DIV (10 instructions)...
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 215: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x2 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 215: uvm_test_top.env.alu_agt.mon [ALU_MON] op=2f a=0 b=0 res=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 215: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000020 (rem=1) SUB X25 , X16 , X10
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 215: uvm_test_top.env.rf_sb [SB_RF] WRITE x2 = 0x00000000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 225: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #11 accepted (req & gnt) rdata=0x039a27b3
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 225: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000024 (rem=0) SLT X8 , X6 , X25
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 225: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000028 (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 225: uvm_test_top.env.rf_sb [SB_RF] READ PASS x16 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 225: uvm_test_top.env.rf_sb [SB_RF] READ PASS x10 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 235: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x25 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 235: uvm_test_top.env.alu_agt.mon [ALU_MON] op=19 a=0 b=0 res=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 235: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #12 accepted (req & gnt) rdata=0x0299c5b3
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 235: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x0000002c (fifo_sz=2)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 235: uvm_test_top.env.rf_sb [SB_RF] WRITE x25 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 235: uvm_test_top.env.rf_sb [SB_RF] READ PASS x6 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 235: uvm_test_top.env.rf_sb [SB_RF] READ PASS x25 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 245: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x8 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 245: uvm_test_top.env.alu_agt.mon [ALU_MON] op=2 a=0 b=0 res=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 245: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000028 (rem=1)  MULHSU X15 , X20 , X25
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 245: uvm_test_top.env.rf_sb [SB_RF] WRITE x8 = 0x00000000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 255: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #13 accepted (req & gnt) rdata=0x03cf0fb3
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 255: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000030 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 255: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x0000002c (rem=1)  DIV X11 , X19 , X9
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 255: uvm_test_top.env.rf_sb [SB_RF] READ PASS x20 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 255: uvm_test_top.env.rf_sb [SB_RF] READ PASS x25 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 255: uvm_test_top.env.rf_sb [SB_RF] READ PASS x0 = 0x00000000 (port c)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 265: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #14 accepted (req & gnt) rdata=0x03f806b3
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 265: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000034 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 275: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000030 (rem=1)  MUL X31 , X30 , X28
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 285: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000034 (rem=0)  MUL X13 , X16 , X31
+# UVM_INFO ./tb/../mul_agent/mul_monitor.sv(57) @ 305: uvm_test_top.env.mul_agt.mon [MUL_MON] op=110 sm=1 a=0 b=0 c=0 res=0 lat=5
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 305: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x15 data=0
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 305: uvm_test_top.env.rf_sb [SB_RF] WRITE x15 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 305: uvm_test_top.env.rf_sb [SB_RF] READ PASS x19 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 305: uvm_test_top.env.rf_sb [SB_RF] READ PASS x9 = 0x00000000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 315: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #15 accepted (req & gnt) rdata=0x03bbacb3
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 315: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000038 (fifo_sz=1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 325: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000038 (rem=0)  MULHSU X25 , X23 , X27
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 655: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x11 data=ffffffff
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 655: uvm_test_top.env.alu_agt.mon [ALU_MON] op=31 a=0 b=0 res=ffffffff
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 655: uvm_test_top.env.rf_sb [SB_RF] WRITE x11 = 0xffffffff (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 655: uvm_test_top.env.rf_sb [SB_RF] READ PASS x30 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 655: uvm_test_top.env.rf_sb [SB_RF] READ PASS x28 = 0x00000000 (port b)
+# UVM_INFO ./tb/../mul_agent/mul_monitor.sv(57) @ 665: uvm_test_top.env.mul_agt.mon [MUL_MON] op=0 sm=0 a=0 b=0 c=0 res=0 lat=1
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 665: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x31 data=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 665: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #16 accepted (req & gnt) rdata=0x03d7b3b3
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 665: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x0000003c (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 665: uvm_test_top.env.rf_sb [SB_RF] WRITE x31 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 665: uvm_test_top.env.rf_sb [SB_RF] READ PASS x16 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 665: uvm_test_top.env.rf_sb [SB_RF] READ PASS x31 = 0x00000000 (port b)
+# UVM_INFO ./tb/../mul_agent/mul_monitor.sv(57) @ 675: uvm_test_top.env.mul_agt.mon [MUL_MON] op=0 sm=0 a=0 b=0 c=0 res=0 lat=1
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 675: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x13 data=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 675: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #17 accepted (req & gnt) rdata=0x03fa60b3
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 675: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000040 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 675: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x0000003c (rem=1)  MULHU X7 , X15 , X29
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 675: uvm_test_top.env.rf_sb [SB_RF] WRITE x13 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 675: uvm_test_top.env.rf_sb [SB_RF] READ PASS x23 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 675: uvm_test_top.env.rf_sb [SB_RF] READ PASS x27 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 675: uvm_test_top.env.rf_sb [SB_RF] READ PASS x0 = 0x00000000 (port c)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 685: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #18 accepted (req & gnt) rdata=0x036d78b3
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 685: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000040 (rem=0)  REM X1 , X20 , X31
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 685: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000044 (fifo_sz=1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 695: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000044 (rem=0)  REMU X17 , X26 , X22
+# UVM_INFO ./tb/../mul_agent/mul_monitor.sv(57) @ 725: uvm_test_top.env.mul_agt.mon [MUL_MON] op=110 sm=1 a=0 b=0 c=0 res=0 lat=5
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 725: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x25 data=0
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 725: uvm_test_top.env.rf_sb [SB_RF] WRITE x25 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 725: uvm_test_top.env.rf_sb [SB_RF] READ PASS x15 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 725: uvm_test_top.env.rf_sb [SB_RF] READ PASS x29 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 725: uvm_test_top.env.rf_sb [SB_RF] READ PASS x0 = 0x00000000 (port c)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 735: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #19 accepted (req & gnt) rdata=0x02a80c33
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 735: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000048 (fifo_sz=1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 745: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000048 (rem=0)  MUL X24 , X16 , X10
+# UVM_INFO ./tb/../mul_agent/mul_monitor.sv(57) @ 775: uvm_test_top.env.mul_agt.mon [MUL_MON] op=110 sm=0 a=0 b=0 c=0 res=0 lat=5
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 775: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x7 data=0
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 775: uvm_test_top.env.rf_sb [SB_RF] WRITE x7 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 775: uvm_test_top.env.rf_sb [SB_RF] READ PASS x20 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 775: uvm_test_top.env.rf_sb [SB_RF] READ PASS x31 = 0x00000000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 785: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #20 accepted (req & gnt) rdata=0x02a0ccb3
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 785: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x0000004c (fifo_sz=1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(61) @ 785: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Phase 3: I-type arithmetic (10 instructions)...
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 795: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x0000004c (rem=0)  DIV X25 , X1 , X10
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 1125: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x1 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 1125: uvm_test_top.env.alu_agt.mon [ALU_MON] op=33 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 1125: uvm_test_top.env.rf_sb [SB_RF] WRITE x1 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1125: uvm_test_top.env.rf_sb [SB_RF] READ PASS x26 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1125: uvm_test_top.env.rf_sb [SB_RF] READ PASS x22 = 0x00000000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 1135: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #21 accepted (req & gnt) rdata=0x42552393
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 1135: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000050 (fifo_sz=1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 1145: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000050 (rem=0) SLTI X7 , X10 , 1061
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 1475: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x17 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 1475: uvm_test_top.env.alu_agt.mon [ALU_MON] op=32 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 1475: uvm_test_top.env.rf_sb [SB_RF] WRITE x17 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1475: uvm_test_top.env.rf_sb [SB_RF] READ PASS x16 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1475: uvm_test_top.env.rf_sb [SB_RF] READ PASS x10 = 0x00000000 (port b)
+# UVM_INFO ./tb/../mul_agent/mul_monitor.sv(57) @ 1485: uvm_test_top.env.mul_agt.mon [MUL_MON] op=0 sm=0 a=0 b=0 c=0 res=0 lat=1
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 1485: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x24 data=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 1485: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #22 accepted (req & gnt) rdata=0x97464313
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 1485: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000054 (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 1485: uvm_test_top.env.rf_sb [SB_RF] WRITE x24 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1485: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1485: uvm_test_top.env.rf_sb [SB_RF] READ PASS x10 = 0x00000000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 1495: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #23 accepted (req & gnt) rdata=0x333f2593
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 1495: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000058 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 1495: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000054 (rem=1) XORI X6 , X12 , 2420
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 1505: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000058 (rem=0) SLTI X11 , X30 , 819
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 1835: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x25 data=ffffffff
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 1835: uvm_test_top.env.alu_agt.mon [ALU_MON] op=31 a=0 b=0 res=ffffffff
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 1835: uvm_test_top.env.rf_sb [SB_RF] WRITE x25 = 0xffffffff (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1835: uvm_test_top.env.rf_sb [SB_RF] READ PASS x10 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 1845: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x7 data=1
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 1845: uvm_test_top.env.alu_agt.mon [ALU_MON] op=2 a=0 b=425 res=1
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 1845: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #24 accepted (req & gnt) rdata=0x8f5a3b93
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 1845: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x0000005c (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 1845: uvm_test_top.env.rf_sb [SB_RF] WRITE x7 = 0x00000001 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1845: uvm_test_top.env.rf_sb [SB_RF] READ PASS x12 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 1855: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x6 data=fffff974
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 1855: uvm_test_top.env.alu_agt.mon [ALU_MON] op=2f a=0 b=fffff974 res=fffff974
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 1855: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #25 accepted (req & gnt) rdata=0x58350793
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 1855: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000060 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 1855: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x0000005c (rem=1) SLTIU X23 , X20 , 2293
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 1855: uvm_test_top.env.rf_sb [SB_RF] WRITE x6 = 0xfffff974 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1855: uvm_test_top.env.rf_sb [SB_RF] READ PASS x30 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 1865: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x11 data=1
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 1865: uvm_test_top.env.alu_agt.mon [ALU_MON] op=2 a=0 b=333 res=1
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 1865: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #26 accepted (req & gnt) rdata=0x3436e213
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 1865: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000060 (rem=0) ADDI X15 , X10 , 1411
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 1865: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000064 (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 1865: uvm_test_top.env.rf_sb [SB_RF] WRITE x11 = 0x00000001 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1865: uvm_test_top.env.rf_sb [SB_RF] READ PASS x20 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 1875: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x23 data=1
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 1875: uvm_test_top.env.alu_agt.mon [ALU_MON] op=3 a=0 b=fffff8f5 res=1
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 1875: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #27 accepted (req & gnt) rdata=0xc22f3b93
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 1875: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000068 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 1875: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000064 (rem=1) ORI X4 , X13 , 835
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 1875: uvm_test_top.env.rf_sb [SB_RF] WRITE x23 = 0x00000001 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1875: uvm_test_top.env.rf_sb [SB_RF] READ PASS x10 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 1885: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x15 data=583
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 1885: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=583 res=583
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 1885: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #28 accepted (req & gnt) rdata=0x017c5513
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 1885: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000068 (rem=0) SLTIU X23 , X30 , 3106
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 1885: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x0000006c (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 1885: uvm_test_top.env.rf_sb [SB_RF] WRITE x15 = 0x00000583 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1885: uvm_test_top.env.rf_sb [SB_RF] READ PASS x13 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 1895: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x4 data=343
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 1895: uvm_test_top.env.alu_agt.mon [ALU_MON] op=2e a=0 b=343 res=343
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 1895: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #29 accepted (req & gnt) rdata=0x00a6d593
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 1895: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000070 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 1895: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x0000006c (rem=1) SRLI X10 , X24 , 23
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 1895: uvm_test_top.env.rf_sb [SB_RF] WRITE x4 = 0x00000343 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1895: uvm_test_top.env.rf_sb [SB_RF] READ PASS x30 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 1905: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x23 data=1
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 1905: uvm_test_top.env.alu_agt.mon [ALU_MON] op=3 a=0 b=fffffc22 res=1
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 1905: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #30 accepted (req & gnt) rdata=0x930d7693
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 1905: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000070 (rem=0) SRLI X11 , X13 , 10
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 1905: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000074 (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 1905: uvm_test_top.env.rf_sb [SB_RF] WRITE x23 = 0x00000001 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1905: uvm_test_top.env.rf_sb [SB_RF] READ PASS x24 = 0x00000000 (port a)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(74) @ 1905: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Phase 4: Pre-loading x1 = 0x1000 for memory accesses...
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 1915: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x10 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 1915: uvm_test_top.env.alu_agt.mon [ALU_MON] op=25 a=0 b=17 res=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 1915: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #31 accepted (req & gnt) rdata=0x000010b7
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 1915: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000078 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 1915: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000074 (rem=1) ANDI X13 , X26 , 2352
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 1915: uvm_test_top.env.rf_sb [SB_RF] WRITE x10 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1915: uvm_test_top.env.rf_sb [SB_RF] READ PASS x13 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 1925: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x11 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 1925: uvm_test_top.env.alu_agt.mon [ALU_MON] op=25 a=0 b=a res=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 1925: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #32 accepted (req & gnt) rdata=0x12300113
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 1925: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000078 (rem=0)  OP_LUI X1 , 1
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 1925: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x0000007c (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 1925: uvm_test_top.env.rf_sb [SB_RF] WRITE x11 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1925: uvm_test_top.env.rf_sb [SB_RF] READ PASS x26 = 0x00000000 (port a)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(101) @ 1925: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Phase 5: STORE instructions (10 instructions)...
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 1935: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x13 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 1935: uvm_test_top.env.alu_agt.mon [ALU_MON] op=15 a=0 b=fffff930 res=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 1935: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #33 accepted (req & gnt) rdata=0x01508423
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 1935: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000080 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 1935: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x0000007c (rem=1) ADDI X2 , X0 , 291
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 1935: uvm_test_top.env.rf_sb [SB_RF] WRITE x13 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 1945: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x1 data=1000
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 1945: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=1000 res=1000
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 1945: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #34 accepted (req & gnt) rdata=0x01b0aa23
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 1945: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000080 (rem=0)  SB X21 , 8 (X1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 1945: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000084 (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 1945: uvm_test_top.env.rf_sb [SB_RF] WRITE x1 = 0x00001000 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1945: uvm_test_top.env.rf_sb [SB_RF] READ PASS x0 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 1955: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x2 data=123
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 1955: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=123 res=123
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 1955: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #35 accepted (req & gnt) rdata=0x03508023
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 1955: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000088 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 1955: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000084 (rem=1)  SW X27 , 20 (X1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 1955: uvm_test_top.env.rf_sb [SB_RF] WRITE x2 = 0x00000123 (port b)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1955: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00001000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1955: uvm_test_top.env.rf_sb [SB_RF] READ PASS x21 = 0x00000000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 1965: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #36 accepted (req & gnt) rdata=0x00a08c23
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 1965: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000088 (rem=0)  SB X21 , 32 (X1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 1965: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x0000008c (fifo_sz=1)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 1975: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=1000 b=8 res=1008
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 1975: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x0000008c (rem=0)  SB X10 , 24 (X1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1975: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00001000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 1975: uvm_test_top.env.rf_sb [SB_RF] READ PASS x27 = 0x00000000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 1985: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #37 accepted (req & gnt) rdata=0x01908c23
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 1985: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000090 (fifo_sz=1)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2005: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=1000 b=14 res=1014
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2005: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000090 (rem=0)  SB X25 , 24 (X1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2005: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00001000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2005: uvm_test_top.env.rf_sb [SB_RF] READ PASS x21 = 0x00000000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2015: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #38 accepted (req & gnt) rdata=0x00c0a423
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2015: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000094 (fifo_sz=1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2025: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000094 (rem=0)  SW X12 , 8 (X1)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2035: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=1000 b=20 res=1020
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2035: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00001000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2035: uvm_test_top.env.rf_sb [SB_RF] READ PASS x10 = 0x00000000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2045: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #39 accepted (req & gnt) rdata=0x00109623
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2045: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000098 (fifo_sz=1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2055: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000098 (rem=0)  SH X1 , 12 (X1)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2065: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=1000 b=18 res=1018
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2065: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00001000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2065: uvm_test_top.env.rf_sb [SB_RF] READ PASS x25 = 0xffffffff (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2075: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #40 accepted (req & gnt) rdata=0x02a0a023
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2075: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x0000009c (fifo_sz=1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2085: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x0000009c (rem=0)  SW X10 , 32 (X1)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2095: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=1000 b=18 res=1018
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2095: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00001000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2095: uvm_test_top.env.rf_sb [SB_RF] READ PASS x12 = 0x00000000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2105: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #41 accepted (req & gnt) rdata=0x03a08023
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2105: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000a0 (fifo_sz=1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2115: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000a0 (rem=0)  SB X26 , 32 (X1)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2125: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=1000 b=8 res=1008
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2125: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00001000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2125: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00001000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2135: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #42 accepted (req & gnt) rdata=0x01809c23
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2135: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000a4 (fifo_sz=1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(116) @ 2135: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Phase 6: LOAD instructions (10 instructions)...
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2145: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000a4 (rem=0)  SH X24 , 24 (X1)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2155: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=1000 b=c res=100c
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2155: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00001000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2155: uvm_test_top.env.rf_sb [SB_RF] READ PASS x10 = 0x00000000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2165: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #43 accepted (req & gnt) rdata=0x0180da83
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2165: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000a8 (fifo_sz=1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2175: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000a8 (rem=0)  LHU X21 , 24 (X1)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2185: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=1000 b=20 res=1020
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2185: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00001000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2185: uvm_test_top.env.rf_sb [SB_RF] READ PASS x26 = 0x00000000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2195: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #44 accepted (req & gnt) rdata=0x0180cf03
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2195: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000ac (fifo_sz=1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2205: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000ac (rem=0)  LBU X30 , 24 (X1)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2215: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=1000 b=20 res=1020
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2215: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00001000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2215: uvm_test_top.env.rf_sb [SB_RF] READ PASS x24 = 0x00000000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2225: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #45 accepted (req & gnt) rdata=0x0180df03
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2225: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000b0 (fifo_sz=1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2235: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000b0 (rem=0)  LHU X30 , 24 (X1)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2245: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=1000 b=18 res=1018
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2245: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00001000 (port a)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2255: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #46 accepted (req & gnt) rdata=0x01c09383
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2255: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000b4 (fifo_sz=1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2265: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000b4 (rem=0)  LH X7 , 28 (X1)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2275: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=1000 b=18 res=1018
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2275: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00001000 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(30) @ 2285: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port A: WRITE port=a addr=x21 data=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2285: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #47 accepted (req & gnt) rdata=0x00008d83
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2285: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000b8 (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2285: uvm_test_top.env.rf_sb [SB_RF] WRITE x21 = 0x00000000 (port a)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2295: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000b8 (rem=0)  LB X27 , 0 (X1)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2305: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=1000 b=18 res=1018
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2305: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00001000 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(30) @ 2315: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port A: WRITE port=a addr=x30 data=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2315: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #48 accepted (req & gnt) rdata=0x01c09103
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2315: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000bc (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2315: uvm_test_top.env.rf_sb [SB_RF] WRITE x30 = 0x00000000 (port a)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2325: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000bc (rem=0)  LH X2 , 28 (X1)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2335: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=1000 b=18 res=1018
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2335: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00001000 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(30) @ 2345: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port A: WRITE port=a addr=x30 data=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2345: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #49 accepted (req & gnt) rdata=0x0100a083
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2345: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000c0 (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2345: uvm_test_top.env.rf_sb [SB_RF] WRITE x30 = 0x00000000 (port a)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2355: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000c0 (rem=0)  LW X1 , 16 (X1)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2365: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=1000 b=1c res=101c
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2365: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00001000 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(30) @ 2375: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port A: WRITE port=a addr=x7 data=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2375: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #50 accepted (req & gnt) rdata=0x0080a403
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2375: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000c4 (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2375: uvm_test_top.env.rf_sb [SB_RF] WRITE x7 = 0x00000000 (port a)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2385: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000c4 (rem=0)  LW X8 , 8 (X1)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2395: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=1000 b=0 res=1000
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2395: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00001000 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(30) @ 2405: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port A: WRITE port=a addr=x27 data=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2405: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #51 accepted (req & gnt) rdata=0x00008083
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2405: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000c8 (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2405: uvm_test_top.env.rf_sb [SB_RF] WRITE x27 = 0x00000000 (port a)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2415: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000c8 (rem=0)  LB X1 , 0 (X1)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2425: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=1000 b=1c res=101c
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2425: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00001000 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(30) @ 2435: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port A: WRITE port=a addr=x2 data=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2435: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #52 accepted (req & gnt) rdata=0x00809b03
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2435: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000cc (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2435: uvm_test_top.env.rf_sb [SB_RF] WRITE x2 = 0x00000000 (port a)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(131) @ 2435: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Phase 7: BRANCH instructions (10 instructions)...
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2445: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000cc (rem=0)  LH X22 , 8 (X1)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2455: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=1000 b=10 res=1010
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(30) @ 2465: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port A: WRITE port=a addr=x1 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2465: uvm_test_top.env.alu_agt.mon [ALU_MON] op=3 a=1000 b=10 res=0
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2465: uvm_test_top.env.rf_sb [SB_RF] WRITE x1 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2465: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00001000 (port a)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2475: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #53 accepted (req & gnt) rdata=0x01887263
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2475: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000d0 (fifo_sz=1)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2485: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=8 res=8
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2485: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(30) @ 2495: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port A: WRITE port=a addr=x8 data=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2495: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #54 accepted (req & gnt) rdata=0x00faf663
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2495: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000d4 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2495: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000d0 (rem=1)  BGEU X16 , X24 , 4
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2495: uvm_test_top.env.rf_sb [SB_RF] WRITE x8 = 0x00000000 (port a)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2515: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=0 res=0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2515: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000d4 (rem=0)  BGEU X21 , X15 , 12
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(30) @ 2525: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port A: WRITE port=a addr=x1 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2525: uvm_test_top.env.alu_agt.mon [ALU_MON] op=3 a=0 b=0 res=0
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2525: uvm_test_top.env.rf_sb [SB_RF] WRITE x1 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2525: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00000000 (port a)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2535: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #55 accepted (req & gnt) rdata=0x01505663
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2535: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000d8 (fifo_sz=1)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2545: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=0 b=8 res=8
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2545: uvm_test_top.env.rf_sb [SB_RF] READ PASS x16 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2545: uvm_test_top.env.rf_sb [SB_RF] READ PASS x24 = 0x00000000 (port b)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(30) @ 2555: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port A: WRITE port=a addr=x22 data=0
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2555: uvm_test_top.env.alu_agt.mon [ALU_MON] op=b a=0 b=0 res=ffffffff
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2555: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #56 accepted (req & gnt) rdata=0x0173e663
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2555: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000d4 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2555: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000d8 (rem=1)  BGE X0 , X21 , 12
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2555: uvm_test_top.env.rf_sb [SB_RF] WRITE x22 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2555: uvm_test_top.env.rf_sb [SB_RF] READ PASS x21 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2555: uvm_test_top.env.rf_sb [SB_RF] READ PASS x15 = 0x00000583 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2565: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #57 accepted (req & gnt) rdata=0x01638463
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2565: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000d8 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2575: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000d4 (rem=1)  BLTU X7 , X23 , 12
+# UVM_ERROR ./tb/../system_scoreboard/riscv_system_scoreboard.sv(155) @ 2575: uvm_test_top.env.sb [SB_PROP] branch_pc_p FAILED | BRANCH pc=0x000000d8 taken=1 funct3=101 rs1=x0(0x00000000) rs2=x21(0x00000000) exp_nxt=0x000000e4 got_nxt=0x000000d4
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2585: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #58 accepted (req & gnt) rdata=0x0071f663
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2585: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000d8 (rem=0)  BEQ X7 , X22 , 8
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2585: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000dc (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2585: uvm_test_top.env.rf_sb [SB_RF] READ PASS x7 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2585: uvm_test_top.env.rf_sb [SB_RF] READ PASS x23 = 0x00000001 (port b)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2595: uvm_test_top.env.alu_agt.mon [ALU_MON] op=1 a=0 b=1 res=ffffffff
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2595: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #59 accepted (req & gnt) rdata=0x01e37463
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2595: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000e0 (fifo_sz=2)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2595: uvm_test_top.env.rf_sb [SB_RF] READ PASS x7 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2595: uvm_test_top.env.rf_sb [SB_RF] READ PASS x22 = 0x00000000 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2605: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000dc (rem=1)  BGEU X3 , X7 , 12
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2615: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #60 accepted (req & gnt) rdata=0x00d39263
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2615: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000e4 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2615: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000e0 (rem=1)  BGEU X6 , X30 , 8
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2625: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #61 accepted (req & gnt) rdata=0x01c95263
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2625: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000e8 (fifo_sz=2)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2625: uvm_test_top.env.rf_sb [SB_RF] READ PASS x6 = 0xfffff974 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2625: uvm_test_top.env.rf_sb [SB_RF] READ PASS x30 = 0x00000000 (port b)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2635: uvm_test_top.env.alu_agt.mon [ALU_MON] op=b a=fffff974 b=0 res=ffffffff
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2635: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000e4 (rem=1)  BNE X7 , X13 , 4
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2645: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #62 accepted (req & gnt) rdata=0x00b0d463
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2645: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000e8 (rem=0)  BGE X18 , X28 , 4
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2645: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000e8 (fifo_sz=1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(145) @ 2645: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Phase 8: JAL instructions (10 instructions)...
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2655: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #63 accepted (req & gnt) rdata=0x008007ef
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2655: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000ec (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2665: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000e8 (rem=1)  BGE X1 , X11 , 8
+# UVM_ERROR ./tb/../system_scoreboard/riscv_system_scoreboard.sv(155) @ 2665: uvm_test_top.env.sb [SB_PROP] branch_pc_p FAILED | BRANCH pc=0x000000e8 taken=1 funct3=101 rs1=x18(0x00000000) rs2=x28(0x00000000) exp_nxt=0x000000ec got_nxt=0x000000e8
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2675: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #64 accepted (req & gnt) rdata=0x00c007ef
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2675: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000f0 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2675: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000ec (rem=1)  OP_JAL X15 , 8
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2675: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00000000 (port a)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2675: uvm_test_top.env.rf_sb [SB_RF] READ PASS x11 = 0x00000000 (port b)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2685: uvm_test_top.env.alu_agt.mon [ALU_MON] op=a a=0 b=0 res=ffffffff
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2685: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #65 accepted (req & gnt) rdata=0x01000eef
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2685: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000f0 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2695: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000f0 (rem=1)  OP_JAL X15 , 12
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2705: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #66 accepted (req & gnt) rdata=0x010008ef
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2705: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000f0 (rem=0)  OP_JAL X29 , 16
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2705: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x000000f4 (fifo_sz=1)
+# UVM_ERROR ./tb/../system_scoreboard/riscv_system_scoreboard.sv(155) @ 2705: uvm_test_top.env.sb [SB_PROP] jal_pc_p FAILED | JAL pc=0x000000f0 imm=0x0000000c exp_nxt=0x000000fc got_nxt=0x000000f0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2715: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #67 accepted (req & gnt) rdata=0x008004ef
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2715: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000100 (fifo_sz=2)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 2725: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x29 data=f4
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2725: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=f0 b=4 res=f4
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2725: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x000000f4 (rem=1)  OP_JAL X17 , 16
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2725: uvm_test_top.env.rf_sb [SB_RF] WRITE x29 = 0x000000f4 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2735: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #68 accepted (req & gnt) rdata=0x004000ef
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2735: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000104 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2735: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000100 (rem=1)  OP_JAL X9 , 8
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2745: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #69 accepted (req & gnt) rdata=0x00c00def
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2745: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000108 (fifo_sz=2)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 2755: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x9 data=104
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2755: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=100 b=4 res=104
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2755: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000104 (rem=1)  OP_JAL X1 , 4
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2755: uvm_test_top.env.rf_sb [SB_RF] WRITE x9 = 0x00000104 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2765: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #70 accepted (req & gnt) rdata=0x0040086f
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2765: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000108 (rem=0)  OP_JAL X27 , 12
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2765: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x0000010c (fifo_sz=1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2775: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #71 accepted (req & gnt) rdata=0x00c0006f
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2775: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000114 (fifo_sz=2)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 2785: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x27 data=10c
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2785: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=108 b=4 res=10c
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2785: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x0000010c (rem=1)  OP_JAL X16 , 4
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2785: uvm_test_top.env.rf_sb [SB_RF] WRITE x27 = 0x0000010c (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2795: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #72 accepted (req & gnt) rdata=0x01000a6f
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2795: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000118 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2795: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000114 (rem=1)  OP_JAL X0 , 12
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(159) @ 2795: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Phase 9: Pre-loading PC via AUIPC for JALR...
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2805: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #73 accepted (req & gnt) rdata=0x00000097
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2805: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000120 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_seq.sv(171) @ 2805: uvm_test_top.env.instr_agent.instr_seqr@@instr_seq [instr_seq] Phase 9: JALR instructions (10 instructions)...
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 2815: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x0 data=118
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2815: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=114 b=4 res=118
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2815: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000118 (rem=1)  OP_JAL X20 , 16
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2815: uvm_test_top.env.rf_sb [SB_RF] WRITE x0 = 0x00000118 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2825: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #74 accepted (req & gnt) rdata=0x00c08d67
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2825: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000120 (rem=0)  OP_AUIPC X1 , 0
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2825: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000124 (fifo_sz=1)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2835: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #75 accepted (req & gnt) rdata=0x00c08367
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2835: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000128 (fifo_sz=2)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 2845: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x1 data=120
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2845: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=120 b=0 res=120
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2845: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000124 (rem=1)  OP_JALR X26 , 12
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2845: uvm_test_top.env.rf_sb [SB_RF] WRITE x1 = 0x00000120 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2855: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #76 accepted (req & gnt) rdata=0x004088e7
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2855: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x0000012c (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2855: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000128 (rem=1)  OP_JALR X6 , 12
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2855: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00000120 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 2865: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x26 data=128
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2865: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=124 b=4 res=128
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2865: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #77 accepted (req & gnt) rdata=0x00408667
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2865: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000130 (fifo_sz=2)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2865: uvm_test_top.env.rf_sb [SB_RF] WRITE x26 = 0x00000128 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2875: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x0000012c (rem=1)  OP_JALR X17 , 4
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2885: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #78 accepted (req & gnt) rdata=0x01008767
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2885: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000130 (rem=0)  OP_JALR X12 , 4
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2885: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000124 (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2885: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00000120 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 2895: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x17 data=130
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2895: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=12c b=4 res=130
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2895: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #79 accepted (req & gnt) rdata=0x01008f67
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2895: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000128 (fifo_sz=2)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2895: uvm_test_top.env.rf_sb [SB_RF] WRITE x17 = 0x00000130 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2905: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000124 (rem=1)  OP_JALR X14 , 16
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2915: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #80 accepted (req & gnt) rdata=0x004084e7
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2915: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000130 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2915: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000128 (rem=1)  OP_JALR X30 , 16
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2915: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00000120 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 2925: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x14 data=128
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2925: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=124 b=4 res=128
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2925: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #81 accepted (req & gnt) rdata=0x010081e7
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2925: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000134 (fifo_sz=2)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2925: uvm_test_top.env.rf_sb [SB_RF] WRITE x14 = 0x00000128 (port b)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2935: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000130 (rem=1)  OP_JALR X9 , 4
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2945: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #82 accepted (req & gnt) rdata=0x010080e7
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2945: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000134 (rem=0)  OP_JALR X3 , 16
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2945: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000124 (fifo_sz=1)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2945: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00000120 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 2955: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x9 data=134
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2955: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=130 b=4 res=134
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_driver.sv(63) @ 2955: uvm_test_top.env.instr_agent.instr_driver [INSTR_DRV] A-ch #83 accepted (req & gnt) rdata=0x00408d67
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2955: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000128 (fifo_sz=2)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2955: uvm_test_top.env.rf_sb [SB_RF] WRITE x9 = 0x00000134 (port b)
+# UVM_INFO ./tb/./rv32im_virtual_seq.sv(55) @ 2955: uvm_test_top.env.sys_vseqr@@sys_vseq [sys_vseq] INSTR SEQ - Finished, draining pipeline...
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2965: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000124 (rem=1)  OP_JALR X1 , 16
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2975: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000130 (fifo_sz=2)
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(57) @ 2975: uvm_test_top.env.instr_agent.instr_monitor [INSTR_MON] pc=0x00000128 (rem=1)  OP_JALR X26 , 4
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(148) @ 2975: uvm_test_top.env.rf_sb [SB_RF] READ PASS x1 = 0x00000120 (port a)
+# UVM_INFO ./tb/../regfile_agent/regfile_monitor.sv(41) @ 2985: uvm_test_top.env.rf_agt.mon [REGFILE_MON] WRITE Port B: WRITE port=b addr=x1 data=128
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2985: uvm_test_top.env.alu_agt.mon [ALU_MON] op=18 a=124 b=4 res=128
+# UVM_INFO ./tb/../Instr_Agent/rv32im_instr_monitor.sv(39) @ 2985: uvm_test_top.env.instr_agent.instr_monitor [INSTR_REQ] A-ch REQ addr=0x00000134 (fifo_sz=2)
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(121) @ 2985: uvm_test_top.env.rf_sb [SB_RF] WRITE x1 = 0x00000128 (port b)
+# UVM_INFO ./tb/../alu_agent/alu_monitor.sv(36) @ 2995: uvm_test_top.env.alu_agt.mon [ALU_MON] op=3 a=124 b=4 res=0
+# UVM_INFO ./tb/./rv32im_virtual_seq.sv(59) @ 3455: uvm_test_top.env.sys_vseqr@@sys_vseq [sys_vseq] Pipeline drain complete.
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 3455: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO ./tb/../alu_scoreboard/riscv_alu_scoreboard.sv(529) @ 3455: uvm_test_top.env.alu_sb [riscv_alu_scoreboard] +------------------------------------------------+
+# UVM_INFO ./tb/../alu_scoreboard/riscv_alu_scoreboard.sv(530) @ 3455: uvm_test_top.env.alu_sb [riscv_alu_scoreboard] |        RISCV32IM ALU/DIV & MUL SCOREBOARD      |
+# UVM_INFO ./tb/../alu_scoreboard/riscv_alu_scoreboard.sv(531) @ 3455: uvm_test_top.env.alu_sb [riscv_alu_scoreboard] +------------------------------------------------+
+# UVM_INFO ./tb/../alu_scoreboard/riscv_alu_scoreboard.sv(532) @ 3455: uvm_test_top.env.alu_sb [riscv_alu_scoreboard] |  ALU : PASS=   59  FAIL=    0  SKIP=    4     |
+# UVM_INFO ./tb/../alu_scoreboard/riscv_alu_scoreboard.sv(533) @ 3455: uvm_test_top.env.alu_sb [riscv_alu_scoreboard] |  MUL : PASS=    6  FAIL=    0  SKIP=    0     |
+# UVM_INFO ./tb/../alu_scoreboard/riscv_alu_scoreboard.sv(534) @ 3455: uvm_test_top.env.alu_sb [riscv_alu_scoreboard] +------------------------------------------------+
+# UVM_INFO ./tb/../alu_scoreboard/riscv_alu_scoreboard.sv(535) @ 3455: uvm_test_top.env.alu_sb [riscv_alu_scoreboard] |  TOTAL CHECKS :     65                       |
+# UVM_INFO ./tb/../alu_scoreboard/riscv_alu_scoreboard.sv(536) @ 3455: uvm_test_top.env.alu_sb [riscv_alu_scoreboard] |  PASSED       :     65                       |
+# UVM_INFO ./tb/../alu_scoreboard/riscv_alu_scoreboard.sv(537) @ 3455: uvm_test_top.env.alu_sb [riscv_alu_scoreboard] |  FAILED       :      0                       |
+# UVM_INFO ./tb/../alu_scoreboard/riscv_alu_scoreboard.sv(538) @ 3455: uvm_test_top.env.alu_sb [riscv_alu_scoreboard] |  Pass Rate    : 100.00%                      |
+# UVM_INFO ./tb/../alu_scoreboard/riscv_alu_scoreboard.sv(539) @ 3455: uvm_test_top.env.alu_sb [riscv_alu_scoreboard] +------------------------------------------------+
+# UVM_INFO ./tb/../alu_scoreboard/riscv_alu_scoreboard.sv(543) @ 3455: uvm_test_top.env.alu_sb [riscv_alu_scoreboard]   div_result_p                   PASS=    2 FAIL=    0
+# UVM_INFO ./tb/../alu_scoreboard/riscv_alu_scoreboard.sv(543) @ 3455: uvm_test_top.env.alu_sb [riscv_alu_scoreboard]   div_zero_p                     PASS=    2 FAIL=    0
+# UVM_INFO ./tb/../alu_scoreboard/riscv_alu_scoreboard.sv(543) @ 3455: uvm_test_top.env.alu_sb [riscv_alu_scoreboard]   mul_by_zero_p                  PASS=    6 FAIL=    0
+# UVM_INFO ./tb/../alu_scoreboard/riscv_alu_scoreboard.sv(543) @ 3455: uvm_test_top.env.alu_sb [riscv_alu_scoreboard]   mul_signed_xor_unsigned_p      PASS=    3 FAIL=    0
+# UVM_INFO ./tb/../alu_scoreboard/riscv_alu_scoreboard.sv(543) @ 3455: uvm_test_top.env.alu_sb [riscv_alu_scoreboard]   mulh_smode_legal_p             PASS=    3 FAIL=    0
+# UVM_INFO ./tb/../alu_scoreboard/riscv_alu_scoreboard.sv(543) @ 3455: uvm_test_top.env.alu_sb [riscv_alu_scoreboard]   mulhu_full_product_p           PASS=    1 FAIL=    0
+# UVM_INFO ./tb/../alu_scoreboard/riscv_alu_scoreboard.sv(543) @ 3455: uvm_test_top.env.alu_sb [riscv_alu_scoreboard]   rem_div_zero_p                 PASS=    2 FAIL=    0
+# UVM_INFO ./tb/../alu_scoreboard/riscv_alu_scoreboard.sv(543) @ 3455: uvm_test_top.env.alu_sb [riscv_alu_scoreboard]   rem_result_p                   PASS=    2 FAIL=    0
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(183) @ 3455: uvm_test_top.env.rf_sb [riscv_rf_scoreboard] +------------------------------------------------+
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(184) @ 3455: uvm_test_top.env.rf_sb [riscv_rf_scoreboard] |        RISCV32IM REGISTER FILE SCOREBOARD      |
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(185) @ 3455: uvm_test_top.env.rf_sb [riscv_rf_scoreboard] +------------------------------------------------+
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(186) @ 3455: uvm_test_top.env.rf_sb [riscv_rf_scoreboard] |  WRITES OBSERVED :     52                       |
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(187) @ 3455: uvm_test_top.env.rf_sb [riscv_rf_scoreboard] |  READ CHECKS     :    101                       |
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(188) @ 3455: uvm_test_top.env.rf_sb [riscv_rf_scoreboard] |  READ PASSED     :    101                       |
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(189) @ 3455: uvm_test_top.env.rf_sb [riscv_rf_scoreboard] |  READ FAILED     :      0                       |
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(190) @ 3455: uvm_test_top.env.rf_sb [riscv_rf_scoreboard] |  Pass Rate       : 100.00%                     |
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(191) @ 3455: uvm_test_top.env.rf_sb [riscv_rf_scoreboard] +------------------------------------------------+
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(194) @ 3455: uvm_test_top.env.rf_sb [riscv_rf_scoreboard]   rf_read_correct_p              PASS=  101 FAIL=    0
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(194) @ 3455: uvm_test_top.env.rf_sb [riscv_rf_scoreboard]   x0_immutable_write_p           PASS=    1 FAIL=    0
+# UVM_INFO ./tb/../regfile_scoreboard/riscv_rf_scoreboard.sv(194) @ 3455: uvm_test_top.env.rf_sb [riscv_rf_scoreboard]   x0_reads_zero_p                PASS=    5 FAIL=    0
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(698) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard] +----------------------------------------------------+
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(699) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard] |        RISCV32IM SYSTEM SCOREBOARD RESULTS         |
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(700) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard] +----------------------------------------------------+
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(701) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard] |  ALU/DIV     : PASS=   59  FAIL=    0  SKIP=    4     |
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(702) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard] |  MUL         : PASS=    6  FAIL=    0  SKIP=    0     |
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(703) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard] |  REGFILE     : WRITES=   52 READ_PASS=  101 FAIL= 0|
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(704) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard] |  RF Pass Rate: 100.00%                              |
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(705) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard] +----------------------------------------------------+
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(706) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard] |  INSTRUCTIONS: TOTAL=   70 (R=20 I=11 LD=10 ST=10) |
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(708) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard] |  BRANCH/JUMP : TOTAL=   17 (BR=7 JMP=10)             |
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(710) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard] |  PC CHECKS   : PASS=   13  FAIL=    3                  |
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(712) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard] |  DATA BUS    : LOADS=   10  STORES=   10 (AlignFail=0)|
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(714) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard] |  LOAD DATA   : PASS=   10  FAIL=    0                  |
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(716) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard] +----------------------------------------------------+
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(719) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard]   branch_pc_p                    PASS=    5 FAIL=    2
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(719) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard]   div_result_p                   PASS=    2 FAIL=    0
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(719) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard]   div_zero_p                     PASS=    2 FAIL=    0
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(719) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard]   jal_pc_p                       PASS=    4 FAIL=    1
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(719) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard]   jalr_pc_p                      PASS=    4 FAIL=    0
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(719) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard]   mem_load_data_p                PASS=   10 FAIL=    0
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(719) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard]   mul_by_zero_p                  PASS=    6 FAIL=    0
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(719) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard]   rem_div_zero_p                 PASS=    2 FAIL=    0
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(719) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard]   rem_result_p                   PASS=    2 FAIL=    0
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(719) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard]   rf_read_correct_p              PASS=  101 FAIL=    0
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(719) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard]   x0_immutable_write_p           PASS=    1 FAIL=    0
+# UVM_INFO ./tb/../system_scoreboard/riscv_system_scoreboard.sv(719) @ 3455: uvm_test_top.env.sb [riscv_system_scoreboard]   x0_reads_zero_p                PASS=    5 FAIL=    0
+# UVM_ERROR ./tb/./rv32im_test.sv(64) @ 3455: uvm_test_top [uvm_test_top] 
+# =======================================================
+#   TEST FAILED: rv32im_base_test (3 Errors, 0 Fatals)
+# =======================================================
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :  601
+# UVM_WARNING :    0
+# UVM_ERROR :    4
+# UVM_FATAL :    0
+# ** Report counts by id
+# [ALU_MON]    63
+# [INSTR_DRV]    83
+# [INSTR_MON]    83
+# [INSTR_REQ]    85
+# [MUL_MON]     6
+# [Questa UVM]     2
+# [REGFILE_MON]    52
+# [RNTST]     1
+# [SB_PROP]     3
+# [SB_RF]   153
+# [TEST_DONE]     1
+# [instr_seq]    12
+# [riscv_alu_scoreboard]    19
+# [riscv_rf_scoreboard]    12
+# [riscv_system_scoreboard]    26
+# [sys_vseq]     2
+# [uvm_test_top]     2
+# ** Note: $finish    : C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 3455 ns  Iteration: 59  Instance: /rv32im_top
+# Break in Task uvm_pkg/uvm_root::run_test at C:/questasim64_2021.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh line 430

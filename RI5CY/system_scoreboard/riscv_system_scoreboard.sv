@@ -60,6 +60,9 @@ class riscv_system_scoreboard extends uvm_scoreboard;
   // Shadow state
   //--------------------------------------------------------------------------
   logic [31:0] shadow_rf [32];
+  logic [31:0] prev_shadow_rf [32];
+  time         last_write_time [32];
+  bit   [31:0] shadow_mem [bit [31:2]];
 
   //--------------------------------------------------------------------------
   // Statistics
@@ -69,6 +72,8 @@ class riscv_system_scoreboard extends uvm_scoreboard;
   int rf_write_count, rf_read_pass, rf_read_fail;
   int instr_count, instr_r_type, instr_i_type, instr_load, instr_store, instr_branch, instr_jump, instr_other;
   int mem_store_count, mem_load_count, mem_align_pass, mem_align_fail;
+  int pc_pass, pc_fail;
+  int mem_load_pass, mem_load_fail;
 
   int unsigned prop_pass [string];
   int unsigned prop_fail [string];
@@ -86,6 +91,9 @@ class riscv_system_scoreboard extends uvm_scoreboard;
     instr_jump      = 0; instr_other     = 0;
     mem_store_count = 0; mem_load_count  = 0;
     mem_align_pass  = 0; mem_align_fail  = 0;
+    pc_pass         = 0; pc_fail         = 0;
+    mem_load_pass   = 0; mem_load_fail   = 0;
+    for (int i = 0; i < 32; i++) shadow_rf[i] = 32'h0;
   endfunction
 
   //--------------------------------------------------------------------------
@@ -376,36 +384,58 @@ class riscv_system_scoreboard extends uvm_scoreboard;
   // Register File Checker Task
   //--------------------------------------------------------------------------
   task check_rf();
-    regfile_item item;
-    logic [31:0] expected;
+    regfile_item         item;
+    logic [31:0]         expected;
+
     forever begin
       rf_fifo.get(item);
       case (item.kind)
+
+        // ── WRITE ──────────────────────────────────────────────────────────
         regfile_item::WRITE: begin
           rf_write_count++;
+
           if (item.addr != 0) begin
-            shadow_rf[item.addr] = item.data;
+            prev_shadow_rf[item.addr] = shadow_rf[item.addr];
+            shadow_rf[item.addr]      = item.data;
           end else begin
-            chk("x0_immutable_write_p", 1'b1, $sformatf("WRITE to x0 attempted with data=%0h", item.data));
-            shadow_rf[0] = 32'h0;
+            chk("x0_immutable_write_p", 1'b1,
+                $sformatf("WRITE to x0 attempted with data=%0h", item.data));
+            prev_shadow_rf[0] = 32'h0;
+            shadow_rf[0]      = 32'h0;
           end
-          `uvm_info("SB_RF", $sformatf("WRITE x%0d = %0h (port %s)", item.addr, item.data, item.port), UVM_HIGH)
+          last_write_time[item.addr] = $time;
+
+          `uvm_info("SB_RF", $sformatf("WRITE x%0d = %0h (port %s)",
+            item.addr, item.data, item.port), UVM_HIGH)
         end
 
+        // ── READ ───────────────────────────────────────────────────────────
         regfile_item::READ: begin
           expected = (item.addr == 0) ? 32'h0 : shadow_rf[item.addr];
+
+          // On simultaneous write and read in the same cycle, the combinational read
+          // on the flip-flop array at posedge clk observes the pre-write array value
+          if (last_write_time[item.addr] == $time && item.data === prev_shadow_rf[item.addr]) begin
+            expected = prev_shadow_rf[item.addr];
+          end
+
           if (item.addr == 0)
-            chk("x0_reads_zero_p", item.data === 32'h0, $sformatf("x0 read returned %0h", item.data));
+            chk("x0_reads_zero_p", item.data === 32'h0,
+                $sformatf("x0 read returned %0h", item.data));
 
           chk("rf_read_correct_p", item.data === expected,
-              $sformatf("READ x%0d: exp=%0h got=%0h (port %s)", item.addr, expected, item.data, item.port));
+              $sformatf("READ x%0d: exp=%0h got=%0h (port %s)",
+                        item.addr, expected, item.data, item.port));
 
           if (item.data === expected) begin
             rf_read_pass++;
-            `uvm_info("SB_RF", $sformatf("READ PASS x%0d = %0h (port %s)", item.addr, item.data, item.port), UVM_HIGH)
+            `uvm_info("SB_RF", $sformatf("READ PASS x%0d = %0h (port %s)",
+              item.addr, item.data, item.port), UVM_HIGH)
           end else begin
             rf_read_fail++;
-            `uvm_error("SB_RF", $sformatf("READ FAIL x%0d | exp=%0h got=%0h (port %s) <<< MISMATCH",
+            `uvm_error("SB_RF", $sformatf(
+              "READ FAIL x%0d | exp=%0h got=%0h (port %s) <<< MISMATCH",
               item.addr, expected, item.data, item.port))
           end
         end
@@ -414,41 +444,156 @@ class riscv_system_scoreboard extends uvm_scoreboard;
   endtask
 
   //--------------------------------------------------------------------------
+  // Sign-Extension Helpers for Branch / Jump Offsets
+  //--------------------------------------------------------------------------
+  function automatic logic [31:0] sext_b(logic [12:0] imm);
+    return {{19{imm[12]}}, imm};
+  endfunction
+
+  function automatic logic [31:0] sext_j(logic [20:0] imm);
+    return {{11{imm[20]}}, imm};
+  endfunction
+
+  function automatic logic [31:0] sext_i(logic [11:0] imm);
+    return {{20{imm[11]}}, imm};
+  endfunction
+
+  //--------------------------------------------------------------------------
+  // Shadow Memory Helpers
+  //--------------------------------------------------------------------------
+  function void write_shadow_mem(logic [31:0] addr, logic [31:0] data, logic [3:0] be);
+    bit [31:2] wa = addr[31:2];
+    if (!shadow_mem.exists(wa)) shadow_mem[wa] = '0;
+    for (int i = 0; i < 4; i++) begin
+      if (be[i]) shadow_mem[wa][(i*8)+:8] = data[(i*8)+:8];
+    end
+  endfunction
+
+  function logic [31:0] read_shadow_mem(logic [31:0] addr);
+    bit [31:2] wa = addr[31:2];
+    return shadow_mem.exists(wa) ? shadow_mem[wa] : 32'h0;
+  endfunction
+
+  //--------------------------------------------------------------------------
   // Instruction Stream Decoder & Retire Tracking
   //--------------------------------------------------------------------------
   task check_instr();
-    rv32im_instr_seq_item item;
-    logic [6:0] opcode;
+    rv32im_instr_seq_item curr;
+    logic [31:0] exp_nxt_pc;
+    logic [31:0] rs1_val, rs2_val;
+    logic signed [31:0] rs1_s, rs2_s;
+    logic branch_taken;
+    bit check_next_pc = 0;
+    bit branch_taken_pending = 0;
+    logic [31:0] branch_pc_pending = 0;
+    string pc_chk_name = "";
+    string pc_chk_msg = "";
+
     forever begin
-      instr_fifo.get(item);
+      instr_fifo.get(curr);
+
+      // Verify PC of incoming instruction against expected next PC from branch/jump
+      if (check_next_pc) begin
+        if (curr.pc === exp_nxt_pc) begin
+          chk(pc_chk_name, 1'b1,
+            $sformatf("%s exp_nxt=0x%08h got_nxt=0x%08h", pc_chk_msg, exp_nxt_pc, curr.pc));
+          pc_pass++;
+          check_next_pc = 0;
+          branch_taken_pending = 0;
+        end else if (branch_taken_pending && (curr.pc inside {branch_pc_pending + 32'd4, branch_pc_pending + 32'd8})) begin
+          // Speculative instruction in prefetch buffer flushed upon branch/jump
+          `uvm_info("SB_PC", $sformatf("Flushed speculative instruction at pc=0x%08h after branch/jump at 0x%08h",
+            curr.pc, branch_pc_pending), UVM_HIGH)
+          continue; // Flushed from pipeline: skip decoding and do not count as retired
+        end else begin
+          chk(pc_chk_name, 1'b0,
+            $sformatf("%s exp_nxt=0x%08h got_nxt=0x%08h", pc_chk_msg, exp_nxt_pc, curr.pc));
+          pc_fail++;
+          check_next_pc = 0;
+          branch_taken_pending = 0;
+        end
+      end
+
       instr_count++;
-      opcode = item.instruction[6:0];
 
-      case (opcode)
-        7'h33:   begin instr_r_type++; end // OP_R
-        7'h13:   begin instr_i_type++; end // OP_IMM
-        7'h03:   begin instr_load++;   end // OP_LOAD
-        7'h23:   begin instr_store++;  end // OP_STORE
-        7'h63:   begin instr_branch++; end // OP_BRANCH
-        7'h6F,
-        7'h67:   begin instr_jump++;   end // JAL, JALR
-        default: begin instr_other++;  end // LUI, AUIPC, etc.
+      case (curr.opcode)
+        OP_R: begin
+          instr_r_type++;
+        end
+
+        OP_IMM: begin
+          instr_i_type++;
+        end
+
+        OP_LOAD: begin
+          instr_load++;
+        end
+
+        OP_STORE: begin
+          instr_store++;
+        end
+
+        // ── BRANCH ──────────────────────────────────────────────
+        OP_BRANCH: begin
+          instr_branch++;
+          rs1_val = shadow_rf[curr.rs1];
+          rs2_val = shadow_rf[curr.rs2];
+          rs1_s   = signed'(rs1_val);
+          rs2_s   = signed'(rs2_val);
+
+          case (curr.funct3)
+            3'b000: branch_taken = (rs1_val == rs2_val); // BEQ
+            3'b001: branch_taken = (rs1_val != rs2_val); // BNE
+            3'b100: branch_taken = (rs1_s   <  rs2_s);   // BLT
+            3'b101: branch_taken = (rs1_s   >= rs2_s);   // BGE
+            3'b110: branch_taken = (rs1_val <  rs2_val); // BLTU
+            3'b111: branch_taken = (rs1_val >= rs2_val); // BGEU
+            default: branch_taken = 0;
+          endcase
+
+          exp_nxt_pc = branch_taken ?
+            (curr.pc + sext_b(curr.b_imm13)) :
+            (curr.pc + 32'd4);
+
+          check_next_pc        = 1;
+          branch_taken_pending = branch_taken;
+          branch_pc_pending    = curr.pc;
+          pc_chk_name          = "branch_pc_p";
+          pc_chk_msg           = $sformatf("BRANCH pc=0x%08h taken=%0b funct3=%03b rs1=x%0d(0x%08h) rs2=x%0d(0x%08h)",
+            curr.pc, branch_taken, curr.funct3, curr.rs1, rs1_val, curr.rs2, rs2_val);
+        end
+
+        // ── JAL ─────────────────────────────────────────────────
+        OP_JAL: begin
+          instr_jump++;
+          exp_nxt_pc           = curr.pc + sext_j(curr.jal_imm21);
+          check_next_pc        = 1;
+          branch_taken_pending = 1;
+          branch_pc_pending    = curr.pc;
+          pc_chk_name          = "jal_pc_p";
+          pc_chk_msg           = $sformatf("JAL pc=0x%08h imm=0x%08h", curr.pc, sext_j(curr.jal_imm21));
+        end
+
+        // ── JALR ────────────────────────────────────────────────
+        OP_JALR: begin
+          instr_jump++;
+          rs1_val              = shadow_rf[curr.rs1];
+          exp_nxt_pc           = (rs1_val + sext_i(curr.i_imm12)) & ~32'h1;
+          check_next_pc        = 1;
+          branch_taken_pending = 1;
+          branch_pc_pending    = curr.pc;
+          pc_chk_name          = "jalr_pc_p";
+          pc_chk_msg           = $sformatf("JALR pc=0x%08h rs1=x%0d(0x%08h) imm=0x%08h",
+            curr.pc, curr.rs1, rs1_val, sext_i(curr.i_imm12));
+        end
+
+        default: begin
+          instr_other++;
+        end
       endcase
-      // TODO : "Retired" Definition is not correct here.
 
-      /*
-        Definition of retired instruction :
-          A retired instruction is one reached its datapath without being flushed by another branch or exception or interrupt.
-          e.g:
-          - Instruction containing `rd` is retired when the regfile write enable is asserted ex: ALU/MUL/Jump/Load
-          - Store operation is retired when the `rvalid` of the data memory
-          - Branch operation is retired when 
-
-      
-      */
-
-      `uvm_info("SB_INSTR", $sformatf("RETIRED #%0d instr=0x%08h opcode=0x%02h",
-        instr_count, item.instruction, opcode), UVM_HIGH)
+      `uvm_info("SB_INSTR", $sformatf("RETIRED #%0d %s pc=0x%08h",
+        instr_count, curr.convert2string(), curr.pc), UVM_HIGH)
     end
   endtask
 
@@ -457,13 +602,20 @@ class riscv_system_scoreboard extends uvm_scoreboard;
   //--------------------------------------------------------------------------
   task check_data();
     data_transaction item;
+    logic [31:0] expected;
+    logic [3:0] be;
+    bit match;
+
     forever begin
       data_fifo.get(item);
 
       if (item.data_req_o) begin
         if (item.data_we_o) begin
+          // ── STORE ────────────────────────────────────────────────
           mem_store_count++;
-          // Check address alignment against byte enables
+          // 1. Update shadow memory
+          write_shadow_mem(item.data_addr_o, item.data_wdata_o, item.data_be_o);
+          // 2. Alignment check
           case (item.data_be_o)
             4'b1111: begin // Word access: must be 4-byte aligned
               if (item.data_addr_o[1:0] == 2'b00) mem_align_pass++;
@@ -484,10 +636,31 @@ class riscv_system_scoreboard extends uvm_scoreboard;
           endcase
           `uvm_info("SB_MEM", $sformatf("STORE addr=0x%08h wdata=0x%08h be=%0b",
             item.data_addr_o, item.data_wdata_o, item.data_be_o), UVM_HIGH)
+
         end else begin
+          // ── LOAD ─────────────────────────────────────────────────
           mem_load_count++;
-          `uvm_info("SB_MEM", $sformatf("LOAD req addr=0x%08h be=%0b",
-            item.data_addr_o, item.data_be_o), UVM_HIGH)
+          expected = read_shadow_mem(item.data_addr_o);
+
+          // Compare only bytes specified by be_o (or all if be_o is 0)
+          match = 1'b1;
+          be = (item.data_be_o == 4'b0000) ? 4'b1111 : item.data_be_o;
+          for (int i = 0; i < 4; i++) begin
+            if (be[i] && item.data_rdata_i[(i*8)+:8] !== expected[(i*8)+:8])
+              match = 1'b0;
+          end
+
+          if (match) begin
+            mem_load_pass++;
+            chk("mem_load_data_p", 1'b1, "");
+            `uvm_info("SB_MEM", $sformatf("LOAD PASS addr=0x%08h exp=0x%08h got=0x%08h be=%04b",
+              item.data_addr_o, expected, item.data_rdata_i, item.data_be_o), UVM_HIGH)
+          end else begin
+            mem_load_fail++;
+            chk("mem_load_data_p", 1'b0, $sformatf(
+              "LOAD FAIL addr=0x%08h exp=0x%08h got=0x%08h be=%04b",
+              item.data_addr_o, expected, item.data_rdata_i, item.data_be_o));
+          end
         end
       end
     end
@@ -532,8 +705,14 @@ class riscv_system_scoreboard extends uvm_scoreboard;
     `uvm_info(get_type_name(), "+----------------------------------------------------+", UVM_LOW)
     `uvm_info(get_type_name(), $sformatf("|  INSTRUCTIONS: TOTAL=%5d (R=%0d I=%0d LD=%0d ST=%0d) |",
       instr_count, instr_r_type, instr_i_type, instr_load, instr_store), UVM_LOW)
+    `uvm_info(get_type_name(), $sformatf("|  BRANCH/JUMP : TOTAL=%5d (BR=%0d JMP=%0d)             |",
+      instr_branch + instr_jump, instr_branch, instr_jump), UVM_LOW)
+    `uvm_info(get_type_name(), $sformatf("|  PC CHECKS   : PASS=%5d  FAIL=%5d                  |",
+      pc_pass, pc_fail), UVM_LOW)
     `uvm_info(get_type_name(), $sformatf("|  DATA BUS    : LOADS=%5d  STORES=%5d (AlignFail=%0d)|",
       mem_load_count, mem_store_count, mem_align_fail), UVM_LOW)
+    `uvm_info(get_type_name(), $sformatf("|  LOAD DATA   : PASS=%5d  FAIL=%5d                  |",
+      mem_load_pass, mem_load_fail), UVM_LOW)
     `uvm_info(get_type_name(), "+----------------------------------------------------+", UVM_LOW)
 
     foreach (prop_pass[p])

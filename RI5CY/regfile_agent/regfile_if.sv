@@ -16,7 +16,7 @@ interface regfile_if (
     input   logic [5:0]  waddr_b_i,
     input   logic [31:0] wdata_b_i,
     input   logic        we_b_i ,
-    input   logic        pc_id    // PC in the ID stage used to be as an identifier to the instruction in the pipeline 
+    input   logic [31:0] pc_id    // PC in the ID stage used to be as an identifier to the instruction in the pipeline 
   );
 
   clocking cb_mon @(posedge clk);

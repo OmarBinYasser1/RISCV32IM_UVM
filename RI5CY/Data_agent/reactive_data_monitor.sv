@@ -45,6 +45,7 @@ class reactive_data_monitor extends uvm_monitor;
             req_tr = data_transaction::type_id::create("req_tr");
 
             // Capture Address Phase Signals
+            req_tr.data_req_o   = vif.cb_monitor.data_req_o;
             req_tr.data_addr_o  = vif.cb_monitor.data_addr_o;
             req_tr.data_we_o    = vif.cb_monitor.data_we_o;
             req_tr.data_be_o    = vif.cb_monitor.data_be_o;

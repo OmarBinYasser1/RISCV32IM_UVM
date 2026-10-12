@@ -4,76 +4,101 @@ class rv32im_instr_driver extends uvm_driver#(rv32im_instr_seq_item);
     virtual rv32im_instr_if.mp_drv instr_vif;
     
     rv32im_instr_seq_item instr_item;
-
     int driven_insts;
 
-    function new (string name = "rv32im_instr_driver" , uvm_component parent = null);
-        super.new(name , parent);
+    // Mailbox holding data for accepted transactions awaiting R-channel response
+    mailbox #(logic [31:0]) pending_resp;
+
+    function new (string name = "rv32im_instr_driver", uvm_component parent = null);
+        super.new(name, parent);
     endfunction
 
     task run_phase (uvm_phase phase);
         super.run_phase(phase);
+        pending_resp = new();
 
-        // Initialize outputs
+        // Safe initial state
         instr_vif.cb_drv.instr_gnt_i    <= 0;
         instr_vif.cb_drv.instr_rvalid_i <= 0;
         instr_vif.cb_drv.instr_rdata_i  <= 0;
-        instr_vif.cb_drv.rst_n           <= 0;
+        instr_vif.cb_drv.rst_n          <= 0;
 
+        // Phase 0: Consume reset items from sequencer
         forever begin
-            instr_item = rv32im_instr_seq_item::type_id::create("rv32im_instr_seq_item");
             seq_item_port.get_next_item(instr_item);
-            drive(instr_item);
-            // `uvm_info(get_name(), $sformatf("INSTR DRIVER - Instruction driven: 0x%08h (rst_n=%0b) @ %0t",
-            //     instr_item.instruction, instr_item.rst_n, $time), UVM_LOW);
-            seq_item_port.item_done();
+            instr_vif.cb_drv.rst_n <= instr_item.rst_n;
+            if (!instr_item.rst_n) begin
+                instr_vif.cb_drv.instr_gnt_i <= 0;
+                @(instr_vif.cb_drv);
+                seq_item_port.item_done();
+            end else begin
+                // First operational instruction received; keep item for A-channel
+                break;
+            end
         end
-       
+
+        // Assert reset release and fork parallel A/R channel handlers
+        instr_vif.cb_drv.rst_n <= 1;
+        fork
+            a_channel_thread();
+            r_channel_thread();
+        join_none
     endtask
 
-    // OBI-compliant zero-latency instruction memory model:
-    //   - During reset: drive rst_n=0, keep gnt/rvalid/rdata=0
-    //   - After reset:  on every cycle where instr_req_o=1, immediately
-    //                   grant and return rdata (zero-latency ROM model)
-    virtual task drive (input rv32im_instr_seq_item instr_item);
-        // @(instr_vif.cb_drv);
+    // =======================================================================
+    // A-channel thread: OBI slave request handler
+    // Memory is always ready to grant (gnt_i = 1).
+    // An actual transfer occurs ONLY when req_o == 1 and gnt_i == 1 at the clock edge.
+    // =======================================================================
+    task a_channel_thread();
+        forever begin
+            instr_vif.cb_drv.instr_gnt_i <= 1'b1;
 
-        // Always update rst_n
-        instr_vif.cb_drv.rst_n <= instr_item.rst_n;
+            @(instr_vif.cb_drv);
 
-        if (!instr_item.rst_n) begin
-            // In reset: de-assert everything
-            instr_vif.cb_drv.instr_gnt_i    <= 0;
+            // Valid transaction accepted on this clock edge
+            if (instr_vif.cb_drv.instr_req_o === 1'b1) begin
+                driven_insts++;
+                pending_resp.put(instr_item.instruction);
+                `uvm_info("INSTR_DRV",
+                    $sformatf("A-ch #%0d accepted (req & gnt) rdata=0x%08h",
+                              driven_insts, instr_item.instruction), UVM_LOW)
+                seq_item_port.item_done();
+
+                // Fetch next instruction
+                seq_item_port.get_next_item(instr_item);
+            end
+        end
+    endtask
+
+    // =======================================================================
+    // R-channel thread: OBI slave response handler
+    // Returns rvalid = 1 exactly once for every accepted A-channel transaction.
+    // =======================================================================
+    task r_channel_thread();
+        logic [31:0] rdata;
+        forever begin
+            // Wait until a response is pending in the mailbox
+            while (pending_resp.num() == 0) begin
+                instr_vif.cb_drv.instr_rvalid_i <= 0;
+                instr_vif.cb_drv.instr_rdata_i  <= 0;
+                @(instr_vif.cb_drv);
+            end
+
+            // Pop one pending response
+            pending_resp.get(rdata);
+
+            // Assert rvalid for exactly ONE clock cycle
+            instr_vif.cb_drv.instr_rvalid_i <= 1;
+            instr_vif.cb_drv.instr_rdata_i  <= rdata;
+            `uvm_info("INSTR_DRV",
+                $sformatf("R-ch: rvalid sent rdata=0x%08h", rdata), UVM_HIGH)
+            @(instr_vif.cb_drv);
+
+            // De-assert rvalid
             instr_vif.cb_drv.instr_rvalid_i <= 0;
             instr_vif.cb_drv.instr_rdata_i  <= 0;
-        end 
-        else if(instr_vif.cb_drv.instr_req_o == 1)begin
-             // Immediately grant and provide the instruction data (zero-latency ROM)
-            drive_normal();
         end
-        else begin
-            instr_vif.cb_drv.instr_gnt_i    <= 0;
-            instr_vif.cb_drv.instr_rvalid_i <= 0;
-            // Hold the previous instruction on OBI Interface
-
-            // Wait for the core to request an instruction
-            @(instr_vif.cb_drv iff (instr_vif.cb_drv.instr_req_o == 1));
-
-            // Immediately grant and provide the instruction data (zero-latency ROM)
-            drive_normal();
-        end
-
-        @(instr_vif.cb_drv);
-
-    endtask
-
-    virtual task drive_normal ();
-        driven_insts++;
-        instr_vif.cb_drv.instr_gnt_i    <= 1;
-        instr_vif.cb_drv.instr_rvalid_i <= 1;
-        instr_vif.cb_drv.instr_rdata_i  <= instr_item.instruction;
-        `uvm_info("INSTR_DRV",$sformatf("Instruction #%0d driven: 0x%08h",driven_insts,instr_item.instruction),UVM_LOW);
-        `uvm_info("INSTR_DRV",instr_item.convert2string(),UVM_HIGH); 
     endtask
 
 endclass // rv32im_instr_driver

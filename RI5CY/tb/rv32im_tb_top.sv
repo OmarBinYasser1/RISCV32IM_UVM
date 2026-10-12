@@ -127,15 +127,15 @@ module rv32im_top ();
         // Read port a
         .raddr_a_i              (u_core.core_i.id_stage_i.regfile_addr_ra_id),
         .rdata_a_o              (u_core.core_i.id_stage_i.regfile_data_ra_id),
-        .rega_used_dec          (u_core.core_i.id_stage_i.rega_used_dec),
+        .rega_used_dec          (u_core.core_i.id_stage_i.rega_used_dec & u_core.core_i.id_stage_i.id_ready_o & u_core.core_i.id_stage_i.instr_valid_i),
         // Read port b
         .raddr_b_i              (u_core.core_i.id_stage_i.regfile_addr_rb_id),
         .rdata_b_o              (u_core.core_i.id_stage_i.regfile_data_rb_id),
-        .regb_used_dec          (u_core.core_i.id_stage_i.regb_used_dec),
+        .regb_used_dec          (u_core.core_i.id_stage_i.regb_used_dec & u_core.core_i.id_stage_i.id_ready_o & u_core.core_i.id_stage_i.instr_valid_i),
         // Read port c
         .raddr_c_i              (u_core.core_i.id_stage_i.regfile_addr_rc_id),
         .rdata_c_o              (u_core.core_i.id_stage_i.regfile_data_rc_id),
-        .regc_used_dec          (u_core.core_i.id_stage_i.regc_used_dec),
+        .regc_used_dec          (u_core.core_i.id_stage_i.regc_used_dec & u_core.core_i.id_stage_i.id_ready_o & u_core.core_i.id_stage_i.instr_valid_i),
         // Write port a
         .waddr_a_i              (u_core.core_i.id_stage_i.regfile_waddr_wb_i),
         .wdata_a_i              (u_core.core_i.id_stage_i.regfile_wdata_wb_i),
@@ -143,7 +143,7 @@ module rv32im_top ();
         // Write port b
         .waddr_b_i              (u_core.core_i.id_stage_i.regfile_alu_waddr_fw_i),
         .wdata_b_i              (u_core.core_i.id_stage_i.regfile_alu_wdata_fw_i),
-        .we_b_i                 (u_core.core_i.id_stage_i.regfile_alu_we_fw_power_i)
+        .we_b_i                 (u_core.core_i.id_stage_i.regfile_alu_we_fw_power_i & u_core.core_i.ex_stage_i.alu_ready & u_core.core_i.ex_stage_i.mult_ready)
     );
 
 
@@ -153,6 +153,7 @@ module rv32im_top ();
   end
 
   initial begin
+    void'($value$plusargs("TESTS=%d", TESTS));
     uvm_config_db#(int)::set(null, "*", "TESTS", TESTS);
     uvm_config_db#(virtual rv32im_instr_if)::set(null, "*", "INSTR_IF", instr_if);
     uvm_config_db#(virtual obi_data_if)::set(null, "*", "DATA_IF", data_if);

@@ -11,7 +11,7 @@ interface alu_if (
     input   logic        comparison_result_o,
     input   logic        ready_o,
     input   logic        ex_ready_i ,
-    input   logic        pc_ex            // PC in ex stage used as tracking id in the pipeline but only takes value in case of jump/branch 
+    input   logic [31:0] pc_ex            // PC in ex stage used as tracking id in the pipeline but only takes value in case of jump/branch 
   );
 
   clocking cb_mon @(posedge clk);
