@@ -65,6 +65,7 @@ package riscv_pkg;
   `include "../Coverage/alu_coverage.sv"
   `include "../Coverage/ctrl_flow_coverage.sv"
   `include "../Coverage/mul_coverage.sv"
+  `include "../Coverage/regfile_coverage.sv"
 
 
   // Env / Test
