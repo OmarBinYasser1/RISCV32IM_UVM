@@ -3,26 +3,36 @@ class data_transaction extends uvm_sequence_item;
   `uvm_object_utils(data_transaction)
 
   // response signals
-  bit             data_rvalid_i;
-  bit             data_gnt_i;
-  bit      [31:0] data_rdata_i;
+  bit                      data_rvalid_i;
+  bit                      data_gnt_i;
+  bit               [31:0] data_rdata_i;
 
 
   //request signals
-  rand bit        data_req_o;
-  rand bit        data_we_o;
-  rand bit [ 3:0] data_be_o;
-  rand bit [31:0] data_addr_o;
-  rand bit [31:0] data_wdata_o;
-
+  rand bit                 data_req_o;
+  rand bit                 data_we_o;
+  rand bit          [ 3:0] data_be_o;
+  rand bit          [31:0] data_addr_o;
+  rand bit          [31:0] data_wdata_o;
   // Delay Control Attributes for Slow Memory Simulation
-  rand int        gnt_delay;  // Cycles to wait before driving gnt_i = 1
-
+  rand int unsigned        gnt_delay;  // Cycles to wait before driving gnt_i = 1
+  rand int unsigned        rvalid_delay;  // Cycles to wait before driving rvalid_i = 1
 
   constraint c_delays {
-    gnt_delay inside {[0 : 5]};  // 0 = Fast grant, >0 = Slow memory grant
-
+    gnt_delay dist {
+      0 := 70,
+      [1 : 3] := 30
+      //  [4 : 10] := 5
+    };  // Mostly fast grants
+    rvalid_delay dist {
+      0 := 50,
+      [1 : 4] := 40,
+      [5 : 12] := 10
+    };  // Varied response speeds
   }
+
+
+
 
   // Constructor
   function new(string name = "data_transaction");

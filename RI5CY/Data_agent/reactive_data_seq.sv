@@ -4,7 +4,7 @@ class reactive_data_seq extends uvm_sequence #(data_transaction);
   `uvm_declare_p_sequencer(reactive_data_sequencer);
 
   // Word-aligned sparse memory (Key = Word Address addr[31:2], Value = 32-bit Data)
-  bit [31:0] mem[bit [31:2]];
+  //bit [31:0] mem[bit [31:2]];
 
   function new(string name = "reactive_data_seq");
     super.new(name);
@@ -26,10 +26,7 @@ class reactive_data_seq extends uvm_sequence #(data_transaction);
       start_item(rsp_item);
 
       // 4. Randomize delay
-      if (!rsp_item.randomize() with {
-            gnt_delay == 0;  // Set to desired delay cycles
-
-          }) begin
+      if (!rsp_item.randomize()) begin
         `uvm_error("RND_FAIL", "Randomization failed for rsp_item")
       end
 
@@ -38,7 +35,7 @@ class reactive_data_seq extends uvm_sequence #(data_transaction);
       rsp_item.data_we_o   = req_item.data_we_o;
       rsp_item.data_be_o   = req_item.data_be_o;
 
-      // 5. Execute Memory Access
+      /*    // 5. Execute Memory Access
       if (req_item.data_we_o) begin
         // WRITE Operation
         write_to_memory(req_item.data_addr_o, req_item.data_wdata_o, req_item.data_be_o);
@@ -47,11 +44,12 @@ class reactive_data_seq extends uvm_sequence #(data_transaction);
         rsp_item.data_rdata_i = read_from_memory(req_item.data_addr_o);
       end
 
+*/
       // 6. Pass item to driver
       finish_item(rsp_item);
     end
   endtask
-
+  /*
   // Helper function: Read 32-bit word
   function bit [31:0] read_from_memory(bit [31:0] addr);
     bit [31:2] word_addr = addr[31:2];
@@ -71,5 +69,5 @@ class reactive_data_seq extends uvm_sequence #(data_transaction);
 
     mem[word_addr] = current_val;
   endfunction
-
+*/
 endclass

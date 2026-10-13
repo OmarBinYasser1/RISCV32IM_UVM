@@ -21,15 +21,15 @@ class reactive_data_agent extends uvm_agent;
     super.build_phase(phase);
 
     if (!uvm_config_db#(virtual obi_data_if)::get(this, "", "DATA_IF", vif)) begin
-      // `uvm_fatal("NOVIF", "Virtual interface not set for: " + get_full_name())
+
       `uvm_fatal(get_name(), "NOVIF - Virtual interface not set");
-      
+
     end
     driver = reactive_data_driver::type_id::create("driver", this);
     monitor = reactive_data_monitor::type_id::create("monitor", this);
     sequencer = reactive_data_sequencer::type_id::create("sequencer", this);
 
-    transaction_ap = new("transaction_ap",this);
+    transaction_ap = new("transaction_ap", this);
 
   endfunction
 
@@ -41,9 +41,9 @@ class reactive_data_agent extends uvm_agent;
     driver.seq_item_port.connect(
         sequencer.seq_item_export);  // Connect the sequencer to the driver
 
-      // Connect the virtual interface retreived at the agent to the driver/monitor
-      driver.vif = vif;
-      monitor.vif = vif;
+    // Connect the virtual interface retreived at the agent to the driver/monitor
+    driver.vif  = vif;
+    monitor.vif = vif;
 
     // Connect the monitor transaction_ap to the agent transaction_ap for scoreboard and coverage
     monitor.transaction_ap.connect(transaction_ap);

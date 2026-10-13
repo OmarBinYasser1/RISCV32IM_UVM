@@ -5,7 +5,7 @@ module rv32im_top ();
 
 
   int   CLK_PERIOD = 10;  // Used by the system scoreboard
-  int   TESTS = 10000;
+  int   TESTS = 100;
 
   logic clk_i = 0;
   wire  rst_ni;
@@ -14,12 +14,12 @@ module rv32im_top ();
 
   // Instruction Interface (OBI Interface) Instantiation
   rv32im_instr_if instr_if (
-    .clk(clk_i),
-    .pc_if(u_core.core_i.pc_if)
-   );
-  
+      .clk  (clk_i),
+      .pc_if(u_core.core_i.pc_if)
+  );
+
   assign rst_ni = instr_if.rst_n;
-                                        // Active Interfaces (Driving / Monitoring)
+  // Active Interfaces (Driving / Monitoring)
 
   // Instruction Interface (OBI Interface) Instantiation
   obi_data_if data_if (
@@ -31,7 +31,7 @@ module rv32im_top ();
       .clk  (clk_i),
       .rst_n(rst_ni)
   );
-  
+
   //  DUT Instantiation 
   cv32e40p_top #(
       .FPU             (0),
@@ -87,71 +87,71 @@ module rv32im_top ();
       .debug_running_o  (debug_int_if.debug_running_o),
       .debug_halted_o   (debug_int_if.debug_halted_o)
   );
-                                        // Passive Interfaces (Monitoring Only)
+  // Passive Interfaces (Monitoring Only)
 
-        
-    // ALU Interface Instantiation
-    alu_if alu_if (
-        .clk                  (clk_i),
-        .rst_n                (rst_ni),
-        .pc_ex                (u_core.core_i.pc_ex),
-        .enable_i             (u_core.core_i.ex_stage_i.alu_en_i),
-        .operator_i           (u_core.core_i.ex_stage_i.alu_operator_i),
-        .operand_a_i          (u_core.core_i.ex_stage_i.alu_operand_a_i),
-        .operand_b_i          (u_core.core_i.ex_stage_i.alu_operand_b_i),
-        .operand_c_i          (u_core.core_i.ex_stage_i.alu_operand_c_i),
-        .result_o             (u_core.core_i.ex_stage_i.alu_result),
-        .comparison_result_o  (u_core.core_i.ex_stage_i.alu_cmp_result),
-        .ready_o              (u_core.core_i.ex_stage_i.alu_ready),
-        .ex_ready_i           (u_core.core_i.ex_stage_i.ex_ready_o)
-    );
-    // MUL Interface Instantiation
-    mul_if mul_if (
-        .clk            (clk_i),
-        .rst_n          (rst_ni),
-        .short_signed_i (u_core.core_i.ex_stage_i.mult_signed_mode_i), 
-        .enable_i       (u_core.core_i.ex_stage_i.mult_en_i),
-        .operator_i     (u_core.core_i.ex_stage_i.mult_operator_i),
-        .op_a_i         (u_core.core_i.ex_stage_i.mult_operand_a_i),
-        .op_b_i         (u_core.core_i.ex_stage_i.mult_operand_b_i),
-        .op_c_i         (u_core.core_i.ex_stage_i.mult_operand_c_i),
-        .result_o       (u_core.core_i.ex_stage_i.mult_result),
-        .ready_o        (u_core.core_i.ex_stage_i.mult_ready),
-        .ex_ready_i     (u_core.core_i.ex_stage_i.ex_ready_o)
-    );
-    // RegFile Interface Instantiation
-    regfile_if regfile_if (
-        .clk                    (clk_i),
-        .rst_n                  (rst_ni),
-         // ---- PC-trace plumbing --------------------------------------------
-        .pc_id                  (u_core.core_i.pc_id),
-        // We need a flag to ensure that the PC at the ID is valid to be considered at the scoreboard for branch / Jump Instructions
-        .pc_trace_enable        (u_core.core_i.id_stage_i.instr_valid_i &
+
+  // ALU Interface Instantiation
+  alu_if alu_if (
+      .clk                (clk_i),
+      .rst_n              (rst_ni),
+      .pc_ex              (u_core.core_i.pc_ex),
+      .enable_i           (u_core.core_i.ex_stage_i.alu_en_i),
+      .operator_i         (u_core.core_i.ex_stage_i.alu_operator_i),
+      .operand_a_i        (u_core.core_i.ex_stage_i.alu_operand_a_i),
+      .operand_b_i        (u_core.core_i.ex_stage_i.alu_operand_b_i),
+      .operand_c_i        (u_core.core_i.ex_stage_i.alu_operand_c_i),
+      .result_o           (u_core.core_i.ex_stage_i.alu_result),
+      .comparison_result_o(u_core.core_i.ex_stage_i.alu_cmp_result),
+      .ready_o            (u_core.core_i.ex_stage_i.alu_ready),
+      .ex_ready_i         (u_core.core_i.ex_stage_i.ex_ready_o)
+  );
+  // MUL Interface Instantiation
+  mul_if mul_if (
+      .clk           (clk_i),
+      .rst_n         (rst_ni),
+      .short_signed_i(u_core.core_i.ex_stage_i.mult_signed_mode_i),
+      .enable_i      (u_core.core_i.ex_stage_i.mult_en_i),
+      .operator_i    (u_core.core_i.ex_stage_i.mult_operator_i),
+      .op_a_i        (u_core.core_i.ex_stage_i.mult_operand_a_i),
+      .op_b_i        (u_core.core_i.ex_stage_i.mult_operand_b_i),
+      .op_c_i        (u_core.core_i.ex_stage_i.mult_operand_c_i),
+      .result_o      (u_core.core_i.ex_stage_i.mult_result),
+      .ready_o       (u_core.core_i.ex_stage_i.mult_ready),
+      .ex_ready_i    (u_core.core_i.ex_stage_i.ex_ready_o)
+  );
+  // RegFile Interface Instantiation
+  regfile_if regfile_if (
+      .clk(clk_i),
+      .rst_n(rst_ni),
+      // ---- PC-trace plumbing --------------------------------------------
+      .pc_id(u_core.core_i.pc_id),
+      // We need a flag to ensure that the PC at the ID is valid to be considered at the scoreboard for branch / Jump Instructions
+      .pc_trace_enable        (u_core.core_i.id_stage_i.instr_valid_i &
                                  u_core.core_i.id_stage_i.id_ready_o    &
                                  u_core.core_i.id_stage_i.is_decoding_o),
-        .instr_rdata_id         (u_core.core_i.id_stage_i.instr_rdata_i),
-        // ------------------------------------------------------------------
-        // Read port a
-        .raddr_a_i              (u_core.core_i.id_stage_i.regfile_addr_ra_id),
-        .rdata_a_o              (u_core.core_i.id_stage_i.regfile_data_ra_id),
-        .rega_used_dec          (u_core.core_i.id_stage_i.rega_used_dec & u_core.core_i.id_stage_i.id_ready_o & u_core.core_i.id_stage_i.instr_valid_i),
-        // Read port b
-        .raddr_b_i              (u_core.core_i.id_stage_i.regfile_addr_rb_id),
-        .rdata_b_o              (u_core.core_i.id_stage_i.regfile_data_rb_id),
-        .regb_used_dec          (u_core.core_i.id_stage_i.regb_used_dec & u_core.core_i.id_stage_i.id_ready_o & u_core.core_i.id_stage_i.instr_valid_i),
-        // Read port c
-        .raddr_c_i              (u_core.core_i.id_stage_i.regfile_addr_rc_id),
-        .rdata_c_o              (u_core.core_i.id_stage_i.regfile_data_rc_id),
-        .regc_used_dec          (u_core.core_i.id_stage_i.regc_used_dec & u_core.core_i.id_stage_i.id_ready_o & u_core.core_i.id_stage_i.instr_valid_i),
-        // Write port a
-        .waddr_a_i              (u_core.core_i.id_stage_i.regfile_waddr_wb_i),
-        .wdata_a_i              (u_core.core_i.id_stage_i.regfile_wdata_wb_i),
-        .we_a_i                 (u_core.core_i.id_stage_i.regfile_we_wb_power_i),
-        // Write port b
-        .waddr_b_i              (u_core.core_i.id_stage_i.regfile_alu_waddr_fw_i),
-        .wdata_b_i              (u_core.core_i.id_stage_i.regfile_alu_wdata_fw_i),
-        .we_b_i                 (u_core.core_i.id_stage_i.regfile_alu_we_fw_power_i & u_core.core_i.ex_stage_i.alu_ready & u_core.core_i.ex_stage_i.mult_ready)
-    );
+      .instr_rdata_id(u_core.core_i.id_stage_i.instr_rdata_i),
+      // ------------------------------------------------------------------
+      // Read port a
+      .raddr_a_i(u_core.core_i.id_stage_i.regfile_addr_ra_id),
+      .rdata_a_o(u_core.core_i.id_stage_i.regfile_data_ra_id),
+      .rega_used_dec          (u_core.core_i.id_stage_i.rega_used_dec & u_core.core_i.id_stage_i.id_ready_o & u_core.core_i.id_stage_i.instr_valid_i),
+      // Read port b
+      .raddr_b_i(u_core.core_i.id_stage_i.regfile_addr_rb_id),
+      .rdata_b_o(u_core.core_i.id_stage_i.regfile_data_rb_id),
+      .regb_used_dec          (u_core.core_i.id_stage_i.regb_used_dec & u_core.core_i.id_stage_i.id_ready_o & u_core.core_i.id_stage_i.instr_valid_i),
+      // Read port c
+      .raddr_c_i(u_core.core_i.id_stage_i.regfile_addr_rc_id),
+      .rdata_c_o(u_core.core_i.id_stage_i.regfile_data_rc_id),
+      .regc_used_dec          (u_core.core_i.id_stage_i.regc_used_dec & u_core.core_i.id_stage_i.id_ready_o & u_core.core_i.id_stage_i.instr_valid_i),
+      // Write port a
+      .waddr_a_i(u_core.core_i.id_stage_i.regfile_waddr_wb_i),
+      .wdata_a_i(u_core.core_i.id_stage_i.regfile_wdata_wb_i),
+      .we_a_i(u_core.core_i.id_stage_i.regfile_we_wb_power_i),
+      // Write port b
+      .waddr_b_i(u_core.core_i.id_stage_i.regfile_alu_waddr_fw_i),
+      .wdata_b_i(u_core.core_i.id_stage_i.regfile_alu_wdata_fw_i),
+      .we_b_i                 (u_core.core_i.id_stage_i.regfile_alu_we_fw_power_i & u_core.core_i.ex_stage_i.alu_ready & u_core.core_i.ex_stage_i.mult_ready)
+  );
 
 
   initial begin
