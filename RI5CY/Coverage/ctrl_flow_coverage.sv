@@ -11,18 +11,6 @@
 //   ctrl_flow_coverage : what the INSTRUCTION encodes = which jump/branch, which
 //                        registers, offset size and direction, static target
 //                        alignment (pc + imm)
-//
-// NOT covered by either file (needs register values / program order, which neither
-// the ALU pins nor this monitor give). Cover these with a bind'ed cover property or
-// a small ID-stage monitor (regfile_data_ra_id, branch_taken_ex):
-//   RV32I_JALR_1  odd/even (rs1 + imm)
-//   RV32I_JALR_2  JALR target alignment
-//   RV32I_BR_2    back-to-back branch outcomes
-//   RV32I_BR_3    (taken) x target alignment : the target half is here, taken is not
-//
-// CAUTION: this monitor reports FETCHED instructions (OBI R-channel). Instructions
-// fetched on a wrong path and then flushed are counted too. Treat the bins as
-// "stimulus fetched". For executed-only coverage sample from the ID/EX stage.
 //------------------------------------------------------------------------------
 class ctrl_flow_coverage extends uvm_subscriber #(rv32im_instr_seq_item);
   `uvm_component_utils(ctrl_flow_coverage)
