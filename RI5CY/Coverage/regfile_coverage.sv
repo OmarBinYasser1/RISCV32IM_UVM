@@ -25,11 +25,20 @@ class regfile_coverage extends uvm_subscriber #(regfile_item);
       bins read_b  = {regfile_item::READ};
     }
 
-    cp_port: coverpoint item.port {
-      bins port_a = {"a"};
-      bins port_b = {"b"};
-      bins port_c = {"c"};
-    }
+  
+
+cp_port: coverpoint
+  ((item.port == "a") ? 0 :
+   (item.port == "b") ? 1 :
+   (item.port == "c") ? 2 : 3) {
+
+  bins port_a = {0};
+  bins port_b = {1};
+  bins port_c = {2};
+
+  ignore_bins invalid_port = {3};
+}
+
 
     cp_x0_write: coverpoint x0_write_seen {
       bins write_attempted = {1};
@@ -124,3 +133,4 @@ class regfile_coverage extends uvm_subscriber #(regfile_item);
   endfunction
 
 endclass
+
