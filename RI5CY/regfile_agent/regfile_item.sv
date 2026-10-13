@@ -8,6 +8,7 @@ class regfile_item extends uvm_sequence_item;
   rand bit    [5:0]   addr;
        bit    [31:0]  data;
   int unsigned cycle;
+  bit is_reset;
 
        // ---- PC_TRACE fields ------------------------------------------------
        logic  [31:0]  pc_id;  // PC at ID 
