@@ -5,7 +5,7 @@ module rv32im_top ();
 
 
   int   CLK_PERIOD = 10;  // Used by the system scoreboard
-  int   TESTS = 10;
+  int   TESTS = 10000;
 
   logic clk_i = 0;
   wire  rst_ni;
@@ -123,7 +123,14 @@ module rv32im_top ();
     regfile_if regfile_if (
         .clk                    (clk_i),
         .rst_n                  (rst_ni),
+         // ---- PC-trace plumbing --------------------------------------------
         .pc_id                  (u_core.core_i.pc_id),
+        // We need a flag to ensure that the PC at the ID is valid to be considered at the scoreboard for branch / Jump Instructions
+        .pc_trace_enable        (u_core.core_i.id_stage_i.instr_valid_i &
+                                 u_core.core_i.id_stage_i.id_ready_o    &
+                                 u_core.core_i.id_stage_i.is_decoding_o),
+        .instr_rdata_id         (u_core.core_i.id_stage_i.instr_rdata_i),
+        // ------------------------------------------------------------------
         // Read port a
         .raddr_a_i              (u_core.core_i.id_stage_i.regfile_addr_ra_id),
         .rdata_a_o              (u_core.core_i.id_stage_i.regfile_data_ra_id),

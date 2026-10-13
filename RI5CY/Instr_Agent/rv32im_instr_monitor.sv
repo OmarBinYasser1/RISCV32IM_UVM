@@ -16,46 +16,50 @@ class rv32im_instr_monitor extends uvm_monitor;
     endfunction
 
     function void build_phase (uvm_phase phase);
-        super.build_phase(phase);  
+        super.build_phase(phase);
         instr_mon_ap = new("instr_mon_ap",this);
     endfunction
 
+    // ------------------------------------------------------------------
+    // run_phase:
+    //   A single deterministic loop handles both A-channel (request) and
+    //   R-channel (response) activity.  Within a given clock edge the
+    //   response is processed BEFORE the new request is enqueued, so the
+    //   FIFO ordering is:
+    //       [oldest outstanding request] ... [new request]
+    //   which is the correct pairing for the OBI R-channel.
+    // ------------------------------------------------------------------
     task run_phase (uvm_phase phase);
         super.run_phase(phase);
-        fork
-            track_requests();
-            monitor_responses();
-        join
-    endtask
-
-    // Sample accepted instruction fetch addresses on the OBI A-channel
-    task track_requests();
         forever begin
             @(instr_vif.cb_mon);
+
             if (!instr_vif.cb_mon.rst_n) begin
                 addr_fifo.delete();
-            end else if (instr_vif.cb_mon.instr_req_o && instr_vif.cb_mon.instr_gnt_i) begin
-                addr_fifo.push_back(instr_vif.cb_mon.instr_addr_o);
-                `uvm_info("INSTR_REQ", $sformatf("A-ch REQ addr=0x%08h (fifo_sz=%0d)", instr_vif.cb_mon.instr_addr_o, addr_fifo.size()), UVM_LOW)
-            end
-        end
-    endtask
+            end else begin
 
-    // Monitor responses on the OBI R-channel and pair with the exact requested address
-    task monitor_responses();
-        forever begin
-            @(instr_vif.cb_mon);
-            if (instr_vif.cb_mon.rst_n && instr_vif.cb_mon.instr_rvalid_i) begin
-                instr_item = rv32im_instr_seq_item::type_id::create("instr_item");
-                instr_item.instruction = instr_vif.cb_mon.instr_rdata_i;
-                if (addr_fifo.size() > 0)
-                    instr_item.pc = addr_fifo.pop_front();
-                else
-                    instr_item.pc = instr_vif.cb_mon.instr_addr_o;
-                instr_item.pc_if = instr_vif.cb_mon.pc_if;
-                i_decoder(instr_item);
-                `uvm_info("INSTR_MON", $sformatf("pc=0x%08h (rem=%0d) %s", instr_item.pc, addr_fifo.size(), instr_item.convert2string()), UVM_LOW);
-                instr_mon_ap.write(instr_item);
+                // --- 1) R-channel response (uses the oldest request in FIFO)
+                if (instr_vif.cb_mon.instr_rvalid_i) begin
+                    instr_item = rv32im_instr_seq_item::type_id::create("instr_item");
+                    instr_item.instruction = instr_vif.cb_mon.instr_rdata_i;
+                    if (addr_fifo.size() > 0)
+                        instr_item.pc = addr_fifo.pop_front();
+                    else
+                        instr_item.pc = instr_vif.cb_mon.instr_addr_o;
+                    instr_item.pc_if = instr_vif.cb_mon.pc_if;
+                    i_decoder(instr_item);
+                    `uvm_info("INSTR_MON", $sformatf("pc=0x%08h (rem=%0d) %s",
+                              instr_item.pc, addr_fifo.size(),
+                              instr_item.convert2string()), UVM_LOW);
+                    instr_mon_ap.write(instr_item);
+                end
+
+                // --- 2) A-channel request (enqueue for a future response)
+                if (instr_vif.cb_mon.instr_req_o && instr_vif.cb_mon.instr_gnt_i) begin
+                    addr_fifo.push_back(instr_vif.cb_mon.instr_addr_o);
+                    `uvm_info("INSTR_REQ", $sformatf("A-ch REQ addr=0x%08h (fifo_sz=%0d)",
+                              instr_vif.cb_mon.instr_addr_o, addr_fifo.size()), UVM_LOW);
+                end
             end
         end
     endtask
@@ -87,7 +91,7 @@ class rv32im_instr_monitor extends uvm_monitor;
             OP_R : begin
                 if(item.funct7 == 'd1) begin // rv32m operations
                     item.ALU_MUL_sel = MUL_DIV;
-                    item.R_rv32m_ops = mul_div_ops_t'(item.funct3); // Identify the M operation 
+                    item.R_rv32m_ops = mul_div_ops_t'(item.funct3); // Identify the M operation
                 end
                 else begin
                     item.ALU_MUL_sel = ALU;

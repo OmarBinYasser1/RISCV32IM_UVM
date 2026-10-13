@@ -2,7 +2,7 @@ class rv32im_instr_driver extends uvm_driver#(rv32im_instr_seq_item);
     `uvm_component_utils(rv32im_instr_driver);
 
     virtual rv32im_instr_if.mp_drv instr_vif;
-    
+
     rv32im_instr_seq_item instr_item;
     int driven_insts;
 
@@ -73,7 +73,9 @@ class rv32im_instr_driver extends uvm_driver#(rv32im_instr_seq_item);
 
     // =======================================================================
     // R-channel thread: OBI slave response handler
-    // Returns rvalid = 1 exactly once for every accepted A-channel transaction.
+    // Returns rvalid = 1 for exactly ONE clock cycle per accepted A-channel
+    // transaction.  A full idle cycle is inserted between responses so that
+    // the deassertion of rvalid is actually observed by the DUT.
     // =======================================================================
     task r_channel_thread();
         logic [31:0] rdata;
@@ -94,10 +96,6 @@ class rv32im_instr_driver extends uvm_driver#(rv32im_instr_seq_item);
             `uvm_info("INSTR_DRV",
                 $sformatf("R-ch: rvalid sent rdata=0x%08h", rdata), UVM_HIGH)
             @(instr_vif.cb_drv);
-
-            // De-assert rvalid
-            instr_vif.cb_drv.instr_rvalid_i <= 0;
-            instr_vif.cb_drv.instr_rdata_i  <= 0;
         end
     endtask
 
