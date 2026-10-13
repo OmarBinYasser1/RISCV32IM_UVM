@@ -53,30 +53,21 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
     rand bit [20:0] jal_imm21; // jal immediate 
     rand bit [12:0] b_imm13; // B-type Immediate
 
-    // bit [31:0] imm
-
-    // instruction to be passed to the core
     bit [31:0] instruction;
 
     rand alu_ops_t R_rv32i_ops;
-
     rand mul_div_ops_t R_rv32m_ops;
-
     rand I_ops_t I_ops;
-
     rand B_ops_t B_ops;
-
     rand S_ops_t S_ops;
- 
     rand Load_ops_t Load_ops;
-
     rand ALU_MUL_sel_t  ALU_MUL_sel; 
 
-    bit [31:0] pc; // Program counter received as `req_o` from the core
+    bit [31:0] pc;    // Program counter received as `req_o` from the core
     bit [31:0] pc_if; // Program counter inside the IF stage
     
-    
-    
+
+
     // Constraints
 
     constraint c_general {
@@ -86,20 +77,39 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
 
         // Initially Constraint to have only R Type Instructions
         soft opcode == OP_R;
-        
-        // Initially Constraint to have the destination register to be x0
-        rd dist {[32'd1 : 32'd31] :/98 , 0:/2}; 
-    
-        // In xase of R,I types , the valid values for the funct7 filed are 0,1,32
+
+        // ---------------------------------------------------------------
+        // Operand-pool policy (see rv32im_instr_seq.preload_operand_pool):
+        //   x16..x31 hold the preloaded "interesting" constants.
+        //   x8 ..x15 are the scratch destination registers.
+        //
+        // Every instruction that writes a destination must be steered to
+        // the scratch range so the pool is never clobbered, INCLUDING the
+        // control-flow and U-type instructions (their `rd` was previously
+        // unconstrained and therefore destroyed the pool before the
+        // directed phases ran).
+        //
+        // All three constraints are `soft`, so the directed phases can
+        // still override them with hard `rd/rs1/rs2 == …` assignments.
+        // ---------------------------------------------------------------
+        if (opcode inside {OP_R, OP_IMM, OP_LOAD, OP_LUI, OP_AUIPC,
+                           OP_JAL, OP_JALR})
+            soft rd  inside {[8:15]};
+
+        if (opcode inside {OP_R, OP_IMM})
+            soft rs1 inside {0, [16:31]};
+
+        if (opcode inside {OP_R, OP_STORE})
+            soft rs2 inside {0, [16:31]};
+
+        // Valid values for funct7 for R/I types are 0, 1, 32
         funct7 inside {0,1,32};
-        
-        // B-type Immediate value should be multiple of 2
+
+        // B-type immediate value should be a multiple of 2
         b_imm13 % 2 == 0;
 
-        //  J-immediate encodes a signed offset in multiples of 2 bytes
-        jal_imm21 %2 == 0;
-
-
+        // J-immediate encodes a signed offset in multiples of 2 bytes
+        jal_imm21 % 2 == 0;
     }
 
     
@@ -116,27 +126,19 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
             soft ALU_MUL_sel dist {ALU := 60 , MUL_DIV:= 40};
             
             if(ALU_MUL_sel == ALU) {
-                // todo : Only If we need weighted dist
                 R_rv32i_ops inside {ADD_SUB , SLL , SLT , SLTU , XOR , SRL_SRA , OR , AND}; 
                 
                 if(R_rv32i_ops == ADD_SUB){
-                    funct7 dist {'d0 := 50, 'd32 := 50}; // ADD and SUB are of the same probability
+                    funct7 dist {'d0 := 50, 'd32 := 50};
                 } else if (R_rv32i_ops == SRL_SRA) {
-                    funct7 dist {'d0 := 50, 'd32 := 50}; // SRL and SRA are of the same probability
+                    funct7 dist {'d0 := 50, 'd32 := 50};
                 } else {
                     funct7 == 'd0;
                 }
             } else {
-                // todo : Only If we need weighted dist
                 R_rv32m_ops inside {MUL, MULH , MULHSU , MULHU , DIV , DIVU , REM , REMU};
-            
                 funct7 == 'd1;
-            
             } 
-            
-            
-            // No constraint on the source operands
-        
         }
     }
 
@@ -146,80 +148,34 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
         solve I_ops before funct7;
 
         if(opcode == OP_IMM) {
-            // todo : Only If we need weighted dist
             I_ops inside {ADDI , SLTI , SLTIU , XORI , ORI , ANDI , SLLI , SRLI_SRAI};
 
             if (I_ops == SRLI_SRAI)
-                    funct7 dist {'d0 := 50, 'd32 := 50}; // SRLI and SRAI are of the same probability
-            else funct7 == 0; // Whether SLLI or any other operation that don't use funct7
-
-            // No constraint on the shift amount `shamt`
-
-            // No constraint on the imm12
-
-            // No constraint on the source operands
-
-         
+                    funct7 dist {'d0 := 50, 'd32 := 50};
+            else funct7 == 0;
         } 
     }
 
     constraint c_Load_ops {
-
         solve opcode before Load_ops;
-
         if(opcode == OP_LOAD) {
-            // todo : Only If we need weighted dist
             Load_ops inside {LB , LH , LW , LBU , LHU};
-
-            // No constraint on the imm12
-
-
-
         }
-
     }
 
     constraint c_Store_ops {
-
         solve opcode before S_ops;
-
         if(opcode == OP_STORE) {
-            // todo : Only If we need weighted dist
             S_ops inside {SB , SH , SW};
-        
-            // No constraint on the imm12
-        
         }
-
     }
 
     constraint c_B_ops {
-
         solve opcode before B_ops;
-
         if(opcode == OP_BRANCH) {
-            // todo : Only If we need weighted dist
             B_ops inside {BEQ,BNE,BLT,BGE,BLTU,BGEU};
-        
-            // No constraint on the imm12
-        
         }
-        
     }
-
-    // todo : J/U have no constraints except for the rd which may be a general constraint 
-
-    // constraint c_J_ops {
-    //     if(opcode == OP_JAL)
-
-    //     else if(opcode == OP_JALR)
-    // } 
-    
-    // constraint c_U_ops {
-    //     if(opcode == OP_LUI) 
-
-    //     else if (opcode == OP_AUIPC)
-    // }
     
 
     function new (string name = "rv32im_instr_seq_item");
@@ -227,7 +183,7 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
     endfunction
 
     function void post_randomize ();
-        bit [6:0] opcode_x; // A version of the opcode represented in bits not enum
+        bit [6:0] opcode_x;
         
         opcode_x = opcode; 
         
@@ -250,7 +206,6 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
                 funct3 = I_ops;
             
                 if (I_ops == SRLI_SRAI || I_ops == SLLI) begin
-                    // funct7 = (I_ops == SRAI)? 7'd32 : 7'd0;
                     instruction = {funct7,shamt,rs1,funct3,rd,opcode_x};
                 end
                 else instruction = {i_imm12,rs1,funct3,rd,opcode_x};
