@@ -1,5 +1,5 @@
 Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
-Start time: 11:23:32 on Oct 13,2026
+Start time: 17:03:06 on Oct 13,2026
 vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 13314 
 -- Compiling package cv32e40p_apu_core_pkg
 -- Compiling package cv32e40p_fpu_pkg
@@ -47,5 +47,5 @@ vlog -reportprogress 300 -f files.f -l compile.log -suppress 2583 -suppress 1331
 
 Top level modules:
 	rv32im_top
-End time: 11:23:32 on Oct 13,2026, Elapsed time: 0:00:00
+End time: 17:03:07 on Oct 13,2026, Elapsed time: 0:00:01
 Errors: 0, Warnings: 0, Suppressed Warnings: 480

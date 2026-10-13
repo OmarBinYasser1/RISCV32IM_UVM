@@ -1,5 +1,5 @@
 `ifndef RISCV_PKG_SV
-`define RISCV_PKG_SV
+`define RISCV_PKG_SV 
 
 package riscv_pkg;
   import uvm_pkg::*;
@@ -27,7 +27,7 @@ package riscv_pkg;
   `include "../alu_agent/alu_item.sv"
   `include "../mul_agent/mul_item.sv"
   `include "../regfile_agent/regfile_item.sv"
-  
+
   // Drivers
   `include "../Instr_Agent/rv32im_instr_driver.sv"
   `include "../Data_agent/reactive_data_driver.sv"
@@ -52,14 +52,19 @@ package riscv_pkg;
   `include "../alu_agent/alu_agent.sv"
   `include "../mul_agent/mul_agent.sv"
   `include "../regfile_agent/regfile_agent.sv"
-  
 
 
 
-   // Scoreboard(s)
+
+  // Scoreboard(s)
   `include "../alu_scoreboard/riscv_alu_scoreboard.sv"
   `include "../regfile_scoreboard/riscv_rf_scoreboard.sv"
   `include "../system_scoreboard/riscv_system_scoreboard.sv"
+
+  // coverage(s)
+  `include "../Coverage/alu_coverage.sv"
+  `include "../Coverage/ctrl_flow_coverage.sv"
+  `include "../Coverage/mul_coverage.sv"
 
 
   // Env / Test

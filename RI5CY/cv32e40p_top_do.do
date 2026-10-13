@@ -24,8 +24,17 @@ sim:/rv32im_top/u_core/core_i/if_stage_i/prefetch_buffer_i/prefetch_controller_i
 sim:/rv32im_top/u_core/core_i/if_stage_i/prefetch_buffer_i/prefetch_controller_i/fifo_cnt_masked
 run 0
 run -all
+
+
+# Save code coverage database
+coverage save -onexit coverage.ucdb
+
+# Optional: display coverage summary
+coverage report -summary
 #stop
 #quit
+
+
 
 
 # Sv_Seed = 1208626153

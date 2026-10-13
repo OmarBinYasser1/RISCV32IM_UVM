@@ -13,882 +13,894 @@ T_opt
 !s11d riscv_pkg E:/D_drive/SiVisionAcademy/RISCV/Phase3/RISCV32IM_UVM/Ri5CY/work 6 rv32im_instr_if 1 E:/D_drive/SiVisionAcademy/RISCV/Phase3/RISCV32IM_UVM/Ri5CY/work alu_if 1 E:/D_drive/SiVisionAcademy/RISCV/Phase3/RISCV32IM_UVM/Ri5CY/work mul_if 1 E:/D_drive/SiVisionAcademy/RISCV/Phase3/RISCV32IM_UVM/Ri5CY/work regfile_if 1 E:/D_drive/SiVisionAcademy/RISCV/Phase3/RISCV32IM_UVM/Ri5CY/work obi_data_if 1 E:/D_drive/SiVisionAcademy/RISCV/Phase3/RISCV32IM_UVM/Ri5CY/work debug_interupt_if 1 E:/D_drive/SiVisionAcademy/RISCV/Phase3/RISCV32IM_UVM/Ri5CY/work 
 !s110 1791879814
 Vdm^Bj3n?8IBZ<D_A3F>n:0
-04 10 4 work rv32im_top fast 0
+Z1 04 10 4 work rv32im_top fast 0
 =1-d8d090063a37-6acdea85-171-24ec
-o-quiet -auto_acc_if_foreign -work work +acc
-Z1 tCvgOpt 0
+Z2 o-quiet -auto_acc_if_foreign -work work +acc
+Z3 tCvgOpt 0
 n@_opt
-OL;O;2020.4;71
+Z4 OL;O;2020.4;71
+R0
+T_opt1
+!s11d riscv_pkg E:/D_drive/SiVisionAcademy/RISCV/phase4/rISCV32IM_UVM/RI5CY/work 6 rv32im_instr_if 1 E:/D_drive/SiVisionAcademy/RISCV/phase4/rISCV32IM_UVM/RI5CY/work alu_if 1 E:/D_drive/SiVisionAcademy/RISCV/phase4/rISCV32IM_UVM/RI5CY/work mul_if 1 E:/D_drive/SiVisionAcademy/RISCV/phase4/rISCV32IM_UVM/RI5CY/work regfile_if 1 E:/D_drive/SiVisionAcademy/RISCV/phase4/rISCV32IM_UVM/RI5CY/work obi_data_if 1 E:/D_drive/SiVisionAcademy/RISCV/phase4/rISCV32IM_UVM/RI5CY/work debug_interupt_if 1 E:/D_drive/SiVisionAcademy/RISCV/phase4/rISCV32IM_UVM/RI5CY/work 
+!s110 1791900005
+VK?GRo`3nBO[C]OKP@R>Fi3
+R1
+=1-d8d090063a37-6ace3963-2d9-6a8c
+R2
+R3
+n@_opt1
+R4
+R0
 Yalu_if
-Z2 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z3 !s110 1791879812
+Z5 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z6 !s110 1791900187
 !i10b 1
 !s100 go@5hddUX:Y0^1<Ciz3C?3
-Z4 !s11b Dg1SIo80bB@j0V0VzS_@n1
+Z7 !s11b Dg1SIo80bB@j0V0VzS_@n1
 InR9BCnVzblj7BWf<4e2@X3
 S1
-R0
-Z5 w1791874303
+Z8 dE:/D_drive/SiVisionAcademy/RISCV/phase4/rISCV32IM_UVM/RI5CY
+Z9 w1791898590
 8./alu_agent/alu_if.sv
 F./alu_agent/alu_if.sv
-!i122 20
-Z6 L0 2 0
-Z7 VDg1SIo80bB@j0V0VzS_@n1
-Z8 OL;L;2020.4;71
+!i122 25
+Z10 L0 2 0
+Z11 VDg1SIo80bB@j0V0VzS_@n1
+Z12 OL;L;2020.4;71
 r1
 !s85 0
 31
-Z9 !s108 1791879812.000000
-Z10 !s107 .\tb\.\rv32im_test.sv|.\tb\.\rv32im_env.sv|.\tb\..\system_scoreboard\riscv_system_scoreboard.sv|.\tb\..\regfile_scoreboard\riscv_rf_scoreboard.sv|.\tb\..\alu_scoreboard\riscv_alu_scoreboard.sv|.\tb\..\regfile_agent\regfile_agent.sv|.\tb\..\mul_agent\mul_agent.sv|.\tb\..\alu_agent\alu_agent.sv|.\tb\..\Debug_interupt_agent\debug_interupt_agent.sv|.\tb\..\Data_agent\reactive_data_agent.sv|.\tb\..\Instr_Agent\rv32im_instr_agent.sv|.\tb\..\Debug_interupt_agent\debug_interupt_monitor.sv|.\tb\..\Data_agent\reactive_data_monitor.sv|.\tb\..\regfile_agent\regfile_monitor.sv|.\tb\..\mul_agent\mul_monitor.sv|.\tb\..\alu_agent\alu_monitor.sv|.\tb\..\Instr_Agent\rv32im_instr_monitor.sv|.\tb\..\Debug_interupt_agent\debug_interupt_driver.sv|.\tb\..\Data_agent\reactive_data_driver.sv|.\tb\..\Instr_Agent\rv32im_instr_driver.sv|.\tb\..\regfile_agent\regfile_item.sv|.\tb\..\mul_agent\mul_item.sv|.\tb\..\alu_agent\alu_item.sv|.\tb\.\rv32im_virtual_seq.sv|.\tb\..\Data_agent\reactive_data_seq.sv|.\tb\..\Debug_interupt_agent\debug_interupt_seq.sv|.\tb\..\Instr_Agent\rv32im_instr_seq.sv|.\tb\.\rv32im_virtual_seqr.sv|.\tb\..\Debug_interupt_agent\debug_interupt_sequencer.sv|.\tb\..\Data_agent\reactive_data_sequencer.sv|.\tb\..\Instr_Agent\rv32im_instr_seqr.sv|.\tb\..\Debug_interupt_agent\debug_interupt_transaction.sv|.\tb\..\Data_agent\data_transaction.sv|.\tb\..\Instr_Agent\rv32im_instr_config.sv|.\tb\..\Instr_Agent\rv32im_instr_seq_item.sv|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh|./tb/rv32im_tb_top.sv|./tb/riscv_pkg.sv|./Debug_interupt_agent/debug_interupt_if.sv|./Instr_Agent/rv32im_instr_if.sv|./regfile_agent/regfile_if.sv|./Data_agent/obi_data_if.sv|./mul_agent/mul_if.sv|./alu_agent/alu_if.sv|./rtl/cv32e40p_top.sv|./rtl/cv32e40p_core.sv|./rtl/cv32e40p_sim_clock_gate.sv|./rtl/cv32e40p_if_stage.sv|./rtl/cv32e40p_cs_registers.sv|./rtl/cv32e40p_load_store_unit.sv|./rtl/cv32e40p_id_stage.sv|./rtl/cv32e40p_ex_stage.sv|./rtl/cv32e40p_sleep_unit.sv|./rtl/cv32e40p_aligner.sv|./rtl/cv32e40p_compressed_decoder.sv|./rtl/cv32e40p_prefetch_buffer.sv|./rtl/cv32e40p_decoder.sv|./rtl/cv32e40p_register_file_ff.sv|./rtl/cv32e40p_hwloop_regs.sv|./rtl/cv32e40p_int_controller.sv|./rtl/cv32e40p_controller.sv|./rtl/cv32e40p_mult.sv|./rtl/cv32e40p_alu.sv|./rtl/cv32e40p_apu_disp.sv|./rtl/cv32e40p_fifo.sv|./rtl/cv32e40p_prefetch_controller.sv|./rtl/cv32e40p_alu_div.sv|./rtl/cv32e40p_ff_one.sv|./rtl/cv32e40p_popcnt.sv|./rtl/cv32e40p_obi_interface.sv|./rtl/package/cv32e40p_pkg.sv|./rtl/package/cv32e40p_fpu_pkg.sv|./rtl/package/cv32e40p_apu_core_pkg.sv|
-Z11 !s90 -reportprogress|300|-f|files.f|-l|compile.log|-suppress|2583|-suppress|13314|
+Z13 !s108 1791900186.000000
+!s107 .\tb\.\rv32im_test.sv|.\tb\.\rv32im_env.sv|.\tb\..\Coverage\mul_coverage.sv|.\tb\..\Coverage\ctrl_flow_coverage.sv|.\tb\..\Coverage\alu_coverage.sv|.\tb\..\system_scoreboard\riscv_system_scoreboard.sv|.\tb\..\regfile_scoreboard\riscv_rf_scoreboard.sv|.\tb\..\alu_scoreboard\riscv_alu_scoreboard.sv|.\tb\..\regfile_agent\regfile_agent.sv|.\tb\..\mul_agent\mul_agent.sv|.\tb\..\alu_agent\alu_agent.sv|.\tb\..\Debug_interupt_agent\debug_interupt_agent.sv|.\tb\..\Data_agent\reactive_data_agent.sv|.\tb\..\Instr_Agent\rv32im_instr_agent.sv|.\tb\..\Debug_interupt_agent\debug_interupt_monitor.sv|.\tb\..\Data_agent\reactive_data_monitor.sv|.\tb\..\regfile_agent\regfile_monitor.sv|.\tb\..\mul_agent\mul_monitor.sv|.\tb\..\alu_agent\alu_monitor.sv|.\tb\..\Instr_Agent\rv32im_instr_monitor.sv|.\tb\..\Debug_interupt_agent\debug_interupt_driver.sv|.\tb\..\Data_agent\reactive_data_driver.sv|.\tb\..\Instr_Agent\rv32im_instr_driver.sv|.\tb\..\regfile_agent\regfile_item.sv|.\tb\..\mul_agent\mul_item.sv|.\tb\..\alu_agent\alu_item.sv|.\tb\.\rv32im_virtual_seq.sv|.\tb\..\Data_agent\reactive_data_seq.sv|.\tb\..\Debug_interupt_agent\debug_interupt_seq.sv|.\tb\..\Instr_Agent\rv32im_instr_seq.sv|.\tb\.\rv32im_virtual_seqr.sv|.\tb\..\Debug_interupt_agent\debug_interupt_sequencer.sv|.\tb\..\Data_agent\reactive_data_sequencer.sv|.\tb\..\Instr_Agent\rv32im_instr_seqr.sv|.\tb\..\Debug_interupt_agent\debug_interupt_transaction.sv|.\tb\..\Data_agent\data_transaction.sv|.\tb\..\Instr_Agent\rv32im_instr_config.sv|.\tb\..\Instr_Agent\rv32im_instr_seq_item.sv|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh|./tb/rv32im_tb_top.sv|./tb/riscv_pkg.sv|./Debug_interupt_agent/debug_interupt_if.sv|./Instr_Agent/rv32im_instr_if.sv|./regfile_agent/regfile_if.sv|./Data_agent/obi_data_if.sv|./mul_agent/mul_if.sv|./alu_agent/alu_if.sv|./rtl/cv32e40p_top.sv|./rtl/cv32e40p_core.sv|./rtl/cv32e40p_sim_clock_gate.sv|./rtl/cv32e40p_if_stage.sv|./rtl/cv32e40p_cs_registers.sv|./rtl/cv32e40p_load_store_unit.sv|./rtl/cv32e40p_id_stage.sv|./rtl/cv32e40p_ex_stage.sv|./rtl/cv32e40p_sleep_unit.sv|./rtl/cv32e40p_aligner.sv|./rtl/cv32e40p_compressed_decoder.sv|./rtl/cv32e40p_prefetch_buffer.sv|./rtl/cv32e40p_decoder.sv|./rtl/cv32e40p_register_file_ff.sv|./rtl/cv32e40p_hwloop_regs.sv|./rtl/cv32e40p_int_controller.sv|./rtl/cv32e40p_controller.sv|./rtl/cv32e40p_mult.sv|./rtl/cv32e40p_alu.sv|./rtl/cv32e40p_apu_disp.sv|./rtl/cv32e40p_fifo.sv|./rtl/cv32e40p_prefetch_controller.sv|./rtl/cv32e40p_alu_div.sv|./rtl/cv32e40p_ff_one.sv|./rtl/cv32e40p_popcnt.sv|./rtl/cv32e40p_obi_interface.sv|./rtl/package/cv32e40p_pkg.sv|./rtl/package/cv32e40p_fpu_pkg.sv|./rtl/package/cv32e40p_apu_core_pkg.sv|
+Z14 !s90 -reportprogress|300|-f|files.f|-l|compile.log|-suppress|2583|-suppress|13314|
 !i113 0
-Z12 o-suppress 2583 -suppress 13314 -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R1
-vcv32e40p_aligner
-R2
+Z15 o-suppress 2583 -suppress 13314 -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R3
+vcv32e40p_aligner
+R5
+Z16 !s110 1791900186
 !i10b 1
 !s100 nN7SCkmhVG_RO1C1a@b503
-R4
+R7
 I>=Lb52HYLhQZMjX1b[TWc1
 S1
-R0
-Z13 w1791874187
+R8
+Z17 w1791898190
 8./rtl/cv32e40p_aligner.sv
 F./rtl/cv32e40p_aligner.sv
-!i122 20
+!i122 25
 L0 23 230
-R7
-R8
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
+R13
+Z18 !s107 .\tb\.\rv32im_test.sv|.\tb\.\rv32im_env.sv|.\tb\..\Coverage\mul_coverage.sv|.\tb\..\Coverage\ctrl_flow_coverage.sv|.\tb\..\Coverage\alu_coverage.sv|.\tb\..\system_scoreboard\riscv_system_scoreboard.sv|.\tb\..\regfile_scoreboard\riscv_rf_scoreboard.sv|.\tb\..\alu_scoreboard\riscv_alu_scoreboard.sv|.\tb\..\regfile_agent\regfile_agent.sv|.\tb\..\mul_agent\mul_agent.sv|.\tb\..\alu_agent\alu_agent.sv|.\tb\..\Debug_interupt_agent\debug_interupt_agent.sv|.\tb\..\Data_agent\reactive_data_agent.sv|.\tb\..\Instr_Agent\rv32im_instr_agent.sv|.\tb\..\Debug_interupt_agent\debug_interupt_monitor.sv|.\tb\..\Data_agent\reactive_data_monitor.sv|.\tb\..\regfile_agent\regfile_monitor.sv|.\tb\..\mul_agent\mul_monitor.sv|.\tb\..\alu_agent\alu_monitor.sv|.\tb\..\Instr_Agent\rv32im_instr_monitor.sv|.\tb\..\Debug_interupt_agent\debug_interupt_driver.sv|.\tb\..\Data_agent\reactive_data_driver.sv|.\tb\..\Instr_Agent\rv32im_instr_driver.sv|.\tb\..\regfile_agent\regfile_item.sv|.\tb\..\mul_agent\mul_item.sv|.\tb\..\alu_agent\alu_item.sv|.\tb\.\rv32im_virtual_seq.sv|.\tb\..\Data_agent\reactive_data_seq.sv|.\tb\..\Debug_interupt_agent\debug_interupt_seq.sv|.\tb\..\Instr_Agent\rv32im_instr_seq.sv|.\tb\.\rv32im_virtual_seqr.sv|.\tb\..\Debug_interupt_agent\debug_interupt_sequencer.sv|.\tb\..\Data_agent\reactive_data_sequencer.sv|.\tb\..\Instr_Agent\rv32im_instr_seqr.sv|.\tb\..\Debug_interupt_agent\debug_interupt_transaction.sv|.\tb\..\Data_agent\data_transaction.sv|.\tb\..\Instr_Agent\rv32im_instr_config.sv|.\tb\..\Instr_Agent\rv32im_instr_seq_item.sv|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh|./tb/rv32im_tb_top.sv|./tb/riscv_pkg.sv|./Debug_interupt_agent/debug_interupt_if.sv|./Instr_Agent/rv32im_instr_if.sv|./regfile_agent/regfile_if.sv|./Data_agent/obi_data_if.sv|./mul_agent/mul_if.sv|./alu_agent/alu_if.sv|./rtl/cv32e40p_top.sv|./rtl/cv32e40p_core.sv|./rtl/cv32e40p_sim_clock_gate.sv|./rtl/cv32e40p_if_stage.sv|./rtl/cv32e40p_cs_registers.sv|./rtl/cv32e40p_load_store_unit.sv|./rtl/cv32e40p_id_stage.sv|./rtl/cv32e40p_ex_stage.sv|./rtl/cv32e40p_sleep_unit.sv|./rtl/cv32e40p_aligner.sv|./rtl/cv32e40p_compressed_decoder.sv|./rtl/cv32e40p_prefetch_buffer.sv|./rtl/cv32e40p_decoder.sv|./rtl/cv32e40p_register_file_ff.sv|./rtl/cv32e40p_hwloop_regs.sv|./rtl/cv32e40p_int_controller.sv|./rtl/cv32e40p_controller.sv|./rtl/cv32e40p_mult.sv|./rtl/cv32e40p_alu.sv|./rtl/cv32e40p_apu_disp.sv|./rtl/cv32e40p_fifo.sv|./rtl/cv32e40p_prefetch_controller.sv|./rtl/cv32e40p_alu_div.sv|./rtl/cv32e40p_ff_one.sv|./rtl/cv32e40p_popcnt.sv|./rtl/cv32e40p_obi_interface.sv|./rtl/package/cv32e40p_pkg.sv|./rtl/package/cv32e40p_fpu_pkg.sv|./rtl/package/cv32e40p_apu_core_pkg.sv|
+R14
 !i113 0
-R12
-R1
-vcv32e40p_alu
-R2
-Z14 DXx4 work 12 cv32e40p_pkg 0 22 2oc81[4C?f0GEnkX6Lk:40
+R15
 R3
+vcv32e40p_alu
+R5
+Z19 DXx4 work 12 cv32e40p_pkg 0 22 2oc81[4C?f0GEnkX6Lk:40
+R16
 !i10b 1
 !s100 Nb9P]a7E4BFF8gGTVNY253
-R4
+R7
 I0elNI;mU8k`KUZM;f_5HV2
 S1
-R0
-R13
+R8
+R17
 8./rtl/cv32e40p_alu.sv
 F./rtl/cv32e40p_alu.sv
-!i122 20
+!i122 25
 L0 28 959
-R7
-R8
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
+R13
+R18
+R14
 !i113 0
-R12
-R1
-vcv32e40p_alu_div
-R2
+R15
 R3
+vcv32e40p_alu_div
+R5
+R16
 !i10b 1
 !s100 DKaXCSoZ4Jh5DTTlEAQOk1
-R4
+R7
 IG9[5cAR`4hUzd[Jm9m<[32
 S1
-R0
-R13
+R8
+R17
 8./rtl/cv32e40p_alu_div.sv
 F./rtl/cv32e40p_alu_div.sv
-!i122 20
+!i122 25
 L0 26 201
-R7
-R8
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
+R13
+R18
+R14
 !i113 0
-R12
-R1
-Xcv32e40p_apu_core_pkg
-R2
+R15
 R3
+Xcv32e40p_apu_core_pkg
+R5
+R16
 !i10b 1
 !s100 BfS6EaQkd8YdhjhSMgMk;1
-R4
+R7
 IN8@zdWg_XCbjQj1B6n=XF0
 S1
-R0
-R13
+R8
+R17
 8./rtl/package/cv32e40p_apu_core_pkg.sv
 F./rtl/package/cv32e40p_apu_core_pkg.sv
-!i122 20
+!i122 25
 L0 22 0
 VN8@zdWg_XCbjQj1B6n=XF0
-R8
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
+R13
+R18
+R14
 !i113 0
-R12
-R1
-vcv32e40p_apu_disp
-R2
+R15
 R3
+vcv32e40p_apu_disp
+R5
+R16
 !i10b 1
 !s100 oU_mf4bQkM=hE`M;1nUH53
-R4
+R7
 Ib;CXAg_2jNPI;dZG6J1]Z0
 S1
-R0
-R13
+R8
+R17
 8./rtl/cv32e40p_apu_disp.sv
 F./rtl/cv32e40p_apu_disp.sv
-!i122 20
+!i122 25
 L0 25 218
-R7
-R8
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
+R13
+R18
+R14
 !i113 0
-R12
-R1
-vcv32e40p_clock_gate
-R2
+R15
 R3
+vcv32e40p_clock_gate
+R5
+R16
 !i10b 1
 !s100 _20hQfRmW^MMjk[<4Bh<91
-R4
+R7
 IbA64flGWSef75HD_G58Ua1
 S1
-R0
-R13
+R8
+R17
 8./rtl/cv32e40p_sim_clock_gate.sv
 F./rtl/cv32e40p_sim_clock_gate.sv
-!i122 20
+!i122 25
 L0 15 16
-R7
-R8
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
-!i113 0
-R12
-R1
-vcv32e40p_compressed_decoder
-R2
+R13
+R18
 R14
+!i113 0
+R15
 R3
+vcv32e40p_compressed_decoder
+R5
+R19
+R16
 !i10b 1
 !s100 4Lh`V@>RUbK^5<_`e`3X?1
-R4
+R7
 I^0hJT]1b:GBoVCF1IIb==3
 S1
-R0
-R13
+R8
+R17
 8./rtl/cv32e40p_compressed_decoder.sv
 F./rtl/cv32e40p_compressed_decoder.sv
-!i122 20
+!i122 25
 L0 27 575
-R7
-R8
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
-!i113 0
-R12
-R1
-vcv32e40p_controller
-R2
+R13
+R18
 R14
+!i113 0
+R15
 R3
+vcv32e40p_controller
+R5
+R19
+R16
 !i10b 1
 !s100 _jHAIU5`DHhbo^odJfK6C3
-R4
+R7
 I<LBlQAG1hOz33D:W;3QYB1
 S1
-R0
-R13
+R8
+R17
 8./rtl/cv32e40p_controller.sv
 F./rtl/cv32e40p_controller.sv
-!i122 20
+!i122 25
 L0 31 1579
-R7
-R8
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
-!i113 0
-R12
-R1
-vcv32e40p_core
-R2
-Z15 DXx4 work 21 cv32e40p_apu_core_pkg 0 22 N8@zdWg_XCbjQj1B6n=XF0
+R13
+R18
 R14
+!i113 0
+R15
 R3
+vcv32e40p_core
+R5
+Z20 DXx4 work 21 cv32e40p_apu_core_pkg 0 22 N8@zdWg_XCbjQj1B6n=XF0
+R19
+R16
 !i10b 1
 !s100 `a[Y0f5B7bHQ`NMQE`9X80
-R4
+R7
 I;j>J@?60hYSeeL0_^bkmJ3
 S1
-R0
-R13
+R8
+R17
 8./rtl/cv32e40p_core.sv
 F./rtl/cv32e40p_core.sv
-!i122 20
+!i122 25
 L0 31 1262
-R7
-R8
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
-!i113 0
-R12
-R1
-vcv32e40p_cs_registers
-R2
+R13
+R18
 R14
+!i113 0
+R15
 R3
+vcv32e40p_cs_registers
+R5
+R19
+R16
 !i10b 1
 !s100 7Q:M0o3IZK2fz3`KKcFW:2
-R4
+R7
 IAKZP8_9fQC8TUReIa[Ko;0
 S1
-R0
-R13
+R8
+R17
 8./rtl/cv32e40p_cs_registers.sv
 F./rtl/cv32e40p_cs_registers.sv
-!i122 20
+!i122 25
 L0 30 1518
-R7
-R8
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
-!i113 0
-R12
-R1
-vcv32e40p_decoder
-R2
+R13
+R18
 R14
+!i113 0
 R15
-Z16 DXx4 work 16 cv32e40p_fpu_pkg 0 22 6oI`L2zmkM^OmDDl=G4=c0
 R3
+vcv32e40p_decoder
+R5
+R19
+R20
+Z21 DXx4 work 16 cv32e40p_fpu_pkg 0 22 6oI`L2zmkM^OmDDl=G4=c0
+R16
 !i10b 1
 !s100 kCWzJJWbIf7JYgcG7S]D:1
-R4
+R7
 IS=o2hVogRmz:^Jn;6k<Ug1
 S1
-R0
-R13
+R8
+R17
 8./rtl/cv32e40p_decoder.sv
 F./rtl/cv32e40p_decoder.sv
-!i122 20
+!i122 25
 L0 28 2970
-R7
-R8
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
-!i113 0
-R12
-R1
-vcv32e40p_ex_stage
-R2
+R13
+R18
 R14
+!i113 0
 R15
 R3
+vcv32e40p_ex_stage
+R5
+R19
+R20
+R16
 !i10b 1
 !s100 1VQIg7kDOL6Vc0O62enNT1
-R4
+R7
 I6hC66kg:I1>23UfF@fnV^2
 S1
-R0
-R13
+R8
+R17
 8./rtl/cv32e40p_ex_stage.sv
 F./rtl/cv32e40p_ex_stage.sv
-!i122 20
+!i122 25
 L0 32 448
-R7
-R8
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
+R13
+R18
+R14
 !i113 0
-R12
-R1
-vcv32e40p_ff_one
-R2
+R15
 R3
+vcv32e40p_ff_one
+R5
+R16
 !i10b 1
 !s100 `dj4@Q:75UY<G:DVYR2Q:3
-R4
+R7
 IONdKLe:F_GL[M7SP0]D3k2
 S1
-R0
-R13
+R8
+R17
 8./rtl/cv32e40p_ff_one.sv
 F./rtl/cv32e40p_ff_one.sv
-!i122 20
+!i122 25
 L0 25 75
-R7
-R8
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
+R13
+R18
+R14
 !i113 0
-R12
-R1
-vcv32e40p_fifo
-R2
+R15
 R3
+vcv32e40p_fifo
+R5
+R16
 !i10b 1
 !s100 :`nD>KQ8DC9O=PHZigCLa1
-R4
+R7
 IBhmGbNz;3[KZ3D`fKO7eI0
 S1
-R0
-R13
+R8
+R17
 8./rtl/cv32e40p_fifo.sv
 F./rtl/cv32e40p_fifo.sv
-!i122 20
+!i122 25
 L0 15 154
-R7
-R8
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
+R13
+R18
+R14
 !i113 0
-R12
-R1
-Xcv32e40p_fpu_pkg
-R2
+R15
 R3
+Xcv32e40p_fpu_pkg
+R5
+R16
 !i10b 1
 !s100 g0K<Iz1TXX5fWeV3QU9;K1
-R4
+R7
 I6oI`L2zmkM^OmDDl=G4=c0
 S1
-R0
-R13
+R8
+R17
 8./rtl/package/cv32e40p_fpu_pkg.sv
 F./rtl/package/cv32e40p_fpu_pkg.sv
-!i122 20
+!i122 25
 L0 38 0
 V6oI`L2zmkM^OmDDl=G4=c0
-R8
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
+R13
+R18
+R14
 !i113 0
-R12
-R1
-vcv32e40p_hwloop_regs
-R2
+R15
 R3
+vcv32e40p_hwloop_regs
+R5
+R16
 !i10b 1
 !s100 VHg6MV0JKIThEP?DGdeo12
-R4
+R7
 IhOLWZZ4jkX538fGD4Lo>f1
 S1
-R0
-R13
+R8
+R17
 8./rtl/cv32e40p_hwloop_regs.sv
 F./rtl/cv32e40p_hwloop_regs.sv
-!i122 20
+!i122 25
 L0 25 93
-R7
-R8
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
-!i113 0
-R12
-R1
-vcv32e40p_id_stage
-R2
+R13
+R18
 R14
+!i113 0
 R15
-R16
 R3
+vcv32e40p_id_stage
+R5
+R19
+R20
+R21
+R16
 !i10b 1
 !s100 fVcQ4DZnUWdMUXn2h;J<G1
-R4
+R7
 IA9YikI?DBLHEo_n`QU:DR3
 S1
-R0
-R13
+R8
+R17
 8./rtl/cv32e40p_id_stage.sv
 F./rtl/cv32e40p_id_stage.sv
-!i122 20
+!i122 25
 L0 30 1804
-R7
-R8
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
-!i113 0
-R12
-R1
-vcv32e40p_if_stage
-R2
+R13
+R18
 R14
-R3
-!i10b 1
-!s100 cmZa:UMXXTN7SS8B6S7^32
-R4
-IThK3>L<:H7Fe5De582^GG2
-S1
-R0
-R13
-8./rtl/cv32e40p_if_stage.sv
-F./rtl/cv32e40p_if_stage.sv
-!i122 20
-L0 28 292
-R7
-R8
-r1
-!s85 0
-31
-R9
-R10
-R11
 !i113 0
-R12
-R1
-vcv32e40p_int_controller
-R2
-R14
-R3
-!i10b 1
-!s100 A2_CD4<E^C]gO_bWNEe4<0
-R4
-IHk4<6JSU@RAgF_UKn0dHm2
-S1
-R0
-R13
-8./rtl/cv32e40p_int_controller.sv
-F./rtl/cv32e40p_int_controller.sv
-!i122 20
-L0 24 129
-R7
-R8
-r1
-!s85 0
-31
-R9
-R10
-R11
-!i113 0
-R12
-R1
-vcv32e40p_load_store_unit
-R2
-R3
-!i10b 1
-!s100 PIgBKDiH;kcH=P>0b4kZS3
-R4
-IF?lXK6he1F26^UNSSoI0<1
-S1
-R0
-R13
-8./rtl/cv32e40p_load_store_unit.sv
-F./rtl/cv32e40p_load_store_unit.sv
-!i122 20
-L0 26 524
-R7
-R8
-r1
-!s85 0
-31
-R9
-R10
-R11
-!i113 0
-R12
-R1
-vcv32e40p_mult
-R2
-R14
-R3
-!i10b 1
-!s100 RPkKBDS2S0]GQB55]<i`o1
-R4
-Igng33LP[1k8bzgl<MIlkJ2
-S1
-R0
-R13
-8./rtl/cv32e40p_mult.sv
-F./rtl/cv32e40p_mult.sv
-!i122 20
-L0 26 362
-R7
-R8
-r1
-!s85 0
-31
-R9
-R10
-R11
-!i113 0
-R12
-R1
-vcv32e40p_obi_interface
-R2
-R3
-!i10b 1
-!s100 WLl9EbD33H8mK]VcccbRN0
-R4
-IY;ngf85RQ[1]RH862DzgK3
-S1
-R0
-R13
-8./rtl/cv32e40p_obi_interface.sv
-F./rtl/cv32e40p_obi_interface.sv
-!i122 20
-L0 38 169
-R7
-R8
-r1
-!s85 0
-31
-R9
-R10
-R11
-!i113 0
-R12
-R1
-Xcv32e40p_pkg
-R2
-R3
-!i10b 1
-!s100 5nGJ6cZ3TD6nCE3UDoNjY3
-R4
-I2oc81[4C?f0GEnkX6Lk:40
-S1
-R0
-R13
-8./rtl/package/cv32e40p_pkg.sv
-F./rtl/package/cv32e40p_pkg.sv
-!i122 20
-L0 26 0
-V2oc81[4C?f0GEnkX6Lk:40
-R8
-r1
-!s85 0
-31
-R9
-R10
-R11
-!i113 0
-R12
-R1
-vcv32e40p_popcnt
-R2
-R3
-!i10b 1
-!s100 RDJ6CRdWK`RkkC6kVb_=L3
-R4
-I4W>e:E:_UCoQBUUX8`l;R2
-S1
-R0
-R13
-8./rtl/cv32e40p_popcnt.sv
-F./rtl/cv32e40p_popcnt.sv
-!i122 20
-L0 25 38
-R7
-R8
-r1
-!s85 0
-31
-R9
-R10
-R11
-!i113 0
-R12
-R1
-vcv32e40p_prefetch_buffer
-R2
-R3
-!i10b 1
-!s100 T91=`^FR4UmfGR3PY1e[_3
-R4
-IFXWzJ^MblmacdKgMcTc8D1
-S1
-R0
-R13
-8./rtl/cv32e40p_prefetch_buffer.sv
-F./rtl/cv32e40p_prefetch_buffer.sv
-!i122 20
-L0 27 228
-R7
-R8
-r1
-!s85 0
-31
-R9
-R10
-R11
-!i113 0
-R12
-R1
-vcv32e40p_prefetch_controller
-R2
-R14
-R3
-!i10b 1
-!s100 a^CLzNM0Jdd;a2PdQ2c3h1
-R4
-Ib:Si4^10TXY>Pz=1i47CE1
-S1
-R0
-R13
-8./rtl/cv32e40p_prefetch_controller.sv
-F./rtl/cv32e40p_prefetch_controller.sv
-!i122 20
-L0 40 324
-R7
-R8
-r1
-!s85 0
-31
-R9
-R10
-R11
-!i113 0
-R12
-R1
-vcv32e40p_register_file
-R2
-R3
-!i10b 1
-!s100 O1e7lTY:zU9A`CWaLnoCF0
-R4
-IV8NP<Cc49zoJHWn2<mOTK2
-S1
-R0
-R13
-8./rtl/cv32e40p_register_file_ff.sv
-F./rtl/cv32e40p_register_file_ff.sv
-!i122 20
-L0 30 126
-R7
-R8
-r1
-!s85 0
-31
-R9
-R10
-R11
-!i113 0
-R12
-R1
-vcv32e40p_sleep_unit
-R2
-R14
-R3
-!i10b 1
-!s100 =RD1BI0YIkAdnaSBgmI0`2
-R4
-ISC_;23;DRZ;9O0@=bUiRm3
-S1
-R0
-R13
-8./rtl/cv32e40p_sleep_unit.sv
-F./rtl/cv32e40p_sleep_unit.sv
-!i122 20
-L0 56 237
-R7
-R8
-r1
-!s85 0
-31
-R9
-R10
-R11
-!i113 0
-R12
-R1
-vcv32e40p_top
-R2
 R15
 R3
+vcv32e40p_if_stage
+R5
+R19
+R16
+!i10b 1
+!s100 cmZa:UMXXTN7SS8B6S7^32
+R7
+IThK3>L<:H7Fe5De582^GG2
+S1
+R8
+R17
+8./rtl/cv32e40p_if_stage.sv
+F./rtl/cv32e40p_if_stage.sv
+!i122 25
+L0 28 292
+R11
+R12
+r1
+!s85 0
+31
+R13
+R18
+R14
+!i113 0
+R15
+R3
+vcv32e40p_int_controller
+R5
+R19
+R16
+!i10b 1
+!s100 A2_CD4<E^C]gO_bWNEe4<0
+R7
+IHk4<6JSU@RAgF_UKn0dHm2
+S1
+R8
+R17
+8./rtl/cv32e40p_int_controller.sv
+F./rtl/cv32e40p_int_controller.sv
+!i122 25
+L0 24 129
+R11
+R12
+r1
+!s85 0
+31
+R13
+R18
+R14
+!i113 0
+R15
+R3
+vcv32e40p_load_store_unit
+R5
+R16
+!i10b 1
+!s100 PIgBKDiH;kcH=P>0b4kZS3
+R7
+IF?lXK6he1F26^UNSSoI0<1
+S1
+R8
+R17
+8./rtl/cv32e40p_load_store_unit.sv
+F./rtl/cv32e40p_load_store_unit.sv
+!i122 25
+L0 26 524
+R11
+R12
+r1
+!s85 0
+31
+R13
+R18
+R14
+!i113 0
+R15
+R3
+vcv32e40p_mult
+R5
+R19
+R16
+!i10b 1
+!s100 RPkKBDS2S0]GQB55]<i`o1
+R7
+Igng33LP[1k8bzgl<MIlkJ2
+S1
+R8
+R17
+8./rtl/cv32e40p_mult.sv
+F./rtl/cv32e40p_mult.sv
+!i122 25
+L0 26 362
+R11
+R12
+r1
+!s85 0
+31
+R13
+R18
+R14
+!i113 0
+R15
+R3
+vcv32e40p_obi_interface
+R5
+R16
+!i10b 1
+!s100 WLl9EbD33H8mK]VcccbRN0
+R7
+IY;ngf85RQ[1]RH862DzgK3
+S1
+R8
+R17
+8./rtl/cv32e40p_obi_interface.sv
+F./rtl/cv32e40p_obi_interface.sv
+!i122 25
+L0 38 169
+R11
+R12
+r1
+!s85 0
+31
+R13
+R18
+R14
+!i113 0
+R15
+R3
+Xcv32e40p_pkg
+R5
+R16
+!i10b 1
+!s100 5nGJ6cZ3TD6nCE3UDoNjY3
+R7
+I2oc81[4C?f0GEnkX6Lk:40
+S1
+R8
+R17
+8./rtl/package/cv32e40p_pkg.sv
+F./rtl/package/cv32e40p_pkg.sv
+!i122 25
+L0 26 0
+V2oc81[4C?f0GEnkX6Lk:40
+R12
+r1
+!s85 0
+31
+R13
+R18
+R14
+!i113 0
+R15
+R3
+vcv32e40p_popcnt
+R5
+R16
+!i10b 1
+!s100 RDJ6CRdWK`RkkC6kVb_=L3
+R7
+I4W>e:E:_UCoQBUUX8`l;R2
+S1
+R8
+R17
+8./rtl/cv32e40p_popcnt.sv
+F./rtl/cv32e40p_popcnt.sv
+!i122 25
+L0 25 38
+R11
+R12
+r1
+!s85 0
+31
+R13
+R18
+R14
+!i113 0
+R15
+R3
+vcv32e40p_prefetch_buffer
+R5
+R16
+!i10b 1
+!s100 T91=`^FR4UmfGR3PY1e[_3
+R7
+IFXWzJ^MblmacdKgMcTc8D1
+S1
+R8
+R17
+8./rtl/cv32e40p_prefetch_buffer.sv
+F./rtl/cv32e40p_prefetch_buffer.sv
+!i122 25
+L0 27 228
+R11
+R12
+r1
+!s85 0
+31
+R13
+R18
+R14
+!i113 0
+R15
+R3
+vcv32e40p_prefetch_controller
+R5
+R19
+R16
+!i10b 1
+!s100 a^CLzNM0Jdd;a2PdQ2c3h1
+R7
+Ib:Si4^10TXY>Pz=1i47CE1
+S1
+R8
+R17
+8./rtl/cv32e40p_prefetch_controller.sv
+F./rtl/cv32e40p_prefetch_controller.sv
+!i122 25
+L0 40 324
+R11
+R12
+r1
+!s85 0
+31
+R13
+R18
+R14
+!i113 0
+R15
+R3
+vcv32e40p_register_file
+R5
+R16
+!i10b 1
+!s100 O1e7lTY:zU9A`CWaLnoCF0
+R7
+IV8NP<Cc49zoJHWn2<mOTK2
+S1
+R8
+R17
+8./rtl/cv32e40p_register_file_ff.sv
+F./rtl/cv32e40p_register_file_ff.sv
+!i122 25
+L0 30 126
+R11
+R12
+r1
+!s85 0
+31
+R13
+R18
+R14
+!i113 0
+R15
+R3
+vcv32e40p_sleep_unit
+R5
+R19
+R16
+!i10b 1
+!s100 =RD1BI0YIkAdnaSBgmI0`2
+R7
+ISC_;23;DRZ;9O0@=bUiRm3
+S1
+R8
+R17
+8./rtl/cv32e40p_sleep_unit.sv
+F./rtl/cv32e40p_sleep_unit.sv
+!i122 25
+L0 56 237
+R11
+R12
+r1
+!s85 0
+31
+R13
+R18
+R14
+!i113 0
+R15
+R3
+vcv32e40p_top
+R5
+R20
+R6
 !i10b 1
 !s100 G2I_Ji69RWgQCmbh=RT9d2
-R4
+R7
 I]=b^WddJ0L@SFKX_6KFS[1
 S1
-R0
-R13
+R8
+R17
 8./rtl/cv32e40p_top.sv
 F./rtl/cv32e40p_top.sv
-!i122 20
+!i122 25
 L0 14 166
-R7
-R8
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
+R13
+R18
+R14
 !i113 0
-R12
-R1
-Ydebug_interupt_if
-R2
+R15
 R3
+Ydebug_interupt_if
+R5
+R6
 !i10b 1
 !s100 HVnD[ATCVcKOJKh7eY]Rd0
-R4
+R7
 ICjSdnNDKJ4O0C_FbJUcoK0
 S1
-R0
-R5
+R8
+R9
 8./Debug_interupt_agent/debug_interupt_if.sv
 F./Debug_interupt_agent/debug_interupt_if.sv
-!i122 20
-Z17 L0 1 0
-R7
-R8
+!i122 25
+Z22 L0 1 0
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
+R13
+R18
+R14
 !i113 0
-R12
-R1
-Ymul_if
-R2
+R15
 R3
+Ymul_if
+R5
+R6
 !i10b 1
 !s100 VF5FD7MiC>B1@3CnfS[aQ1
-R4
+R7
 IjW]GZ2?[WYT6QdZF1?1>82
 S1
-R0
-R5
+R8
+R9
 8./mul_agent/mul_if.sv
 F./mul_agent/mul_if.sv
-!i122 20
-R6
-R7
-R8
+!i122 25
+R10
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
+R13
+R18
+R14
 !i113 0
-R12
-R1
-Yobi_data_if
-R2
+R15
 R3
+Yobi_data_if
+R5
+R6
 !i10b 1
 !s100 [IgSX`LO;0d>aW^<4C6`R3
-R4
+R7
 IjCBTC=YNNLK=0LC5jI15A3
 S1
-R0
-w1791878696
+R8
+R9
 8./Data_agent/obi_data_if.sv
 F./Data_agent/obi_data_if.sv
-!i122 20
-R17
-R7
-R8
+!i122 25
+R22
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
+R13
+R18
+R14
 !i113 0
-R12
-R1
-Yregfile_if
-R2
+R15
 R3
+Yregfile_if
+R5
+R6
 !i10b 1
 !s100 g:@nFF1BKzSTXJ;^KHjKL3
-R4
+R7
 I]WO:@>3gooZR>E[9G1nFH1
 S1
-R0
-R5
+R8
+R9
 8./regfile_agent/regfile_if.sv
 F./regfile_agent/regfile_if.sv
-!i122 20
-R17
-R7
-R8
+!i122 25
+R22
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
+R13
+R18
+R14
 !i113 0
-R12
-R1
+R15
+R3
 Xriscv_pkg
 !s115 regfile_if
 !s115 mul_if
@@ -896,30 +908,30 @@ Xriscv_pkg
 !s115 debug_interupt_if
 !s115 obi_data_if
 !s115 rv32im_instr_if
-R2
-Z18 DXx6 mtiUvm 7 uvm_pkg 0 22 lXjlbbgd2P7=0FIB1[zNj3
-R3
+R5
+Z23 DXx6 mtiUvm 7 uvm_pkg 0 22 lXjlbbgd2P7=0FIB1[zNj3
+R6
 !i10b 1
-!s100 3;Y<Z4]bO:8N0lk^:YXad0
-R4
-IYZP<S2YD:ofEVMM]L;C1U2
+!s100 gC1eia0gC0o?ZoicT_G4B1
+R7
+Ij:b9W`SiOSFg83AP2j6Gg0
 S1
-R0
-w1791879810
+R8
+w1791899992
 8./tb/riscv_pkg.sv
 F./tb/riscv_pkg.sv
-Z19 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh
-Z20 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh
-Z21 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh
-Z22 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh
-Z23 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh
-Z24 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh
-Z25 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh
-Z26 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh
-Z27 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh
-Z28 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh
-Z29 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh
-Z30 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh
+Z24 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh
+Z25 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh
+Z26 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh
+Z27 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh
+Z28 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh
+Z29 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh
+Z30 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh
+Z31 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh
+Z32 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh
+Z33 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh
+Z34 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh
+Z35 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh
 F.\tb\..\Instr_Agent\rv32im_instr_seq_item.sv
 F.\tb\..\Instr_Agent\rv32im_instr_config.sv
 F.\tb\..\Data_agent\data_transaction.sv
@@ -953,65 +965,63 @@ F.\tb\..\regfile_agent\regfile_agent.sv
 F.\tb\..\alu_scoreboard\riscv_alu_scoreboard.sv
 F.\tb\..\regfile_scoreboard\riscv_rf_scoreboard.sv
 F.\tb\..\system_scoreboard\riscv_system_scoreboard.sv
+F.\tb\..\Coverage\alu_coverage.sv
+F.\tb\..\Coverage\ctrl_flow_coverage.sv
+F.\tb\..\Coverage\mul_coverage.sv
 F.\tb\.\rv32im_env.sv
 F.\tb\.\rv32im_test.sv
-!i122 20
+!i122 25
 L0 4 0
-VYZP<S2YD:ofEVMM]L;C1U2
-R8
+Vj:b9W`SiOSFg83AP2j6Gg0
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
+R13
+R18
+R14
 !i113 0
-R12
-R1
-Yrv32im_instr_if
-R2
+R15
 R3
+Yrv32im_instr_if
+R5
+R6
 !i10b 1
 !s100 Ph]WgSX=HiX1;]k[Qf2b[0
-R4
+R7
 ILfGRm[`XliRAlA`UnPZ4V3
 S1
-R0
-R5
+R8
+R9
 8./Instr_Agent/rv32im_instr_if.sv
 F./Instr_Agent/rv32im_instr_if.sv
-!i122 20
-R17
-R7
-R8
+!i122 25
+R22
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
-!i113 0
-R12
-R1
-vrv32im_top
-R2
+R13
 R18
-DXx4 work 9 riscv_pkg 0 22 YZP<S2YD:ofEVMM]L;C1U2
+R14
+!i113 0
+R15
 R3
+vrv32im_top
+R5
+R23
+DXx4 work 9 riscv_pkg 0 22 j:b9W`SiOSFg83AP2j6Gg0
+R6
 !i10b 1
 !s100 ]gc1gE1Y<D7]zU`aQz6<:3
-R4
+R7
 I8Z:O`Q7A9TcRMVU=S6eZa2
 S1
-R0
-w1791878151
+R8
+R9
 8./tb/rv32im_tb_top.sv
 F./tb/rv32im_tb_top.sv
-R19
-R20
-R21
-R22
-R23
 R24
 R25
 R26
@@ -1019,16 +1029,21 @@ R27
 R28
 R29
 R30
-!i122 20
+R31
+R32
+R33
+R34
+R35
+!i122 25
 L0 1 6644
-R7
-R8
+R11
+R12
 r1
 !s85 0
 31
-R9
-R10
-R11
+R13
+R18
+R14
 !i113 0
-R12
-R1
+R15
+R3

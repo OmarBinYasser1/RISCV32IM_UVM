@@ -1,18 +1,26 @@
 class rv32im_env extends uvm_env;
   `uvm_component_utils(rv32im_env);
 
-  rv32im_instr_agent   instr_agent;
-  reactive_data_agent  data_agent;
-  debug_interupt_agent debug_int_agent;
-  alu_agent            alu_agt;
-  mul_agent            mul_agt;
-  regfile_agent        rf_agt;
+  // agents
+  rv32im_instr_agent      instr_agent;
+  reactive_data_agent     data_agent;
+  debug_interupt_agent    debug_int_agent;
+  alu_agent               alu_agt;
+  mul_agent               mul_agt;
+  regfile_agent           rf_agt;
 
-  riscv_alu_scoreboard alu_sb;
-  riscv_rf_scoreboard  rf_sb;
+  // scoreboards
+  riscv_alu_scoreboard    alu_sb;
+  riscv_rf_scoreboard     rf_sb;
   riscv_system_scoreboard sb;
 
-  rv32im_virtual_seqr  sys_vseqr;
+  //coverages
+  alu_coverage            alu_cov;
+  ctrl_flow_coverage      ctrl_cov;
+  mul_coverage            mul_cov;
+
+
+  rv32im_virtual_seqr     sys_vseqr;
 
 
   function new(string name = "rv32im_env", uvm_component parent = null);
@@ -31,6 +39,11 @@ class rv32im_env extends uvm_env;
     alu_sb          = riscv_alu_scoreboard::type_id::create("alu_sb", this);
     rf_sb           = riscv_rf_scoreboard::type_id::create("rf_sb", this);
     sb              = riscv_system_scoreboard::type_id::create("sb", this);
+
+    alu_cov         = alu_coverage::type_id::create("alu_cov", this);
+    ctrl_cov        = ctrl_flow_coverage::type_id::create("ctrl_cov", this);
+    mul_cov         = mul_coverage::type_id::create("mul_cov", this);
+
 
     sys_vseqr       = rv32im_virtual_seqr::type_id::create("sys_vseqr", this);
   endfunction
@@ -53,6 +66,12 @@ class rv32im_env extends uvm_env;
     alu_agt.analysis_port.connect(alu_sb.alu_ae);
     mul_agt.analysis_port.connect(alu_sb.mul_ae);
     rf_agt.analysis_port.connect(rf_sb.rf_ae);
+
+    // connect analysis ports to coverage components
+    instr_agent.instr_mon_ap.connect(ctrl_cov.analysis_export);
+    alu_agt.analysis_port.connect(alu_cov.analysis_export);
+    mul_agt.analysis_port.connect(mul_cov.analysis_export);
+
 
   endfunction
 

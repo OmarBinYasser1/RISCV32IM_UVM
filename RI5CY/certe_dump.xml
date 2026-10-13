@@ -10,6 +10,7 @@
   
            <port if_type = "uvm_analysis_port" txn_type = "anonymous"> 
               analysis_port 
+              <connection>  uvm_test_top.env.alu_cov.analysis_imp  </connection> 
               <connection>  uvm_test_top.env.alu_sb.alu_ae  </connection> 
               <connection>  uvm_test_top.env.sb.alu_ae  </connection> 
            </port> 
@@ -23,6 +24,15 @@
               </port> 
            </instance> 
   
+        </instance> 
+  
+  
+        <instance type=" alu_coverage "> 
+           alu_cov 
+  
+           <imp if_type = "uvm_analysis_imp" txn_type = "anonymous"> 
+              analysis_imp 
+           </imp> 
         </instance> 
   
   
@@ -88,6 +98,15 @@
               </imp> 
            </instance> 
   
+        </instance> 
+  
+  
+        <instance type=" ctrl_flow_coverage "> 
+           ctrl_cov 
+  
+           <imp if_type = "uvm_analysis_imp" txn_type = "anonymous"> 
+              analysis_imp 
+           </imp> 
         </instance> 
   
   
@@ -231,6 +250,7 @@
   
            <port if_type = "uvm_analysis_port" txn_type = "anonymous"> 
               instr_mon_ap 
+              <connection>  uvm_test_top.env.ctrl_cov.analysis_imp  </connection> 
               <connection>  uvm_test_top.env.sb.instr_ae  </connection> 
            </port> 
   
@@ -266,6 +286,7 @@
            <port if_type = "uvm_analysis_port" txn_type = "anonymous"> 
               analysis_port 
               <connection>  uvm_test_top.env.alu_sb.mul_ae  </connection> 
+              <connection>  uvm_test_top.env.mul_cov.analysis_imp  </connection> 
               <connection>  uvm_test_top.env.sb.mul_ae  </connection> 
            </port> 
   
@@ -278,6 +299,15 @@
               </port> 
            </instance> 
   
+        </instance> 
+  
+  
+        <instance type=" mul_coverage "> 
+           mul_cov 
+  
+           <imp if_type = "uvm_analysis_imp" txn_type = "anonymous"> 
+              analysis_imp 
+           </imp> 
         </instance> 
   
   
