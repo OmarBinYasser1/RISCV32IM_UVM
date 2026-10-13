@@ -5,14 +5,14 @@ class regfile_item extends uvm_sequence_item;
 
   rand rf_kind_e kind;
        string    port;
-  rand bit    [5:0]   addr;
-       bit    [31:0]  data;
+  rand bit    [5:0]  addr;
+       bit    [31:0] data;
   int unsigned cycle;
   bit is_reset;
 
        // ---- PC_TRACE fields ------------------------------------------------
        logic  [31:0]  pc_id;  // PC at ID 
-       logic  [31:0]  instr; // instruction at ID (Pieplined version of the instruction at the ID stage)
+       logic  [31:0]  instr; // instruction at ID (Pipelined version of the instruction at the ID stage)
        // --------------------------------------------------------------------
 
   function new(string name = "regfile_item");
@@ -20,9 +20,12 @@ class regfile_item extends uvm_sequence_item;
   endfunction
 
   function string convertTostring();
+    if (is_reset)
+      return "RESET";
     if (kind == PC_TRACE)
       return $sformatf("PC_TRACE pc=0x%08h instr=0x%08h", pc_id, instr);
-    return $sformatf("%s port=%s addr=x%0d data=%0h",
-                     kind.name(), port, addr, data);
+    return $sformatf("%s port=%s addr=x%0d data=%0h cycle=%0d",
+                     kind.name(), port, addr, data, cycle);
   endfunction
+
 endclass
