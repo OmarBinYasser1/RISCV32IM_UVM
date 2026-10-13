@@ -18,6 +18,7 @@ class rv32im_env extends uvm_env;
   alu_coverage            alu_cov;
   ctrl_flow_coverage      ctrl_cov;
   mul_coverage            mul_cov;
+  regfile_coverage        rf_cov;
 
 
   rv32im_virtual_seqr     sys_vseqr;
@@ -43,6 +44,7 @@ class rv32im_env extends uvm_env;
     alu_cov         = alu_coverage::type_id::create("alu_cov", this);
     ctrl_cov        = ctrl_flow_coverage::type_id::create("ctrl_cov", this);
     mul_cov         = mul_coverage::type_id::create("mul_cov", this);
+    rf_cov            = regfile_coverage::type_id::create("rf_cov", this);
 
 
     sys_vseqr       = rv32im_virtual_seqr::type_id::create("sys_vseqr", this);
@@ -71,6 +73,7 @@ class rv32im_env extends uvm_env;
     instr_agent.instr_mon_ap.connect(ctrl_cov.analysis_export);
     alu_agt.analysis_port.connect(alu_cov.analysis_export);
     mul_agt.analysis_port.connect(mul_cov.analysis_export);
+    rf_agt.analysis_port.connect(rf_cov.analysis_export);
 
 
   endfunction
