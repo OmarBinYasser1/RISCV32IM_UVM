@@ -11,6 +11,13 @@
 //   ctrl_flow_coverage : what the INSTRUCTION encodes = which jump/branch, which
 //                        registers, offset size and direction, static target
 //                        alignment (pc + imm)
+//
+// NOTE - RV32IM only
+//   All jumps/branches must be 4-byte aligned.  Two consequences:
+//     * The "halfword_only" alignment bins (in cp_align) become unreachable.
+//       They are declared as ignore_bins so coverage can still reach 100%.
+//     * The "max_forward" offset bins must use the largest 4-aligned value
+//       (0x0000_0FFC / 0x000F_FFFC) instead of the previous 2-mod-4 values.
 //------------------------------------------------------------------------------
 class ctrl_flow_coverage extends uvm_subscriber #(rv32im_instr_seq_item);
   `uvm_component_utils(ctrl_flow_coverage)
@@ -70,14 +77,18 @@ class ctrl_flow_coverage extends uvm_subscriber #(rv32im_instr_seq_item);
     }
     cp_offset: coverpoint imm_jal() {
       bins min_backward = {32'hFFF0_0000};
-      bins backward     = {[32'hFFF0_0002 : 32'hFFFF_FFFE]};
+      bins backward     = {[32'hFFF0_0004 : 32'hFFFF_FFFC]};
       bins zero         = {32'h0};
-      bins forward      = {[32'h0000_0002 : 32'h000F_FFFC]};
-      bins max_forward  = {32'h000F_FFFE};
+      bins forward      = {[32'h0000_0004 : 32'h000F_FFF8]};
+      // FIXED: previous value 32'h000F_FFFE was 2-mod-4 and thus unreachable
+      // in an RV32IM-only test.  Use the largest 4-aligned forward offset.
+      bins max_forward  = {32'h000F_FFFC};
     }
+    // RV32IM only: every target is 4-byte aligned, so halfword_only is
+    // structurally unreachable -> ignore it so coverage can reach 100%.
     cp_align: coverpoint halfword_only(jal_target()) {
       bins word_aligned  = {0};
-      bins halfword_only = {1};
+      ignore_bins halfword_only = {1};
     }
     jal_rd_dir_cov: cross cp_rd, cp_dir;
     jal_align_cov:  cross cp_align, cp_rd;
@@ -121,15 +132,16 @@ class ctrl_flow_coverage extends uvm_subscriber #(rv32im_instr_seq_item);
     }
     cp_offset: coverpoint imm_b() {
       bins min_backward = {32'hFFFF_F000};              // -4096
-      bins backward     = {[32'hFFFF_F002 : 32'hFFFF_FFFE]};
+      bins backward     = {[32'hFFFF_F004 : 32'hFFFF_FFFC]};
       bins zero         = {32'h0};
-      bins forward      = {[32'h0000_0002 : 32'h0000_0FFC]};
-      bins max_forward  = {32'h0000_0FFE};              // +4094
+      bins forward      = {[32'h0000_0004 : 32'h0000_0FF8]};
+      // FIXED: previous value 32'h0000_0FFE was 2-mod-4 and unreachable.
+      bins max_forward  = {32'h0000_0FFC};              // +4092
     }
     // static target alignment (the target the branch WOULD jump to)
     cp_align: coverpoint halfword_only(branch_target()) {
       bins word_aligned  = {0};
-      bins halfword_only = {1};
+      ignore_bins halfword_only = {1};
     }
     cp_regs: coverpoint br_reg_rel() {
       bins distinct = {0};

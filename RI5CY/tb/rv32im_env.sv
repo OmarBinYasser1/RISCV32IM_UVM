@@ -72,6 +72,7 @@ class rv32im_env extends uvm_env;
     instr_agent.instr_mon_ap.connect(ctrl_cov.analysis_export);
     alu_agt.analysis_port.connect(alu_cov.analysis_export);
     mul_agt.analysis_port.connect(mul_cov.analysis_export);
+    rf_agt.analysis_port.connect(rf_cov.analysis_export);
 
 
   endfunction

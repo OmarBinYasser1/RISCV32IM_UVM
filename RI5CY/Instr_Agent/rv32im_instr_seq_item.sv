@@ -90,7 +90,7 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
         // directed phases ran).
         //
         // All three constraints are `soft`, so the directed phases can
-        // still override them with hard `rd/rs1/rs2 == …` assignments.
+        // still override them with hard `rd/rs1/rs2` assignments.
         // ---------------------------------------------------------------
         if (opcode inside {OP_R, OP_IMM, OP_LOAD, OP_LUI, OP_AUIPC,
                            OP_JAL, OP_JALR})
@@ -105,11 +105,14 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
         // Valid values for funct7 for R/I types are 0, 1, 32
         funct7 inside {0,1,32};
 
-        // B-type immediate value should be a multiple of 2
-        b_imm13 % 2 == 0;
-
-        // J-immediate encodes a signed offset in multiples of 2 bytes
-        jal_imm21 % 2 == 0;
+        // ---------------------------------------------------------------
+        // RV32IM only: every instruction is a 32-bit instruction, so every
+        // instruction address must be 4-byte aligned.  Branch/JAL offsets
+        // must therefore be multiples of 4.
+        // we force 4-byte alignment, the compressed path is never taken.
+        // ---------------------------------------------------------------
+        b_imm13   % 4 == 0;
+        jal_imm21 % 4 == 0;
     }
 
     
