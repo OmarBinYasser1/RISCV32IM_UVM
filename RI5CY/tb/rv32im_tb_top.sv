@@ -5,7 +5,7 @@ module rv32im_top ();
 
 
   int   CLK_PERIOD = 10;  // Used by the system scoreboard
-  int   TESTS = 1000;
+  int   TESTS = 100;
 
   // ------- Plusarg-driven configuration -------------------------------
   int run_stim_batch3       = 1;

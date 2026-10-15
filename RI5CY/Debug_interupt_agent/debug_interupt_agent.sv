@@ -7,9 +7,6 @@ class debug_interupt_agent extends uvm_agent;
   debug_interupt_driver    driver;
   debug_interupt_monitor   monitor;
 
-  // Transaction analysis port for scoreboard and coverage
-  // uvm_analysis_port #(debug_interupt_transaction) transaction_ap;
-
   function new(string name = "debug_interupt_agent", uvm_component parent = null);
     super.new(name, parent);
   endfunction

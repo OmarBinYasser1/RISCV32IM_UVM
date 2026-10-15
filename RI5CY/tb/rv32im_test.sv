@@ -34,16 +34,38 @@ class rv32im_base_test extends uvm_test;
     void'(uvm_config_db#(bit)::get(this, "", "run_stim_batch3",  instr_config.run_stim_batch3));
     void'(uvm_config_db#(int)::get(this, "", "stream_min_len",   instr_config.stream_min_len));
     void'(uvm_config_db#(int)::get(this, "", "stream_max_len",   instr_config.stream_max_len));
+    void'(uvm_config_db#(bit [5:0])::get(this, "", "stream_opcode_mask", instr_config.stream_opcode_mask));
 
     uvm_config_db#(rv32im_instr_config)::set(this, "*", "INSTR_CONFIG", instr_config);
+
+    // Derived tests pick their sequences here.
+    add_sequences();
   endfunction
 
-  function void connect_phase(uvm_phase phase);
-    super.connect_phase(phase);
-    sys_vseq.instr_seq.TESTS = instr_config.TESTS;
-    // Batch 1 / Batch 3 knob propagation
-    sys_vseq.instr_seq.relax_rd_rs      = instr_config.relax_rd_rs;
-    sys_vseq.instr_seq.run_stim_batch3  = instr_config.run_stim_batch3;
+  // Default (base_test) = full regression, same order as the old single sequence.
+  virtual function void add_sequences();
+    add_seq(rv32im_reset_init_seq::type_id::create("reset_init_seq"));
+    add_seq(rv32im_rand_alu_seq::type_id::create("rand_alu_seq"));
+    add_seq(rv32im_rand_mem_seq::type_id::create("rand_mem_seq"));
+    add_seq(rv32im_rand_ctrl_seq::type_id::create("rand_ctrl_seq"));
+    add_seq(rv32im_dir_alu_seq::type_id::create("dir_alu_seq"));
+    add_seq(rv32im_dir_ctrl_seq::type_id::create("dir_ctrl_seq"));
+    add_seq(rv32im_dir_muldiv_seq::type_id::create("dir_muldiv_seq"));
+    add_seq(rv32im_dir_hazard_seq::type_id::create("dir_hazard_seq"));
+    add_seq(rv32im_dir_mem_seq::type_id::create("dir_mem_seq"));
+    add_seq(rv32im_dir_corner_seq::type_id::create("dir_corner_seq"));
+    add_seq(rv32im_stream_seq::type_id::create("stream_seq"));
+  endfunction
+
+  // Queue a sequence and push the command-line knobs (via instr_config) into it.
+  function void add_seq(rv32im_instr_seq s);
+    s.TESTS              = instr_config.TESTS;
+    s.relax_rd_rs        = instr_config.relax_rd_rs;
+    s.run_stim_batch3    = instr_config.run_stim_batch3;
+    s.stream_min_len     = instr_config.stream_min_len;
+    s.stream_max_len     = instr_config.stream_max_len;
+    s.stream_opcode_mask = instr_config.stream_opcode_mask;
+    sys_vseq.instr_seq_q.push_back(s);
   endfunction
 
   function void start_of_simulation_phase(uvm_phase phase);

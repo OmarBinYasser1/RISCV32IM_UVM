@@ -149,10 +149,10 @@ class riscv_rf_scoreboard extends uvm_scoreboard;
             // may or may not match; skip the comparison to avoid false fails
             // when the shadow is momentarily stale.
             chk("rf_read_correct_p", 1'b1,
-                $sformatf("READ x%0d (port %s) coincides with WRITE — check skipped",
+                $sformatf("READ x%0d (port %s) coincides with WRITE - check skipped",
                           item.addr, item.port));
             rf_read_skip++;
-            `uvm_info("SB_RF", $sformatf("READ SKIP x%0d = 0x%08h (port %s) — same-cycle write",
+            `uvm_info("SB_RF", $sformatf("READ SKIP x%0d = 0x%08h (port %s) - same-cycle write",
                       item.addr, item.data, item.port), UVM_HIGH)
           end
           else begin

@@ -5,8 +5,8 @@ class rv32im_virtual_seq extends uvm_sequence #(uvm_sequence_item);
   `uvm_declare_p_sequencer(rv32im_virtual_seqr);
 
   //  Define the sequences that live in the virtual sequence
-  // 1- Instruction Sequence 
-  rv32im_instr_seq instr_seq;
+  // 1- Instruction Sequences (filled by the test; run in order)
+  rv32im_instr_seq instr_seq_q[$];
   // 2- Data Sequence
   reactive_data_seq data_seq;
   // 3- Debug_Interrupt Sequence
@@ -22,16 +22,11 @@ class rv32im_virtual_seq extends uvm_sequence #(uvm_sequence_item);
 
   //  Define the virual sequencer to connect its sub-sequencers to the local sequencers
   rv32im_virtual_seqr sys_vseqr;
-  // // virtual interface handles to drive the reset in the virual sequence
 
-  // virtual reset_if rst_if;
-
-  //      ====================================================================
 
   function new(string name = "rv32im_virtual_seq");
     super.new(name);
     // Build the sub-sequences 
-    instr_seq = rv32im_instr_seq::type_id::create("instr_seq");
     data_seq = reactive_data_seq::type_id::create("data_seq");
     debug_int_seq = debug_interupt_seq::type_id::create("debug_int_seq");
   endfunction
@@ -50,8 +45,10 @@ class rv32im_virtual_seq extends uvm_sequence #(uvm_sequence_item);
     // Run the sequences on the local sequencers
     fork
       begin
-        `uvm_info(get_name(), "INSTR SEQ - Started", UVM_HIGH);
-        instr_seq.start(instr_seqr);
+        foreach (instr_seq_q[i]) begin
+          `uvm_info(get_name(), $sformatf("INSTR SEQ[%0d] %s - Started", i, instr_seq_q[i].get_name()), UVM_LOW);
+          instr_seq_q[i].start(instr_seqr);
+        end
         `uvm_info(get_name(), "INSTR SEQ - Finished, draining pipeline...", UVM_LOW);
         // Wait for the CPU pipeline to drain all in-flight instructions
         // (longest instruction = DIV which takes up to 32 cycles = 320ns)

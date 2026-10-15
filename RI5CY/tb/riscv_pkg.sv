@@ -19,6 +19,17 @@ package riscv_pkg;
 
   // Sequences
   `include "../Instr_Agent/rv32im_instr_seq.sv"
+  `include "../Instr_Agent/Sequences/rv32im_reset_init_seq.sv"
+  `include "../Instr_Agent/Sequences/rv32im_rand_alu_seq.sv"
+  `include "../Instr_Agent/Sequences/rv32im_rand_mem_seq.sv"
+  `include "../Instr_Agent/Sequences/rv32im_rand_ctrl_seq.sv"
+  `include "../Instr_Agent/Sequences/rv32im_dir_alu_seq.sv"
+  `include "../Instr_Agent/Sequences/rv32im_dir_ctrl_seq.sv"
+  `include "../Instr_Agent/Sequences/rv32im_dir_muldiv_seq.sv"
+  `include "../Instr_Agent/Sequences/rv32im_dir_hazard_seq.sv"
+  `include "../Instr_Agent/Sequences/rv32im_dir_mem_seq.sv"
+  `include "../Instr_Agent/Sequences/rv32im_dir_corner_seq.sv"
+  `include "../Instr_Agent/Sequences/rv32im_stream_seq.sv"
   `include "../Debug_interupt_agent/debug_interupt_seq.sv"
   `include "../Data_agent/reactive_data_seq.sv"
   `include "./rv32im_virtual_seq.sv"
@@ -65,6 +76,11 @@ package riscv_pkg;
   // Env / Test
   `include "./rv32im_env.sv"
   `include "./rv32im_test.sv"
+  `include "./tests/rv32im_random_test.sv"
+  `include "./tests/rv32im_alu_test.sv"
+  `include "./tests/rv32im_muldiv_test.sv"
+  `include "./tests/rv32im_ctrl_hazard_test.sv"
+  `include "./tests/rv32im_mem_test.sv"
 
 endpackage
 

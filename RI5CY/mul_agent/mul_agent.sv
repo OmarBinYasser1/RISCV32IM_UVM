@@ -1,4 +1,3 @@
-
 class mul_agent extends uvm_agent;
   `uvm_component_utils(mul_agent)
 

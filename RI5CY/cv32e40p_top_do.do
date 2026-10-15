@@ -40,7 +40,6 @@ set TIMING_CHECK_ENABLE   1
 # set CHECK_LINK_VALUES     1
 # set ILLEGAL_DETECT_ENABLE 1
 
-.main clear
 quit -sim
 file delete compile.log
 transcript file ""
@@ -87,6 +86,7 @@ coverage save rv32im_top.ucdb -onexit -du cv32e40p_top
 run 0
 run -all
 coverage report -detail -cvg -directive -comments -output cv32e40p_top_Func_Covr.txt
-coverage report -summary
+#coverage report -summary
+coverage report -summary -cvg -assert
 #quit -sim
 #vcover report rv32im_top.ucdb -annotate -all -details -output cv32e40p_top_Code_Covr.txt
