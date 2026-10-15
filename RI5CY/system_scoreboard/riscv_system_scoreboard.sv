@@ -16,6 +16,13 @@
 //   4. Data memory interface protocol, address alignment, and load/store coherency checks
 //   5. Traceability reporting for system verification plan properties
 //
+// CHK items implemented in this file:
+//   C-02  reference-model helpers for JAL/JALR/AUIPC/LUI link-value checks
+//   C-03  exact branch-decision next-PC check (uses forwarded operands)
+//   C-04  PC-flow suppression after an illegal instruction or trap redirect
+//   C-14  JAL/JALR/AUIPC/LUI architectural rd value check
+//   I-05  matching golden-memory preload
+//
 // Scope division:
 //   - Arithmetic correctness (ALU, DIV, REM, MUL, MULH*) & timing: riscv_alu_scoreboard
 //   - Register file read/write correctness & x0 immutability:      riscv_rf_scoreboard
@@ -49,10 +56,14 @@ class riscv_system_scoreboard extends uvm_scoreboard;
   localparam bit [31:0] PRELOAD_BASE  = 32'h1000_0000;
   localparam int unsigned PRELOAD_LEN = 256;
 
+  // Trap vector base, as tied in rv32im_tb_top (mtvec_addr_i('0)).
+  bit [31:0] mtvec_value = 32'h0000_0000;
+
   //--------------------------------------------------------------------------
   // Shadow state
   //--------------------------------------------------------------------------
-  // shadow_rf is maintained on writes solely to provide rs1 base register snapshots for JALR target PC calculation
+  // shadow_rf is maintained on writes solely to provide rs1 base register
+  // snapshots for JALR target PC calculation
   logic [31:0] shadow_rf [32];
   bit   [31:0] shadow_mem [bit [31:2]];
 
@@ -74,9 +85,6 @@ class riscv_system_scoreboard extends uvm_scoreboard;
     string     prop;
   } exp_wr_t;
   exp_wr_t exp_wr_q [32][$];
-
-  // CHK:C-04  Set when the currently-decoded instruction is illegal.
-  bit suppress_next_pc_check;
 
   //--------------------------------------------------------------------------
   // Statistics
@@ -102,7 +110,6 @@ class riscv_system_scoreboard extends uvm_scoreboard;
     pc_pass         = 0; pc_fail         = 0;
     mem_load_pass   = 0; mem_load_fail   = 0;
     pc_tr_prev_valid        = 0;
-    suppress_next_pc_check  = 0;
     for (int i = 0; i < 32; i++) shadow_rf[i] = 32'h0;
   endfunction
 
@@ -136,6 +143,7 @@ class riscv_system_scoreboard extends uvm_scoreboard;
     void'(uvm_config_db#(bit)::get(this, "", "strict_branch_check",   strict_branch_check));
     void'(uvm_config_db#(bit)::get(this, "", "illegal_detect_enable", illegal_detect_enable));
     void'(uvm_config_db#(bit)::get(this, "", "preload_enable",        preload_enable));
+    void'(uvm_config_db#(bit [31:0])::get(this, "", "mtvec_value",    mtvec_value));
 
     foreach (shadow_rf[i]) shadow_rf[i] = '0;
 
@@ -235,7 +243,6 @@ class riscv_system_scoreboard extends uvm_scoreboard;
       if (item.is_reset) begin
         foreach (exp_wr_q[i]) exp_wr_q[i].delete();
         pc_tr_prev_valid       = 0;
-        suppress_next_pc_check = 0;
         foreach (shadow_rf[i]) shadow_rf[i] = '0;
         continue;
       end
@@ -281,12 +288,32 @@ class riscv_system_scoreboard extends uvm_scoreboard;
     logic [20:0] j_imm;
     logic [11:0] i_imm;
 
-    // CHK:C-04  Suppress next PC check once after an illegal instruction.
-    if (pc_tr_prev_valid && suppress_next_pc_check) begin
-      suppress_next_pc_check = 0;
+    // CHK:C-04  Suppression 1 - the previous traced instruction was illegal.
+    // After an illegal instruction, PC is redirected to mtvec.  The next
+    // trace is the first instruction of the trap handler; its PC cannot be
+    // predicted from the illegal instruction's PC.
+    if (pc_tr_prev_valid && illegal_detect_enable &&
+        is_illegal_encoding(pc_tr_prev_instr)) begin
       `uvm_info("SB_PC",
-        $sformatf("Suppress next-PC check (illegal prior): prev=0x%08h cur=0x%08h",
-                  pc_tr_prev_pc, pc_cur), UVM_HIGH)
+        $sformatf("Suppress next-PC check (illegal prior=0x%08h): cur=0x%08h",
+                  pc_tr_prev_instr, pc_cur), UVM_HIGH)
+      pc_tr_prev_pc    = pc_cur;
+      pc_tr_prev_instr = ins_cur;
+      update_branch_snapshot(ins_cur, it.op_a_fw, it.op_b_fw);
+      pc_tr_prev_valid = 1;
+      return;
+    end
+
+    // CHK:C-04  Suppression 2 - the current trace is at mtvec.  The core
+    // redirected to the trap vector because of an illegal instruction that
+    // was filtered before reaching the ID PC_TRACE (is_decoding_o is low
+    // during the FLUSH_EX cycle), so the illegal instruction between the
+    // previous trace and this one is invisible.  Any current PC equal to
+    // the trap vector base is accepted as a possible trap redirect.
+    if (pc_tr_prev_valid && (pc_cur == mtvec_value)) begin
+      `uvm_info("SB_PC",
+        $sformatf("Suppress next-PC check (cur PC is mtvec=0x%08h): prev=0x%08h (0x%08h)",
+                  mtvec_value, pc_tr_prev_pc, pc_tr_prev_instr), UVM_HIGH)
       pc_tr_prev_pc    = pc_cur;
       pc_tr_prev_instr = ins_cur;
       update_branch_snapshot(ins_cur, it.op_a_fw, it.op_b_fw);
@@ -376,10 +403,6 @@ class riscv_system_scoreboard extends uvm_scoreboard;
                                      "lui_result_p");
       endcase
     end
-
-    // CHK:C-04
-    if (illegal_detect_enable && is_illegal_encoding(ins_cur))
-      suppress_next_pc_check = 1;
 
     pc_tr_prev_pc    = pc_cur;
     pc_tr_prev_instr = ins_cur;
