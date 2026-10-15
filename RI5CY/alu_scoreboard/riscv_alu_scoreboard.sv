@@ -52,6 +52,14 @@ class riscv_alu_scoreboard extends uvm_scoreboard;
   localparam logic [6:0] ALU_REMU = 7'b0110010;
   localparam logic [6:0] ALU_REM  = 7'b0110011;
 
+  // Branch-condition comparison operators
+  localparam logic [6:0] ALU_LTS  = 7'b0000000;
+  localparam logic [6:0] ALU_LTU  = 7'b0000001;
+  localparam logic [6:0] ALU_GES  = 7'b0001010;
+  localparam logic [6:0] ALU_GEU  = 7'b0001011;
+  localparam logic [6:0] ALU_EQ   = 7'b0001100;
+  localparam logic [6:0] ALU_NE   = 7'b0001101;
+
   // CV32E40P decoder SWAPS the operands of DIV/DIVU/REM/REMU on the way into the
   // ALU (alu_op_a = rs2 = divisor, alu_op_b = rs1 = dividend; see the "inputs A
   // and B are swapped" comment in cv32e40p_alu.sv). With the swap flag = 1 the
@@ -62,6 +70,13 @@ class riscv_alu_scoreboard extends uvm_scoreboard;
   // Set to 1 from the env/test to also check PULP p.mac (operand_c != 0) and
   // p.msu. Default 0: only the four RV32M multiplies are checked.
   bit check_pulp_mac = 0;
+
+  bit timing_check_enable   = 1;
+  bit timing_check_is_error = 0;
+
+  // CHK:C-06  MULH vs MULHU consistency tracking
+  bit        mulh_pending = 0;
+  bit [31:0] mulh_a, mulh_b, mulh_res;
 
   //--------------------------------------------------------------------------
   // Statistics
@@ -97,6 +112,11 @@ class riscv_alu_scoreboard extends uvm_scoreboard;
     mul_ae   = new("mul_ae",   this);
     alu_fifo = new("alu_fifo", this);
     mul_fifo = new("mul_fifo", this);
+
+    void'(uvm_config_db#(bit)::get(this, "", "div_operands_swapped", div_operands_swapped));
+    void'(uvm_config_db#(bit)::get(this, "", "check_pulp_mac",       check_pulp_mac));
+    void'(uvm_config_db#(bit)::get(this, "", "timing_check_enable",   timing_check_enable));
+    void'(uvm_config_db#(bit)::get(this, "", "timing_check_is_error", timing_check_is_error));
   endfunction
 
   function void connect_phase(uvm_phase phase);
@@ -168,15 +188,8 @@ class riscv_alu_scoreboard extends uvm_scoreboard;
       7'b0100101: res = a >> b[4:0];                 // ALU_SRL
       7'b0100111: res = a << b[4:0];                 // ALU_SLL
 
-      // TODO : Branch-condition comparisons drive comparison_result_o, NOT
-      // result_o. alu_if only captures result_o, so these are returned as 'x
-      // and SKIPPED by check_alu() (counted in alu_skip, not pass/fail).
-      7'b0000000: res = 'x;   // ALU_LTS
-      7'b0000001: res = 'x;   // ALU_LTU
-      7'b0001100: res = 'x;   // ALU_EQ
-      7'b0001101: res = 'x;   // ALU_NE
-      7'b0001010: res = 'x;   // ALU_GES
-      7'b0001011: res = 'x;   // ALU_GEU
+      // Branch-condition comparisons drive comparison_result_o (checked via alu_cmp_golden)
+      ALU_LTS, ALU_LTU, ALU_EQ, ALU_NE, ALU_GES, ALU_GEU: res = 'x;
 
       // SLT/SLTU write to result_o (rd destination)
       7'b0000010: res = (sa < sb) ? 1 : 0;           // ALU_SLTS
@@ -197,6 +210,50 @@ class riscv_alu_scoreboard extends uvm_scoreboard;
     return res;
   endfunction
 
+  // Branch condition comparison golden model
+  function automatic bit alu_cmp_golden(logic [6:0] op,
+                                        logic [31:0] a, logic [31:0] b);
+    case (op)
+      ALU_EQ:  return (a == b);
+      ALU_NE:  return (a != b);
+      ALU_LTS: return ($signed(a) <  $signed(b));
+      ALU_LTU: return (a <  b);
+      ALU_GES: return ($signed(a) >= $signed(b));
+      ALU_GEU: return (a >= b);
+      default: return 1'b0;
+    endcase
+  endfunction
+
+  // CHK:C-10  Timing failure reporter (warning-only by default).
+  function void timing_msg(string prop, string msg);
+    if (!timing_check_enable) return;
+    if (timing_check_is_error)
+      `uvm_error  ("SB_TIME", $sformatf("%s | %s", prop, msg))
+    else
+      `uvm_warning("SB_TIME", $sformatf("%s | %s", prop, msg))
+  endfunction
+
+  // CHK:C-10  Leading-one position (returns -1 for all-zero).
+  function automatic int lo_pos(bit [31:0] v);
+    for (int i = 31; i >= 0; i--) if (v[i]) return i;
+    return -1;
+  endfunction
+
+  // DIV/REM latency check
+  function void check_div_latency(alu_item it, logic [31:0] a, logic [31:0] b);
+    int lo;
+    int exp_lat;
+    if (b == 32'h0) return;
+    lo = lo_pos(b);
+    if (lo < 0) return;
+    if (lo == 31) return;
+    exp_lat = 34 - lo;
+    if (it.latency > exp_lat + 4)
+      timing_msg("div_lat_p",
+        $sformatf("op=%0h a=%08h b=%08h LO=%0d latency=%0d exp<=%0d",
+                  it.operator, a, b, lo, it.latency, exp_lat + 4));
+  endfunction
+
   //--------------------------------------------------------------------------
   // ALU checker
   //--------------------------------------------------------------------------
@@ -204,6 +261,8 @@ class riscv_alu_scoreboard extends uvm_scoreboard;
     alu_item     item;
     logic [31:0] expected;
     logic [31:0] opa, opb;     // opa = dividend, opb = divisor for DIV/REM ops
+    bit          is_cmp;
+    bit          exp_cmp;
     forever begin
       alu_fifo.get(item);
       opa = item.operand_a;
@@ -213,6 +272,27 @@ class riscv_alu_scoreboard extends uvm_scoreboard;
         opa = item.operand_b;  // rs1 = dividend
         opb = item.operand_a;  // rs2 = divisor
       end
+
+      // Branch-condition comparison check
+      is_cmp = item.operator inside {ALU_LTS, ALU_LTU, ALU_EQ,
+                                     ALU_NE, ALU_GES, ALU_GEU};
+      if (is_cmp) begin
+        exp_cmp = alu_cmp_golden(item.operator, opa, opb);
+        if (item.comparison_result === exp_cmp) begin
+          alu_pass++;
+          chk("branch_cmp_p", 1'b1,
+              $sformatf("op=%0h a=%0h b=%0h cmp=%0b",
+                        item.operator, opa, opb, exp_cmp));
+        end else begin
+          alu_fail++;
+          chk("branch_cmp_p", 1'b0,
+              $sformatf("op=%0h a=%0h b=%0h exp=%0b got=%0b",
+                        item.operator, opa, opb, exp_cmp,
+                        item.comparison_result));
+        end
+        continue;
+      end
+
       expected = alu_golden(item.operator, opa, opb);
 
       // No reference value available (comparison ops / unknown opcode): skip
@@ -234,8 +314,10 @@ class riscv_alu_scoreboard extends uvm_scoreboard;
       end
 
       // Named plan properties for DIV / DIVU / REM / REMU
-      if (item.operator inside {ALU_DIV, ALU_DIVU, ALU_REM, ALU_REMU})
+      if (item.operator inside {ALU_DIV, ALU_DIVU, ALU_REM, ALU_REMU}) begin
         check_divrem_props(item, opa, opb, expected);
+        check_div_latency(item, opa, opb);
+      end
     end
   endtask
 
@@ -495,6 +577,40 @@ class riscv_alu_scoreboard extends uvm_scoreboard;
 
       check_mul_props(item);    // GEN_4, GEN_5, MUL_1, smode legality
       track_pair(item);         // MULH_6, MULHU_3
+
+      // CHK:C-06  MULH vs MULHU consistency for non-negative operands
+      if (item.operator == MUL_H && item.signed_mode == 2'b11 &&
+          !item.operand_a[31] && !item.operand_b[31]) begin
+        mulh_pending = 1;
+        mulh_a       = item.operand_a;
+        mulh_b       = item.operand_b;
+        mulh_res     = item.result;
+      end
+      else if (item.operator == MUL_H && item.signed_mode == 2'b00) begin
+        if (mulh_pending &&
+            mulh_a == item.operand_a && mulh_b == item.operand_b) begin
+          chk("mulh_mulhu_agree_p", mulh_res === item.result,
+              $sformatf("a=%08h b=%08h MULH=%08h MULHU=%08h",
+                        item.operand_a, item.operand_b,
+                        mulh_res, item.result));
+        end
+        mulh_pending = 0;
+      end
+
+      // CHK:C-10  Latency checks
+      if (is_rv32m_mul(item)) begin
+        if (item.latency != 1)
+          timing_msg("mul_lat_p",
+            $sformatf("MUL latency=%0d exp=1 a=%08h b=%08h",
+                      item.latency, item.operand_a, item.operand_b));
+      end
+      else if (is_rv32m_mulh(item)) begin
+        if (item.latency != 5)
+          timing_msg("mulh_lat_p",
+            $sformatf("MULH latency=%0d exp=5 sm=%02b a=%08h b=%08h",
+                      item.latency, item.signed_mode,
+                      item.operand_a, item.operand_b));
+      end
     end
   endtask
 

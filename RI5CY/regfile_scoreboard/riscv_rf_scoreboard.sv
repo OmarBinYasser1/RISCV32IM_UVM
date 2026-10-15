@@ -104,6 +104,12 @@ class riscv_rf_scoreboard extends uvm_scoreboard;
     forever begin
       rf_fifo.get(item);
 
+      if (item.is_reset) begin
+        foreach (shadow_rf[i]) shadow_rf[i] = '0;
+        foreach (prev_shadow_rf[i]) prev_shadow_rf[i] = '0;
+        continue;
+      end
+
       case (item.kind)
         // == WRITE ========================================================
         regfile_item::WRITE: begin

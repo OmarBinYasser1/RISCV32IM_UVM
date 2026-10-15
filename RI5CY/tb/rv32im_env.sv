@@ -58,11 +58,9 @@ class rv32im_env extends uvm_env;
     sys_vseqr.data_seqr = data_agent.sequencer;
     sys_vseqr.debug_int_seqr = debug_int_agent.sequencer;
 
-    // Connect to system scoreboard
+    // Connect to system scoreboard (PC flow, link values, LSU/data bus, instruction mix)
     instr_agent.instr_mon_ap.connect(sb.instr_ae);
     data_agent.transaction_ap.connect(sb.data_ae);
-    alu_agt.analysis_port.connect(sb.alu_ae);
-    mul_agt.analysis_port.connect(sb.mul_ae);
     rf_agt.analysis_port.connect(sb.rf_ae);
 
     // Connect to dedicated block scoreboards
