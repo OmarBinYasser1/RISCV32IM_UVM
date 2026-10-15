@@ -1,5 +1,3 @@
-
-
 class reactive_data_driver extends uvm_driver #(data_transaction);
   `uvm_component_utils(reactive_data_driver)
 
@@ -7,6 +5,18 @@ class reactive_data_driver extends uvm_driver #(data_transaction);
 
   bit dbg = 1;  // 0 silences DRV messages
   bit [31:0] mem[bit [31:2]];  // word-addressed data memory
+
+  // CHK:I-05  Golden-memory preload.  Default 1 = tag pattern (mem[addr]
+  // is derived from addr so any wrong effective address is detectable).
+  // Set to 0 via config_db ("preload_enable") to keep the legacy empty
+  // memory model where unmapped reads return 0.
+  bit preload_enable = 1;
+
+  // Preload window: [0x1000_0000, 0x1000_0400).  Tag = byte address.
+  // Shared with riscv_system_scoreboard.preload_shadow_mem() via the same
+  // config knob so both views agree.
+  localparam bit [31:0] PRELOAD_BASE  = 32'h1000_0000;
+  localparam int unsigned PRELOAD_LEN = 256;  // in words
 
   // Values captured at the handshake edge
   bit [31:0] c_addr, c_wdata, c_rdata;
@@ -22,11 +32,23 @@ class reactive_data_driver extends uvm_driver #(data_transaction);
 
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-
+    void'(uvm_config_db#(bit)::get(this, "", "preload_enable", preload_enable));
   endfunction
 
   function void dbg_msg(string s);
     if (dbg) `uvm_info("DRV", s, UVM_NONE)
+  endfunction
+
+  // CHK:I-05  Fill a contiguous region with address-derived tags so any
+  // wrong EA returns a visibly different value.
+  function void preload_memory();
+    for (int unsigned i = 0; i < PRELOAD_LEN; i++) begin
+      bit [31:0] byte_addr;
+      bit [31:2] word_addr;
+      byte_addr = PRELOAD_BASE + (i * 4);
+      word_addr = byte_addr[31:2];
+      mem[word_addr] = byte_addr;         // tag = byte address
+    end
   endfunction
 
   // ---------------------------------------------------------------
@@ -36,6 +58,7 @@ class reactive_data_driver extends uvm_driver #(data_transaction);
     data_transaction resp_item;
 
     drive_idle();
+    if (preload_enable) preload_memory();       // CHK:I-05
 
     forever begin
       wait_for_request();  // req is high, reset is released

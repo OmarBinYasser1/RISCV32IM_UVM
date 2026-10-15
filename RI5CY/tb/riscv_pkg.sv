@@ -1,5 +1,5 @@
 `ifndef RISCV_PKG_SV
-`define RISCV_PKG_SV 
+`define RISCV_PKG_SV
 
 package riscv_pkg;
   import uvm_pkg::*;
@@ -33,7 +33,6 @@ package riscv_pkg;
   `include "../Data_agent/reactive_data_driver.sv"
   `include "../Debug_interupt_agent/debug_interupt_driver.sv"
 
-
   // Monitors
   `include "../Instr_Agent/rv32im_instr_monitor.sv"
   `include "../alu_agent/alu_monitor.sv"
@@ -41,8 +40,6 @@ package riscv_pkg;
   `include "../regfile_agent/regfile_monitor.sv"
   `include "../Data_agent/reactive_data_monitor.sv"
   `include "../Debug_interupt_agent/debug_interupt_monitor.sv"
-
-
 
   // Agents
   `include "../Instr_Agent/rv32im_instr_agent.sv"
@@ -53,20 +50,17 @@ package riscv_pkg;
   `include "../mul_agent/mul_agent.sv"
   `include "../regfile_agent/regfile_agent.sv"
 
-
-
-
   // Scoreboard(s)
   `include "../alu_scoreboard/riscv_alu_scoreboard.sv"
   `include "../regfile_scoreboard/riscv_rf_scoreboard.sv"
   `include "../system_scoreboard/riscv_system_scoreboard.sv"
 
-  // coverage(s)
+  // Coverage
   `include "../Coverage/alu_coverage.sv"
   `include "../Coverage/ctrl_flow_coverage.sv"
   `include "../Coverage/mul_coverage.sv"
   `include "../Coverage/regfile_coverage.sv"
-
+  `include "../Coverage/obi_coverage.sv"
 
   // Env / Test
   `include "./rv32im_env.sv"
@@ -75,8 +69,3 @@ package riscv_pkg;
 endpackage
 
 `endif
-
-
-
-
-

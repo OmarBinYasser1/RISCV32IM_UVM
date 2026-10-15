@@ -29,12 +29,21 @@ class rv32im_base_test extends uvm_test;
     ))
     else `uvm_fatal(get_name(), "INSTR BASE TEST - Can't get the Instruction Interface");
 
+    // Optional knobs (all default = base regression unchanged).
+    void'(uvm_config_db#(bit)::get(this, "", "relax_rd_rs",      instr_config.relax_rd_rs));
+    void'(uvm_config_db#(bit)::get(this, "", "run_stim_batch3",  instr_config.run_stim_batch3));
+    void'(uvm_config_db#(int)::get(this, "", "stream_min_len",   instr_config.stream_min_len));
+    void'(uvm_config_db#(int)::get(this, "", "stream_max_len",   instr_config.stream_max_len));
+
     uvm_config_db#(rv32im_instr_config)::set(this, "*", "INSTR_CONFIG", instr_config);
   endfunction
 
   function void connect_phase(uvm_phase phase);
     super.connect_phase(phase);
     sys_vseq.instr_seq.TESTS = instr_config.TESTS;
+    // Batch 1 / Batch 3 knob propagation
+    sys_vseq.instr_seq.relax_rd_rs      = instr_config.relax_rd_rs;
+    sys_vseq.instr_seq.run_stim_batch3  = instr_config.run_stim_batch3;
   endfunction
 
   function void start_of_simulation_phase(uvm_phase phase);
@@ -47,7 +56,6 @@ class rv32im_base_test extends uvm_test;
     phase.raise_objection(this);
     `uvm_info(get_name(), "Started the System Virtual Sequence", UVM_HIGH);
 
-    // Start the virtual sequence on the virtual sequencer
     sys_vseq.start(env.sys_vseqr);
 
     `uvm_info(get_name(), "Finished the System Virtual Sequence", UVM_HIGH);
@@ -65,4 +73,3 @@ class rv32im_base_test extends uvm_test;
     end
   endfunction
 endclass // rv32im_base_test
-

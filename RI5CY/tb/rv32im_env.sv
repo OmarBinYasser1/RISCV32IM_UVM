@@ -14,11 +14,12 @@ class rv32im_env extends uvm_env;
   riscv_rf_scoreboard     rf_sb;
   riscv_system_scoreboard sb;
 
-  //coverages
+  // coverage
   alu_coverage            alu_cov;
   ctrl_flow_coverage      ctrl_cov;
   mul_coverage            mul_cov;
   regfile_coverage        rf_cov;
+  obi_coverage            obi_cov;
 
   rv32im_virtual_seqr     sys_vseqr;
 
@@ -44,6 +45,7 @@ class rv32im_env extends uvm_env;
     ctrl_cov        = ctrl_flow_coverage::type_id::create("ctrl_cov", this);
     mul_cov         = mul_coverage::type_id::create("mul_cov", this);
     rf_cov          = regfile_coverage::type_id::create("rf_cov", this);
+    obi_cov         = obi_coverage::type_id::create("obi_cov", this);
 
 
     sys_vseqr       = rv32im_virtual_seqr::type_id::create("sys_vseqr", this);
@@ -68,13 +70,12 @@ class rv32im_env extends uvm_env;
     mul_agt.analysis_port.connect(alu_sb.mul_ae);
     rf_agt.analysis_port.connect(rf_sb.rf_ae);
 
-    // connect analysis ports to coverage components
+    // Connect analysis ports to coverage components
     instr_agent.instr_mon_ap.connect(ctrl_cov.analysis_export);
     alu_agt.analysis_port.connect(alu_cov.analysis_export);
     mul_agt.analysis_port.connect(mul_cov.analysis_export);
     rf_agt.analysis_port.connect(rf_cov.analysis_export);
-
-
+    data_agent.transaction_ap.connect(obi_cov.analysis_export);
   endfunction
 
 endclass  // rv32im_env

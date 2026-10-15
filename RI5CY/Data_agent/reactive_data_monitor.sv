@@ -1,11 +1,10 @@
-
 class reactive_data_monitor extends uvm_monitor;
   `uvm_component_utils(reactive_data_monitor)
 
   virtual obi_data_if.monitor_mp        vif;
 
   uvm_analysis_port #(data_transaction) request_ap;  // -> reactive sequence
-  uvm_analysis_port #(data_transaction) transaction_ap;  // -> scoreboard
+  uvm_analysis_port #(data_transaction) transaction_ap;  // -> scoreboard + OBI coverage
 
   localparam int MAX_OUT = 2;  // used for the outstanding check; this milestone never exceeds 1
 
@@ -16,6 +15,9 @@ class reactive_data_monitor extends uvm_monitor;
   data_transaction accepted_q[$];  // granted, waiting for rvalid (oldest first)
 
   int unsigned n_pub = 0, n_acc = 0, n_cmp = 0;
+
+  // CHK:V-17  Free-running cycle counter for the OBI timing coverage.
+  int unsigned cycle_count = 0;
 
   function new(string name, uvm_component parent);
     super.new(name, parent);
@@ -53,6 +55,7 @@ class reactive_data_monitor extends uvm_monitor;
 
     forever begin
       @(vif.cb_monitor);
+      cycle_count++;   // CHK:V-17
 
       rst    = (vif.cb_monitor.rst_n === 1'b1);
       req    = (vif.cb_monitor.data_req_o === 1'b1);
@@ -73,12 +76,12 @@ class reactive_data_monitor extends uvm_monitor;
       end
 
       // 1. Response: completes the oldest granted request.
-      //    Checked before the handshake, so a grant on this edge cannot complete on this edge.
       if (rvalid) begin
         if (accepted_q.size() == 0) begin
           `uvm_error("MON", "rvalid with no granted request")
         end else begin
           tr = accepted_q.pop_front();
+          tr.cycle_at_rvalid = cycle_count;   // CHK:V-17
           if (!tr.data_we_o) tr.data_rdata_i = vif.cb_monitor.data_rdata_i;
           n_cmp++;
           dbg_msg($sformatf(
@@ -96,6 +99,7 @@ class reactive_data_monitor extends uvm_monitor;
       // 2. Request: publish once, on the first edge req is high and nothing is waiting
       if (req && !waiting_gnt) begin
         pub_tr      = sample_bus();
+        pub_tr.cycle_at_publish = cycle_count;   // CHK:V-17
         waiting_gnt = 1;
         n_pub++;
         dbg_msg($sformatf(
@@ -121,8 +125,11 @@ class reactive_data_monitor extends uvm_monitor;
                      tr.data_addr_o,
                      tr.data_we_o
                      ))
+        tr.cycle_at_grant     = cycle_count;    // CHK:V-17
+        tr.cycle_at_publish   = pub_tr.cycle_at_publish;
         waiting_gnt = 0;
         accepted_q.push_back(tr);
+        tr.outstanding_at_grant = accepted_q.size();  // CHK:V-17
         n_acc++;
         dbg_msg($sformatf(
                 "t=%0t ACCEPT we=%0b addr=%08h outstanding=%0d",

@@ -53,6 +53,8 @@ class mul_monitor extends uvm_monitor;
         item.operand_c   = vif.op_c_i;
         item.result      = vif.result_o;
         item.latency     = lat;
+        // CHK:V-10/V-12  Destination register (stable during the op).
+        item.rd          = vif.rd_i;
 
         `uvm_info("MUL_MON", item.convert2string(), UVM_MEDIUM)
         analysis_port.write(item);

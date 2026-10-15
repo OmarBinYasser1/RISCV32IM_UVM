@@ -43,6 +43,7 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
 
     // Define the enum of the opcode   
     rand bit rst_n; 
+    // rand opcode_t opcode;
     rand opcode_t opcode;
     rand bit [6:0]  funct7; // Valid Vlaues are : 0 , 1 , 32
     bit [2:0]  funct3;
@@ -62,6 +63,12 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
     rand S_ops_t S_ops;
     rand Load_ops_t Load_ops;
     rand ALU_MUL_sel_t  ALU_MUL_sel; 
+
+    // CHK:I-03  Relax the rd/rs partition in c_general.  Non-rand so a
+    // sequence can set it before randomize() without fighting the solver.
+    // Default 0 = old strict behaviour (rd in [8:15], rs in {0, x16..x31}).
+    // When 1, rd may equal rs (same-register / RAW corner is reachable).
+    bit relax_rd_rs = 0;
 
     bit [31:0] pc;    // Program counter received as `req_o` from the core
     bit [31:0] pc_if; // Program counter inside the IF stage
@@ -91,16 +98,21 @@ class rv32im_instr_seq_item extends uvm_sequence_item;
         //
         // All three constraints are `soft`, so the directed phases can
         // still override them with hard `rd/rs1/rs2` assignments.
+        //
+        // CHK:I-03  Gate these on !relax_rd_rs so a test can drop the
+        // partition (rd may equal rs, RAW becomes possible).
         // ---------------------------------------------------------------
-        if (opcode inside {OP_R, OP_IMM, OP_LOAD, OP_LUI, OP_AUIPC,
-                           OP_JAL, OP_JALR})
-            soft rd  inside {[8:15]};
+        if (!relax_rd_rs) {
+            if (opcode inside {OP_R, OP_IMM, OP_LOAD, OP_LUI, OP_AUIPC,
+                               OP_JAL, OP_JALR})
+                soft rd  inside {[8:15]};
 
-        if (opcode inside {OP_R, OP_IMM})
-            soft rs1 inside {0, [16:31]};
+            if (opcode inside {OP_R, OP_IMM})
+                soft rs1 inside {0, [16:31]};
 
-        if (opcode inside {OP_R, OP_STORE})
-            soft rs2 inside {0, [16:31]};
+            if (opcode inside {OP_R, OP_STORE})
+                soft rs2 inside {0, [16:31]};
+        }
 
         // Valid values for funct7 for R/I types are 0, 1, 32
         funct7 inside {0,1,32};

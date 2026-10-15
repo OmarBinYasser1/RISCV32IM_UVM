@@ -105,7 +105,7 @@ class riscv_rf_scoreboard extends uvm_scoreboard;
       rf_fifo.get(item);
 
       case (item.kind)
-        // ── WRITE ────────────────────────────────────────────────────────
+        // == WRITE ========================================================
         regfile_item::WRITE: begin
           rf_write_count++;
 
@@ -125,7 +125,7 @@ class riscv_rf_scoreboard extends uvm_scoreboard;
                     item.addr, item.data, item.port), UVM_MEDIUM)
         end
 
-        // ── READ ─────────────────────────────────────────────────────────
+        // == READ =========================================================
         regfile_item::READ: begin
           if (item.addr == 0) begin
             // x0 must always read 0

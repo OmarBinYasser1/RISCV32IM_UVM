@@ -119,6 +119,9 @@ class regfile_monitor extends uvm_monitor;
         item.kind = regfile_item::PC_TRACE;
         item.pc_id = vif.cb_mon.pc_id;
         item.instr = vif.cb_mon.instr_rdata_id;
+        // CHK:C-03  Forwarded operands, same values the DUT uses in EX.
+        item.op_a_fw = vif.cb_mon.pc_trace_operand_a;
+        item.op_b_fw = vif.cb_mon.pc_trace_operand_b;
 
         analysis_port.write(item);
       end

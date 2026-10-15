@@ -18,17 +18,23 @@ class data_transaction extends uvm_sequence_item;
   rand int unsigned        gnt_delay;  // Cycles to wait before driving gnt_i = 1
   rand int unsigned        rvalid_delay;  // Cycles to wait before driving rvalid_i = 1
 
+  // CHK:V-17  OBI observation fields, populated by the monitor.  Non-rand,
+  // read only by the OBI coverage subscriber.
+  int unsigned cycle_at_publish;      // monitor cycle when req was published
+  int unsigned cycle_at_grant;        // monitor cycle when gnt fired
+  int unsigned cycle_at_rvalid;       // monitor cycle when rvalid fired
+  int unsigned outstanding_at_grant;  // accepted_q size at the grant edge
+
   constraint c_delays {
     gnt_delay dist {
       0 := 70,
       [1 : 3] := 30
-      //  [4 : 10] := 5
-    };  // Mostly fast grants
+    };
     rvalid_delay dist {
       0 := 50,
       [1 : 4] := 40,
       [5 : 12] := 10
-    };  // Varied response speeds
+    };
   }
 
 
