@@ -1,0 +1,1271 @@
+m255
+K4
+z2
+!s11f vlog 2020.4 2020.10, Oct 13 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dE:/D_drive/SiVisionAcademy/RISCV/RISCV32IM_UVM/RIC5Y
+T_opt
+!s11d riscv_pkg E:/D_drive/SiVisionAcademy/RISCV/RISCV32IM_UVM/RIC5Y/work 6 rv32im_instr_if 1 E:/D_drive/SiVisionAcademy/RISCV/RISCV32IM_UVM/RIC5Y/work alu_if 1 E:/D_drive/SiVisionAcademy/RISCV/RISCV32IM_UVM/RIC5Y/work mul_if 1 E:/D_drive/SiVisionAcademy/RISCV/RISCV32IM_UVM/RIC5Y/work regfile_if 1 E:/D_drive/SiVisionAcademy/RISCV/RISCV32IM_UVM/RIC5Y/work obi_data_if 1 E:/D_drive/SiVisionAcademy/RISCV/RISCV32IM_UVM/RIC5Y/work debug_interupt_if 1 E:/D_drive/SiVisionAcademy/RISCV/RISCV32IM_UVM/RIC5Y/work 
+!s110 1792215847
+VS4Qd5Z?;T93h1l^gbKkKm1
+Z1 04 10 4 work rv32im_top fast 0
+=1-d8d090063a37-6ad30b25-346-1720
+Z2 o-quiet -auto_acc_if_foreign -work work +acc
+Z3 tCvgOpt 0
+n@_opt
+Z4 OL;O;2020.4;71
+T_opt1
+!s11d riscv_pkg E:/D_drive/SiVisionAcademy/RISCV/rISCV32IM_UVM/RIC5Y/work 6 rv32im_instr_if 1 E:/D_drive/SiVisionAcademy/RISCV/rISCV32IM_UVM/RIC5Y/work alu_if 1 E:/D_drive/SiVisionAcademy/RISCV/rISCV32IM_UVM/RIC5Y/work mul_if 1 E:/D_drive/SiVisionAcademy/RISCV/rISCV32IM_UVM/RIC5Y/work regfile_if 1 E:/D_drive/SiVisionAcademy/RISCV/rISCV32IM_UVM/RIC5Y/work obi_data_if 1 E:/D_drive/SiVisionAcademy/RISCV/rISCV32IM_UVM/RIC5Y/work debug_interupt_if 1 E:/D_drive/SiVisionAcademy/RISCV/rISCV32IM_UVM/RIC5Y/work 
+!s110 1792211153
+V[A5Yd[lL73?Jj4OQgDR1c0
+R1
+=1-d8d090063a37-6ad2f8cf-305-1688
+R2
+R3
+n@_opt1
+R4
+R0
+Yalu_if
+Z5 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z6 !s110 1792215844
+!i10b 1
+!s100 go@5hddUX:Y0^1<Ciz3C?3
+Z7 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IljzDN]aRbadhGQbHeW?hS2
+S1
+R0
+w1791743974
+8./alu_agent/alu_if.sv
+F./alu_agent/alu_if.sv
+!i122 40
+L0 2 0
+Z8 VDg1SIo80bB@j0V0VzS_@n1
+Z9 OL;L;2020.4;71
+r1
+!s85 0
+31
+Z10 !s108 1792215844.000000
+Z11 !s107 .\tb\.\tests\rv32im_mem_test.sv|.\tb\.\tests\rv32im_ctrl_hazard_test.sv|.\tb\.\tests\rv32im_muldiv_test.sv|.\tb\.\tests\rv32im_alu_test.sv|.\tb\.\tests\rv32im_random_test.sv|.\tb\.\rv32im_test.sv|.\tb\.\rv32im_env.sv|.\tb\..\Coverage\obi_coverage.sv|.\tb\..\Coverage\regfile_coverage.sv|.\tb\..\Coverage\mul_coverage.sv|.\tb\..\Coverage\ctrl_flow_coverage.sv|.\tb\..\Coverage\alu_coverage.sv|.\tb\..\sb\riscv_system_scoreboard.sv|.\tb\..\sb\riscv_rf_scoreboard.sv|.\tb\..\sb\riscv_alu_scoreboard.sv|.\tb\..\regfile_agent\regfile_agent.sv|.\tb\..\mul_agent\mul_agent.sv|.\tb\..\alu_agent\alu_agent.sv|.\tb\..\Debug_interupt_agent\debug_interupt_agent.sv|.\tb\..\Data_agent\reactive_data_agent.sv|.\tb\..\Instr_Agent\rv32im_instr_agent.sv|.\tb\..\Debug_interupt_agent\debug_interupt_monitor.sv|.\tb\..\Data_agent\reactive_data_monitor.sv|.\tb\..\regfile_agent\regfile_monitor.sv|.\tb\..\mul_agent\mul_monitor.sv|.\tb\..\alu_agent\alu_monitor.sv|.\tb\..\Instr_Agent\rv32im_instr_monitor.sv|.\tb\..\Debug_interupt_agent\debug_interupt_driver.sv|.\tb\..\Data_agent\reactive_data_driver.sv|.\tb\..\Instr_Agent\rv32im_instr_driver.sv|.\tb\..\regfile_agent\regfile_item.sv|.\tb\..\mul_agent\mul_item.sv|.\tb\..\alu_agent\alu_item.sv|.\tb\.\rv32im_virtual_seq.sv|.\tb\..\Data_agent\reactive_data_seq.sv|.\tb\..\Debug_interupt_agent\debug_interupt_seq.sv|.\tb\..\Instr_Agent\Sequences\rv32im_stream_seq.sv|.\tb\..\Instr_Agent\Sequences\rv32im_dir_corner_seq.sv|.\tb\..\Instr_Agent\Sequences\rv32im_dir_mem_seq.sv|.\tb\..\Instr_Agent\Sequences\rv32im_dir_hazard_seq.sv|.\tb\..\Instr_Agent\Sequences\rv32im_dir_muldiv_seq.sv|.\tb\..\Instr_Agent\Sequences\rv32im_dir_ctrl_seq.sv|.\tb\..\Instr_Agent\Sequences\rv32im_dir_alu_seq.sv|.\tb\..\Instr_Agent\Sequences\rv32im_rand_ctrl_seq.sv|.\tb\..\Instr_Agent\Sequences\rv32im_rand_mem_seq.sv|.\tb\..\Instr_Agent\Sequences\rv32im_rand_alu_seq.sv|.\tb\..\Instr_Agent\Sequences\rv32im_reset_init_seq.sv|.\tb\..\Instr_Agent\rv32im_instr_seq.sv|.\tb\.\rv32im_virtual_seqr.sv|.\tb\..\Debug_interupt_agent\debug_interupt_sequencer.sv|.\tb\..\Data_agent\reactive_data_sequencer.sv|.\tb\..\Instr_Agent\rv32im_instr_seqr.sv|.\tb\..\Debug_interupt_agent\debug_interupt_transaction.sv|.\tb\..\Data_agent\data_transaction.sv|.\tb\..\Instr_Agent\rv32im_instr_config.sv|.\tb\..\Instr_Agent\rv32im_instr_seq_item.sv|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh|C:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh|./tb/rv32im_tb_top.sv|./sva/obi_sva.sv|./sva/mul_timing_sva.sv|./tb/riscv_pkg.sv|./Debug_interupt_agent/debug_interupt_if.sv|./Instr_Agent/rv32im_instr_if.sv|./regfile_agent/regfile_if.sv|./Data_agent/obi_data_if.sv|./mul_agent/mul_if.sv|./alu_agent/alu_if.sv|./rtl/cv32e40p_top.sv|./rtl/cv32e40p_core.sv|./rtl/cv32e40p_if_stage.sv|./rtl/cv32e40p_aligner.sv|./rtl/cv32e40p_compressed_decoder.sv|./rtl/cv32e40p_prefetch_buffer.sv|./rtl/cv32e40p_fifo.sv|./rtl/cv32e40p_prefetch_controller.sv|./rtl/cv32e40p_cs_registers.sv|./rtl/cv32e40p_load_store_unit.sv|./rtl/cv32e40p_obi_interface.sv|./rtl/cv32e40p_id_stage.sv|./rtl/cv32e40p_decoder.sv|./rtl/cv32e40p_register_file_ff.sv|./rtl/cv32e40p_hwloop_regs.sv|./rtl/cv32e40p_int_controller.sv|./rtl/cv32e40p_controller.sv|./rtl/cv32e40p_ex_stage.sv|./rtl/cv32e40p_mult.sv|./rtl/cv32e40p_alu.sv|./rtl/cv32e40p_alu_div.sv|./rtl/cv32e40p_ff_one.sv|./rtl/cv32e40p_popcnt.sv|./rtl/cv32e40p_apu_disp.sv|./rtl/cv32e40p_sleep_unit.sv|./rtl/cv32e40p_sim_clock_gate.sv|./rtl/package/cv32e40p_pkg.sv|./rtl/package/cv32e40p_fpu_pkg.sv|./rtl/package/cv32e40p_apu_core_pkg.sv|
+Z12 !s90 -f|files.f|+cover|-covercells|-l|compile.log|-suppress|2583|-suppress|13314|
+!i113 0
+Z13 !s102 +cover -covercells
+Z14 o-suppress 2583 -suppress 13314 +cover -covercells -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R3
+vcv32e40p_aligner
+R5
+R6
+!i10b 1
+!s100 nN7SCkmhVG_RO1C1a@b503
+R7
+I??amQY8ZHGNbQcCA1ZI`b2
+S1
+R0
+Z15 w1791475724
+8./rtl/cv32e40p_aligner.sv
+F./rtl/cv32e40p_aligner.sv
+!i122 40
+L0 23 230
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_alu
+R5
+Z16 DXx4 work 12 cv32e40p_pkg 0 22 _Q@4Mzk>6cc06bPAf9Sfg0
+R6
+!i10b 1
+!s100 Nb9P]a7E4BFF8gGTVNY253
+R7
+IE1>0_PD4Lj6J`f_Pdc2JI0
+S1
+R0
+R15
+8./rtl/cv32e40p_alu.sv
+F./rtl/cv32e40p_alu.sv
+!i122 40
+L0 28 959
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_alu_div
+R5
+R6
+!i10b 1
+!s100 DKaXCSoZ4Jh5DTTlEAQOk1
+R7
+IM9^J[<jf]0dC7UY<jczB31
+S1
+R0
+R15
+8./rtl/cv32e40p_alu_div.sv
+F./rtl/cv32e40p_alu_div.sv
+!i122 40
+L0 26 201
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+Xcv32e40p_apu_core_pkg
+R5
+R6
+!i10b 1
+!s100 BfS6EaQkd8YdhjhSMgMk;1
+R7
+I4SjQUBdckJoPOM=6zSS]D2
+S1
+R0
+Z17 w1791475726
+8./rtl/package/cv32e40p_apu_core_pkg.sv
+F./rtl/package/cv32e40p_apu_core_pkg.sv
+!i122 40
+L0 22 0
+V4SjQUBdckJoPOM=6zSS]D2
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_apu_disp
+R5
+R6
+!i10b 1
+!s100 oU_mf4bQkM=hE`M;1nUH53
+R7
+I8a2[R_f4>4LQF92;c8K`b1
+S1
+R0
+R15
+8./rtl/cv32e40p_apu_disp.sv
+F./rtl/cv32e40p_apu_disp.sv
+!i122 40
+L0 25 218
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_clock_gate
+R5
+R6
+!i10b 1
+!s100 _20hQfRmW^MMjk[<4Bh<91
+R7
+IVSm^Y7MoHLc^9n4YO0N4O3
+S1
+R0
+R17
+8./rtl/cv32e40p_sim_clock_gate.sv
+F./rtl/cv32e40p_sim_clock_gate.sv
+!i122 40
+L0 15 16
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_compressed_decoder
+R5
+R16
+R6
+!i10b 1
+!s100 4Lh`V@>RUbK^5<_`e`3X?1
+R7
+IF>L6m`c`mUKNFaF_hS:Bj0
+S1
+R0
+R15
+8./rtl/cv32e40p_compressed_decoder.sv
+F./rtl/cv32e40p_compressed_decoder.sv
+!i122 40
+L0 27 575
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_controller
+R5
+R16
+R6
+!i10b 1
+!s100 _jHAIU5`DHhbo^odJfK6C3
+R7
+Ii[W]]bE?MiMaRYN7oSn6@2
+S1
+R0
+R15
+8./rtl/cv32e40p_controller.sv
+F./rtl/cv32e40p_controller.sv
+!i122 40
+L0 31 1579
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_core
+R5
+Z18 DXx4 work 21 cv32e40p_apu_core_pkg 0 22 4SjQUBdckJoPOM=6zSS]D2
+R16
+R6
+!i10b 1
+!s100 `a[Y0f5B7bHQ`NMQE`9X80
+R7
+I3NBiJzTAjncj1Xc54Md831
+S1
+R0
+R15
+8./rtl/cv32e40p_core.sv
+F./rtl/cv32e40p_core.sv
+!i122 40
+L0 31 1262
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_cs_registers
+R5
+R16
+R6
+!i10b 1
+!s100 7Q:M0o3IZK2fz3`KKcFW:2
+R7
+IlD;k2YEiI36aiBL`_Xe3<0
+S1
+R0
+R15
+8./rtl/cv32e40p_cs_registers.sv
+F./rtl/cv32e40p_cs_registers.sv
+!i122 40
+L0 30 1518
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_decoder
+R5
+R16
+R18
+Z19 DXx4 work 16 cv32e40p_fpu_pkg 0 22 K^0E``j[[E1Oc3TUURHOO3
+R6
+!i10b 1
+!s100 kCWzJJWbIf7JYgcG7S]D:1
+R7
+IUOUm7?U2_ZW[jH2VmEg?U0
+S1
+R0
+R15
+8./rtl/cv32e40p_decoder.sv
+F./rtl/cv32e40p_decoder.sv
+!i122 40
+L0 28 2970
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_ex_stage
+R5
+R16
+R18
+R6
+!i10b 1
+!s100 1VQIg7kDOL6Vc0O62enNT1
+R7
+IX[X8A?A3<8m0D1S]_dLWI0
+S1
+R0
+R15
+8./rtl/cv32e40p_ex_stage.sv
+F./rtl/cv32e40p_ex_stage.sv
+!i122 40
+L0 32 448
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_ff_one
+R5
+R6
+!i10b 1
+!s100 `dj4@Q:75UY<G:DVYR2Q:3
+R7
+IjdU0@OmPV^UA`9VKQ;=RC3
+S1
+R0
+R15
+8./rtl/cv32e40p_ff_one.sv
+F./rtl/cv32e40p_ff_one.sv
+!i122 40
+L0 25 75
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_fifo
+R5
+R6
+!i10b 1
+!s100 :`nD>KQ8DC9O=PHZigCLa1
+R7
+IJnXgi09YcR7?o^7z8]9]k1
+S1
+R0
+R15
+8./rtl/cv32e40p_fifo.sv
+F./rtl/cv32e40p_fifo.sv
+!i122 40
+L0 15 154
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+Xcv32e40p_fpu_pkg
+R5
+R6
+!i10b 1
+!s100 g0K<Iz1TXX5fWeV3QU9;K1
+R7
+IK^0E``j[[E1Oc3TUURHOO3
+S1
+R0
+R17
+8./rtl/package/cv32e40p_fpu_pkg.sv
+F./rtl/package/cv32e40p_fpu_pkg.sv
+!i122 40
+L0 38 0
+VK^0E``j[[E1Oc3TUURHOO3
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_hwloop_regs
+R5
+R6
+!i10b 1
+!s100 VHg6MV0JKIThEP?DGdeo12
+R7
+IEbV@DGLE9jgIE1gTBLmgX2
+S1
+R0
+R15
+8./rtl/cv32e40p_hwloop_regs.sv
+F./rtl/cv32e40p_hwloop_regs.sv
+!i122 40
+L0 25 93
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_id_stage
+R5
+R16
+R18
+R19
+R6
+!i10b 1
+!s100 fVcQ4DZnUWdMUXn2h;J<G1
+R7
+ISW^<lDWg3`4QJHW:U_Q5M3
+S1
+R0
+R15
+8./rtl/cv32e40p_id_stage.sv
+F./rtl/cv32e40p_id_stage.sv
+!i122 40
+L0 30 1804
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_if_stage
+R5
+R16
+R6
+!i10b 1
+!s100 cmZa:UMXXTN7SS8B6S7^32
+R7
+I4d@=NdUmk>9zYl?ddbgE32
+S1
+R0
+R17
+8./rtl/cv32e40p_if_stage.sv
+F./rtl/cv32e40p_if_stage.sv
+!i122 40
+L0 28 292
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_int_controller
+R5
+R16
+R6
+!i10b 1
+!s100 A2_CD4<E^C]gO_bWNEe4<0
+R7
+I<6=SPIUTGlPTSnO]6JE6:1
+S1
+R0
+R17
+8./rtl/cv32e40p_int_controller.sv
+F./rtl/cv32e40p_int_controller.sv
+!i122 40
+L0 24 129
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_load_store_unit
+R5
+R6
+!i10b 1
+!s100 PIgBKDiH;kcH=P>0b4kZS3
+R7
+IP2dzYlo2d>ScNA:U1j[eC0
+S1
+R0
+R17
+8./rtl/cv32e40p_load_store_unit.sv
+F./rtl/cv32e40p_load_store_unit.sv
+!i122 40
+L0 26 524
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_mult
+R5
+R16
+R6
+!i10b 1
+!s100 RPkKBDS2S0]GQB55]<i`o1
+R7
+IZf]gK4]6WhgCS5QL@SPj02
+S1
+R0
+R17
+8./rtl/cv32e40p_mult.sv
+F./rtl/cv32e40p_mult.sv
+!i122 40
+L0 26 362
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_obi_interface
+R5
+R6
+!i10b 1
+!s100 WLl9EbD33H8mK]VcccbRN0
+R7
+IX5=Cn9;l=J3l]?8]Y63]<1
+S1
+R0
+R17
+8./rtl/cv32e40p_obi_interface.sv
+F./rtl/cv32e40p_obi_interface.sv
+!i122 40
+L0 38 169
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+Xcv32e40p_pkg
+R5
+R6
+!i10b 1
+!s100 5nGJ6cZ3TD6nCE3UDoNjY3
+R7
+I_Q@4Mzk>6cc06bPAf9Sfg0
+S1
+R0
+R17
+8./rtl/package/cv32e40p_pkg.sv
+F./rtl/package/cv32e40p_pkg.sv
+!i122 40
+L0 26 0
+V_Q@4Mzk>6cc06bPAf9Sfg0
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_popcnt
+R5
+R6
+!i10b 1
+!s100 RDJ6CRdWK`RkkC6kVb_=L3
+R7
+ILM1A@ind01B:7H;Lgn4JN0
+S1
+R0
+R17
+8./rtl/cv32e40p_popcnt.sv
+F./rtl/cv32e40p_popcnt.sv
+!i122 40
+L0 25 38
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_prefetch_buffer
+R5
+R6
+!i10b 1
+!s100 T91=`^FR4UmfGR3PY1e[_3
+R7
+Ie`7Ba7?BIoR9>[fF<f_nb2
+S1
+R0
+R17
+8./rtl/cv32e40p_prefetch_buffer.sv
+F./rtl/cv32e40p_prefetch_buffer.sv
+!i122 40
+L0 27 228
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_prefetch_controller
+R5
+R16
+R6
+!i10b 1
+!s100 a^CLzNM0Jdd;a2PdQ2c3h1
+R7
+Iic7f4R;hg_=:YXQKo]1D83
+S1
+R0
+R17
+8./rtl/cv32e40p_prefetch_controller.sv
+F./rtl/cv32e40p_prefetch_controller.sv
+!i122 40
+L0 40 324
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_register_file
+R5
+R6
+!i10b 1
+!s100 O1e7lTY:zU9A`CWaLnoCF0
+R7
+I8=oXO`MjgY@Q47b@0H7cT3
+S1
+R0
+R17
+8./rtl/cv32e40p_register_file_ff.sv
+F./rtl/cv32e40p_register_file_ff.sv
+!i122 40
+L0 30 126
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_sleep_unit
+R5
+R16
+R6
+!i10b 1
+!s100 =RD1BI0YIkAdnaSBgmI0`2
+R7
+I]f9QPR0F0oQF6R5CC_f0B2
+S1
+R0
+R17
+8./rtl/cv32e40p_sleep_unit.sv
+F./rtl/cv32e40p_sleep_unit.sv
+!i122 40
+L0 56 237
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vcv32e40p_top
+R5
+R18
+R6
+!i10b 1
+!s100 G2I_Ji69RWgQCmbh=RT9d2
+R7
+I?U@f2QQ[V6ANAiKQ]B[gX3
+S1
+R0
+R17
+8./rtl/cv32e40p_top.sv
+F./rtl/cv32e40p_top.sv
+!i122 40
+L0 14 166
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+Ydebug_interupt_if
+R5
+R6
+!i10b 1
+!s100 HVnD[ATCVcKOJKh7eY]Rd0
+R7
+II3oTN_Va4]]Jc@jA21H1G2
+S1
+R0
+R15
+8./Debug_interupt_agent/debug_interupt_if.sv
+F./Debug_interupt_agent/debug_interupt_if.sv
+!i122 40
+Z20 L0 1 0
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+Ymul_if
+R5
+R6
+!i10b 1
+!s100 9MF7mTBBNZQRLfohFPVm;0
+R7
+I6UHmO5=@1YeLRabh4iRo00
+S1
+R0
+w1792067882
+8./mul_agent/mul_if.sv
+F./mul_agent/mul_if.sv
+!i122 40
+R20
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vmul_timing_sva
+R5
+R5
+Z21 DXx6 mtiUvm 7 uvm_pkg 0 22 lXjlbbgd2P7=0FIB1[zNj3
+DXx4 work 22 mul_timing_sva_sv_unit 0 22 Q^>agCH8S9M5`k`HoCzTI3
+Z22 !s110 1792215845
+R8
+r1
+!s85 0
+!i10b 1
+!s100 L0b;QL8hl3JRl[mnZ6zVP1
+IooMoSzkk:JbbWgAjE`CB23
+!s105 mul_timing_sva_sv_unit
+S1
+R0
+Z23 w1792045894
+Z24 8./sva/mul_timing_sva.sv
+Z25 F./sva/mul_timing_sva.sv
+!i122 40
+L0 15 38
+R9
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+Xmul_timing_sva_sv_unit
+R5
+R5
+R21
+R22
+VQ^>agCH8S9M5`k`HoCzTI3
+r1
+!s85 0
+!i10b 1
+!s100 __NfHKME7kWIX_dmFT`m`1
+IQ^>agCH8S9M5`k`HoCzTI3
+!i103 1
+S1
+R0
+R23
+R24
+R25
+Z26 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh
+Z27 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh
+Z28 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh
+Z29 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh
+Z30 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh
+Z31 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh
+Z32 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh
+Z33 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh
+Z34 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh
+Z35 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh
+Z36 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh
+Z37 FC:/modeltech64_2020.4/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh
+!i122 40
+L0 12 0
+R9
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+Yobi_data_if
+R5
+R6
+!i10b 1
+!s100 ?K:zX_Ho2<2czXU6c]A4^1
+R7
+I1gJG6QN30E>lV:4=1gi9^1
+S1
+R0
+w1792207161
+8./Data_agent/obi_data_if.sv
+F./Data_agent/obi_data_if.sv
+!i122 40
+R20
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vobi_data_sva
+R5
+R5
+R21
+Z38 DXx4 work 15 obi_sva_sv_unit 0 22 =SVQ6a]69]66bg2mckWK]3
+R22
+R8
+r1
+!s85 0
+!i10b 1
+!s100 `zHSF__GkD]kO@_FijPRP1
+IDS0D^RE5o<?VIcVOO;@J;1
+Z39 !s105 obi_sva_sv_unit
+S1
+R0
+Z40 w1792215271
+Z41 8./sva/obi_sva.sv
+Z42 F./sva/obi_sva.sv
+!i122 40
+L0 108 138
+R9
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vobi_instr_sva
+R5
+R5
+R21
+R38
+R22
+R8
+r1
+!s85 0
+!i10b 1
+!s100 BgPBQDgW`Io<7O?EW>l4M3
+IP2FTooQhml0QG2]7`9mNF2
+R39
+S1
+R0
+R40
+R41
+R42
+!i122 40
+L0 9 95
+R9
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+Xobi_sva_sv_unit
+R5
+R5
+R21
+R22
+V=SVQ6a]69]66bg2mckWK]3
+r1
+!s85 0
+!i10b 1
+!s100 VBj`8g<9iczlAlIB;42j`2
+I=SVQ6a]69]66bg2mckWK]3
+!i103 1
+S1
+R0
+R40
+R41
+R42
+R26
+R27
+R28
+R29
+R30
+R31
+R32
+R33
+R34
+R35
+R36
+R37
+!i122 40
+Z43 L0 4 0
+R9
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+Yregfile_if
+R5
+R6
+!i10b 1
+!s100 ab>]6X=hX@5<NV3OdZKW_1
+R7
+IE@zM<zdQb1T;hfS;J4[G01
+S1
+R0
+w1792070584
+8./regfile_agent/regfile_if.sv
+F./regfile_agent/regfile_if.sv
+!i122 40
+R20
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+Xriscv_pkg
+!s115 regfile_if
+!s115 mul_if
+!s115 alu_if
+!s115 debug_interupt_if
+!s115 obi_data_if
+!s115 rv32im_instr_if
+R5
+R21
+R22
+!i10b 1
+!s100 :bYTB<]9Va4A^8A38j>Z92
+R7
+If3D5D7>lK?_Xi59]GNoaF1
+S1
+R0
+w1792215161
+8./tb/riscv_pkg.sv
+F./tb/riscv_pkg.sv
+R26
+R27
+R28
+R29
+R30
+R31
+R32
+R33
+R34
+R35
+R36
+R37
+F.\tb\..\Instr_Agent\rv32im_instr_seq_item.sv
+F.\tb\..\Instr_Agent\rv32im_instr_config.sv
+F.\tb\..\Data_agent\data_transaction.sv
+F.\tb\..\Debug_interupt_agent\debug_interupt_transaction.sv
+F.\tb\..\Instr_Agent\rv32im_instr_seqr.sv
+F.\tb\..\Data_agent\reactive_data_sequencer.sv
+F.\tb\..\Debug_interupt_agent\debug_interupt_sequencer.sv
+F.\tb\.\rv32im_virtual_seqr.sv
+F.\tb\..\Instr_Agent\rv32im_instr_seq.sv
+F.\tb\..\Instr_Agent\Sequences\rv32im_reset_init_seq.sv
+F.\tb\..\Instr_Agent\Sequences\rv32im_rand_alu_seq.sv
+F.\tb\..\Instr_Agent\Sequences\rv32im_rand_mem_seq.sv
+F.\tb\..\Instr_Agent\Sequences\rv32im_rand_ctrl_seq.sv
+F.\tb\..\Instr_Agent\Sequences\rv32im_dir_alu_seq.sv
+F.\tb\..\Instr_Agent\Sequences\rv32im_dir_ctrl_seq.sv
+F.\tb\..\Instr_Agent\Sequences\rv32im_dir_muldiv_seq.sv
+F.\tb\..\Instr_Agent\Sequences\rv32im_dir_hazard_seq.sv
+F.\tb\..\Instr_Agent\Sequences\rv32im_dir_mem_seq.sv
+F.\tb\..\Instr_Agent\Sequences\rv32im_dir_corner_seq.sv
+F.\tb\..\Instr_Agent\Sequences\rv32im_stream_seq.sv
+F.\tb\..\Debug_interupt_agent\debug_interupt_seq.sv
+F.\tb\..\Data_agent\reactive_data_seq.sv
+F.\tb\.\rv32im_virtual_seq.sv
+F.\tb\..\alu_agent\alu_item.sv
+F.\tb\..\mul_agent\mul_item.sv
+F.\tb\..\regfile_agent\regfile_item.sv
+F.\tb\..\Instr_Agent\rv32im_instr_driver.sv
+F.\tb\..\Data_agent\reactive_data_driver.sv
+F.\tb\..\Debug_interupt_agent\debug_interupt_driver.sv
+F.\tb\..\Instr_Agent\rv32im_instr_monitor.sv
+F.\tb\..\alu_agent\alu_monitor.sv
+F.\tb\..\mul_agent\mul_monitor.sv
+F.\tb\..\regfile_agent\regfile_monitor.sv
+F.\tb\..\Data_agent\reactive_data_monitor.sv
+F.\tb\..\Debug_interupt_agent\debug_interupt_monitor.sv
+F.\tb\..\Instr_Agent\rv32im_instr_agent.sv
+F.\tb\..\Data_agent\reactive_data_agent.sv
+F.\tb\..\Debug_interupt_agent\debug_interupt_agent.sv
+F.\tb\..\alu_agent\alu_agent.sv
+F.\tb\..\mul_agent\mul_agent.sv
+F.\tb\..\regfile_agent\regfile_agent.sv
+F.\tb\..\sb\riscv_alu_scoreboard.sv
+F.\tb\..\sb\riscv_rf_scoreboard.sv
+F.\tb\..\sb\riscv_system_scoreboard.sv
+F.\tb\..\Coverage\alu_coverage.sv
+F.\tb\..\Coverage\ctrl_flow_coverage.sv
+F.\tb\..\Coverage\mul_coverage.sv
+F.\tb\..\Coverage\regfile_coverage.sv
+F.\tb\..\Coverage\obi_coverage.sv
+F.\tb\.\rv32im_env.sv
+F.\tb\.\rv32im_test.sv
+F.\tb\.\tests\rv32im_random_test.sv
+F.\tb\.\tests\rv32im_alu_test.sv
+F.\tb\.\tests\rv32im_muldiv_test.sv
+F.\tb\.\tests\rv32im_ctrl_hazard_test.sv
+F.\tb\.\tests\rv32im_mem_test.sv
+!i122 40
+R43
+Vf3D5D7>lK?_Xi59]GNoaF1
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+Yrv32im_instr_if
+R5
+R6
+!i10b 1
+!s100 Ph]WgSX=HiX1;]k[Qf2b[0
+R7
+IK>LGfUWCIMhUV5ncnjjiD1
+S1
+R0
+w1791841016
+8./Instr_Agent/rv32im_instr_if.sv
+F./Instr_Agent/rv32im_instr_if.sv
+!i122 40
+R20
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3
+vrv32im_top
+R5
+R5
+R21
+DXx4 work 9 riscv_pkg 0 22 f3D5D7>lK?_Xi59]GNoaF1
+R22
+!i10b 1
+!s100 d3XcTPekX9L_?0o;Z3c1V2
+R7
+I7J>Dn<ThgF9OC8EF`a3Sm2
+S1
+R0
+w1792215841
+8./tb/rv32im_tb_top.sv
+F./tb/rv32im_tb_top.sv
+R26
+R27
+R28
+R29
+R30
+R31
+R32
+R33
+R34
+R35
+R36
+R37
+!i122 40
+L0 1 6697
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R14
+R3

@@ -1,0 +1,45 @@
+`ifndef MUL_ITEM_SV
+`define MUL_ITEM_SV
+
+class mul_item extends uvm_sequence_item;
+  `uvm_object_utils(mul_item)
+
+  // RV32M: MUL = 3'b000 (MUL_MAC32, operand_c==0); MULH/MULHSU/MULHU = 3'b110 (MUL_H)
+  rand bit [2:0]  operator  ;
+  rand bit [31:0] operand_a ;
+  rand bit [31:0] operand_b ;
+  rand bit [31:0] operand_c ;
+
+  //   bit0 -> operand_a is signed, bit1 -> operand_b is signed
+  //   MULH = 2'b11, MULHSU = 2'b01, MULHU = 2'b00   (only meaningful for MUL_H)
+       bit [1:0]  signed_mode;
+
+       bit [31:0] result;
+
+  // Debug info only (timing is checked by mul_timing_sva.sv): cycles the
+  // multiplier needed, counted from the first cycle enable_i is high for
+  // this operation up to (and including) the first cycle ready_o is high.
+  // MUL -> 1, MULH/MULHSU/MULHU -> 5
+       int        latency;
+
+  // CHK:V-10 / V-12  Destination register of the multiply operation.
+  // Sampled by the monitor from ex_stage_i.regfile_alu_waddr_i[4:0] at the
+  // cycle the result is committed.  Stable during multi-cycle MULH* because
+  // the ID/EX pipeline register is frozen while ex_ready_o is low.
+       bit [4:0]  rd;
+
+  function new(string name = "mul_item");
+    super.new(name);
+  endfunction
+
+
+   function string convert2string();
+    return $sformatf("op=%0b sm=%0b a=%0h b=%0h c=%0h res=%0h lat=%0d rd=x%0d",
+                     operator, signed_mode, operand_a, operand_b, operand_c,
+                     result, latency, rd);
+  endfunction
+
+
+endclass
+
+`endif
